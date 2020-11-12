@@ -1,0 +1,126 @@
+
+<div class="container-fluid mt-5 pageRole_fullview_section" id="rolepage" name="rolepage">
+  <div class="container">
+  <h6><strong>Role</strong></h6>
+  <div class="card">
+  <div class="card-body">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="rolename">Role</label>
+				<input type="text" class="form-control rounded-pill" id="rolename" placeholder="" name="rolename" autocomplete="off">
+			</div>
+		</div>
+        <div class="col-sm-6">
+			<div class="form-group">
+				<label for="isroleactive">Active</label>
+				<div class="custom-control custom-switch custom-switch-lg">
+					<input type="checkbox" class="custom-control-input" id="isroleactive" name="isroleactive" >
+					<label class="custom-control-label" for="isroleactive"></label>
+				</div>
+			</div>    
+		</div>
+	</div> 
+  </div><!--< END class="card-body">  -->
+</div>
+ <div  style="height:20px"></div>
+  <div class="row">
+      <div class="col-md-6 ">
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+      <div class="input-group pageRolemanagement_save_section" style="display:none;">
+      <button type="button" class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" id="callcreaterole" name="callcreaterole" >Save</button>
+      </div>
+      </div>
+  </div>
+</div>
+</div>
+<script>
+//Used for make viewdetail div disable
+var pageRole_viewdetails = false;
+var isnew='';
+ function fulltheroledata(data)
+ {
+ isnew=data.id;
+ $("#rolename").val(data.rolename);
+ if(data.status == 'true' )
+ {
+    $('#isroleactive').prop('checked', true);
+    }
+    else
+    if(data.status == 'false' )
+ {
+    $('#isroleactive').prop('checked', false);
+ }
+  pageRoleactioncontrol();
+  page_show('pageRolemanagement','pageRole')
+
+ }
+        
+//Create new role
+$(document).on('click','#callcreaterole',function(e) {
+var  rolename=$('#rolename').val();
+var isroleactive = $('#isroleactive').prop('checked');
+//var   _getloginname= $("#idoriginalname").text();
+		var _roleparams = {
+			"action" : "create_role",
+			"param"  : {"id":isnew
+                       ,"name" : rolename
+                       ,"status" : isroleactive
+                       ,"createby":_getloginname}
+			};
+            
+            if(rolename!='' )  
+            {
+            progressboxOpen();
+            google.script.run
+            .withFailureHandler(showerror)
+            .withSuccessHandler(roleconfirmation)
+            .executerole(_roleparams);
+      }
+      else
+      {
+  toastboxOpen("2008");
+}
+});
+
+//Confirm role creation
+function roleconfirmation(result)
+{
+      if(result.result['code'] == '3000')
+      {
+          progressboxClose();
+          isnew='';
+          $('#rolepage *').val('');
+          loadallroles();
+          page_show('pageRole','pageRolemanagement')
+          toastboxOpen("3001");
+      }
+      else
+      {
+          toastboxOpen("2007");
+      
+      }
+}
+
+// Show error message
+function showerror(err)
+{
+          progressboxClose();
+            toastboxOpen("3002");
+}
+</script>
+
+<script>
+// Control the page action.
+function pageRoleactioncontrol()
+{
+pageRole_viewdetails=page_actioncontrol("pageRole","SAVE");
+//Div disabled based on the condition 
+if(pageRole_viewdetails == false){$(".pageRole_fullview_section *").attr('disabled','disabled');}
+else{    $(".pageRole_fullview_section *").prop("disabled", false);}
+}
+
+</script>

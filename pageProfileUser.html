@@ -1,0 +1,1248 @@
+
+
+<div class="">
+
+
+
+	<br><h6><strong>User Profile</strong></h6>
+	<!--Profile--> 
+	<div class="container " style="background: #FFFFFF;border: 2px solid #F0F0F0;border-radius: 10px;"  >
+
+  <div class="row">
+    <div class="col-12">
+		<div class="row"> 
+			<div class="col-6 pt-4 px-5 "><h6 class="pageheading">Profile</h6></div>
+			<div class="col-6 py-3 px-5 ">
+				<div class="d-flex justify-content-end ">
+					<button type="button" class="btn btn-primary badge-pill px-5 btndesign" onclick="callreset()" id="changepssword" name="changepssword">Change Password</button>
+				</div>
+			</div>  
+		   </div>
+    </div>  
+ </div>       
+           
+           
+		<div>
+      
+       
+		<div class="row" style="border: 1px solid #CFCFCF;" ></div>
+                          <br>
+
+         <div class="row "> 
+         <div class="col-sm-4" >
+         </div>
+          <div class="col-sm-4" >
+        
+        <div class="row "> 
+         <div class="col-sm-3" >
+         </div>
+         <div class="col-sm-5 ml-2" >
+                 <div class="picture-container">
+                      <div class="picture ">
+                          <img  id='employeeimagecheck' class="picture-src" name="employeeimagecheck" src='https://storage.cloud.google.com/imagelib/profileimage/defaultprofile.png'  >
+                         
+                           <div class="overlay">
+                               <!--<a href="#" class="icon" title="User profile">
+                               <i class="fas fa-camera"></i>
+                               </a>-->
+                               </div>
+                             <form>
+                             <input  type="file" id="wizardpicture" name="wizardpicture"   accept="image/gif, image/jpeg, image/png">
+                             <input type=button class="  uploadfile transparant "  />
+                             </form>
+                        </div>
+                  </div>
+           </div>
+           <div class="col-sm-4" >
+         </div>
+          </div>
+              </div>
+           <div class="col-sm-4" >
+           </div>
+           </div>
+           
+           
+           
+            <div class="row"> 
+		        <div class="container-fluid bg-white  ">
+            
+			<p class="profileusername" id="employeename" name="employeename">Name</p>
+			<div><p class="profileotherdetails "  id="employeePosition" name="employeePosition">Position<br></p><p class="profileotherdetails"  id="employeememberdate" name="employeememberdate">Member Since date</p></div>
+      
+           <div class="text-center">
+           <svg   width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg" >
+           <path id="review1"  name="review1" d="M17.3563 6.15552C17.2417 5.81129 16.9292 5.56758 16.561 5.53503L11.5385 5.0895L9.55352 0.548898C9.40697 0.215305 9.07352 0 8.70236 0C8.33121 0 7.99762 0.215305 7.852 0.548898L5.86707 5.0895L0.843745 5.53503C0.475511 5.56823 0.163694 5.81194 0.0484717 6.15552C-0.066087 6.49975 0.0397105 6.87731 0.318209 7.11596L4.11484 10.3688L2.9954 15.1861C2.9135 15.5404 3.05421 15.9066 3.35501 16.1191C3.51669 16.2339 3.70665 16.2912 3.89727 16.2912C4.06108 16.2912 4.22502 16.2487 4.37144 16.1631L8.70236 13.6328L13.0325 16.1631C13.3502 16.3485 13.7496 16.3315 14.0497 16.1191C14.3505 15.9066 14.4912 15.5404 14.4093 15.1861L13.2899 10.3688L17.0865 7.11596C17.3649 6.87731 17.4708 6.50053 17.3563 6.15552Z" fill="#CBCBCB"/>
+           </svg>
+           
+           <svg    width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg" >
+           <path id="review2" name="review2" d="M17.3563 6.15552C17.2417 5.81129 16.9292 5.56758 16.561 5.53503L11.5385 5.0895L9.55352 0.548898C9.40697 0.215305 9.07352 0 8.70236 0C8.33121 0 7.99762 0.215305 7.852 0.548898L5.86707 5.0895L0.843745 5.53503C0.475511 5.56823 0.163694 5.81194 0.0484717 6.15552C-0.066087 6.49975 0.0397105 6.87731 0.318209 7.11596L4.11484 10.3688L2.9954 15.1861C2.9135 15.5404 3.05421 15.9066 3.35501 16.1191C3.51669 16.2339 3.70665 16.2912 3.89727 16.2912C4.06108 16.2912 4.22502 16.2487 4.37144 16.1631L8.70236 13.6328L13.0325 16.1631C13.3502 16.3485 13.7496 16.3315 14.0497 16.1191C14.3505 15.9066 14.4912 15.5404 14.4093 15.1861L13.2899 10.3688L17.0865 7.11596C17.3649 6.87731 17.4708 6.50053 17.3563 6.15552Z" fill="#CBCBCB"/>
+           </svg>
+           
+          <svg    width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="review3" name="review3" d="M17.952 6.15552C17.8374 5.81129 17.5249 5.56758 17.1567 5.53503L12.1342 5.0895L10.1492 0.548898C10.0027 0.215305 9.66922 0 9.29807 0C8.92691 0 8.59333 0.215305 8.44771 0.548898L6.46277 5.0895L1.43945 5.53503C1.07121 5.56823 0.759397 5.81194 0.644175 6.15552C0.529616 6.49975 0.635414 6.87731 0.913912 7.11596L4.71054 10.3688L3.59111 15.1861C3.5092 15.5404 3.64991 15.9066 3.95071 16.1191C4.1124 16.2339 4.30235 16.2912 4.49298 16.2912C4.65678 16.2912 4.82072 16.2487 4.96714 16.1631L9.29807 13.6328L13.6282 16.1631C13.9459 16.3485 14.3453 16.3315 14.6454 16.1191C14.9462 15.9066 15.0869 15.5404 15.005 15.1861L13.8856 10.3688L17.6822 7.11596C17.9606 6.87731 18.0665 6.50053 17.952 6.15552Z" fill="#CBCBCB"/>
+          </svg>
+          
+          <svg   name="review3" width="18" height="17" viewBox="0 0 18 17" fill="none" class="addreview" xmlns="http://www.w3.org/2000/svg">
+          <path   id="review4"   id="review4"  d="M17.952 6.15552C17.8374 5.81129 17.5249 5.56758 17.1567 5.53503L12.1342 5.0895L10.1492 0.548898C10.0027 0.215305 9.66922 0 9.29807 0C8.92691 0 8.59333 0.215305 8.44771 0.548898L6.46277 5.0895L1.43945 5.53503C1.07121 5.56823 0.759397 5.81194 0.644175 6.15552C0.529616 6.49975 0.635414 6.87731 0.913912 7.11596L4.71054 10.3688L3.59111 15.1861C3.5092 15.5404 3.64991 15.9066 3.95071 16.1191C4.1124 16.2339 4.30235 16.2912 4.49298 16.2912C4.65678 16.2912 4.82072 16.2487 4.96714 16.1631L9.29807 13.6328L13.6282 16.1631C13.9459 16.3485 14.3453 16.3315 14.6454 16.1191C14.9462 15.9066 15.0869 15.5404 15.005 15.1861L13.8856 10.3688L17.6822 7.11596C17.9606 6.87731 18.0665 6.50053 17.952 6.15552Z" fill="#CBCBCB"/>
+          </svg>
+          
+          <svg    width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="review5" name="review5" d="M17.952 6.15552C17.8374 5.81129 17.5249 5.56758 17.1567 5.53503L12.1342 5.0895L10.1492 0.548898C10.0027 0.215305 9.66922 0 9.29807 0C8.92691 0 8.59333 0.215305 8.44771 0.548898L6.46277 5.0895L1.43945 5.53503C1.07121 5.56823 0.759397 5.81194 0.644175 6.15552C0.529616 6.49975 0.635414 6.87731 0.913912 7.11596L4.71054 10.3688L3.59111 15.1861C3.5092 15.5404 3.64991 15.9066 3.95071 16.1191C4.1124 16.2339 4.30235 16.2912 4.49298 16.2912C4.65678 16.2912 4.82072 16.2487 4.96714 16.1631L9.29807 13.6328L13.6282 16.1631C13.9459 16.3485 14.3453 16.3315 14.6454 16.1191C14.9462 15.9066 15.0869 15.5404 15.005 15.1861L13.8856 10.3688L17.6822 7.11596C17.9606 6.87731 18.0665 6.50053 17.952 6.15552Z" fill="#CBCBCB"/>
+          </svg>
+          </div>
+        
+
+
+      </div>
+
+</div>
+
+
+
+			<div class=" card align-items-center  border-0 " id="contacttablecard" name="contacttablecard">  
+            
+            
+             <table class=" borderless profileothereditdetails " id="contacttable" name= 'contacttable'>
+             <tr>
+             <td style="width:70px">Phone</td>
+             <td><input type="text" readonly class="form-control-plaintext profileothereditdetails" id="profilemobilenumber" name="profilemobilenumber" value="">
+             </td>
+             <td> 
+             <button type="submit" class="btn transparant mb-2 editcontact"> <i class="fas fa-pencil-alt iconcolor"></i></button>
+             </td>
+             </tr>
+             <tr>
+             <td>Email</td>
+             <td><input type="text" readonly class="form-control-plaintext profileothereditdetails" id="profileemail" name="profileemail" value="">
+             </td>
+             </tr>
+           
+             </table>
+             
+             
+             
+             
+           
+
+			</div>   
+            
+           
+            <div id="contacteditform"  name="contacteditform"  style="display:none;">
+            
+            <div class="container card align-items-center profileothereditdetails border-0" style="background: #FFFFFF;">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="userid">Phone</label>
+                  <input type="text" class="form-control rounded-pill editformdesign inputfield profileothereditdetails mobile-valid" id="profileeditmobile" placeholder="966 5X-XXX-XXX-XXX" max-length=12 name="profileeditmobile" autocomplete="off">
+			</div>
+		</div>
+    </div>    
+    <div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<label for="picture">Email</label>
+				<input type="text" class="form-control rounded-pill editformdesign inputfield profileothereditdetails" id="profileeditemail" placeholder="" name="profileeditemail">
+			</div>   
+		</div>
+	</div> 
+    
+    <div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				<button  class=' btn savebutton '  onclick="savecontact()" >Save Changes</button>
+				<button  class=' btn notsavebutton '  onclick="notsavecontact()" >Cancel</button>
+
+            </div>
+		</div>
+    </div>       
+         
+            </div>
+		</div> 
+
+	</div>
+	<!--Profile--> 
+</div>
+<!-- need to check , is it remove or not </div>-->
+
+
+<!--Recent activities--> 
+
+    	<div class="container mt-3" style="background: #FFFFFF;border: 2px solid #F0F0F0;border-radius: 10px;"  >
+              <div class="row">
+    <div class="col-12">
+            <div class="row"> 
+			<div class="col-6 pt-4 px-5 "><h6 class="pageheading text-nowrap">Recent Activities</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#addrecentactivities" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right iconcolor" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                 </div> 
+           </div>  
+      </div>       
+		       <!-- </div>-->
+                       <div class="row " style="border: 1px solid #CFCFCF;" class=' py-5' ></div>
+                  <div class="row " >
+                          <div class="col-md-12" >
+                             <ul id="addrecentactivities"  class="collapse list-group transparant "   name="addrecentactivities">
+                            </ul>
+                          </div>   
+                   </div>
+              </div><!--Recent activities--> 
+                
+                
+                
+                
+         <!--User details--> 
+
+    	<div class="container  mt-3" style="background: #FFFFFF;border: 2px solid #F0F0F0;border-radius: 10px;"  >
+        
+         <div class="row">
+    <div class="col-12">
+        <div class="row"> 
+			<div class="col-6 pt-4 px-5 "><h6 class="pageheading text-nowrap">User Details</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#listofdetails" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right iconcolor" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+             </div>  
+        </div>  
+     </div> 
+           
+             
+                <div class="row" style="border: 1px solid #CFCFCF;" class=' py-5' ></div>
+                <div class="collapse"  id="listofdetails" name="listofdetails">
+                
+                <div class=" container-fluid divspacetop" >
+         <div class="row">
+            <div class="col-12">
+                <div class="row rounded-pill  border  "> 
+			         <div class="col-6 pt-4 px-5 "><h6 class="sublist text-nowrap">Managers</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#managertable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right sublist" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                     </div>  
+                </div>  
+               </div>  
+           </div>  
+                  <div class="row "  id="managertablediv" name="managertablediv" >
+                          <div class="col pt-4 px-5" >
+                             <table class='table borderless collapse table-responsive' id="managertable" name="managertable">
+                             </table>
+                          </div>   
+                   </div>
+        
+        
+         <div class=" container-fluid divspace" >
+          <div class="row">
+            <div class="col-12">
+                <div class="row rounded-pill  border  "> 
+			         <div class="col-6 pt-4 px-5 "><h6 class="sublist text-nowrap">Roles</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#rolestable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right sublist" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                     </div>  
+                </div>  
+              </div>  
+           </div>  
+                  <div class="row "  id="rolestablediv" name="rolestablediv" >
+                          <div class="col pt-4 px-5" >
+                             <table class='table borderless collapse' id="rolestable" name="rolestable">
+                             </table>
+                          </div>   
+                   </div>
+                   
+                   
+                   
+            <div class=" container-fluid divspace" >
+            <div class="row">
+            <div class="col-12">
+                <div class="row rounded-pill  border  "> 
+			         <div class="col-6 pt-4 px-5 "><h6 class="sublist text-nowrap">Modules</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#moduletable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right sublist" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                     </div>  
+                </div> 
+               </div>  
+             </div> 
+                
+                  <div class="row "  id="moduletablediv" name="moduletablediv" >
+                          <div class="col pt-4 px-5" >
+                             <table class='table borderless collapse' id="moduletable" name="moduletable">
+                             </table>
+                          </div>   
+                   </div>        
+                   
+                   
+                    <div class=" container-fluid divspace" >
+          <div class="row">
+            <div class="col-12">
+                <div class="row rounded-pill  border  "> 
+			         <div class="col-6 pt-4 px-5 "><h6 class="sublist text-nowrap">Member</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#membertable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right sublist" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                     </div>  
+                </div> 
+               </div>  
+            </div> 
+                
+                  <div class="row "  id="membertablediv" name="membertablediv" >
+                          <div class="col pt-4 px-5" >
+                             <table class='table borderless collapse' id="membertable" name="membertable">
+                             </table>
+                          </div>   
+                   </div>
+                   
+                   
+                      <div class=" container-fluid divspace" >
+                      
+                      
+           <div class="row">
+            <div class="col-12">       
+                <div class="row rounded-pill  border  "> 
+			         <div class="col-6 pt-4 px-5 "><h6 class="sublist text-nowrap">Team Lead</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#teamleadtable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right sublist" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+                     </div>  
+                </div>  
+            </div>  
+         </div>    
+                  <div class="row "  id="teamleadtablediv" name="teamleadtablediv" >
+                          <div class="col pt-4 px-5" >
+                             <table class='table borderless collapse' id="teamleadtable" name="teamleadtable">
+                             </table>
+                          </div>   
+                   </div>
+                   
+                  
+        
+        
+                 </div>  
+           
+           
+        </div> <!--User details--> 
+               
+               
+               
+               <!--Preference--> 
+
+    	<div class="container mt-3" style="background: #FFFFFF;border: 2px solid #F0F0F0;border-radius: 10px;"  >
+            
+          <div class="row">
+           <div class="col-12"> 
+           <div class="row"> 
+			<div class="col-6 pt-4 px-5 "><h6 class="pageheading text-nowrap">Preference</h6></div>
+                      <div class="col-6 py-3 px-5 ">
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link btnlinkcolor" data-toggle="collapse" href="#preferencetable" aria-expanded="true" aria-controls="collapseOne">               <i class="fa fa-chevron-down float-xs-right iconcolor" aria-hidden="true"></i>
+                              </button>
+                          </div>
+                      </div>  
+             </div>  
+             </div>  
+             </div>    
+             
+             
+		       <!-- </div>-->
+                       <div class="row" style="border: 1px solid #CFCFCF;" class=' py-5' ></div>
+                  <div class="row" >
+                          <div class="col-md-12" >
+                             <ul id="preferencetable"  class="collapse list-group transparant "   name="preferencetable">
+                            </ul>
+                          </div>   
+                          
+                   </div>
+              </div><!--Preference--> 
+               
+               
+               
+               
+               
+         </div>
+         
+         
+         
+         
+       
+<style>
+  
+ 
+
+
+  .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+ /*  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); Black see-through */
+    opacity: 1;
+
+}
+
+
+.icon {
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fa-camera:hover {
+  color: #eee;
+}
+
+.addreview {
+   fill: #F5D769;
+}
+
+
+.inputfield{
+
+height:60px
+
+}
+
+.borderless, .borderless td, .borderless th {
+    border: none;
+border: hidden;
+    border-right: none !important;
+    border-left: none !important;
+
+
+}
+
+.btndesign
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 15px;
+text-align: center;
+color: #FFFFFF;
+background: #2D9CDB;
+border-radius: 300px;
+}
+
+
+.pageheading
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+color: #858585;
+}
+
+.profiletransparant
+{
+opacity:0.5;
+background-color: Black;
+z-index:10;
+}
+.profiletransparant img
+{
+      Z-index: 5;
+}
+
+
+
+.profileusername
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 180%;
+/* identical to box height, or 25px */
+
+text-align: center;
+
+color: #454545;
+
+}
+
+.profileotherdetails
+{
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 18px;
+text-align: center;
+
+color: #858585;
+}
+
+.profileothereditdetails
+{
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 24px;
+/* or 200% */
+
+letter-spacing: 0.1px;
+
+color: #858585;
+
+}
+.transparant
+{
+background-color:transparent;
+  border-color: transparent;
+
+}
+
+
+
+
+
+.iconcolor {
+  color: #858585;
+}
+
+ 
+.listtext {
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 163.42%;
+color: #858585;
+}
+
+
+
+
+.divspace {
+background: #FBFBFB;
+border: 1px solid #E6E6E6;
+border-radius: 100px;
+margin-top: 5px;
+}
+
+.divspacetop {
+background: #FBFBFB;
+border: 1px solid #E6E6E6;
+border-radius: 100px;
+margin-top: 15px;
+}
+
+
+
+.savebutton {
+background: #2F80ED;
+border-radius: 100px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 15px;
+
+color: #FFFFFF;
+}
+
+
+.notsavebutton {
+background: #FF6464;
+border-radius: 100px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 15px;
+
+color: #FFFFFF;
+}
+
+.editformdesign {
+  background: #F8F8F8;
+border: 1px solid #F0F0F0;
+border-radius: 100px;
+}
+  
+
+.sublist
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 21px;
+
+color: #79CEFF;
+}
+
+
+
+/*Profile Pic Start*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.picture{
+    width: 106px;
+    height: 106px;
+    background-color: #C4C4C4;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 0px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+
+}
+
+.content.ct-wizard-green .picture:hover{
+    border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover{
+    border-color: #3472f7;
+}
+.content.ct-wizard-orange .picture:hover{
+    border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover{
+    border-color: #ff3b30;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.picture-src{
+    width: 100%;
+    
+}
+/*Profile Pic End*/
+
+
+
+</style>
+
+<script>
+var profile_allusers;
+var originaluserid;
+var issignbyemail;
+ var getusermanager='';
+ var onlyuserid;
+
+ var pp_userid ;
+  var pp_name;
+ var  pp_sessionid;
+
+$('.collapse').on('show.bs.collapse', function() {
+  $(this).parent().find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+}).on('hide.bs.collapse', function() {
+  $(this).parent().find(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+});
+
+var iamgoingtoedit='No';
+ $('.editcontact').on('click', function(e) {
+
+iamgoingtoedit='Yes'
+$("#contacttablecard").hide();  
+$("#contacteditform").show();  
+
+            
+        });
+
+
+function callreset()
+{
+
+if(iamgoingtoedit == 'No')
+{
+if(originaluserid!= '' && originaluserid!= null && originaluserid!= undefined)
+{
+
+
+
+
+
+
+var passparam = {
+			"verify" : true,
+            "userid" : pp_userid,
+            "sessionid" : pp_sessionid,
+            "name":pp_name
+			};
+            
+resetpassword_verifyOK(passparam)
+}
+}
+else
+{
+  toastboxOpen("3005");
+}
+}
+ $('.mobile-valid').on('keypress', function(e) {
+
+
+            var $this = $(this);
+            var regex = new RegExp("^[0-9\b]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            // for 10 digit number only
+            if ($this.val().length > 11) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.charCode < 53 && e.charCode > 47) {
+                if ($this.val().length == 0) {
+                    e.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                }
+
+            }
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+
+
+
+$(document).on('change','.changestatus',function(e)
+{
+            var values = $(this).val();
+            var id = $(this).attr('id');
+            var preferenceid=id.replace( /^\D+/g, '');
+
+var status=$(this).prop('checked');
+
+
+
+            if(values == 'on')
+            {
+            status=status;
+            values='';
+            }
+            else
+            {
+            status='true';
+            values=values;
+            }
+
+
+var _changestatusparams = {	"action" : "update_userpreference",
+			"param"  : {
+			"status" : status,
+			"value" :  values,
+            "userid" :  onlyuserid,
+            "preferenceid":preferenceid,
+            "username":pp_name
+			}};
+
+google.script.run
+.withFailureHandler(profile_inError).withSuccessHandler(profile_updateuserpreference)
+.executeprofile(_changestatusparams)
+});
+
+
+//show acknowledgement message for update status
+function profile_updateuserpreference()
+{
+  toastboxOpen("3002");
+  progressboxClose();
+}
+
+
+
+
+function notsavecontact()
+{
+iamgoingtoedit='No'
+$("#contacttablecard").show();  
+$("#contacteditform").hide();  
+
+}
+function savecontact()
+{
+iamgoingtoedit='No'
+var _email=$('#profileeditemail').val();
+var _phone=$('#profileeditmobile').val();
+progressboxOpen();
+
+
+
+var _savecontactparams = {	"action" : "update_usercontact",
+			"param"  : {
+			"email" : _email,
+			"phone" :  _phone,
+            "userid" :  originaluserid,
+            "issignbyemail":issignbyemail
+			}};
+
+google.script.run
+.withFailureHandler(profile_inError)
+.withSuccessHandler(profile_updatecontact).executeprofile(_savecontactparams)
+
+}
+
+function profile_updatecontact(data)
+{
+    progressboxClose();
+
+  
+if(data.result['code'] == '3000')
+{
+  toastboxOpen("3002");
+
+  var _email=$('#profileeditemail').val();
+var _phone=$('#profileeditmobile').val();
+//var _workinghours=$('#workinghours').val();
+
+$('#profilemobilenumber').val(_phone);
+$('#profileemail').val(_email);
+//$('#profileworkhours').val(_workinghours);
+       
+       
+       $("#contacttablecard").show();  
+$("#contacteditform").hide();  
+}
+
+}
+
+	var _profileparams = {	"action" : "get_allrecentactivities"};
+
+
+google.script.run
+.withFailureHandler(profile_inError)
+.withSuccessHandler(profile_loadactivities).onload(_profileparams)
+var _addroles;
+function profile_loadactivities(data)
+{
+	if (data.result.code == 3000) {
+    
+    
+
+  var _addworklocation;
+for (var i = 0; i < (data.data.recentactivities).length; i++) {
+//   $('#addrecentactivities').append(" <li class='form-control py-2 px-5 '>"+data.data[i].activities+" <div class='listtext listplace'>0</div></li>");
+
+$('#addrecentactivities').append("<li class='list-group-item d-flex justify-content-between  py-3 px-5  listtext  transparant  '  style='background: #FFFFFF;'>"+data.data.recentactivities[i].activities+""+
+"<span class='   listtext    '>"+data.data.recentactivities[i].resultvalues+"</span></li>");
+}
+
+
+    
+var _addwh;
+
+//for (var w = 0; w < (data.data.workinghours).length; w++) {
+//_addwh += '<option  class="rounded-pill editformdesign" value="' + data.data.workinghours[w].name + '">' + data.data.workinghours[w].name + '</option>';
+//}
+//$('#workinghours').html(_addwh);
+
+
+
+
+   
+            
+
+
+for (var i = 0; i < (data.data.preference).length; i++) {
+//   $('#addrecentactivities').append(" <li class='form-control py-2 px-5 '>"+data.data[i].activities+" <div class='listtext listplace'>0</div></li>");
+
+var  idval=data.data.preference[i].id;
+var recid="prefencestatus"+idval;
+var Additionaldata;
+var addstatus='';
+if(data.data.preference[i].status == 'true' )
+{
+if(idval == 7)
+{
+_addroles= '<option value="">Select role</option>';
+
+addstatus='<span class="       "><select  class="form-control rounded-pill btndesign changestatus" id="'+recid+'"  name="'+recid+'" >'+_addroles+'</select></span>';
+}
+else
+if(data.data.preference[i].Additionaldata == '' || data.data.preference[i].Additionaldata ==  null || data.data.preference[i].Additionaldata == 'null' )
+{
+addstatus='<div class="custom-control custom-switch"><input type="checkbox"  class="custom-control-input active changestatus" id="'+recid+'"  name="'+recid+'"  checked><label class="custom-control-label" for="'+recid+'" ></label></div>'
+}
+else
+{
+
+var _jsoncolor=[];
+var getadata=(data.data.preference[i].Additionaldata);
+if (getadata.indexOf(',') > -1) { _jsoncolor=getadata.split(',') } else {_jsoncolor.push( getadata)}
+
+var _addthemes;//= '<option value="">Select</option>';
+for (var info = 0; info < _jsoncolor.length; info++) {
+_addthemes += '<option value=' + _jsoncolor[info] + '>' + _jsoncolor[info] + '</option>';
+}
+
+
+addstatus='<span class="       "><select  class="form-control rounded-pill btndesign changestatus" id="'+recid+'"  name="'+recid+'" >'+_addthemes+'</select></span>';
+}
+}
+else
+{
+addstatus='<div class="custom-control custom-switch"><input type="checkbox"  class="custom-control-input active changestatus" id="'+recid+'"  name="'+recid+'"  ><label class="custom-control-label" for="'+recid+'" ></label></div>'
+}
+
+
+$('#preferencetable').append("<li class='list-group-item d-flex justify-content-between  py-3 px-5  listtext  transparant  '  style='background: #FFFFFF;'>"+data.data.preference[i].name+""+
+addstatus+
+"</li>");
+}
+
+
+}
+
+
+progressboxClose();
+
+
+}
+
+
+
+function profile_loadalluser(data)
+{
+
+
+
+if(data.result['code'] == '3000')
+{
+issignbyemail=data.data[0].emailsignin;
+originaluserid=data.data[0].userid;
+
+
+
+
+$("#employeeimagecheck").attr("src", data.data[0].profileimage);
+$('#employeename').text(data.data[0].name);
+$('#employeePosition').text(data.data[0].position);
+
+onlyuserid = data.data[0].id;
+     pp_userid = data.data[0].userid;
+   pp_name =data.data[0].name;
+  pp_sessionid = data.data[0].sessionid;
+
+if(data.data[0].joindate!='' && data.data[0].joindate!=null && data.data[0].joindate!=undefined)
+{
+var date = data.data[0].joindate;
+
+var dateAr = date.split('-');
+var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
+
+$('#employeememberdate').text("Member since "+newDate);
+
+}
+
+
+
+
+
+
+for (var i = 0; i <= data.data[0].review; i++) {
+$('#review'+i).addClass("addreview");
+}
+
+
+$('#profilemobilenumber').val(data.data[0].phone);
+$('#profileemail').val(data.data[0].email);
+//$('#profileworkhours').val(data.data[0].workinghour);
+
+$('#profileeditmobile').val(data.data[0].phone);
+$('#profileeditemail').val(data.data[0].email);
+//$('#workinghours').val(data.data[0].workinghour);
+
+
+if(data.data[0].emailsignin  == 'true')
+{
+$('#profileeditemail').prop('readonly', true);
+$('#profileemail').prop('readonly', true);
+//$("#changepssword").hide();
+
+}
+
+if(data.data[0].loginby  == 'Googlesignin')
+{
+$("#changepssword").hide();
+}
+
+
+var getroles=data.data[0].role
+_addroles="<option value=''>select role</option>"
+for (var Rinfo = 0; Rinfo < getroles.length; Rinfo++) {
+_addroles += '<option value=' + getroles[Rinfo].roleid + '>' + getroles[Rinfo].name + '</option>';
+}
+$('#prefencestatus7').html(_addroles);
+
+  for (var p = 0; p < (data.data[0].userpreference).length; p++) {
+  
+
+
+    var value=data.data[0].userpreference[p].value;
+      var id=data.data[0].userpreference[p].preferenceid;
+    var status=data.data[0].userpreference[p].status;
+
+
+if(value=='' || value==null || value=='null')
+{
+if(status == 'true')
+{
+$('#prefencestatus'+id).prop('checked', true);
+}
+else
+{
+$('#prefencestatus'+id).prop('checked', false);
+}
+}
+else
+{
+$('#prefencestatus'+id).val(value);
+}
+
+
+
+  }
+
+            
+  getusermanager=data.data[0].manager;
+var getuserrole=(data.data[0].role).length;
+loadmanager(data)
+
+if(getuserrole>0)
+{
+//var roleheaderRow = "<tr >"+
+//"<th>Roles</th>"+
+//"</tr>"
+//$('#rolestable').append(roleheaderRow);
+for (var u=0; u <getuserrole; u++)
+{
+var roledataRow = "<tr class='listtext'>"+
+"<td >" + data.data[0].role[u].name + "</td>"+
+"</tr>"
+$('#rolestable').append(roledataRow);
+}
+}    
+
+
+var getusermodule=(data.data[0].module).length;
+
+if(getusermodule>0)
+{
+//var moduleheaderRow = "<tr>"+
+//"<th>Module</th>"+
+//"</tr>"
+//$('#moduletable').html(moduleheaderRow);
+for (var u=0; u <getusermodule; u++)
+{
+var moduledataRow = "<tr class='listtext'>"+
+"<td>" + data.data[0].module[u].name + "</td>"+
+"</tr>"
+$('#moduletable').append(moduledataRow);
+}
+} 
+
+
+
+var getusermember=(data.data[0].team).length;
+
+if(getusermember>0)
+{
+//var teamheaderRow = "<tr>"+
+//"<th>Member</th>"+
+//"</tr>"
+//$('#membertable').html(teamheaderRow);
+for (var u=0; u <getusermember; u++)
+{
+var teamdataRow = "<tr class='listtext'>"+
+"<td>" + data.data[0].team[u].name + "</td>"+
+"</tr>"
+$('#membertable').append(teamdataRow);
+}
+} 
+
+
+var getuserteamleadof=(data.data[0].teamleadof).length;
+
+if(getuserteamleadof>0)
+{
+//var teamleadofheaderRow = "<tr>"+
+//"<th>Team Lead of</th>"+
+//"</tr>"
+//$('#teamleadtable').html(teamleadofheaderRow);
+for (var u=0; u <getuserteamleadof; u++)
+{
+var teamleadofdataRow = "<tr class='listtext'>"+
+"<td>" + data.data[0].teamleadof[u].name + "</td>"+
+"</tr>"
+$('#teamleadtable').append(teamleadofdataRow);
+}
+} 
+
+
+
+}
+progressboxClose();
+
+}
+
+
+
+
+function loadmanager(data)
+{
+
+
+var getmanagerlist=data.data[0].manager;
+
+
+//var data= profile_allusers;
+var getmanagerlistleng=(getmanagerlist).length;
+
+if(getmanagerlistleng>0)
+{
+
+var managerdetails = "<tr>"+
+  "<th>Manager</th><th>Work location</th><th>Business unit</th><th>Company</th>"+
+"</tr>"
+$('#managertable').html(managerdetails);
+for (var u=0; u <getmanagerlistleng; u++)
+{
+
+
+var newRow = "<tr class='listtext'>"+
+"<td>" + data.data[0].manager[u].name + "</td>"+
+"<td>" + data.data[0].worklocation[u].name + "</td>"+
+"<td>" + data.data[0].businessunit[u].name + "</td>"+
+"<td>" + data.data[0].companyname[u].name + "</td>"+
+
+"</tr>"
+$('#managertable').append(newRow);
+}
+}
+
+}
+
+
+
+$(document).ready(function(){
+// Prepare the preview for profile picture
+    $("#wizardpicture").change(function(){
+        readURL(this);
+    });
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#employeeimagecheck').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+    
+    
+    setTimeout(function () {
+   jQuery('.uploadfile').trigger('click');
+  }, 0);
+
+}
+
+
+
+ 
+    $(document).on('click','.uploadfile',function() {
+if(this.parentNode!='')
+{
+      progressboxOpen();
+            google.script.run.withFailureHandler(profile_inError).withSuccessHandler(resultOfuploadfile).uploadfilehere(this.parentNode);
+    }
+    });
+
+var filename;
+function resultOfuploadfile(file)
+{
+
+
+filename=file;
+var _email=$('#profileeditemail').val();
+
+var _savecontactparams = {	"action" : "Update_profileimage",
+			"param"  : {
+			"filename" : file,
+             "userid" : originaluserid,
+             "email":_email
+			}};
+
+google.script.run
+.withFailureHandler(profile_inError)
+.withSuccessHandler(profile_updateprofileimage).executeprofile(_savecontactparams)
+}
+
+function profile_updateprofileimage()
+{
+
+var imglink="https://storage.cloud.google.com/imagelib/profileimage/"+filename;
+  $('#idoriginalprofileimage').attr('src', imglink);
+  progressboxClose();
+  toastboxOpen("3001");
+}
+
+function profile_inError(err) {
+
+  progressboxClose();
+  toastboxOpen("2000");
+  
+}
+
+  
+
+</script>

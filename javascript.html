@@ -1,0 +1,317 @@
+<script>
+var currentpage;
+function page_show(id1,id2){
+
+currentpage=id2;
+if(id1!='')
+{
+if ($('#'+id1+':visible').length!=0 ) {
+		$('#'+id1).hide(); 
+	}
+    }
+	if ($('#'+id2+':visible').length!=1 ) {
+			$('#'+id2).show(); 
+	}
+
+
+}
+
+function change_content(id1){
+$('#'+id1).show(); 
+
+}
+
+
+
+function page_actioncontrol(page,action)
+{
+var viewdetails=false;
+var _selectedrole = $('#sidebarroles').val();
+var _roleactiondata=loadeddata.data[0].roleaction;
+var _roleactionlenght=(_roleactiondata).length;
+if(_roleactionlenght!=0)
+{
+for (var r=0; r<_roleactionlenght; r++)
+{
+if(_roleactiondata[r].roleid == _selectedrole)
+{
+var _getaction=_roleactiondata[r].actionid;
+var _actionavailabel=[];
+if (_getaction.indexOf(',') > -1) { _actionavailabel=_getaction.split(',') } else {_actionavailabel.push( _getaction)}
+for (var a=0; a<_actionavailabel.length; a++)
+{
+$('.'+page+'_'+(_actionavailabel[a]).toLowerCase()+'_section').show();
+if(_actionavailabel[a] == action)
+{
+viewdetails=true;
+}
+}
+}
+}
+}
+else
+{
+var _actiondata=loadeddata.action;
+var _actiondatalength=(_actiondata).length;
+if(_actiondatalength!=0)
+{
+for (var r=0; r<_actiondatalength; r++)
+{
+$('.'+page+'_'+(_actiondata[a].id).toLowerCase()+'_section').show();
+if(_actiondata[a].id == action)
+{
+viewdetails=true;
+}
+}
+}
+
+}
+
+return viewdetails;
+}
+</script>
+
+
+
+<script>
+
+
+
+var sysParameter;
+var msgLibrary;
+getSysParameter();
+function getSysParameter(){
+
+		var _params = {	"action" : "sys_parameter"};  
+        
+        
+google.script.run
+			.withFailureHandler(getSysParameterError)
+			.withSuccessHandler(getSysParameterOk)
+			.onload(_params);
+
+
+//			google.script.run
+//			.withFailureHandler(getSysParameterError)
+//			.withSuccessHandler(getSysParameterOk)
+//			.runAPI(_params);
+}
+function getSysParameterOk(data){
+
+   if (typeof(Storage) !== "undefined"  && data.result.code != 500) {
+   
+     sysParameter = data.data.sys_parameter[0];
+     msgLibrary =   data.data.msg_library[0];
+     
+     loadSysParameter();
+     
+  } else {
+  
+  var datavsl=parameter();
+        sysParameter = datavsl.data.sys_parameter[0];
+     msgLibrary =   datavsl.data.msg_library[0];
+//     staticmessageboxOpen();
+     loadSysParameter();
+
+
+  }
+}
+function getSysParameterError(){
+  alert("error");
+}
+function loadSysParameter(){  
+//  document.getElementById("idloginLogo").src = JSON.parse(sysParameter["image_logo"]["value"]).url;  //Login Company Logo
+//  document.getElementById("idBackground").style.backgroundImage ="url('" +  JSON.parse(sysParameter["image_background"]["value"]).url + "')";  //Background Image;
+  $(".bg-img" ).css( "background-image","url(\""+ JSON.parse(sysParameter["image_background"]["value"]).url  + "\")" );
+  $(".img-logo").attr("src",JSON.parse(sysParameter["image_logo"]["value"]).url);
+  
+}
+
+
+getalluser();
+function getalluser(){
+
+	var _aluserparams = {	"action" : "show_alluserdetails"};
+
+google.script.run
+.withFailureHandler(getSysParameterError)
+.withSuccessHandler(loadalluser).onload(_aluserparams)
+}
+
+function loadalluser(data)
+{
+profile_allusers = data;
+//alert(JSON.stringify(data))
+}
+
+function Email_validate(value)
+{
+var getresult=(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value))
+return getresult;
+}
+
+
+</script>
+
+<script>
+
+function parameter()
+{
+return {
+    "data": {
+        "sys_parameter": [
+            {
+                "image_background": {
+                    "category": "loginpage",
+                    "value": "{\"url\": \"https://storage.googleapis.com/imagelib/bglogin.png\", \"size\":\"1600x1400\"}"
+                },
+                "image_logo": {
+                    "category": "loginpage",
+                    "value": "{\"url\": \"https://storage.googleapis.com/imagelib/logo.png\", \"size\":\"50X50\"}"
+                },
+                "image_favicon": {
+                    "category": "favicon",
+                    "value": "{\"url\": \"https://storage.googleapis.com/imagelib/logo.png\", \"size\":\"50X50\"}"
+                },
+                "loginattemptlimit": {
+                    "category": "useraccess",
+                    "value": "{\"limit\": \"3\", \"locktime\":\"2\"}"
+                }
+            }
+        ],
+        "msg_library": [
+            {
+                "1000": {
+                    "title": "Info",
+                    "type": "Info",
+                    "description": "{\"en\":\"Fill-up the required information\"}"
+                },
+                "1001": {
+                    "title": "login",
+                    "type": "Warning",
+                    "description": "{\"en\":\"Account has been unlocked, please try again\"}"
+                },
+                "1002": {
+                    "title": "warning",
+                    "type": "Info",
+                    "description": "{\"en\":\"Please enter your user id.\"}"
+                },
+                "1003": {
+                    "title": "warning",
+                    "type": "Warning",
+                    "description": "{\"en\":\"Please enter the OTP\"}"
+                },
+                "2000": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Not connected with database\"}"
+                },
+                "2001": {
+                    "title": "Failed to login",
+                    "type": "Info",
+                    "description": "{\"en\":\"User Locked, Contact your manager\"}"
+                },
+                "2002": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Invalid User ID / Password\"}"
+                },
+                "2003": {
+                    "title": "You cannot login",
+                    "type": "Error",
+                    "description": "{\"en\":\"User Disabled, Contact your manager\"}"
+                },
+                "2004": {
+                    "title": "Failed to verify",
+                    "type": "Error",
+                    "description": "{\"en\":\"Invalid OTP\"}"
+                },
+                "2005": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"session timeout\"}"
+                },
+                "2006": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Invalid Password\"}"
+                },
+                "2007": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Data not saved\"}"
+                },
+                "2008": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Fill all the fields\"}"
+                },
+                "2009": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Invalid User ID\"}"
+                },
+                "2010": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\" Could not find registered Email and/or mobile, Contact your manager\"}"
+                },
+                "2011": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\" Password should contain at least one special char, one number one capital letter\"}"
+                },
+                "2012": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\" Password must more than 8 digits\"}"
+                },
+                "2013": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\" Invalid mobile number\"}"
+                },
+                "2014": {
+                    "title": "Error",
+                    "type": "Error",
+                    "description": "{\"en\":\"Not able to Create User - Contact your Manager\"}"
+                },
+                "3000": {
+                    "title": "Success",
+                    "type": "Success",
+                    "description": "{\"en\":\"Success\"}\n"
+                },
+                "3001": {
+                    "title": "Success",
+                    "type": "Success",
+                    "description": "{\"en\":\"Data saved successfully\"}\n"
+                },
+                "3002": {
+                    "title": "Success",
+                    "type": "Success",
+                    "description": "{\"en\":\"Data updated successfully\"}\n"
+                },
+                "3003": {
+                    "title": "Success",
+                    "type": "Success",
+                    "description": "{\"en\":\"Password changed Successfully\"}\n"
+                },
+                "3004": {
+                    "title": "Success",
+                    "type": "Info",
+                    "description": "{\"en\":\"Unauthorized Access -  Use Company Email\"}\n"
+                }
+            }
+        ]
+    },
+    "result": {
+        "code": 3000,
+        "message": "success"
+    }
+};
+}
+</script>
+
+
+
+

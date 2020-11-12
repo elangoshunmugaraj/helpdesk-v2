@@ -1,0 +1,41 @@
+<!-- The Modal -->
+<div class="modal fade" id="idProgressBox">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content preloader">        
+        <!-- Modal body -->
+        <div class="modal-body d-flex justify-content-center">
+			<div class="spinner-grow spinner-border text-light"></div>&nbsp;
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+function progressboxOpen(){
+   $('#idProgressBox').modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+  $('#idProgressBox').modal('show');  
+}
+function progressboxClose(){
+  $('#idProgressBox').modal('hide');  
+}
+function progressboxOpenX(){
+   $('#idProgressBox').modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+  $('#idProgressBox').modal('show');  
+  setTimeout(function(){ $('#idProgressBox').modal('hide'); }, 6000);
+}
+
+</script>
+<style>
+.preloader
+{
+background-color:transparent;
+  border-color: transparent;
+
+}
+</style>

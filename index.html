@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <!-- Google Sign-In-->
+    <!-- meta name="google-signin-scope" content="profile email" -->
+    <meta name="google-signin-client_id" content="148158706903-rmhbjnj5ud0fo9c1o756gsfg1gdhul8i.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    
+    <!-- icons and fonts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Toggle Switch -->
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>  
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!-- Top DataTable  Rowel-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">  
+
+    <!-- Custom CSS -->
+    <?!=getContent('style'); ?>
+    <?!=getContent('color'); ?>
+
+  </head>
+  <body >
+ 
+
+    <div id="pageStart" style="display:block;">&nbsp;Loading...</div>
+    <div id="pageLogin" style="display:none;"><?!=getContent('pageLogin'); ?></div>     
+    <?!=getContent('pageUserRegister'); ?> 
+    <?!=getContent('pageResetPassword'); ?>
+
+    <div id="pageMain" style="display:none;" >
+    <?!=getContent('pageMain'); ?>
+	<div >
+  <div class="page-wrapper chiller-theme toggled ">
+  <a id="show-sidebar" class="btn btn-sm sidebar" href="#">
+    <i  class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+  <div style="height:75px">
+  </div>
+  
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+      
+      
+      <div class="input-group ">
+            <div class="input-group-prepend">
+                  <span class="input-group-text dropdownleft">
+                  <i class="material-icons">swap_horiz</i>                           
+                  </span>
+            
+                  <select class="form-control dropdownright pl-0 no-outline " id="sidebarroles" name="sidebarroles">
+                  <option value=''>Choose Role</option>
+                  </select>
+            
+            
+            
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div id="close-sidebar" >
+                  <i class="fas fa-angle-left"></i>
+                  </div> 
+            </div>
+
+
+
+      
+      </div>
+      
+    <!--  <div class="input-group">
+            <select id="sidebarroles" id="sidebarroles" class=" dropdown pl-0 no-outline form-control rounded-pill" ><option value=''>Choose Role</option></select>&nbsp;&nbsp;&nbsp;&nbsp;
+              <div id="close-sidebar" class="justify-content-center">
+              <i class="fas fa-step-backward"></i>
+              </div>
+          </div>-->
+      
+      </div>
+     
+     
+           
+
+     
+   
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu sidebarover">
+        <ul>
+         <div id="In_direct" name="In_direct" class="In_direct" style="display:none;"><!-- Do not change ID, from database -->
+          </div>
+          
+          <li class="sidebar-dropdown In_setup"  style="display:none;">
+            <a href="javascript:void(0)" id="Setuptoggle" name="Setuptoggle" class="Setuptoggle">
+              <i class="fas fa-cogs"></i>
+              <span> &nbsp;&nbsp;&nbsp;&nbsp;Setup</span>
+            </a>
+            <div class="sidebar-submenu" >
+              <ul id="In_setup" name="In_setup"  style="display:none;"><!-- Do not change ID, from database -->
+              </ul>
+            </div>
+          </li>
+          
+         
+    
+
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    
+  </nav>
+
+  <main class="page-content my-auto" id="addpageincontant" name="addpageincontant">
+       <div name="pageContent" name="pageContent" style="display:none;" class="page"><?!=getContent('pageContent'); ?></div> 
+       <div id="pageProfileUser" name="pageProfileUser" style="display:none;" class="page"><?!=getContent('pageProfileUser'); ?></div> 
+       <div id="pageCreaterequest" name="pageCreaterequest" style="display:none;" class="page"><?!=getContent('pageCreaterequest'); ?></div> 
+       <div id="pageSearchrequest" name="pageSearchrequest" style="display:none;" class="page"><?!=getContent('pageSearchrequest'); ?></div> 
+       <div id="pageCompanymanagement" name="pageCompanymanagement" style="display:none;" class="page"><?!=getContent('pageCompanymanagement'); ?></div> 
+       <div id="pageImageLibrary" name="pageImageLibrary" style="display:none;" class="page"><?!=getContent('pageImageLibrary'); ?></div> 
+       <div id="pageRolemanagement" name="pageRolemanagement" style="display:none;" class="page"><?!=getContent('pageRolemanagement'); ?></div> 
+       <div id="pageRole" name="pageRole" style="display:none;" class="page"><?!=getContent('pageRole'); ?></div> 
+       <div id="pageModulemanagement" name="pageModulemanagement" style="display:none;" class="page"><?!=getContent('pageModulemanagement'); ?></div> 
+       <div id="pageServiceteammanagement" name="pageServiceteammanagement" style="display:none;" class="page"><?!=getContent('pageServiceteammanagement'); ?></div> 
+
+</main>
+  <!-- page-content" -->
+  </div>
+    
+ </div>
+ </div>
+ 
+     <?!=getContent('datatablestyle'); ?>
+     <?!=getContent('sidebarstyle'); ?>
+     <?!=getContent('messagebox'); ?>
+     <?!=getContent('toastbox'); ?>
+     <?!=getContent('snackbar'); ?> 
+     <?!=getContent('progressbox'); ?>
+     <?!=getContent('staticmsgbox'); ?>
+
+
+     
+     
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<!--   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://datatables.net/manual/plug-ins/search"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.3/css/buttons.dataTables.min.css">
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css"> -->
+
+        <!-- Bottom DataTable  Rowel-->
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>  
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>  
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>  
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>  
+
+
+
+  </body>
+</html>
+
+<?!=getContent('javascript'); ?>
+
+<script>
+var loadeddata=""; // this have all data
+var _getloginname= '';// Get the login name  by using this.
+
+$(document).ready(function () {   
+    setTimeout(function(){ page_show('pageStart','pageLogin'); }, 3000); // To be sure the Logo is uploaded
+
+$(document).on('click','.pageCreaterequest',function(e)
+{
+page_show(currentpage,"pageCreaterequest");
+});
+$(document).on('click','.pageSearchrequest',function(e)
+{
+page_show(currentpage,"pageSearchrequest");
+});
+$(document).on('click','.pageCompanymanagement',function(e)
+{
+page_show(currentpage,"pageCompanymanagement");
+});
+$(document).on('click','.pageImageLibrary',function(e)
+{
+page_show(currentpage,"pageImageLibrary");
+});
+$(document).on('click','.pageRolemanagement',function(e)
+{
+page_show(currentpage,"pageRolemanagement");
+pageRolemanagementactioncontrol();
+
+});
+$(document).on('click','.pageModulemanagement',function(e)
+{
+page_show(currentpage,"pageModulemanagement");
+//pageModulemanagementactioncontrol();
+
+});
+
+$(document).on('click','.pageServiceteammanagement',function(e)
+{
+page_show(currentpage,"pageServiceteammanagement");
+//pagepageServiceteammanagementmanagementactioncontrol();
+
+});
+
+
+
+//$(document).on('click','.pageModulemanagement',function(e)
+//{
+//page_show(currentpage,"pageModulemanagement");
+//});
+
+
+});
+
+
+
+   
+
+window.onbeforeunload = function () {return false;}
+
+
+function loadsidebar(data)
+{
+loadeddata=data;
+  var _addmenulist='';
+  var _addadminmenulist='';
+for (var i = 0; i < (data.data[0].page).length; i++) {
+if(data.data[0].page[i].pagegrouping == 'In_direct')
+{
+_addmenulist += '<li class="sidebar-dropdown"> <a href="javascript:void(0)" class="'+data.data[0].page[i].navpagename+'" ><i class="'+data.data[0].page[i].pageicon+'"></i> <span> &nbsp;&nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
+$('#In_direct').show();
+
+}else
+if(data.data[0].page[i].pagegrouping == 'In_setup')
+{
+
+_addadminmenulist += '<li><a href="javascript:void(0)"  class="'+data.data[0].page[i].navpagename+'"  >  <i class="'+data.data[0].page[i].pageicon+'"></i><span> &nbsp;&nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
+
+$('#In_setup').show();
+$('.In_setup').show();
+
+}
+
+
+$('#'+data.data[0].page[i].navpagename+'_create').addClass(data.data[0].page[i].pageicon);
+
+
+}
+$('#In_direct').append(_addmenulist);
+$('#In_setup').append(_addadminmenulist);
+
+//pagegrouping
+if((data.data[0].role).length>0)
+{
+var rolesadd;//='<option  class="rounded-pill editformdesign" value="">Choose Role</option>';
+for (var r = 0; r < (data.data[0].role).length; r++) {
+rolesadd += '<option  class="rounded-pill dropdown" value="' + data.data[0].role[r].roleid + '">' + data.data[0].role[r].name + '</option>';
+}
+$('#sidebarroles').html(rolesadd);
+
+
+if((data.data[0].userpreference).length>0)
+{
+if(data.data[0].userpreference[6]!= undefined && data.data[0].userpreference[6]!= 'undefined')
+{
+$("#sidebarroles").val(data.data[0].userpreference[6].value); // Add default role if user assigned
+}
+}
+
+pageshowbyrole();
+}
+
+
+ 
+ }
+ 
+
+
+
+
+$(document).on('change','#sidebarroles',function(e)
+{
+pageshowbyrole();
+});
+
+
+// show the page based on the role selction
+function pageshowbyrole() 
+{
+page_show(currentpage,"emptypage");
+var getpage=[];
+var sidebarroles=$('#sidebarroles').val();
+for (var s=0;s<(loadeddata.data[0].page).length;s++)
+{
+if (loadeddata.data[0].page[s].roleid == sidebarroles )
+{
+getpage.push(loadeddata.data[0].page[s].pagegrouping)
+}
+else
+{
+$('.'+loadeddata.data[0].page[s].pagegrouping).hide();
+}
+}
+
+var _pageshow=getpage.filter(onlyUnique)
+
+for (var ps=0; ps<_pageshow.length ; ps++)
+{
+$('.'+_pageshow[ps]).show();
+}
+}
+
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+
+//$("a.Setuptoggle").click(function(){
+//    $(this).next().toggle(250);
+//});
+</script>
+
+
+
+
+
+
+
+
+
+        
+
+
+

@@ -1,0 +1,271 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageImagelibrarymanagement_fullview_section' >
+    <div>
+        <h6><strong>Image Library management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                    <div class="input-group">
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="search" id="pageImagelibrarymanagement_search"  name="pageImagelibrarymanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageImagelibrarymanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageImagelibrary" id="pageImagelibrarymanagement_add"  name="pageImagelibrarymanagement_add" 
+                            ><i id="pageImagelibrarymanagement_create"  name="pageImagelibrarymanagement_create"></i>Upload image</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="Imagelibrarydetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+// Action for next page
+$(document).ready(function () {   
+  $('#pageImagelibrarymanagement_add').on('click', function() {
+  isnew='';
+  var pageImagelibrary_existingdiv = $(".pageImagelibrary_fullview_section").html();
+  $(".pageImagelibrary_fullview_section").html(pageImagelibrary_existingdiv);
+      pageImagelibraryactioncontrol();
+      page_show('pageImagelibrarymanagement','pageImagelibrary');
+  });
+});
+</script>
+
+<script>
+//Used for control the view eye to open or not
+    var pageImagelibrarymanagement_viewdetails=false;
+    function Imagelibrary_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+//Load the Imagelibrary data
+    loadallImagelibrarys();
+    function loadallImagelibrarys()
+    {
+            google.script.run.withFailureHandler(Imagelibrary_inError)
+            .withSuccessHandler(retrive_allImagelibrarydetails)
+            .executeimagelibrary({ "action": "showallImagelibrary_details" });
+    }
+    
+    var Imagelibrarydetailsaddintable;
+    var ImagelibrarydetailselemID = "Imagelibrarydetails";  
+
+//Load retived data
+        function retrive_allImagelibrarydetails(loaddetails) {
+
+             progressboxClose();
+
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                        alert(loaddetails.result['code'] )
+
+                var imagelibrarylength = (Object.getOwnPropertyNames(loaddetails.data.imagelibrary[0])).length
+                      for (var x = 0; x < imagelibrarylength; x++) {   
+                         var reckey = (Object.getOwnPropertyNames(loaddetails.data.imagelibrary[0]))[x];
+
+                      results.push([loaddetails.data.imagelibrary[0][reckey].filename,
+                      loaddetails.data.imagelibrary[0][reckey].url,
+                      loaddetails.data.imagelibrary[0][reckey].imagetype,
+                      loaddetails.data.imagelibrary[0][reckey].keyword,
+                      loaddetails.data.imagelibrary[0][reckey].status
+                      ])
+                      };
+                }
+              }
+
+
+   
+           var Imagelibrarydetailsaddintable = $('#Imagelibrarydetails').DataTable({
+                dom: 'rtip',
+                "ordering": false,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: false,
+                searching: true,
+                rowId: 'id', 
+                data: results,
+                columnDefs: [
+                    {
+                        className: "dt-center", targets: [0, 1, 2]
+                    }
+                ],
+                columns: [{
+                    title: " Name" 
+                },
+                {
+                    title: "Image",
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                            return '<img src="' + full[1]+ '" style="width: 30px; height: 30px">';
+
+
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "imagetype"
+                },
+                {
+                    title: "keyword"
+                }, 
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var recid = "ImagelibrarydetailsisActive_" + full[0];
+
+                        var isdown = full[2];
+                        
+                        if (isdown == 'true') {
+                        
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" class="custom-control-input active changedownload" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" class="custom-control-input" id="' + recid + '"  name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+
+                    },
+                    targets: -1,
+                }, {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageImagelibrarymanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "Imagelibrarydetailsisview_" + full[0];
+
+                             return '<svg style="display:none;"  width="28" height="17" class=" pageImagelibrarymanagement_view_section" viewBox="0 0 28 17" fill="none" id="'+_recviewid+'" name="'+_recviewid+'" xmlns="http://www.w3.org/2000/svg">'+
+                                    '<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2372 0C21.4839 0 27.1579 7.37815 27.396 7.69231C27.6219 7.99005 27.6219 8.39458 27.396 8.69257C27.1579 9.00643 21.4839 16.3846 14.2372 16.3846C6.99046 16.3846 1.31621 9.00648 1.07833 8.69232C0.852795 8.39428 0.852795 7.99005 1.07833 7.69201C1.31621 7.37815 6.99046 0 14.2372 0ZM2.90736 8.19174C4.27594 9.79265 8.8992 14.6897 14.2372 14.6897C19.5866 14.6897 24.2002 9.79516 25.567 8.19289C24.1978 6.59113 19.5749 1.69495 14.2372 1.69495C8.88774 1.69495 4.27417 6.58942 2.90736 8.19174ZM8.96449 8.19233C8.96449 5.38856 11.3299 3.10742 14.2372 3.10742C17.1445 3.10742 19.5099 5.38856 19.5099 8.19233C19.5099 10.9961 17.1445 13.2772 14.2372 13.2772C11.3299 13.2772 8.96449 10.9961 8.96449 8.19233ZM10.7221 8.19233C10.7221 10.0616 12.2989 11.5822 14.2372 11.5822C16.1755 11.5822 17.7523 10.0616 17.7523 8.19233C17.7523 6.3231 16.1754 4.80242 14.2372 4.80242C12.2989 4.80242 10.7221 6.3231 10.7221 8.19233Z" fill="#858585"/>'+
+                                    '</svg>'
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+ImagelibrarydetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+ImagelibrarydetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+ImagelibrarydetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+ImagelibrarydetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+
+            });
+              $('#pageImagelibrarymanagement_search').on( 'keyup', function () {Imagelibrarydetailsaddintable.search( this.value ).draw();});  
+
+           // Call class for change active status
+            $('#Imagelibrarydetails tbody').on('change', 'tr td.isActive', function () {
+                        var issaveavailable=page_actioncontrol("pageImagelibrary","SAVE");
+               if(issaveavailable == true)
+             {
+                var issaveavailable=page_actioncontrol("pageImagelibrary","SAVE");
+                var indx = Imagelibrarydetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = Imagelibrarydetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var ischecked = $('#ImagelibrarydetailsisActive_' + id).prop("checked");
+                var _getloginname= $("#idoriginalname").text();
+                var data = {
+                    "action": "update_Imagelibrarystatus",
+                    "param": {
+                        "status": ischecked,
+                        "id": id,
+                        "createby": _getloginname
+                    }
+                    
+                };
+                $(".preloader").show();
+                google.script.run.withFailureHandler(Imagelibrary_inError).withSuccessHandler(updateconfirm).executeImagelibrary(data);
+           }
+           });
+           
+           
+           // Call class for change active status
+            $('#Imagelibrarydetails tbody').on('mouseover', 'tr td.isActive', function () {
+            var issaveavailable=page_actioncontrol("pageImagelibrary","SAVE");
+             var indx = Imagelibrarydetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = Imagelibrarydetailsaddintable.row(tr);
+                var id = row.data()[0];
+               if(issaveavailable == true)
+             {
+              $("#ImagelibrarydetailsisActive_"+id).attr('disabled',false);
+           }
+           else
+           {
+               $("#ImagelibrarydetailsisActive_"+id).attr('disabled','disabled');
+           }
+           });
+            
+            
+            
+            // Call class for view the details.
+             $('#Imagelibrarydetails tbody').on('click', 'tr td.pageImagelibrarymanagement_viewdetails_section', function () {
+             if(pageImagelibrarymanagement_viewdetails == true)
+             {
+                var indx = Imagelibrarydetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = Imagelibrarydetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var Imagelibraryname = row.data()[1];
+                var status = row.data()[2];
+                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                        "status": status,
+                        "id": id,
+                        "Imagelibraryname":Imagelibraryname,
+                        "createby": _getloginname
+                    }
+                $(".preloader").show();
+                fulltheImagelibrarydata(data)
+                }
+            });
+            $('.dataTables_length').addClass('bs-select');
+            $('#companydetails').show();
+        }
+
+      //Confirm the status update 
+        function updateconfirm() {
+          progressboxClose();
+          toastboxOpen("3002");
+        }
+</script>
+
+<script>
+// Control the page action.
+function pageImagelibrarymanagementactioncontrol()
+{
+pageImagelibrarymanagement_viewdetails=page_actioncontrol("pageImagelibrarymanagement","VIEW");
+}
+</script>
+
+

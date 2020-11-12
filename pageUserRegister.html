@@ -1,0 +1,203 @@
+<div class="modal fade" id="idCreateNewUser" name="idCreateNewUser">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content " style="border-radius: 10px !important;">
+            <!-- Enter Your New Password-->
+			<div id="idCreateNewUserstep1" class="card mt-0 " style="display:none;border-radius: 10px !important;color:#0C0C0C!important;">
+				<div class="card-footer bg-primary text-center text-White"  style="border-top-left-radius: 10px !important;border-top-right-radius: 10px !important;">
+					<h5>Sorry! You are not registered.<button type="button" class="close closedialog"  data-dismiss="modal">&times;</button></h5>
+				</div>
+				<div class="card-body bg-gray94" style="border-bottom-left-radius: 10px !important;border-bottom-right-radius: 10px !important;">
+					<div class="container text-center">
+                    <form>
+						<div class="form-group text-center mt-0">
+							<p class="display-1" style="color:#bfbfbf"><i class="far fa-user-circle"></i></p>
+							<p>Do you want to register?</p>
+						</div>                               
+					</form>
+                    </div>
+                     <div class="row">
+                    <form>
+                    <div class="row mx-3 no-gutters mt-3">
+							<div class="col-sm-4 mt-2">
+								<p>Sign in email</p>          
+							</div>     
+							<div class="col-sm-8">
+                             <input id="idsigninemil"  name="idsigninemil"  type="text" class="form-control rounded-pill ">
+							</div>
+						</div>
+						<div class="row mx-3 no-gutters mt-3">
+							<div class="col-sm-4 mt-2">
+								<p>First name</p>          
+							</div>     
+							<div class="col-sm-8">
+								<input id="idCreateNewUserfirstname"  name="idCreateNewUserfirstname"  type="text" class="form-control rounded-pill capitalizetext ">
+							</div>
+						</div>
+						<div class="row mx-3 no-gutters mt-3">
+							<div class="col-sm-4 mt-2">
+								<p>Last name</p>          
+							</div>     
+							<div class="col-sm-8">
+								<input id="idCreateNewUserlastname"  name="idCreateNewUserlastname" type="text" class="form-control rounded-pill capitalizetext">
+							</div>
+						</div>
+                        <div class="row mx-3 no-gutters mt-3">
+							<div class="col-sm-4 mt-2">
+								<p>Mobile number</p>          
+							</div>     
+							<div class="col-sm-8">
+								<input id="idCreateNewUsermobileno"  name="idCreateNewUsermobileno" max-length=10 type="text" class="form-control rounded-pill mobile-valid">
+							</div>
+						</div>
+						<div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+							<a class="btn btn-primary w-100 rounded-pill" href="javascript:void(0)" onclick="createnewuser()">Yes, Create an account</a>
+						</div>
+                        <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+							<p class="text-center" >Need help?
+                            <a class="text-primary" style="text-shadow: 1px 1px 8px #FFFFFF;" href="javascript:void(0)" onclick="alert('Will link');">Knowledge base</a>
+                            </p>
+						</div>
+					</form> 
+                   	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+
+function openpageCreateNewUser(data)
+{
+var _email=data.email;
+$('#idCreateNewUser').modal({
+     backdrop: 'static',
+     keyboard: false
+    });
+ $('#idCreateNewUserstep1').show(); 
+  $('#idCreateNewUser').modal('show'); 
+$("#idsigninemil").val(_email).attr('readonly', true); 
+ 
+ var _getFLname=_email.split('@');
+ var _getNowFLname=_getFLname[0].split('.');
+ $('#idCreateNewUserfirstname').val(_getNowFLname[0]).attr('readonly', true);
+ $('#idCreateNewUserlastname').val(_getNowFLname[1]).attr('readonly', true);
+
+}
+function createnewuser(){
+	if (navigator.onLine=true) {   
+    
+     
+        
+        var _email=$("#idsigninemil").val(); 
+		var _Fname=$("#idCreateNewUserfirstname").val(); 
+		var _Lname=$("#idCreateNewUserlastname").val(); 
+        var _Mnumber=$("#idCreateNewUsermobileno").val();  
+		if  (_Fname !='' && _Lname  !='' && _Mnumber !='')  {
+
+                var _params = {	"action" : "Create_newuserbyenduser",
+			"param"  : {
+                  "name" : _Fname+"_"+_Lname,
+            "phone":_Mnumber,
+            "email":_email
+              },
+              "createby":{"createby":_email}
+              
+              };
+            
+			progressboxOpen();            
+			google.script.run
+			.withFailureHandler(createnewuser_Error)
+			.withSuccessHandler(createnewuser_ok)
+			.runAPI(_params); 
+            
+           
+		} else {
+			toastboxOpen("1000"); 
+		} 
+	} else {
+		toastboxOpen("1");
+	}
+}
+function createnewuser_Error(data){
+  progressboxClose();
+  messageboxOpen("2000");
+}
+function createnewuser_ok(data){
+
+
+    progressboxClose();
+    if(data.result.code == '3000')
+    {
+    createaccountbyenduserclose();
+    page_show('pageLogin','pageMain');
+   	page_show('pageLogin','pageContent');
+}
+else  if(data.result.code == '2014')
+{
+  messageboxOpen("2014");
+}
+}
+
+//function validatephonenumber()
+//{
+//        var _Mnumber=$("#idCreateNewUsermobileno").val();  
+//  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+//  
+//  if(_Mnumber.match(phoneno) &&_Mnumber.length == 12 )
+//        {
+//      return true;
+//        }
+//      else
+//        {
+//        			toastboxOpen("2013"); 
+//        return false;
+//        }
+//}
+
+
+ $('.mobile-valid').on('keypress', function(e) {
+
+var _Mnumber=$("#idCreateNewUsermobileno").val();  
+
+            var $this = $(this);
+            var regex = new RegExp("^[0-9\b]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            // for 10 digit number only
+            if ($this.val().length > 11) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.charCode < 53 && e.charCode > 47) {
+                if ($this.val().length == 0) {
+                    e.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                }
+
+            }
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+
+function createaccountbyenduserclose(){  
+  $('#idCreateNewUser').modal('hide');  
+}
+
+</script>
+<style>
+.disabledtag{
+    pointer-events:none;
+    opacity:0.4;
+}
+.capitalizetext 
+{
+    text-transform:capitalize;
+}
+</style>

@@ -1,0 +1,455 @@
+
+
+  <div class="container-fluid bg-white loginside ">
+    <div class="row  ">
+      <!-- Plus Tier -->
+      <div class="col-sm-6 justify-content-center">
+      <nav class="navbar navbar-light bg-white  ">
+  <a class="navbar-brand" href="#">
+    <img src="https://storage.googleapis.com/imagelib/logo.png" width="30" height="30" alt="">
+  </a>
+</nav>
+        <div class="  mb-lg-0 border-top">
+          <div>
+              <div class="card border-0 transparant mx-lg-5 px-lg-5">
+                      <div style="height:50px">
+                        </div>
+                         <div class="row justify-content-center">
+                            <h5 class="mb-0 mt-2 text-center loginheadertext"><strong >Helpdesk</strong></h5>
+<!--                            				<h1 class="lead text-center text-primary" style="font-size:3rem" onclick="page_show('pageLogin','pageProfileUser');">Helpdesk</h1>-->
+
+                        </div>
+                       
+                       
+                           <div class="row  mt-2  justify-content-center">
+                                <h7 class="text-center loginsubheadertext  ">Login to your account to get started</h7>
+                                </div>
+                          
+                        <div class="card-body">
+                            <form class="form" id="formLogin" >
+                               
+                                <div class="form-group">
+                                <label for="name" class='loginlabel'>Username</label>
+                                
+                               
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text border-right-0 inputstyle " id="idloaduserimage" name="idloaduserimage"></span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg  text-left  rounded-right inputstyle inputborderstyle"  maxlength="10" autocomplete="off" placeholder="Username" name="idLoginUserName" id="idLoginUserName" required="">
+                                </div>
+                                <div class="invalid-feedback">User ID must</div>
+                                </div>
+                               
+                               
+                               
+                               <div class="form-group " id="show_hide_password">
+                               <label for="idLoginPassword" class='loginlabel'>Password</label>
+                                     <div class="input-group mb-3">
+                                     <div class="input-group-prepend">
+                                     <span class="input-group-text border-right-0 inputstyle " id="idloadpasswordimage" name="idloadpasswordimage"></span>
+                                     </div>
+                                     <input type="password" class="form-control custom-input text-left form-control-lg  inputstyle rounded-right inputborderstyle"  placeholder="Password"  id="idLoginPassword" name="idLoginPassword" required="" />
+                                    <!-- <div class="input-group-append">
+                                     <span class="input-group-text" id="basic-addon2"> <a class="eye" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
+                                     </div>
+                                     -->
+                                     </div>
+                                     <div class="invalid-feedback">Password must</div>
+                               
+                               </div>
+                               
+                               
+                <div class="input-group justify-content-end">
+                <a class="small text-primary rounded-pill" style="text-shadow: 1px 1px 8px #FFFFFF;" href="javascript:void(0)" onclick="reset_password()">Forgot Password?</a>
+                </div>
+                               
+                  
+                  <div class="form-group d-flex justify-content-center mt-4 px-30 mb-0">							
+                  <!--<a class="btn btn-sm btn-primary w-100 rounded-pill" href="javascript:void(0)" onclick="sign_in()">Sign-in</a>-->
+                                    <a class="btn btn-sm btn-primary w-100 rounded-pill" href="javascript:void(0)" onclick="sign_in()">Sign-in</a>
+
+                  </div>
+                                
+                               
+                            </form>
+                            
+
+                        </div>
+                        
+                       <div class="mx-auto"> 
+						<p class="small text-center text-primary" >- or -</p>
+						<div id="my-signin2"></div>  
+                        
+                        
+                        
+                    </div>
+                   
+                    </div>
+                    <br><br>
+                    
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class=" col-sm-6 imagebg loginside px-5 py-5">
+          <div class=" container card border-0 transparant mx-lg-5 px-lg-5 " id="loginbgimage" name="loginbgimage" >
+</div>
+          </div>
+    </div>
+  </div>
+
+<!-- Just an image -->
+
+
+
+<script>
+var isreviewed;
+var isnotreviewed;
+var hdsvgimage;
+google.script.run
+		.withSuccessHandler(svg_userimage)
+		.svg_userimage(); 
+        var googlesignname='';
+  function svg_userimage(data)
+  {
+  document.getElementById("idloaduserimage").innerHTML =data.userimage;
+    document.getElementById("idloadpasswordimage").innerHTML =data.passwordimage;
+        document.getElementById("loginbgimage").innerHTML =data.loginbgimage;
+        isreviewed=data.reviewok;
+        isnotreviewed=data.reviewnotok;
+//        vieweye=data.vieweye;
+hdsvgimage=data;
+
+//$("#idloaduserimage").text(data.image); 
+}
+var initGoogle = 0;
+var googleProfile = {"signin":false};
+function onSuccess(googleUser) {
+//alert(initGoogle)
+//	console.log('Logged in as: ' + googleUser.getBasicProfile().getImageUrl());
+	//  alert(googleUser.getBasicProfile().getEmail());
+	if (initGoogle > 0) {
+    		progressboxOpen();            
+
+		var _email = googleUser.getBasicProfile().getEmail();
+        googleProfile = {"signin":true,
+                         "email": googleUser.getBasicProfile().getEmail(),
+                         "name": googleUser.getBasicProfile().getName(),
+                         "givenname": googleUser.getBasicProfile().getGivenName(),
+                         "familyname": googleUser.getBasicProfile().getFamilyName(),
+                         "imageurl": googleUser.getBasicProfile().getImageUrl()
+                        };
+		var _params = {
+			"action" : "signin_google",
+			"param"  : {"email" : _email,"name" : googleProfile.name}
+			};
+            googlesignname=googleProfile.name;
+		google.script.run
+		.withFailureHandler(sign_inError)
+		.withSuccessHandler(sign_inOk)
+		.executelogin(_params); 
+	}
+	initGoogle = initGoogle + 1;
+}
+
+function onFailure(error) {
+  initGoogle = initGoogle + 1;
+  console.log(error);
+}
+function renderButton() {
+  gapi.signin2.render('my-signin2', {
+	'scope': 'profile email',
+	'longtitle': true,
+	'theme': 'dark',
+	'onsuccess': onSuccess,
+	'onfailure': onFailure
+  });
+}
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+<!-- SignIn Button -->
+<script>
+function sign_in() {
+    googleProfile = {"signin":false};
+	if (navigator.onLine=true) { 
+		var _user=$("#idLoginUserName").val(); 
+		var _password=$("#idLoginPassword").val();  
+		var _params;
+		if (_user != "" && _password != "") {
+			_params = {	"action" : "signin_user",
+			"param"  : {
+			"userid" : _user,
+			"password" :  _password
+			}
+            };
+
+
+
+ progressboxOpen();
+			google.script.run
+			.withFailureHandler(sign_inError)
+			.withSuccessHandler(sign_inOk)
+			.executelogin(_params);  
+
+//             progressboxOpen();
+//			google.script.run
+//			.withFailureHandler(sign_inError)
+//			.withSuccessHandler(sign_inOk)
+//			.runAPI(_params);  
+		}
+        else {
+			toastboxOpen("1000"); 
+		} 
+	} else {
+		toastboxOpen("1");
+	}
+}
+
+function sign_inError(err) {
+
+  progressboxClose();
+  toastboxOpen("2000");
+  
+}
+
+var _originalname='';
+var _originalprofileimage='';
+
+function sign_inOk(data) {
+	if (data.result.code == 3000) {
+    
+    _originalname=data.data[0].name;
+    _originalprofileimage=data.data[0].profileimage;
+		progressboxClose();
+
+		if (data.data[0].status == "true") {
+			if (data.data[0].hasaccess == "true") {
+				// No Locked;
+                
+				if (data.data[0].locked == "false") {
+                loadimage(data);
+                loadsidebar(data);
+                profile_loadalluser(data)
+					page_show('pageLogin','pageMain');
+					page_show('pageLogin','pageContent');
+                    
+				} else {
+					toastboxOpen("1001"); 
+//					google.script.run.runAPI({"action" : "update_loginattempt","param":{"userid" : data.data[0].userid , "locked" : "false" }}); //Unlocked
+			
+            google.script.run.executelogin({"action" : "update_loginattempt","param":{"userid" : data.data[0].userid , "locked" : "false" }}); //Unlocked
+
+            }
+			} else {
+			// hasaccess = false;
+				if (data.data[0].locked == "false") {
+					var _limit = JSON.parse(sysParameter["loginattemptlimit"]["value"]).limit; 
+					toastboxOpen("2002"); 
+					if (parseInt(data.data[0].loginattempt) >= parseInt(_limit)) {
+						google.script.run.executelogin({"action" : "update_loginattempt","param":{"userid" : data.data[0].userid , "locked" : "true" }});  
+					} else {
+						google.script.run.executelogin({"action" : "update_loginattempt","param":{"userid" : data.data[0].userid , "locked" : "false" }});  
+					}
+			    } else {
+//					toastboxOpen("2001"); 
+                    toastboxOpen("2001"); 
+				}
+			}			
+        } else {
+			// Status = false;
+			toastboxOpen("2003");
+		}
+	} else {
+    
+    if(data.result.code == 2015) {    
+		//Data error
+		progressboxClose(); 
+        		toastboxOpen("2015");
+		} else
+		if(data.result.code == 3004) {    
+		//Data error
+		progressboxClose(); 
+        		toastboxOpen("3004");
+		} else
+        if(data.result.code == 2000) {    
+		//Data error
+		progressboxClose();
+//        page_show('pageLogin','pageMain');
+//					page_show('pageLogin','pageContent');
+        toastboxOpen("2002");
+//        if (googleProfile.signin){
+//        
+////        openpageCreateNewUser(googleProfile);
+//        
+//        } else {}
+		}
+        else {  
+		//Data error
+		progressboxClose();  
+		toastboxOpen("2000");
+		}  
+	}
+} // END function sign_inOk()
+</script>
+
+<script>
+function reset_password() {
+	if (navigator.onLine=true) { 
+		var _user=$("#idLoginUserName").val(); 
+		var _password="resetpassword";  
+		var _params;
+		if (_user !== "") {
+			_params = {	"action" : "signin_user",
+			"param"  : {
+			"userid" : _user,
+			"password" :  _password
+			}};
+            $("#idLoginUserName").val(''); 
+            $("#idLoginPassword").val('');  
+			progressboxOpen();            
+			google.script.run
+			.withFailureHandler(reset_passwordError)
+			.withSuccessHandler(reset_passwordOk)
+			.executelogin(_params);  
+		} else {
+			toastboxOpen("1002"); 
+		} 
+	} else {
+		toastboxOpen("1");
+	}
+}
+
+function reset_passwordError(err) {
+  progressboxClose();
+  toastboxOpen("2000");
+}
+
+function reset_passwordOk(data) {
+	//	console.log(data);
+
+	if (data.result.code == 3000) {
+		progressboxClose();
+		if (data.data[0].status == "true") {	
+			// No Locked;
+			if (data.data[0].locked == "false") {
+                resetPasswordOpen(data);
+			} else {
+				toastboxOpen("1001"); 
+			}	
+        } else {
+			// Status = false;
+			toastboxOpen("2003");
+		}
+	} else {  
+		//Data error
+		progressboxClose();  
+		toastboxOpen("2002");
+
+	}  
+} // END reset_passwordOk();
+</script>
+
+
+
+
+<style>
+.loginheadertext
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 27px;
+line-height: 40px;
+text-align: center;
+
+color: #2D9CDB;
+}
+
+.loginside
+{
+  height: 100vh;
+}
+
+.loginsubheadertext
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+
+color: #858585;
+}
+
+.loginlabel
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 16px;
+/* identical to box height, or 133% */
+
+letter-spacing: 0.4px;
+
+color: #858585;
+
+}
+
+
+
+.loginlabel
+{
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 16px;
+/* identical to box height, or 133% */
+
+letter-spacing: 0.4px;
+
+color: #858585;
+
+}
+
+.card{
+background: #FFFFFF;
+border: 2px solid #F0F0F0;
+border-radius: 10px;
+    margin-top: 30px;
+        margin-bottom: 30px
+
+}
+
+
+.container{
+background: #E5E5E5;
+
+}
+
+
+.inputstyle{
+background: #F8F8F8;
+border: 1px solid #F8F8F8;
+border-radius: 100px;
+     border-color: #F8F8F8;
+
+
+}
+
+.inputborderstyle {
+        border-top-right-radius: 25px !important;
+                border-bottom-right-radius: 25px !important;
+}
+
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 10px;
+    line-height: 3;
+}
+
+</style>

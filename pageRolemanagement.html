@@ -1,0 +1,247 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageRolemanagement_fullview_section' >
+    <div>
+        <h6><strong>Role management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                    <div class="input-group">
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="search" id="pageRolemanagement_search"  name="pageRolemanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageRolemanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageRole" id="pageRolemanagement_add"  name="pageRolemanagement_add" 
+                            ><i id="pageRolemanagement_create"  name="pageRolemanagement_create"></i> Create
+                            Role</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="roledetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+// Action for next page
+$(document).ready(function () {   
+  $('#pageRolemanagement_add').on('click', function() {
+  isnew='';
+  var pageRole_existingdiv = $(".pageRole_fullview_section").html();
+  $(".pageRole_fullview_section").html(pageRole_existingdiv);
+      pageRoleactioncontrol();
+      page_show('pageRolemanagement','pageRole');
+  });
+});
+</script>
+
+<script>
+//Used for control the view eye to open or not
+    var pageRolemanagement_viewdetails=false;
+    function role_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+//Load the role data
+    loadallroles();
+    function loadallroles()
+    {
+            google.script.run.withFailureHandler(role_inError)
+            .withSuccessHandler(retrive_allroledetails)
+            .executerole({ "action": "showallrole_details" });
+    }
+    
+    var roledetailsaddintable;
+    var roledetailselemID = "roledetails";  
+
+//Load retived data
+        function retrive_allroledetails(loaddetails) {
+             progressboxClose();
+
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                var roleidlength = (loaddetails.roleid).length
+                
+                      for (var x = 0; x < roleidlength; x++) {   
+                      results.push([loaddetails.data[loaddetails.roleid[x]].id,
+                      loaddetails.data[loaddetails.roleid[x]].name,
+                      loaddetails.data[loaddetails.roleid[x]].status
+                      ])
+                      };
+                }
+              }
+
+           var roledetailsaddintable = $('#roledetails').DataTable({
+                dom: 'rtip',
+                "ordering": false,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: false,
+                searching: true,
+                rowId: 'id', 
+                data: results,
+                columnDefs: [
+                    {
+                        className: "dt-center", targets: [0, 1, 2]
+                    }
+                ],
+                columns: [{
+                    title: " Id" 
+                }, {
+                    title: "Name"
+                }, 
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var recid = "roledetailsisActive_" + full[0];
+
+                        var isdown = full[2];
+                        
+                        if (isdown == 'true') {
+                        
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" class="custom-control-input active changedownload" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" class="custom-control-input" id="' + recid + '"  name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+
+                    },
+                    targets: -1,
+                }, {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageRolemanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "roledetailsisview_" + full[0];
+
+                             return '<svg style="display:none;"  width="28" height="17" class=" pageRolemanagement_view_section" viewBox="0 0 28 17" fill="none" id="'+_recviewid+'" name="'+_recviewid+'" xmlns="http://www.w3.org/2000/svg">'+
+                                    '<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2372 0C21.4839 0 27.1579 7.37815 27.396 7.69231C27.6219 7.99005 27.6219 8.39458 27.396 8.69257C27.1579 9.00643 21.4839 16.3846 14.2372 16.3846C6.99046 16.3846 1.31621 9.00648 1.07833 8.69232C0.852795 8.39428 0.852795 7.99005 1.07833 7.69201C1.31621 7.37815 6.99046 0 14.2372 0ZM2.90736 8.19174C4.27594 9.79265 8.8992 14.6897 14.2372 14.6897C19.5866 14.6897 24.2002 9.79516 25.567 8.19289C24.1978 6.59113 19.5749 1.69495 14.2372 1.69495C8.88774 1.69495 4.27417 6.58942 2.90736 8.19174ZM8.96449 8.19233C8.96449 5.38856 11.3299 3.10742 14.2372 3.10742C17.1445 3.10742 19.5099 5.38856 19.5099 8.19233C19.5099 10.9961 17.1445 13.2772 14.2372 13.2772C11.3299 13.2772 8.96449 10.9961 8.96449 8.19233ZM10.7221 8.19233C10.7221 10.0616 12.2989 11.5822 14.2372 11.5822C16.1755 11.5822 17.7523 10.0616 17.7523 8.19233C17.7523 6.3231 16.1754 4.80242 14.2372 4.80242C12.2989 4.80242 10.7221 6.3231 10.7221 8.19233Z" fill="#858585"/>'+
+                                    '</svg>'
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+roledetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+roledetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+roledetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+roledetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+
+            });
+              $('#pageRolemanagement_search').on( 'keyup', function () {roledetailsaddintable.search( this.value ).draw();});  
+
+           // Call class for change active status
+            $('#roledetails tbody').on('change', 'tr td.isActive', function () {
+                        var issaveavailable=page_actioncontrol("pageRole","SAVE");
+               if(issaveavailable == true)
+             {
+                var issaveavailable=page_actioncontrol("pageRole","SAVE");
+                var indx = roledetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = roledetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var ischecked = $('#roledetailsisActive_' + id).prop("checked");
+                var data = {
+                    "action": "update_rolestatus",
+                    "param": {
+                        "status": ischecked,
+                        "id": id,
+                        "createby": _getloginname
+                    }
+                    
+                };
+                $(".preloader").show();
+                google.script.run.withFailureHandler(role_inError).withSuccessHandler(updateconfirm).executerole(data);
+           }
+           });
+           
+           
+           // Call class for change active status
+            $('#roledetails tbody').on('mouseover', 'tr td.isActive', function () {
+            var issaveavailable=page_actioncontrol("pageRole","SAVE");
+             var indx = roledetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = roledetailsaddintable.row(tr);
+                var id = row.data()[0];
+               if(issaveavailable == true)
+             {
+              $("#roledetailsisActive_"+id).attr('disabled',false);
+           }
+           else
+           {
+               $("#roledetailsisActive_"+id).attr('disabled','disabled');
+           }
+           });
+            
+            
+            
+            // Call class for view the details.
+             $('#roledetails tbody').on('click', 'tr td.pageRolemanagement_viewdetails_section', function () {
+             if(pageRolemanagement_viewdetails == true)
+             {
+                var indx = roledetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = roledetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var rolename = row.data()[1];
+                var status = row.data()[2];
+                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                        "status": status,
+                        "id": id,
+                        "rolename":rolename,
+                        "createby": _getloginname
+                    }
+                $(".preloader").show();
+                fulltheroledata(data)
+                }
+            });
+            $('.dataTables_length').addClass('bs-select');
+            $('#companydetails').show();
+        }
+
+      //Confirm the status update 
+        function updateconfirm() {
+          progressboxClose();
+          toastboxOpen("3002");
+        }
+</script>
+
+<script>
+// Control the page action.
+function pageRolemanagementactioncontrol()
+{
+pageRolemanagement_viewdetails=page_actioncontrol("pageRolemanagement","VIEW");
+}
+</script>
+
+

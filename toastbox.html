@@ -1,0 +1,82 @@
+<!-- The Modal -->
+  <div class="modal fade rounded " id="idToastBox" name="idToastBox" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+    
+      
+        <!-- Modal Header -->
+        <div class="modal-header" id="idToastBoxTextheader" name="idToastBoxTextheader">
+          <p class="modal-title" id="idToastBoxText" name="idToastBoxText">Modal Heading</p>
+          <button type="button" class="close mbsize" data-dismiss="modal">ok</button>
+        </div>
+        
+        <div id="idMessageBoxBodytoast" name="idMessageBoxBodytoast"   class="modal-body toastbody">
+          Modal body..
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<script>
+function toastboxOpen(code){
+
+  var title = msgLibrary[code]["title"];
+     var type = msgLibrary[code]["type"];
+      if(type == 'Error')
+      {
+        $('#idToastBoxTextheader').addClass('alert alert-danger');  
+        $('#idToastBoxTextheader').removeClass('alert alert-warning');  
+        $('#idToastBoxTextheader').removeClass('alert alert-success');  
+        $('#idToastBoxTextheader').removeClass('alert alert-info');  
+      }
+      else
+       if(type == 'Warning')
+      {
+        $('#idToastBoxTextheader').removeClass('alert alert-danger');  
+        $('#idToastBoxTextheader').addClass('alert alert-warning');  
+        $('#idToastBoxTextheader').removeClass('alert alert-success');  
+        $('#idToastBoxTextheader').removeClass('alert alert-info'); 
+      }else
+       if(type == 'Info')
+      {
+        $('#idToastBoxTextheader').removeClass('alert alert-danger');  
+        $('#idToastBoxTextheader').removeClass('alert alert-warning');  
+        $('#idToastBoxTextheader').removeClass('alert alert-success');  
+        $('#idToastBoxTextheader').addClass('alert alert-primary'); 
+      }else
+      if(type == 'Success')
+      {
+        $('#idToastBoxTextheader').removeClass('alert alert-danger');  
+        $('#idToastBoxTextheader').removeClass('alert alert-warning');  
+        $('#idToastBoxTextheader').addClass('alert alert-success');  
+        $('#idToastBoxTextheader').removeClass('alert alert-info');  
+
+      }
+  
+
+  if (code == "1") {
+    document.getElementById("idToastBoxText").innerHTML = "No Internet Connection"; 
+  } else  {
+    var msg = msgLibrary[code]["description"];
+        document.getElementById("idToastBoxText").innerHTML = title ; 
+    document.getElementById("idMessageBoxBodytoast").innerHTML = JSON.parse(msg).en ; 
+  }
+  
+  $('#idToastBox').modal('show');  
+  // Auto close;
+//  setTimeout(function(){ $('#idToastBox').modal('hide'); }, 5000);
+}
+</script>
+
+<style>
+.toastbody {
+  background-color: #ffffff;
+}
+
+.mbsize {
+  font-size: 15px;
+}
+
+</style>

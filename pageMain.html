@@ -1,0 +1,155 @@
+<style>
+.dropdownleft {
+   border-style: solid none solid solid;
+   border-top-left-radius: 6em;
+   border-bottom-left-radius: 6em;
+   background-color: white;
+}
+.dropdownright {
+   border-style: solid solid solid none;
+   border-top-right-radius: 6em;
+   border-bottom-right-radius:6em;
+   background-color: white;
+   font-size: 0.9em;
+}
+</style>
+<style>
+.superscript{
+ position: absolute; 
+ margin-top: 4px;
+ margin-left: -10px;
+}
+</style>
+
+
+<div class="container-fluid">
+	<!-- Alert Bar-->
+	<div class="row">
+		<!--div class="alert alert-danger alert-dismissible w-100 mb-0 text-center" style="animation-name: alertbanner;  animation-duration: 3s;  animation-timing-function: linear;  animation-delay: 0s;  animation-iteration-count: infinite;  animation-direction: alternate;"-->
+		<div id="idAlertBar" class="alert alert-danger alert-dismissible fade show w-100 mb-0 text-center" >
+			<button type="button" class="alertbar close" >&times;</button>
+			<!-- The slideshow -->
+			<div id="idAlertAnnouncement" hidden class="carousel slide carousel-fade top-to-bottom" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active"><h1 clase="display-1"><strong>Attention!</strong> SAP is under maintenance until 5pm.</h1>  </div>
+					<div class="carousel-item"><h1 clase="display-1"><strong>Attention!</strong> SAP is under maintenance until 6pm.</h1></div>
+					<div class="carousel-item"><h1 clase="display-1"><strong>Attention!</strong> SAP is under maintenance until 7pm.</h1></div>
+				</div>
+                <br>
+				<!-- Indicators -->
+				<ul class="carousel-indicators mb-0">
+					<li data-target="#idAlertAnnouncement" data-slide-to="0" class="active"></li>
+					<li data-target="#idAlertAnnouncement" data-slide-to="1"></li>
+					<li data-target="#idAlertAnnouncement" data-slide-to="2"></li>
+				</ul>
+			</div>    
+		</div> 
+	</div>
+	<!-- Top Bar-->
+    <div class="row">
+		<div class="w-100">
+			<nav class="navbar navbar-expand navbar-light bg-white py-0   fixed-top">
+				<div class="container-fluid  justify-content-start">
+				<a class="navbar-brand" href="#" onclick="sidebarToggle();">&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="https://storage.googleapis.com/imagelib/logo.svg" onerror="this.onerror=null; this.src='https://storage.googleapis.com/imagelib/logo.png'" style="height:50px;width:auto;">				
+				</a>
+				</div>
+                
+                               
+                
+				<div class="container-fluid  justify-content-end">
+					<form class="form-inline my-2 mt-3 pr-5">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text dropdownleft">
+                                    <!-- Icon Suite Case-->
+									<svg width="1.2em" height="1em" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.5605 2.37671H10.5872V1.50343C10.5872 0.525 9.79113 -0.270996 8.81273 -0.270996H6.18729C5.2089 -0.270996 4.41287 0.525 4.41287 1.50343V2.37671H0.439453C0.196758 2.37671 0 2.57347 0 2.81616V10.7996C0 11.993 0.970928 12.9639 2.16431 12.9639H12.8357C14.0291 12.9639 15 11.993 15 10.7996V2.81616C15 2.57347 14.8032 2.37671 14.5605 2.37671ZM8.49712 8.11157C8.49712 8.66139 8.04979 9.10869 7.5 9.10869C6.95021 9.10869 6.50288 8.66139 6.50288 8.11157V7.11445H8.49712V8.11157ZM8.93657 6.23555H6.06343C5.82073 6.23555 5.62397 6.4323 5.62397 6.675V7.47325C3.06847 6.9186 1.15277 5.26104 0.906299 3.25562H14.0937C13.8472 5.26104 11.9315 6.9186 9.37603 7.47328V6.67503C9.37603 6.4323 9.17927 6.23555 8.93657 6.23555ZM5.29175 1.50343C5.29175 1.00963 5.6935 0.60791 6.18727 0.60791H8.81271C9.30647 0.60791 9.70822 1.00963 9.70822 1.50343V2.37671H5.29172V1.50343H5.29175ZM14.1211 10.7996C14.1211 11.5083 13.5444 12.085 12.8357 12.085H2.16431C1.45556 12.085 0.878906 11.5083 0.878906 10.7996V5.52185C1.23369 6.02918 1.69113 6.49767 2.24376 6.91213C3.20139 7.63034 4.37048 8.12897 5.64284 8.37498C5.77134 9.28509 6.55497 9.98757 7.5 9.98757C8.44503 9.98757 9.22866 9.28509 9.35716 8.37498C10.6295 8.12897 11.7986 7.63034 12.7562 6.91213C13.3089 6.49767 13.7663 6.02915 14.1211 5.52185V10.7996Z" fill="#858585"/>
+									</svg>                                
+                                </span>
+                                <select class="form-control dropdownright pl-0 no-outline" id="menuworklocation" name="menuworklocation">
+									<option>Change work location</option>
+								</select>
+							</div>
+								
+						</div>
+					</form>
+                
+				<form class="form-inline my-2 my-lg-0">
+                <!--<a class="nav-link" href="#" onclick="change_content('pageProfileUser')">-->
+                 <a class="nav-link pageProfileUser" href="#" >
+					<img class="rounded-circle" id='idoriginalprofileimage' name='idoriginalprofileimage' style="height:40px;width:40px;" src="https://storage.cloud.google.com/imagelib/profileimage/defaultprofile.png" alt="">
+				</a>
+                <span id='idoriginalname' name='idoriginalname' class="mr-0 d-none d-sm-block text-Dark">&nbsp;&nbsp;Agent</span>
+
+                </form>
+				<a class="nav-link" href="#">
+					<svg width="1.6em" height="1.8em" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M7.15385 3.55664C9.76923 3.55664 11.9231 5.71045 11.9231 8.32583C11.9231 9.17199 11.6923 10.0181 11.2308 10.7873L11 11.2489L11.4615 12.7104C11.6154 13.2489 12 13.6336 12.5385 13.9413C13 14.172 13.3077 14.6336 13.3077 15.1721V15.4797C13.3077 16.0951 12.7692 16.6336 12.1538 16.6336H2.15385C1.53846 16.6336 1 16.0951 1 15.4797V15.1721C1 14.6336 1.30769 14.172 1.76923 13.9413C2.23077 13.7105 2.61539 13.2489 2.84616 12.7104L3.30769 11.2489L3.07692 10.7873C1.69231 8.55657 2.46154 5.55657 4.69231 4.24887C5.46154 3.78733 6.30769 3.55664 7.15385 3.55664Z" stroke="#858585" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M7.1537 21.2488C8.00337 21.2488 8.69216 20.56 8.69216 19.7103C8.69216 18.8607 8.00337 18.1719 7.1537 18.1719C6.30403 18.1719 5.61523 18.8607 5.61523 19.7103C5.61523 20.56 6.30403 21.2488 7.1537 21.2488Z" stroke="#858585" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M5.61523 3.5572V2.78797C5.61523 1.94182 6.30754 1.24951 7.1537 1.24951C7.99985 1.24951 8.69216 1.94182 8.69216 2.78797V3.5572" stroke="#858585" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+                    <sup><span class="badge rounded-circle badge-danger superscript"></span></sup>
+                </a> 
+				<a class="nav-link" href="#" onclick="AlertNow()">
+                	<svg width="1.8em" height="1.6em" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6.9213 6.31579C6.62741 6.31579 6.38889 6.55158 6.38889 6.84211C6.38889 7.13263 6.62741 7.36842 6.9213 7.36842C7.21519 7.36842 7.4537 7.13263 7.4537 6.84211C7.4537 6.55158 7.21519 6.31579 6.9213 6.31579Z" fill="#858585"/>
+					<path d="M20.8704 6.31579V1.57895C20.8704 0.706579 20.1556 0 19.2731 0C18.3924 0 17.6759 0.708316 17.6759 1.57895V2.02479C15.1321 3.56526 12.2093 3.99647 9.66692 4.21053H4.25926C1.91475 4.21053 0 6.08532 0 8.42105C0 10.3487 1.34433 12.0249 3.19444 12.4973V17.8947C3.19444 19.0556 4.1498 20 5.32407 20H6.9213C8.42237 20 9.09496 18.1212 7.92068 17.1891C7.62391 16.9535 7.4537 16.5238 7.4537 16.0101V12.6316H9.66516C12.2433 12.852 14.9475 13.8406 17.7066 15.5707C17.8518 16.2946 18.4989 16.8421 19.2731 16.8421C20.1539 16.8421 20.8704 16.1338 20.8704 15.2632V10.5263C22.0469 10.5263 23 9.58432 23 8.42105C23 7.26021 22.0446 6.31579 20.8704 6.31579ZM6.9213 18.9474H5.32407C4.73694 18.9474 4.25926 18.4752 4.25926 17.8947V12.6316H6.38889V16.01C6.38889 16.8446 6.70423 17.5735 7.254 18.0098C7.64484 18.3202 7.42389 18.9474 6.9213 18.9474ZM9.15741 11.5789H4.25926C4.10827 11.5789 3.95616 11.5683 3.80666 11.5473C2.24356 11.3289 1.06481 9.98495 1.06481 8.42105C1.06481 6.67905 2.49055 5.26316 4.25926 5.26316H9.15741V11.5789ZM17.6759 14.3156C15.1401 12.8166 12.6388 11.9154 10.2222 11.6304V5.21795C12.5959 4.99511 15.2484 4.551 17.6759 3.24037V14.3156ZM19.8056 15.2632C19.8056 15.5534 19.5667 15.7895 19.2731 15.7895C18.9796 15.7895 18.7407 15.5534 18.7407 15.2632V1.57895C18.7407 1.28874 18.9796 1.05263 19.2731 1.05263C19.567 1.05263 19.8056 1.28837 19.8056 1.57895V15.2632ZM20.8704 9.47368V7.36842C21.4575 7.36842 21.9352 7.84063 21.9352 8.42105C21.9352 9.00242 21.4585 9.47368 20.8704 9.47368Z" fill="#858585"/>
+					<path d="M4.79167 6.31579H4.25926C3.08498 6.31579 2.12963 7.26021 2.12963 8.42105C2.12963 8.71168 2.36804 8.94737 2.66204 8.94737C2.95603 8.94737 3.19444 8.71168 3.19444 8.42105C3.19444 7.84063 3.67212 7.36842 4.25926 7.36842H4.79167C5.08566 7.36842 5.32407 7.13274 5.32407 6.84211C5.32407 6.55147 5.08566 6.31579 4.79167 6.31579Z" fill="#858585"/>
+					</svg>
+                </a>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- Alert Bar Small-->
+	<div class="row">
+		<!-- The slideshow -->
+		<div id="idAlertAnnouncementSmall" class="carousel slide alert-danger d-none w-100 p-0 m-0" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">&nbsp;&nbsp;<strong>Attention!</strong> SAP is under maintenance until 5pm.</div>
+				<div class="carousel-item">&nbsp;&nbsp;<strong>Attention!</strong> SAP is under maintenance until 6pm.</div>
+				<div class="carousel-item">&nbsp;&nbsp;<strong>Attention!</strong> SAP is under maintenance until 7pm.</div>
+			</div>
+		</div> 
+	</div>
+</div>
+
+
+<script>
+function loadimage(data)
+{
+
+if(data.data[0].name!="")
+{
+    $("#idoriginalname").text(data.data[0].name);
+    $("#idoriginalprofileimage").attr("src", data.data[0].profileimage);
+    _getloginname= $("#idoriginalname").text();
+    }
+  var _addworklocation;
+for (var i = 0; i < (data.data[0].worklocation).length; i++) {
+_addworklocation += '<option class="rounded-pill" value="' + data.data[0].worklocation[i].worklocationid + '">' + data.data[0].worklocation[i].name  + '</option>';
+$('#menuworklocation').html(_addworklocation);
+}
+
+if(data.data[0].userid ==0)
+{
+    $("#idoriginalname").text(googlesignname);
+
+}
+ 
+ }
+$(document).ready(function(){
+$(document).on('click','.pageProfileUser',function(e)
+{
+page_show(currentpage,"pageProfileUser");
+});
+                 
+  $(".alertbar.close").click(function(){
+    $("#idAlertBar").alert("close");
+  });
+  $("#idAlertBar").on('close.bs.alert', function(){
+    $("#idAlertAnnouncementSmall").removeClass("d-none");
+  });
+});
+</script>

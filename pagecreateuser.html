@@ -1,0 +1,523 @@
+
+<div class="container-fluid mt-2">
+  <div class="container">
+  <h6><strong>Create User</strong></h6>
+  <br>
+  
+  <div class="card">
+  <div class="card-body">
+  
+ 
+  
+	<div class="row">
+		<div class="col-sm-6 pb-2">
+			<div class="form-group">
+				<label for="userid">User Id</label>
+				<input type="text" class="form-control rounded-pill" id="userid" placeholder="eg. 1234" name="userid" autocomplete="off">
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="picture">Picture</label>
+				<input type="text" class="form-control rounded-pill" id="picture" placeholder="upload image" name="picture">
+			</div>   
+		</div>
+	</div> 
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="username">User Name</label>
+				<input type="text" class="form-control rounded-pill" id="username" placeholder="eg. Ahmed" name="username" autocomplete="off">
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="pwd">Password</label>
+				<input type="password" class="form-control rounded-pill" id="password" placeholder="Password" name="password" autocomplete="off">
+			</div>   
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="position">Position</label>
+				<select class="form-control rounded-pill" id="position" placeholder="eg. Store Manager" name="position" autocomplete="off">
+                	<option>IT Staff</option>
+                    <option>Team lead</option>
+                    <option>Manager</option>
+                </select>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="workinghours">Working Hours</label>
+				<input type="text" class="form-control rounded-pill" id="workinghours" placeholder="eg. 08:00AM-05:00PM" name="workinghours" autocomplete="off">
+			</div>   
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control rounded-pill" id="email" placeholder="eg. ahmed@gmail.com" name="email" autocomplete="off">
+			</div>
+		</div>
+        <div class="col-sm-6">
+			<div class="form-group">
+				<label for="mobielno">Mobile no</label>
+				<input type="text" class="form-control rounded-pill" id="mobielno" placeholder="0500000000" name="mobielno" autocomplete="off">
+			</div>
+		</div>
+        </div>
+        <div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="userrole">Role</label>
+				<select class="form-control rounded-pill"  id="userrole" name="userrole">
+					<option>Requester</option>
+                    <option>Agent</option>
+                    <option>Manager</option>
+                        <option>Administrator</option>
+				</select>
+			</div>   
+		</div>
+	<!--</div>  
+	<div class="row">-->
+		<div class="col-sm-3">
+			<div class="form-group">
+				<label for="activeuser">Active User</label>
+				<div class="custom-control custom-switch custom-switch-lg">
+					<input type="checkbox" class="custom-control-input" id="activeuser" name="activeuser" checked>
+					<label class="custom-control-label" for="activeuser"></label>
+				</div>
+			</div>   
+		</div>
+		<div class="col-sm-3">
+			<div class="form-group">
+				<label for="lockuser">Lock User</label>
+				<div class="custom-control custom-switch custom-switch-lg">
+					<input type="checkbox" class="custom-control-input" id="lockuser" name="lockuser">
+					<label class="custom-control-label" for="lockuser"></label>
+				</div>
+			</div>   
+		</div>
+	</div> 	
+	
+  </div><!--< END class="card-body">  -->
+  
+  
+</div>
+ <div  style="height:20px"></div>
+<!-- company -->
+ <div class="card">
+    <div class="card-body">
+        <h6><strong>Company</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="companysearchforadd" name="companysearchforadd" class="form-control todo-list-input rounded-pill basicAutoComplete " placeholder="Search company..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton' onclick="addcompanyintolist()"  ><i class="fas fa-plus " id="additems" name="additems" ></i> </button></div>
+                          </div>
+             </div>
+             <div class="row" name="addcompanyrow">
+                          <div class="col-md-12" name="addcompanycolumn" >
+                            <ul id="addcompany" name="addcompany">
+                            </ul>
+                          </div>
+              </div>
+       </div>
+   </div>
+</div>
+
+ <div  style="height:20px"></div>
+
+<!-- Business unit -->
+ <div class="card">
+    <div class="card-body">
+        <h6><strong>Business unit</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="businessunitsearchforadd" name="businessunitsearchforadd" class="form-control todo-list-input rounded-pill " placeholder="Search business unit..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton'  onclick="addbusinessunitintolist()" ><i class="fas fa-plus " id="addbusinessunititems" name="addbusinessunititems" ></i> </button></div>
+                          </div>
+             </div>
+             <div class="row" name="addbusinessunitrow">
+                          <div class="col-md-12" name="addbusinessunitcolumn" >
+                            <ul id="addbusinessunit" name="addbusinessunit">
+                            </ul>
+                          </div>
+              </div>
+       </div>
+   </div>
+</div>
+
+
+
+ <div  style="height:20px"></div>
+
+<!-- Work location -->
+ <div class="card">
+    <div class="card-body">
+        <h6><strong>Work location</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="worklocationsearchforadd" name="worklocationsearchforadd" class="form-control todo-list-input rounded-pill " placeholder="Search work location..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton'  onclick="addworklocationintolist()"  ><i class="fas fa-plus " id="addworklocationitems" name="addworklocationitems"></i> </button></div>
+                          </div>
+             </div>
+             <div class="row" name="addworklocationrow">
+                          <div class="col-md-12" name="addworklocationcolumn" >
+                            <ul id="addworklocation" name="addworklocation">
+                            </ul>
+                          </div>
+              </div>
+       </div>
+   </div>
+</div>
+
+
+
+
+ <div  style="height:20px"></div>
+
+<!--  Module -->
+ <div class="card">
+    <div class="card-body">
+        <h6><strong>Module</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="modulesearchforadd" name="modulesearchforadd" class="form-control todo-list-input rounded-pill " placeholder="Search work location..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton'  onclick="addmoduleintolist()" ><i class="fas fa-plus " id="addmoduleitems" name="addmoduleitems" ></i></button> </div>
+                          </div>
+             </div>
+             <div class="row" name="addmodulerow">
+                          <div class="col-md-12" name="addmodulecolumn" >
+                            <ul id="addmodule" name="addmodule">
+                            </ul>
+                          </div>
+              </div>
+       </div>
+   </div>
+</div>
+
+<div  style="height:20px"></div>
+
+<!-- Team member -->
+ <div class="card">
+    <div class="card-body">
+        <h6><strong>Team Members</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="teammembersearchforadd" name="teammembersearchforadd" class="form-control todo-list-input rounded-pill " placeholder="Search work team member..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton'  onclick="addteammemberintolist()" ><i class="fas fa-plus " id="addteammemberitems" name="addteammemberitems" ></i></button> </div>
+                          </div>
+             </div>
+             <div class="row" name="addteammemberrow">
+                          <div class="col-md-12" name="addteammembercolumn" >
+                            <ul id="addteammember" name="addteammember">
+                            </ul>
+                          </div>
+              </div>
+       </div>
+   </div>
+</div>
+
+
+
+</div>
+    
+</div>
+
+
+<style>
+
+
+
+.listdesign {
+    position: relative;
+    padding-left: 11px;
+    margin:0 0 3px 0;
+    border: none;
+}
+
+ 
+
+ ul {
+     list-style: none;
+     margin: 0;
+     padding: 0
+ }
+
+ .plusbutton {
+      background: #5dbcd2;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 15px;
+       height: 30px;
+    width: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+ }
+
+ .fa-plus {
+     float: right
+ }
+
+ li {
+     background: #f8f8f8;
+     height: 40px;
+     line-height: 50px;
+     color: #666
+     padding: 10px;
+     border-color: #f0f0f0;
+
+
+ }
+
+ li:nth-child(n) {
+     background: #f7f7f7
+ }
+
+
+
+
+
+
+
+
+ .closebtn {
+  margin-left: 5px;
+  color: #5dbcd2;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+
+
+/* for lg */
+
+.custom-switch.custom-switch-lg .custom-control-label {
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+}
+
+.custom-switch.custom-switch-lg .custom-control-label::before {
+    height: 2rem;
+    width: calc(3rem + 0.75rem);
+    border-radius: 4rem;
+}
+
+.custom-switch.custom-switch-lg .custom-control-label::after {
+    width: calc(2rem - 4px);
+    height: calc(2rem - 4px);
+    border-radius: calc(3rem - (2rem / 2));
+}
+
+.custom-switch.custom-switch-lg .custom-control-input:checked ~ .custom-control-label::after {
+    transform: translateX(calc(2rem - 0.25rem));
+}
+
+.custom-control-input:checked~.custom-control-label::before
+{
+  border-color: #7cc97a !important;
+  background-color: #7cc97a !important;
+}
+
+
+</style>
+<script>
+
+google.script.run
+.withFailureHandler(showerror)
+.withSuccessHandler(retrive_allcompany)
+.getallcompanydetails({"action" : "show_allcompany"}); //Unlocked
+
+
+
+function showerror(err)
+{
+alert(err)
+}
+ var namearray=[];
+
+ function retrive_allcompany(companydetails)
+ {
+var length = (companydetails.data).length
+namearray=[];
+for (var x = 0; x < length; x++) { 
+namearray.push(companydetails.data[x].name)
+}
+}
+
+//$('.basicAutoComplete').autoComplete({
+//    resolverSettings: {
+//        url: '["ee","reerer","rerer"]'
+//    }
+//});
+
+//$(document).on('keypress','#companysearchforadd',function(e) {
+//alert(namearray)
+//highlightSearchText();
+//$(this).autocomplete({
+//source: namearray
+//});
+//});
+//
+//
+//function highlightSearchText() {
+//$.ui.autocomplete.prototype._renderItem = function( ul, item) {
+//var re = new RegExp(this.term, "i") ;
+//var t = item.label.replace(re,"<span class=autotxt>" + this.term + "</span>");//higlight color,class shld be same as here
+//return $( "<li></li>" )
+//.data( "item.autocomplete", item )
+//.append( "<a>" + t + "</a>" )
+//.appendTo( ul );
+//};
+//}
+
+function addcompanyintolist()
+{
+   var _addcompanyvalues = $('#companysearchforadd').val();
+    $("#companysearchforadd").val("");
+    if(_addcompanyvalues!='')
+    {
+        var nl = $("#addcompany").length
+    var companylist="companylist"+nl;
+    var licompanylistid="licompanylistid"+nl;
+   $('#addcompany').append(" <li class='form-control rounded-pill  listdesign'>"+_addcompanyvalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+companylist+"' name='companylist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addcompany').on('click', '.delete',function(){
+    $(this).parent().remove();
+});
+
+function addbusinessunitintolist()
+{
+   var _addbusinessunitvalues = $('#businessunitsearchforadd').val();
+    $("#businessunitsearchforadd").val("");
+    if(_addbusinessunitvalues!='')
+    {
+        var nl = $("#addbusinessunit").length
+    var businessunitlist="businessunitlist"+nl;
+    var libusinessunitlistid="libusinessunitlistid"+nl;
+   $('#addbusinessunit').append(" <li class='form-control rounded-pill removeinlist listdesign'>"+_addbusinessunitvalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+businessunitlist+"' name='businessunitlist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addbusinessunit').on('click', '.delete',function(){
+    $(this).parent().remove();
+});
+
+
+
+function addworklocationintolist()
+{
+   var _addworklocationvalues = $('#worklocationsearchforadd').val();
+    $("#worklocationsearchforadd").val("");
+    if(_addworklocationvalues!='')
+    {
+        var nl = $("#addworklocation").length
+    var worklocationlist="worklocationlist"+nl;
+    var liworklocationlistid="liworklocationlistid"+nl;
+   $('#addworklocation').append(" <li class='form-control rounded-pill removeinlist listdesign'>"+_addworklocationvalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+worklocationlist+"' name='worklocationlist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addworklocation').on('click', '.delete',function(){
+    $(this).parent().remove();
+});
+
+
+
+function addmoduleintolist()
+{
+   var _addmodulevalues = $('#modulesearchforadd').val();
+    $("#modulesearchforadd").val("");
+    if(_addmodulevalues!='')
+    {
+        var nl = $("#addmodule").length
+    var modulelist="modulelist"+nl;
+    var limodulelistid="limodulelistid"+nl;
+   $('#addmodule').append(" <li class='form-control rounded-pill removeinlist listdesign'>"+_addmodulevalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+modulelist+"' name='modulelist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addmodule').on('click', '.delete',function(){ 
+    $(this).parent().remove();
+});
+
+
+
+
+
+function addteammemberintolist()
+{
+   var _addteammembervalues = $('#teammembersearchforadd').val();
+    $("#teammembersearchforadd").val("");
+    if(_addteammembervalues!='')
+    {
+        var nl = $("#addteammember").length
+    var teammemberlist="teammemberlist"+nl;
+    var liteammemberlistid="liteammemberlistid"+nl;
+   $('#addteammember').append(" <li class='form-control rounded-pill removeinlist listdesign'>"+_addteammembervalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+teammemberlist+"' name='teammemberlist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addteammember').on('click', '.delete',function(){ 
+    $(this).parent().remove();
+});
+
+
+//
+//
+//$("ul").on("click", "li", function(){
+//$(this).toggleClass("completed");
+//});
+//
+//
+//$("ul").on("click", "span", function(event){
+//$(this).parent().fadeOut(500,function(){
+//$(this).remove();
+//});
+//event.stopPropagation();
+//});
+//
+//$("input[type='text']").keypress(function(event){
+//if(event.which === 13){
+//
+//var todoText = $(this).val();
+//$(this).val("");
+//
+//$("ul").append("<li><span><i class='fa fa-trash'></i></span> " + todoText + "</li>")
+//}
+//});
+//
+//$(".fa-plus").click(function(){
+//$("input[type='text']").fadeToggle();
+//});
+
+
+</script>

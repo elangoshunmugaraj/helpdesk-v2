@@ -1,0 +1,58 @@
+<!-- The Modal -->
+  <div class="modal fade" id="idMessageBox">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header"  id="Messagemodelheader">
+          <h4 id="idMessageBoxTitle" class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div id="idMessageBoxBody" class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+<script>
+function messageboxOpen(code){
+
+  var title = msgLibrary[code]["title"];
+  var msg = msgLibrary[code]["description"];
+  
+    if(title == 'Error')
+      {
+        $('#Messagemodelheader').addClass('modal-header-error');  
+        $('#Messagemodelheader').removeClass('modal-header-warning');  
+        $('#Messagemodelheader').removeClass('modal-header-success');  
+      }
+      else
+       if(title == 'Warning')
+      {
+        $('#Messagemodelheader').removeClass('modal-header-error');  
+        $('#Messagemodelheader').addClass('modal-header-warning');  
+        $('#Messagemodelheader').removeClass('modal-header-success');  
+      }else
+       if(title == 'Success')
+      {
+        $('#Messagemodelheader').removeClass('modal-header-error');  
+        $('#Messagemodelheader').removeClass('modal-header-warning');  
+        $('#Messagemodelheader').addClass('modal-header-success');  
+      }
+  
+   document.getElementById("idMessageBoxTitle").innerHTML = title ; 
+   document.getElementById("idMessageBoxBody").innerHTML = JSON.parse(msg).en ; 
+  
+  $('#idMessageBox').modal('show');  
+  // Auto close;
+//  setTimeout(function(){ $('#idToastBox').modal('hide'); }, 3000);
+}
+</script>
