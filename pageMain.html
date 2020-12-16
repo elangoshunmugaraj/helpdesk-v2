@@ -11,6 +11,9 @@
    border-bottom-right-radius:6em;
    background-color: white;
    font-size: 0.9em;
+-webkit-appearance: none;
+width: auto;
+
 }
 </style>
 <style>
@@ -58,7 +61,7 @@
                                
                 
 				<div class="container-fluid  justify-content-end">
-					<form class="form-inline my-2 mt-3 pr-5">
+					<form class="form-inline my-1 mt-3 pr-5">
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text dropdownleft">
@@ -98,6 +101,8 @@
 					<path d="M4.79167 6.31579H4.25926C3.08498 6.31579 2.12963 7.26021 2.12963 8.42105C2.12963 8.71168 2.36804 8.94737 2.66204 8.94737C2.95603 8.94737 3.19444 8.71168 3.19444 8.42105C3.19444 7.84063 3.67212 7.36842 4.25926 7.36842H4.79167C5.08566 7.36842 5.32407 7.13274 5.32407 6.84211C5.32407 6.55147 5.08566 6.31579 4.79167 6.31579Z" fill="#858585"/>
 					</svg>
                 </a>
+                <a class="nav-link" href="#"  style="width:50px" id="timecountnow"  name="timecountnow">
+                </a>
 				</div>
 			</nav>
 		</div>
@@ -119,12 +124,14 @@
 <script>
 function loadimage(data)
 {
+//alert('elango loadimage 1')
 
 if(data.data[0].name!="")
 {
     $("#idoriginalname").text(data.data[0].name);
     $("#idoriginalprofileimage").attr("src", data.data[0].profileimage);
-    _getloginname= $("#idoriginalname").text();
+        _getloginname= $("#idoriginalname").text();
+
     }
   var _addworklocation;
 for (var i = 0; i < (data.data[0].worklocation).length; i++) {
@@ -137,7 +144,8 @@ if(data.data[0].userid ==0)
     $("#idoriginalname").text(googlesignname);
 
 }
- 
+// alert('elango loadimage 2')
+
  }
 $(document).ready(function(){
 $(document).on('click','.pageProfileUser',function(e)

@@ -11,7 +11,14 @@
 </div>
 
 <script>
+var progressbarinterval = null;
 function progressboxOpen(){
+            IsProgress= true;
+             clearInterval(progressbarinterval);
+progressbarinterval =  setInterval(function(){ 
+   countdown.stop();
+}, 1000);
+             
    $('#idProgressBox').modal({
     backdrop: 'static',
     keyboard: false
@@ -19,6 +26,9 @@ function progressboxOpen(){
   $('#idProgressBox').modal('show');  
 }
 function progressboxClose(){
+            IsProgress= false;
+ clearInterval(progressbarinterval);
+    countdown.start();
   $('#idProgressBox').modal('hide');  
 }
 function progressboxOpenX(){
@@ -29,6 +39,8 @@ function progressboxOpenX(){
   $('#idProgressBox').modal('show');  
   setTimeout(function(){ $('#idProgressBox').modal('hide'); }, 6000);
 }
+
+    
 
 </script>
 <style>

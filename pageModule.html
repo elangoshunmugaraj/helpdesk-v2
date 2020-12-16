@@ -1,0 +1,746 @@
+
+<div class="container-fluid mt-5 pageModule_fullview_section" id="modulepage" name="modulepage">
+  <div class="container">
+  <div class="createmodule-title col-12 min-vh-50">
+    <h6><strong>Create Module</strong></h6>
+  </div>
+  <div class="card">
+  <div class="card-body">
+  
+  
+     <div class="row mb-3">
+    <div class="col-md-10">
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-6">
+       </div>
+       <div class="col-md-2">
+         <label for="ismoduleactive">Active</label>
+				<div class="custom-control custom-switch custom-switch-lg">
+					<input type="checkbox" class="custom-control-input" id="ismoduleactive" name="ismoduleactive" >
+					<label class="custom-control-label" for="ismoduleactive"></label>
+				</div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+  
+  
+  
+  
+  
+  
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="modulename">Module name</label>
+				<input type="text" class="form-control rounded-pill " id="modulename" placeholder="" name="modulename" >
+			</div>
+		</div>
+        <div class="col-sm-6">
+			<div class="form-group">
+				<label for="modulelogo">Logo</label>
+				<!--- <input type="text" class="form-control rounded-pill " id="modulelogo" placeholder="" name="modulelogo" > --->
+                <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="modulelogo" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div class="form-group dropdown-menu dropdown-menu-left module-dropdown-menu" id="modulelogodropdown"
+                  aria-labelledby="dropdownMenuButton">
+                </div>
+			</div>    
+		</div>
+	</div> 
+
+	<div class="row">
+        <div class="col-sm-3">
+			<div class="form-group">
+				<label for="moduleprefix">Prefix</label>
+				<input type="text" class="form-control rounded-pill " id="moduleprefix" placeholder="" 
+                       name="moduleprefix" maxlength = "2" style="text-transform:uppercase">
+			</div> 
+		</div>
+        <div class="col-sm-9">
+			
+		</div>
+	</div> 
+
+  </div><!--< END class="card-body">  -->
+</div>
+<!--- Begin add for module company ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addmodulecompanyrow">
+        <div class="col-md-12" name="addmodulecompanycolumn">
+            <label for="modulecompany">Module Company</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="modulecompanylistsearch" name="modulecompanylistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Company..." aria-label="Search company..." aria-describedby="modulecompanylistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="modulecompanylistadd"  name="modulecompanylistadd" style="display:none; curser:pointer" onclick="addtoList('Modulecompany')">
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="modulecompanylistdiv"  name="modulecompanylistdiv">
+               <ul id="modulecompanylist" name="modulecompanylist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for module company --------------->
+
+<!--- Begin add for module BU ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addmoduleburow">
+        <div class="col-md-12" name="addmodulebucolumn">
+            <label for="modulebu">Module Business Unit</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="modulebulistsearch" name="modulebulistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Businessunit..." aria-label="add bu..." aria-describedby="modulebulistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="modulebulistadd"  name="modulebulistadd" style="display:none; curser:pointer" onclick="addtoList('Modulebu')">
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="modulebulistdiv"  name="modulebulistdiv">
+               <ul id="modulebulist" name="modulebulist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for module BU --------------->
+
+
+<!--- Begin add for module WL ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addmodulewlrow">
+        <div class="col-md-12" name="addmodulewlcolumn">
+            <label for="modulewl">Module WorkLocation</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="modulewllistsearch" name="modulewllistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Worklocation..." aria-label="add work location..." aria-describedby="modulewllistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="modulewllistadd"  name="modulewllistadd" style="display:none; curser:pointer" onclick="addtoList('Modulewl')">
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="modulewllistdiv"  name="modulewllistdiv">
+               <ul id="modulewllist" name="modulewllist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for module WL --------------->
+
+<!--- Begin add for module Owners ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addmoduleownersrow">
+        <div class="col-md-12" name="addmoduleownerscolumn">
+            <label for="moduleowners">Module Owner</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="moduleownerslistsearch" name="moduleownerslistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Users..." aria-label="add owner..." aria-describedby="moduleownerslistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="moduleownerslistadd"  name="moduleownerslistadd" style="display:none; curser:pointer" onclick="addtoList('Moduleowners')">
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="moduleownerslistdiv"  name="moduleownerslistdiv">
+               <ul id="moduleownerslist" name="moduleownerslist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for module Owners --------------->
+
+<!-- begin add save button here -->
+<div class="card transparant">
+  <div class="row">
+      <div class="col-md-9  my-1"> </div>
+        <div class="col-md-3">
+          <div class="input-group pageModulemanagement_view_section " style="display:none;">
+            <button type="button" class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" 
+                    id="callcreatemodule" 
+                    name="callcreatemodule" >Save
+            </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- end add save button here ---->
+       
+  </div>
+  
+</div>
+ 
+
+<script>
+
+
+var modulecompanyvalues=[];
+var modulebuvalues=[];
+var modulewlvalues=[];
+var modulecompanydeletingcompany=[];  // need to predefine for get deleted items;
+var pagename =  'Module';
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#modulecompanylistsearch', function (e) {
+    var iscoentered = $('#modulecompanylistsearch').val();
+    //alert(iscoentered )
+    if(iscoentered!='')
+    {
+     $('#modulecompanylistadd').show();
+     $('#modulecompanylistsearch').removeClass('rounded-pill');
+     $('#modulecompanylistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#modulecompanylistadd').hide();
+     $('#modulecompanylistsearch').addClass('rounded-pill');
+     $('#modulecompanylistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+$('#modulecompanylistsearch').on('click', '.delete',function(){ 
+    $(this).parent().remove();
+});
+
+//business unit
+var modulecompanydeletingbu=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#modulebulistsearch', function (e) {
+    var isbuentered = $('#modulebulistsearch').val();
+    
+    if(isbuentered!='')
+    {
+     $('#modulebulistadd').show();
+     $('#modulebulistsearch').removeClass('rounded-pill');
+     $('#modulebulistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#modulebulistadd').hide();
+     $('#modulebulistsearch').addClass('rounded-pill');
+     $('#modulebulistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+//worklocation
+var modulecompanydeletingwl=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#modulewllistsearch', function (e) {
+    var iswlentered = $('#modulewllistsearch').val();
+    
+    if(iswlentered!='')
+    {
+     $('#modulewllistadd').show();
+     $('#modulewllistsearch').removeClass('rounded-pill');
+     $('#modulewllistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#modulewllistadd').hide();
+     $('#modulewllistsearch').addClass('rounded-pill');
+     $('#modulewllistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+//module owners
+var modulecompanydeletingowners=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#moduleownerslistsearch', function (e) {
+    var isownerentered = $('#moduleownerslistsearch').val();
+    
+    if(isownerentered!='')
+    {
+     $('#moduleownerslistadd').show();
+     $('#moduleownerslistsearch').removeClass('rounded-pill');
+     $('#moduleownerslistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#moduleownerslistadd').hide();
+     $('#moduleownerslistsearch').addClass('rounded-pill');
+     $('#moduleownerslistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+$(document).on('click', '.module-dropdown-menu a', function () {
+$('#modulelogo').html($(this).html())
+})
+
+
+
+ function loadimageinmodule(image) {
+  
+  
+  var imglibraryKey = Object.keys(image.data.imagelibrary[0])
+
+    if (image.result['code'] == '3000') {
+      for (var key of imglibraryKey) {
+        $('#modulelogodropdown').append('<a class="dropdown-item" href="#"> ' +
+          '<img src="' + image.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + image.data.imagelibrary[0][key].keyword + '</a>')
+      };
+    }
+    
+
+  }
+
+</script>
+
+
+<script>
+
+
+//Used for make viewdetail div disable
+var pagemodule_viewdetails = false;
+var moduleid='';
+ 
+ $('#moduleuserlist').hide();
+function fullthemoduledata(data)
+{
+   $('.createmodule-title').html('<h6><strong>Update Module</strong></h6>');
+  moduleid=data.id;
+  $("#modulename").val(data.modulename);
+  $("#moduleprefix").val(data.prefix);
+  if(data.status == 'true' )
+  {
+    $('#ismoduleactive').prop('checked', true);
+  }
+  else
+    if(data.status == 'false' )
+    {
+      $('#ismoduleactive').prop('checked', false);
+    }
+  $('#Showmoduleusers').show();
+  pageModuleactioncontrol();
+
+  page_show('pageModulemanagement','pageModule')
+  progressboxClose();
+ }
+ 
+       
+//Create new module
+$(document).on('click','#callcreatemodule',function(e) {
+
+//read all dependant items
+read_mc();  //reading company list - stores values in arry -- modulecompanyvalues[]
+read_bu();  //reading business unit list - stores values in arry -- modulebuvalues[]
+read_wl();  //reading business unit list - stores values in arry -- modulewlvalues[]
+
+
+var moduleuseractiveresults=[];
+var  modulename=$('#modulename').val();
+var ismoduleactive = $('#ismoduleactive').prop('checked');
+
+		var _moduleparams = {
+			"action"  : "create_module",
+			"param"   : {"id":moduleid
+                       ,"name" : modulename.trim()
+                       ,"status" : ismoduleactive
+                       ,"company" : modulecompanyvalues
+                       ,"bu" : modulebuvalues
+                       ,"wl" : modulewlvalues
+                       ,"createby":_getloginname}
+			};
+            
+            var isavialble=findValueInArray(modulename,moduleavailable)
+            
+            //alert("1");
+            if(validateBeforeSubmit(modulename) == 'true' )  
+            { 
+            //alert("2");
+                    if (moduleid =='')
+                       {
+                       //alert("3 create");
+                        if( isavialble == 'false')
+                          { 
+                        progressboxOpen();
+                            google.script.run
+                            .withFailureHandler(module_errormessage)
+                            .withSuccessHandler(moduleconfirmation)
+                            .executemodule(_moduleparams);
+                             }
+                          else if( isavialble == 'true')
+                          {
+                              toastboxOpen("2017");
+                          }
+                       }
+                       else
+                       {
+                              //alert("4");
+    
+                             if (moduleuseractiveresults.length == 0)
+                             {
+                                  //alert("4a");
+                                  progressboxOpen();
+                                  google.script.run
+                                  .withFailureHandler(module_errormessage)
+                                  .withSuccessHandler(moduleconfirmation)
+                                  .executemodule(_moduleparams);
+
+                              }
+                              else if ( moduleuseractiveresults.length >0)
+                              {
+                              //alert("4b");
+                              if(ismoduleactive  == false)
+                                  {
+                                  if(moduleuseractiveresults.length >0)
+                                  {
+                                  toastboxOpen("2016");
+                                  }
+                                  else
+                                  {
+                                  progressboxOpen();
+                                  google.script.run.withFailureHandler(module_errormessage).withSuccessHandler(moduleconfirmation).executemodule(_moduleparams);
+                                  }
+                                  }
+                                  else if(ismoduleactive  == true)
+                                  {
+                                 progressboxOpen();
+                                 google.script.run.withFailureHandler(module_errormessage).withSuccessHandler(moduleconfirmation).executemodule(_moduleparams);
+                                  }
+                              }
+                              //alert("4c");
+                         }      
+                         
+            }
+            else
+            {
+            
+            toastboxOpen("2008");
+            }
+});
+
+
+//Confirm module creation
+function moduleconfirmation(result)
+{
+
+      if(result.result['code'] == '3000')
+      {
+//          progressboxClose();
+          isnew='';
+          $('#modulepage *').val('');
+           progressboxOpen();
+          loadallmodulesaffterupdate();
+          page_show('pageModule','pageModulemanagement')
+      }
+      else
+      if(result.result['code'] == '2017')
+      {
+          progressboxClose();
+         toastboxOpen("2017");
+      }
+      else
+      {
+                progressboxClose();
+          toastboxOpen("2007");
+      
+      }
+}
+
+// Show error message
+function module_errormessage(err)
+{
+          progressboxClose();
+            toastboxOpen("3002");
+}
+</script>
+
+<script>
+// Control the page action.
+function pageModuleactioncontrol()
+{
+pagemodule_viewdetails=page_actioncontrol("pagemodule","SAVE");
+//Div disabled based on the condition 
+if(pagemodule_viewdetails == false){$(".pageModule_fullview_section *").attr('disabled','disabled');}
+else{    $(".pageModule_fullview_section *").prop("disabled", false);}
+}
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+$(document).on('keypress','#moduleownerslistsearch',function(e) {
+
+autocomplete(document.getElementById("moduleownerslistsearch"), activeusers);
+});
+
+$(document).on('keypress','#modulewllistsearch',function(e) {
+
+autocomplete(document.getElementById("modulewllistsearch"), activeworklocation);
+});
+
+
+
+
+$(document).on('keypress','#modulebulistsearch',function(e) {
+
+autocomplete(document.getElementById("modulebulistsearch"), activebu);
+});
+
+
+$(document).on('keypress','#modulecompanylistsearch',function(e) {
+
+autocomplete(document.getElementById("modulecompanylistsearch"), activecompany);
+});
+
+//company
+$(document).on('click', '.modulecompany_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+modulecompanydeletingcompany =  getdeleteitem(getid,'modulecompany')
+	    });
+
+//bu
+$(document).on('click', '.modulebu_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+modulecompanydeletingbu =  getdeleteitem(getid,'modulebu')
+	    });
+
+//wl
+$(document).on('click', '.modulewl_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+modulecompanydeletingwl =  getdeleteitem(getid,'modulewl')
+	    });
+
+
+//owners
+$(document).on('click', '.moduleowners_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+modulecompanydeletingowners =  getdeleteitem(getid,'moduleowners')
+	    });
+
+
+//Load active Users
+
+loadactiveusers();
+function loadactiveusers()
+{
+//     progressboxOpen();
+     google.script.run.withFailureHandler(module_inError)
+           .withSuccessHandler(retrive_activeusers)
+           .executemodule({ "action": "showalluser_details" });
+//     progressboxClose();
+}
+
+
+function retrive_activeusers(loaddetails) 
+{
+   activeusers=[];
+   if(loaddetails.result['code'] == '3000')
+   {
+     var length = (loaddetails.userid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.userid[x]].status == 'true')
+            {
+            
+         activeusers.push(loaddetails.data[loaddetails.userid[x]].name);
+         }
+        }
+   }
+}
+
+
+
+function Loadactivebusinessunitfrombusinessunitpage(loaddetails) 
+{
+   activebu=[];
+     var length = (loaddetails.businessunitid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.businessunitid[x]].status == 'true')
+            {
+         activebu.push(loaddetails.data[loaddetails.businessunitid[x]].name);
+         }
+        }
+}
+
+
+function Loadactiveworklocationfromworklocationpage(loaddetails) 
+{
+   activeworklocation=[];
+     var length = (loaddetails.worklocationid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.worklocationid[x]].status == 'true')
+            {
+         activeworklocation.push(loaddetails.data[loaddetails.worklocationid[x]].name);
+         }
+        }
+}
+
+function Loadactivecompanyfromcompanypage(loaddetails) 
+{
+     activecompany=[];
+     var length = (loaddetails.companyid).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data[loaddetails.companyid[x]].status == 'true')
+            {
+            activecompany.push(loaddetails.data[loaddetails.companyid[x]].name);
+            }
+        }
+}
+
+//load company list
+function read_mc()
+{
+  var _mclength = $('#modulecompanylist li').length
+  var _mcdeletelength = modulecompanydeletingcompany.length;
+  var _mcfulllength = parseInt(_mclength)+parseInt(_mcdeletelength);
+  //var modulecompanyvalues=[];
+
+  for (var l = 0; l < _mcfulllength; l++) {
+  
+      var _mcdata = $("#modulecompanylisttext_"+ l).val();
+      var _mcid   = $("#modulecompanylistupdateid_"+ l).val();
+      if(_mcdata!='' && _mcdata!=undefined && _mcdata!='undefined')
+      {
+          modulecompanyvalues.push( {
+            "mcid"         : _mcid,
+            "mcvalue"      : _mcdata,
+            "mcstatus"     : "true"
+            })
+  
+      }
+  }
+}
+
+
+//load bu list
+function read_bu()
+{
+  var _mbulength = $('#modulebulist li').length
+  var _mbudeletelength = modulecompanydeletingbu.length;
+  var _mbufulllength = parseInt(_mbulength)+parseInt(_mbudeletelength);
+
+  for (var l = 0; l < _mbufulllength; l++) {
+  
+      var _mbudata = $("#modulebulisttext_"+ l).val();
+      var _mbuid   = $("#modulebulistupdateid_"+ l).val();
+      if(_mbudata!='' && _mbudata!=undefined && _mbudata!='undefined')
+      {
+          modulebuvalues.push( {
+            "mbuid"         : _mbuid,
+            "mbuvalue"      : _mbudata,
+            "mbustatus"     : "true"
+            })
+  
+      }
+  }
+}
+
+
+//load WL list
+function read_wl()
+{
+  var _mwllength = $('#modulewllist li').length
+  var _mwldeletelength = modulecompanydeletingwl.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#modulebulisttext_"+ l).val();
+      var _mwlid   = $("#modulebulistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          modulewlvalues.push( {
+            "mwlid"         : _mwlid,
+            "mwlvalue"      : _mwldata,
+            "mwlstatus"     : "true"
+            })
+  
+      }
+  }
+}
+
+
+
+$(document).on('keypress','#modulename',function(e) {
+
+autocomplete(document.getElementById("modulename"), modulenameavailable);
+});
+
+
+$(document).on('keypress','#moduleprefix',function(e) {
+
+autocomplete(document.getElementById("moduleprefix"), moduleprefixavailable);
+});
+
+
+
+</script>
+
+<style>
+
+.alignsvgright {
+  text-align: left;            
+  margin-left: 0px;
+}
+
+.resizetablebackground {
+  margin-top: 0px;
+  padding-top:0px
+}
+
+.reducebuttonsize {
+   height:2px;
+   margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+padding-bottom:0px
+}
+
+
+
+.dt-buttons {
+   height:10px;
+}
+
+
+</style>
+

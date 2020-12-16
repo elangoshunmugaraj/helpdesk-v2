@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
+   
     <!-- Google Sign-In-->
     <!-- meta name="google-signin-scope" content="profile email" -->
     <meta name="google-signin-client_id" content="148158706903-rmhbjnj5ud0fo9c1o756gsfg1gdhul8i.apps.googleusercontent.com">
@@ -28,11 +28,15 @@
         <!-- Top DataTable  Rowel-->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">  
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
 
     <!-- Custom CSS -->
     <?!=getContent('style'); ?>
     <?!=getContent('color'); ?>
-
+<?!=getContent('generalfunction'); ?>
+<?!=getContent('setsession'); ?>
+    <title id="exportname" name="exportname">Data</title>
   </head>
   <body >
  
@@ -128,12 +132,18 @@
        <div id="pageCreaterequest" name="pageCreaterequest" style="display:none;" class="page"><?!=getContent('pageCreaterequest'); ?></div> 
        <div id="pageSearchrequest" name="pageSearchrequest" style="display:none;" class="page"><?!=getContent('pageSearchrequest'); ?></div> 
        <div id="pageCompanymanagement" name="pageCompanymanagement" style="display:none;" class="page"><?!=getContent('pageCompanymanagement'); ?></div> 
-       <div id="pageImageLibrary" name="pageImageLibrary" style="display:none;" class="page"><?!=getContent('pageImageLibrary'); ?></div> 
-       <div id="pageRolemanagement" name="pageRolemanagement" style="display:none;" class="page"><?!=getContent('pageRolemanagement'); ?></div> 
+       <div id="pageCompany" name="pageCompany" style="display:none;" class="page"><?!=getContent('pageCompany'); ?></div> 
+       <div id="pageBusinessunitmanagement" name="pageBusinessunitmanagement" style="display:none;" class="page"><?!=getContent('pageBusinessunitmanagement'); ?></div> 
+       <div id="pageBusinessunit" name="pageBusinessunit" style="display:none;" class="page"><?!=getContent('pageBusinessunit'); ?></div> 
+       <div id="pageWorklocation" name="pageWorklocation" style="display:none;" class="page"><?!=getContent('pageWorklocation'); ?></div> 
+       <div id="pageWorklocationmanagement" name="pageWorklocationmanagement" style="display:none;" class="page"><?!=getContent('pageWorklocationmanagement'); ?></div> 
+       <div id="pageImagelibrarymanagement" name="pageImagelibrarymanagement" style="display:none;" class="page"><?!=getContent('pageImagelibrarymanagement'); ?></div> 
+      <div id="pageRolemanagement" name="pageRolemanagement" style="display:none;" class="page"><?!=getContent('pageRolemanagement'); ?></div> 
        <div id="pageRole" name="pageRole" style="display:none;" class="page"><?!=getContent('pageRole'); ?></div> 
-       <div id="pageModulemanagement" name="pageModulemanagement" style="display:none;" class="page"><?!=getContent('pageModulemanagement'); ?></div> 
+      <div id="pageModulemanagement" name="pageModulemanagement" style="display:none;" class="page"><?!=getContent('pageModulemanagement'); ?></div> 
+       <div id="pageModule" name="pageModule" style="display:none;" class="page"><?!=getContent('pageModule'); ?></div> 
        <div id="pageServiceteammanagement" name="pageServiceteammanagement" style="display:none;" class="page"><?!=getContent('pageServiceteammanagement'); ?></div> 
-
+       <div id="pageImagelibrary" name="pageImagelibrary" style="display:none;" class="page"><?!=getContent('pageImagelibrary'); ?></div> 
 </main>
   <!-- page-content" -->
   </div>
@@ -148,21 +158,24 @@
      <?!=getContent('snackbar'); ?> 
      <?!=getContent('progressbox'); ?>
      <?!=getContent('staticmsgbox'); ?>
+     <?!=getContent('autocomplete'); ?>
+     <?!=getContent('setsessiontime'); ?>
+     <?!=getContent('confirmationbox'); ?>
 
-
-     
-     
- 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" />
+
 <!--   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://datatables.net/manual/plug-ins/search"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.3/css/buttons.dataTables.min.css">
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css"> -->
+
 
         <!-- Bottom DataTable  Rowel-->
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>  
@@ -172,18 +185,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>  
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>  
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>  
+  
+
 
 
 
   </body>
 </html>
 
-<?!=getContent('javascript'); ?>
+
+
 
 <script>
 var loadeddata=""; // this have all data
-var _getloginname= '';// Get the login name  by using this.
-
+var _getloginname ="" // Get the login name  by using this.
 $(document).ready(function () {   
     setTimeout(function(){ page_show('pageStart','pageLogin'); }, 3000); // To be sure the Logo is uploaded
 
@@ -199,20 +214,24 @@ $(document).on('click','.pageCompanymanagement',function(e)
 {
 page_show(currentpage,"pageCompanymanagement");
 });
-$(document).on('click','.pageImageLibrary',function(e)
+$(document).on('click','.pageImagelibrarymanagement',function(e)
 {
-page_show(currentpage,"pageImageLibrary");
+page_show(currentpage,"pageImagelibrarymanagement");
+pageImagelibrarymanagementcontrol();
+
 });
 $(document).on('click','.pageRolemanagement',function(e)
 {
 page_show(currentpage,"pageRolemanagement");
+//loadallroles();
 pageRolemanagementactioncontrol();
+
 
 });
 $(document).on('click','.pageModulemanagement',function(e)
 {
 page_show(currentpage,"pageModulemanagement");
-//pageModulemanagementactioncontrol();
+pageModulemanagementactioncontrol();
 
 });
 
@@ -223,13 +242,25 @@ page_show(currentpage,"pageServiceteammanagement");
 
 });
 
+$(document).on('click','.pageWorklocationmanagement',function(e)
+{
+page_show(currentpage,"pageWorklocationmanagement");
+pageWorklocationmanagementcontrol();
+  
+});
+
+$(document).on('click','.pageBusinessunitmanagement',function(e)
+{
+page_show(currentpage,"pageBusinessunitmanagement");
+pageBusinessunitmanagementactioncontrol();
+
+});
 
 
-//$(document).on('click','.pageModulemanagement',function(e)
-//{
-//page_show(currentpage,"pageModulemanagement");
-//});
-
+ $(document).on('click', '.pageCompanymanagement', function (e) {
+      page_show(currentpage, "pageCompanymanagement");
+      pageCompanymanagementactioncontrol();
+    });
 
 });
 
@@ -242,6 +273,16 @@ window.onbeforeunload = function () {return false;}
 
 function loadsidebar(data)
 {
+
+//alert('elango loadsidebar 1')
+
+ progressboxClose();
+
+  $('#In_direct').empty()
+  $('#In_setup').empty()
+
+
+
 loadeddata=data;
   var _addmenulist='';
   var _addadminmenulist='';
@@ -280,6 +321,7 @@ rolesadd += '<option  class="rounded-pill dropdown" value="' + data.data[0].role
 $('#sidebarroles').html(rolesadd);
 
 
+
 if((data.data[0].userpreference).length>0)
 {
 if(data.data[0].userpreference[6]!= undefined && data.data[0].userpreference[6]!= 'undefined')
@@ -291,8 +333,10 @@ $("#sidebarroles").val(data.data[0].userpreference[6].value); // Add default rol
 pageshowbyrole();
 }
 
+ progressboxClose();
 
- 
+//alert('elango loadsidebar 2')
+
  }
  
 
@@ -329,6 +373,7 @@ for (var ps=0; ps<_pageshow.length ; ps++)
 {
 $('.'+_pageshow[ps]).show();
 }
+
 }
 
 
@@ -337,9 +382,9 @@ function onlyUnique(value, index, self) {
 }
 
 
-//$("a.Setuptoggle").click(function(){
-//    $(this).next().toggle(250);
-//});
+$("a.Setuptoggle").click(function(){
+    $(this).next().toggle(250);
+});
 </script>
 
 

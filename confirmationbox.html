@@ -1,0 +1,98 @@
+<!-- The Modal -->
+  <div class="modal fade rounded " id="idconfirmationBox" name="idconfirmationBox" >
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+    
+      
+        <!-- Modal Header -->
+        <div class="modal-header" id="idconfirmationBoxTextheader" name="idconfirmationBoxTextheader">
+          <p class="modal-title" id="idconfirmationBoxText" name="idconfirmationBoxText">Modal Heading</p>
+          <button type="button" class="close mbsize" data-dismiss="modal">ok</button>
+        </div>
+        
+        <div id="idMessageBoxBodyconfirmation" name="idMessageBoxBodyconfirmation"   class="modal-body confirmationbody">
+          Modal body..
+        </div>
+        
+      <div class="modal-footer">
+      <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-default form-control float-left confirm-close" data-dismiss="modal">Close</button>
+      </div>
+      <div class="col">
+       <button type="button"   id="confirm-action"   name="confirm-action"  class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 confirm-action">Proceed</button>
+     </div>
+     </div>
+     </div>
+
+      </div>
+    </div>
+</div>
+
+<script>
+function confirmationboxOpen(code,confirm){
+ 
+  $('#confirm-action').addClass(confirm);  
+  var title = msgLibrary[code]["title"];
+     var type = msgLibrary[code]["type"];
+      if(type == 'Error')
+      {
+        $('#idconfirmationBoxTextheader').addClass('alert alert-danger');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-warning');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-success');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-info');  
+      }
+      else
+       if(type == 'Warning')
+      {
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-danger');  
+        $('#idconfirmationBoxTextheader').addClass('alert alert-warning');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-success');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-info'); 
+      }else
+       if(type == 'Info')
+      {
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-danger');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-warning');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-success');  
+        $('#idconfirmationBoxTextheader').addClass('alert alert-primary'); 
+      }else
+      if(type == 'Success')
+      {
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-danger');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-warning');  
+        $('#idconfirmationBoxTextheader').addClass('alert alert-success');  
+        $('#idconfirmationBoxTextheader').removeClass('alert alert-info');  
+
+      }
+  
+
+  if (code == "1") {
+    document.getElementById("idconfirmationBoxText").innerHTML = "No Internet Connection"; 
+  } else  {
+    var msg = msgLibrary[code]["description"];
+        document.getElementById("idconfirmationBoxText").innerHTML = title ; 
+    document.getElementById("idMessageBoxBodyconfirmation").innerHTML = JSON.parse(msg).en ; 
+  }
+  
+  $('#idconfirmationBox').modal('show');  
+  // Auto close;
+//  setTimeout(function(){ $('#idconfirmationBox').modal('hide'); }, 5000);
+}
+
+function confirmationboxClose(){
+    $(".confirm-close").click(); 
+}
+</script>
+
+<style>
+.confirmationbody {
+  background-color: #ffffff;
+}
+
+.mbsize {
+  font-size: 15px;
+}
+
+</style>

@@ -15,7 +15,7 @@
                       <div style="height:50px">
                         </div>
                          <div class="row justify-content-center">
-                            <h5 class="mb-0 mt-2 text-center loginheadertext"><strong >Helpdesk</strong></h5>
+                            <h5 class="mb-0 mt-2 text-center loginheadertext"><strong onclick="pagetransfer()" >Helpdesk</strong></h5>
 <!--                            				<h1 class="lead text-center text-primary" style="font-size:3rem" onclick="page_show('pageLogin','pageProfileUser');">Helpdesk</h1>-->
 
                         </div>
@@ -104,6 +104,16 @@
 
 
 <script>
+
+
+function pagetransfer()
+{
+					page_show('pageLogin','pageMain');
+					page_show('pageLogin','pageContent');
+}
+
+
+var G_loginuser;
 var isreviewed;
 var isnotreviewed;
 var hdsvgimage;
@@ -218,22 +228,30 @@ var _originalname='';
 var _originalprofileimage='';
 
 function sign_inOk(data) {
+
+G_loginuser=data;
 	if (data.result.code == 3000) {
-    
+    		progressboxClose();
+
     _originalname=data.data[0].name;
     _originalprofileimage=data.data[0].profileimage;
-		progressboxClose();
 
 		if (data.data[0].status == "true") {
 			if (data.data[0].hasaccess == "true") {
 				// No Locked;
                 
 				if (data.data[0].locked == "false") {
+//                		progressboxOpen();
+                loginsessionOpen(data.data[0].name);
+                loadsystemrole(data.data[0]);
+//                progressboxClose();
                 loadimage(data);
                 loadsidebar(data);
-                profile_loadalluser(data)
 					page_show('pageLogin','pageMain');
 					page_show('pageLogin','pageContent');
+                    
+                progressboxClose();
+                profile_loadalluser(data)
                     
 				} else {
 					toastboxOpen("1001"); 
@@ -350,7 +368,12 @@ function reset_passwordOk(data) {
 	}  
 } // END reset_passwordOk();
 </script>
-
+<script>
+function loginsessionOpen(username)
+{
+window.sessionStorage.setItem("islogin",'Login');
+}
+</script>
 
 
 

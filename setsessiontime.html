@@ -1,0 +1,94 @@
+<script>
+function Counter(options) {
+    var timer;
+    var instance = this;
+    var seconds = options.seconds || 10;
+    var onUpdateStatus = options.onUpdateStatus || function() {};
+    var onCounterEnd = options.onCounterEnd || function() {};
+    var onCounterStart = options.onCounterStart || function() {};
+    var cal_seconds=0;
+    var cal_seconds=0;
+
+    function decrementCounter() {
+        onUpdateStatus(seconds);
+        if (seconds === 0) {
+            stopCounter();
+            onCounterEnd();
+            return;
+        }
+        cal_seconds = pad(seconds % 60);
+        cal_minutes =  pad(parseInt(seconds / 60));
+        $('#timecountnow').html(cal_minutes+':'+cal_seconds);
+        seconds--;
+        
+        
+        
+    };
+    
+    
+    function pad(val) {
+           var valString = val + "";
+           if (valString.length < 2) {
+           return "0" + valString;
+           } else {
+           return valString;
+           }
+    }
+    
+    function startCounter() {
+        onCounterStart();
+        clearInterval(timer);
+        timer = 0;
+        decrementCounter();
+        timer = setInterval(decrementCounter, 1000);
+    };
+
+    function stopCounter() {
+        clearInterval(timer);
+    };
+
+    return {
+        start : function() {
+            startCounter();
+        },
+        stop : function() {
+        seconds=600;
+            stopCounter();
+        }
+    }
+};
+
+
+
+    var countdown = new Counter({
+    // number of seconds to count down
+    seconds: 60000,
+
+    onCounterStart: function () { 
+        // show pop up with a message 
+    $('#timecountnow').html('Login');
+        $('#timecountnow').text('Login');
+
+    },
+
+    // callback function for each second
+    onUpdateStatus: function(second) {
+
+        // change the UI that displays the seconds remaining in the timeout 
+
+    },
+
+    // callback function for final action after countdown
+    onCounterEnd: function() {
+    window.sessionStorage.setItem("islogin",'Logout');
+      $('#pageMain').hide();
+      $('#'+currentpage).hide();
+	page_show(currentpage,'pageLogin');
+        $('#timecountnow').text('Time out'); 
+      	toastboxOpen("3006"); 
+        // show message that session is over, perhaps redirect or log out 
+                $('#timecountnow').html('Logout');
+
+    }
+});
+</script>

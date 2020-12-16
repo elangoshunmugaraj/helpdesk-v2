@@ -670,7 +670,8 @@ color: #79CEFF;
 </style>
 
 <script>
-var profile_allusers;
+//var profile_allusers;
+var G_recentactivities;
 var originaluserid;
 var issignbyemail;
  var getusermanager='';
@@ -763,16 +764,19 @@ $(document).on('change','.changestatus',function(e)
 var status=$(this).prop('checked');
 
 
-
+var selectflag=0
             if(values == 'on')
             {
             status=status;
             values='';
+            selectflag='Button';
             }
             else
             {
             status='true';
             values=values;
+            selectflag='DropDown';
+
             }
 
 
@@ -785,9 +789,16 @@ var _changestatusparams = {	"action" : "update_userpreference",
             "username":pp_name
 			}};
 
+if((selectflag == 'Button' && values =='')  || (selectflag == 'DropDown' && values !='') )
+{
 google.script.run
 .withFailureHandler(profile_inError).withSuccessHandler(profile_updateuserpreference)
 .executeprofile(_changestatusparams)
+}
+else
+{
+  toastboxOpen("2008");
+}
 });
 
 
@@ -864,6 +875,8 @@ google.script.run
 var _addroles;
 function profile_loadactivities(data)
 {
+
+G_recentactivities=data;
 	if (data.result.code == 3000) {
     
     
@@ -901,6 +914,11 @@ var Additionaldata;
 var addstatus='';
 if(data.data.preference[i].status == 'true' )
 {
+if( idval == 8)
+{
+assignedlogouttime=data.data.preference[i].Additionaldata;
+}
+else
 if(idval == 7)
 {
 _addroles= '<option value="">Select role</option>';
@@ -952,7 +970,6 @@ progressboxClose();
 
 function profile_loadalluser(data)
 {
-
 
 
 if(data.result['code'] == '3000')
@@ -1138,7 +1155,7 @@ progressboxClose();
 
 
 function loadmanager(data)
-{
+  {
 
 
 var getmanagerlist=data.data[0].manager;

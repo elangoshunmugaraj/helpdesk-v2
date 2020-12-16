@@ -1,0 +1,347 @@
+
+<div class="container-fluid mt-5 pageImagelibrary_fullview_section" id="Imagelibrarypage" name="Imagelibrarypage">
+  <div class="container">
+  <h6><strong>Image Library</strong></h6>
+  <div class="card">
+  <div class="card-body">
+	
+    <div class="row">
+    <div class="col-sm-3">
+			<div class="form-group">
+				<label for="isImagelibrarytype">Logo/Image</label>
+				<div class="custom-control ">
+                  <input type="checkbox" id="isImagelibrarytype" name="isImagelibrarytype" data-toggle="toggle" data-on="Image" data-off="Logo" data-onstyle="success" data-offstyle="danger">
+				</div>
+			</div>    
+		</div>
+    <div class="col-sm-6">
+			<div class="form-group">
+				<label for="Imagelibraryname">Image name</label>
+				<input type="text" class="form-control rounded-pill" id="Imagelibraryname" placeholder="" name="Imagelibraryname" autocomplete="off">
+			</div>
+		</div>
+       
+       <div class="col-sm-3">
+
+			<div class="form-group">
+				<div class="Imagelibrary-container Imagelibrary">
+                      <div class=" ">
+                          <img  id='imagelibrarypicture' class="Imagelibrary-src" name="imagelibrarypicture" src='https://storage.googleapis.com/imagelib/imagelibrary/imagelibrarydefault.png'  >
+                         
+                          
+                             <form>
+                             <input  type="file" id="uploadimagelibrarypicture" name="uploadimagelibrarypicture"   accept="image/gif, image/jpeg, image/png">
+                             <input type=button class="  uploadfileimagelibrary transparant "  />
+                             </form>
+                        </div>
+                  </div>
+			</div>    
+		</div>
+    </div>   
+   <div class="row">
+     
+       <div class="col-sm-10">
+			<div class="form-group">
+				<label for="Imagelibraryname">Keyword</label>
+				<input type="text" class="form-control rounded-pill" id="Imagelibrarykeyword" placeholder="" name="Imagelibrarykeyword" autocomplete="off">
+			</div>
+    </div>
+       
+       
+       
+          <div class="col-sm-2">
+			<div class="form-group">
+				<label for="isImagelibraryactive">Active</label>
+				<div class="custom-control custom-switch custom-switch-lg">
+					<input type="checkbox" class="custom-control-input" id="isImagelibraryactive" name="isImagelibraryactive" >
+					<label class="custom-control-label" for="isImagelibraryactive"></label>
+				</div>
+			</div>    
+		</div>
+	</div> 
+    
+   
+   
+  </div><!--< END class="card-body">  style="display:none;" -->
+  </div>
+   <div class='row card '>
+        <h6><strong>Company</strong></h6>
+        <br>
+  
+       <div >
+             <div class="row">
+                          <div class="col-md-12">
+                              <div class="add-items d-flex "> <input type="text" id="imagelibrarycompany" name="imagelibrarycompany" class="form-control todo-list-input rounded-pill " placeholder="Search company..." >  <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm   plusbutton'  onclick="addimagelibrarycompanyintolist()" ><i class="fas fa-plus " id="addimagelibrarycompanyitems" name="addimagelibrarycompanyitems" ></i></button> </div>
+                          </div>
+             </div>
+             <div class="row" name="addimagelibraryrow">
+                          <div class="col-md-12" name="addimagelibrarycolumn" >
+                            <ul id="addimagelibrarycompany" name="addimagelibrarycompany">
+                            </ul>
+                          </div>
+              </div>
+</div>
+    </div>
+</div>
+  <div class="row mt-5">
+      <div class="col-md-6 ">
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+      <div class="input-group pageImagelibrary_save_section" >
+      <button type="button" class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" id="callcreateImagelibrary" name="callcreateImagelibrary" >Save</button>
+      </div>
+      </div>
+  </div>
+</div>
+</div>
+<script>
+
+//show element based on type
+$(function(){
+    $(".toggle").click(function() {
+      if($(this).hasClass("off"))
+      {
+        console.log("drawdd")
+          //call some function
+      } else {
+        console.log("erase")
+          //call some other functions
+      }
+    });
+
+})
+
+
+// upload image here
+   $("#uploadimagelibrarypicture").change(function(){
+        imagelibraryreadURL(this);
+    });
+function imagelibraryreadURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imagelibrarypicture').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+    
+    setTimeout(function () {
+   jQuery('.uploadfileimagelibrary').trigger('click');
+  }, 0);
+
+}
+
+
+
+ 
+    $(document).on('click','.uploadfileimagelibrary',function() {
+if(this.parentNode!='')   
+{
+//      progressboxOpen();
+//      alert(this.parentNode)
+            google.script.run.withFailureHandler(Imagelibrary_inError).withSuccessHandler(ImagelibraryOfuploadfile).uploadimagelibraryfile(this.parentNode);
+    }
+    });
+    
+var _uploadedfilename;
+function ImagelibraryOfuploadfile(file)
+{
+alert(file)
+_uploadedfilename=file;
+      progressboxClose();
+
+}
+
+ //console.log("draw")
+</script>
+<script>
+//Error message
+function Imagelibrary_inError(err) {
+  progressboxClose();
+  toastboxOpen("2000");
+}
+
+
+//Used for make viewdetail div disable
+var pageImagelibrary_viewdetails = false;
+var imagelibraryid='';
+ function fulltheImagelibrarydata(data)
+ {
+ imagelibraryid=data.id;
+ $("#Imagelibraryname").val(data.filename);
+  $("#imagelibrarypicture").attr("src",data.url);
+ $("#Imagelibrarykeyword").val(data.keyword);
+     $('#isImagelibraryactive').prop('checked', data.status);
+    $('#isImagelibrarytype').prop('checked', data.imagetype);
+
+// if(data.status == 'true' )
+// {
+//    $('#isImagelibraryactive').prop('checked', true);
+//    }
+//    else
+//    if(data.status == 'false' )
+// {
+//    $('#isImagelibraryactive').prop('checked', false);
+// }
+//  if(data.imagetype == 'true' )
+// {
+//    $('#isImagelibrarytype').prop('checked', true);
+//    }
+//    else
+//    if(data.imagetype == 'false' )
+// {
+//    $('#isImagelibrarytype').prop('checked', false);
+// }
+  pageImagelibraryactioncontrol();
+  page_show('pageImagelibrarymanagement','pageImagelibrary')
+
+ }
+        
+//Create new Imagelibrary
+$(document).on('click','#callcreateImagelibrary',function(e) {
+var  Imagelibraryname=$('#Imagelibraryname').val();
+var isImagelibraryactive = $('#isImagelibrarytype').is(':checked');
+var  isImagelibrarytype=$('#isImagelibrarytype').val();
+var  imagelibrarypicture=$('#imagelibrarypicture').val(); 
+var  Imagelibrarykeyword=$('#Imagelibrarykeyword').val();
+var  isImagelibraryactive=$('#isImagelibraryactive').is(':checked');
+
+		var _Imagelibraryparams = {
+			"action" : "create_imagelibrary",
+			"param"  : {"id":imagelibraryid
+                       ,"imagetype" : isImagelibrarytype
+                       ,"url" : "https://storage.googleapis.com/imagelib/imagelibrary/"+_uploadedfilename
+                       ,"keyword" : Imagelibrarykeyword
+                       ,"status" : isImagelibraryactive
+                       ,"filename" : Imagelibraryname
+                       ,"createby":_getloginname}
+			};
+            
+            
+            if(Imagelibraryname!='' && Imagelibrarykeyword!='')  
+            {
+            progressboxOpen();
+            google.script.run
+            .withFailureHandler(showerror)
+            .withSuccessHandler(Imagelibraryconfirmation)
+            .executeimagelibrary(_Imagelibraryparams);
+      }
+      else
+      {
+  toastboxOpen("2008");
+}
+});
+
+//Confirm Imagelibrary creation
+function Imagelibraryconfirmation(result)
+{
+      if(result.result['code'] == '3000')
+      {
+          progressboxClose();
+          imagelibraryid='';
+          $('#Imagelibrarypage *').val('');
+          loadallImagelibrarys();
+          page_show('pageImagelibrary','pageImagelibrarymanagement')
+          toastboxOpen("3001");
+      }
+      else
+      {
+          toastboxOpen("2007");
+      
+      }
+}
+
+// Show error message
+function showerror(err)
+{
+          progressboxClose();
+            toastboxOpen("3002");
+}
+</script>
+
+<script>
+// Control the page action.
+function pageImagelibraryactioncontrol()
+{
+pageImagelibrary_viewdetails=page_actioncontrol("pageImagelibrary","SAVE");
+//Div disabled based on the condition 
+if(pageImagelibrary_viewdetails == false){$(".pageImagelibrary_fullview_section *").attr('disabled','disabled');}
+else{    $(".pageImagelibrary_fullview_section *").prop("disabled", false);}
+}
+
+
+
+</script>
+
+<script>
+function addimagelibraryintolist()
+{
+   var _addimagelibraryvalues = $('#imagelibrarysearchforadd').val();
+    $("#modulesearchforadd").val("");
+    if(_addimagelibraryvalues!='')
+    {
+        var nl = $("#addimagelibrary").length
+    var imagelibrarylist="imagelibrarylist"+nl;
+    var liimagelibrarylistid="liimagelibrarylistid"+nl;
+   $('#addimagelibrary').append(" <li class='form-control rounded-pill removeinlist listdesign'>"+_addimagelibraryvalues+" <button  class=' btn  font-weight-bold todo-list-add-btn btn-sm  delete closebtn' id='"+imagelibrarylist+"' name='imagelibrarylist' ><i class='fas fa-window-close'></i></button></li>");
+}
+}
+
+
+$('#addimagelibrary').on('click', '.delete',function(){ 
+    $(this).parent().remove();
+});
+</script>
+<style>
+
+/*Imagelibrary Pic Start*/
+.Imagelibrary-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #2D9CDB;
+box-sizing: border-box;
+border-radius: 10px;
+}
+
+
+.Imagelibrary{
+    width: 106px;
+    height: 106px;
+    background-color: #ffffff;
+    color: #FFFFFF;
+    margin: 0px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+
+}
+
+
+.Imagelibrary input[type="file"] {
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.Imagelibrary-src{
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+
+}
+/*Imagelibrary Pic End*/
+input[type=text] {
+ background: #F8F8F8;
+border: 1px solid #F0F0F0;
+border-radius: 100px;
+}
+
+</style>

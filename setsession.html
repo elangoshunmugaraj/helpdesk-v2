@@ -1,0 +1,163 @@
+<!--<div>
+<label  style="disabled:none" id="minutes" name="minutes">00</label>:<label   style="disabled:none"  id="seconds"   name="seconds">00</label>
+</div>-->
+<script>
+window.sessionStorage.setItem("islogin",'NotLogin');
+
+$('#timecountnow').html('Login'); 
+var IsProgress=false;
+var checkislogin = sessionStorage.getItem("islogin");
+
+window.onblur = function(){
+var checkislogin = sessionStorage.getItem("islogin");
+if (checkislogin != 'Logout' && checkislogin != null )
+    {
+    countdown.start();
+    }
+else
+    {
+    countdown.stop();
+    }
+};
+    
+    
+    
+    
+    
+    $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
+   
+   var checkislogin = sessionStorage.getItem("islogin");
+        if(checkislogin == 'Login' )
+        {
+        $('#timecountnow').html('Login'); 
+        clearInterval(timer);
+        countdown.stop();
+        countdown.start();
+        $('#timecountnow').html('Login'); 
+
+        }
+    });
+    
+    
+//window.sessionStorage.setItem("islogin",'NotLogin');
+
+//$(document).ready(function () {   
+//var IsProgress=false;
+//var setminutes=3;
+//var totalSeconds = 0;
+//var intervalcall;
+//var timer;
+// $('#timecountnow').html('Login'); 
+// 
+//     var checkislogin = sessionStorage.getItem("islogin");
+//
+//    window.onblur = function(){
+//    
+//
+//     timer = function(){
+//
+//  intervalcall = setInterval(setTime, 1000);
+//    };
+//    var cal_seconds;
+//    var cal_minutes;
+//
+//             function setTime() {
+//         var checkislogin = sessionStorage.getItem("islogin");
+//      if ( checkislogin != 'Logout' && checkislogin != null && IsProgress == false)
+//      {
+//              ++totalSeconds;
+//             cal_seconds = pad(totalSeconds % 60);
+//            cal_minutes =  pad(parseInt(totalSeconds / 60));
+//                $('#timecountnow').html(cal_minutes+':'+cal_seconds);
+//                
+//                if(cal_minutes  == setminutes)
+//                {
+//                logoutnow();
+//                }
+//        }
+//        else
+//        {
+//          clearInterval(intervalcall);
+//        }
+//                   }
+//    
+//            function pad(val) {
+//                  var valString = val + "";
+//                  if (valString.length < 2) {
+//                    return "0" + valString;
+//                  } else {
+//                    return valString;
+//                  }
+//            }
+//    
+//    
+//    
+//    
+//
+//    };  
+//  
+//    function logoutnow(){
+//    window.sessionStorage.setItem("islogin",'Logout');
+//          $('#pageMain').hide();
+//	page_show(currentpage,'pageLogin');
+//        $('#timecountnow').text('Time out'); 
+//      	toastboxOpen("3006"); 
+//    }
+//    
+// 
+// 
+//  window.onfocus = function(){
+//  
+////  if(checkislogin == 'Login')
+////{
+//      stopinterval();
+//      clearTimeout();
+////      }
+//    };
+//  
+//  
+//  function clearTimeout()
+//      {
+//      totalSeconds=0;
+//      $('#timecountnow').text('Login');
+//      $('#timecountnow').html('Login');
+//      }
+//      
+//      function stopinterval() {
+////      timer();
+////      $(document).ready(timer);
+////      window.opener.document.timer.intervalcall(); 
+//
+//      clearInterval(intervalcall);
+////      break;
+//      timer();
+////      $(document).ready(timer);
+//
+//      }
+// 
+// 
+// 
+//  $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
+//
+//     var checkislogin = sessionStorage.getItem("islogin");
+//if(checkislogin == 'Login' )
+//{
+//stopinterval();
+//clearTimeout();
+//}
+//});
+ 
+ 
+   
+//   });
+
+ 
+
+</script>
+
+
+
+
+
+
+

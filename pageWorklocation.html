@@ -1,0 +1,280 @@
+
+<div class="container-fluid mt-5 pageWorklocation_fullview_section" id="worklocationpage" name="worklocationpage">
+  <div class="row">
+    <div class="createworklocation-title col-12 min-vh-50">
+      <h6><strong>Create Worklocation</strong></h6>
+    </div>
+    <br>
+  </div>
+  
+  
+  <div class="card mb-3">
+    <div class="card-body">
+    
+    
+    <div class="row mb-3">
+    <div class="col-md-10">
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-6">
+       </div>
+       <div class="col-md-2">
+          <label>Active</label>
+          <div class="custom-control custom-switch custom-switch-lg   " id="isworklocationactive_switch">
+            <input type="checkbox" class="custom-control-input active changedownload" id="isworklocationactive"
+              name="isworklocationactive" checked>
+            <label class="custom-control-label" for="isworklocationactive"></label>
+            </div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+   
+      <div class="row">
+        <div class="col-sm-6 pb-2">
+          <div class="form-group">
+            <label for="worklocationname">Worklocation Name</label>
+            <input type="text" class="form-control rounded-pill inputboxcolor" id="worklocationname" placeholder="eg: Riyadh"
+              name="worklocationname" autocomplete="off">
+          </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="worklocationbusinessunitname">Business Name</label>
+            <select class="form-control rounded-pill inputboxcolor " id="worklocationbusinessunitname" 
+              name="worklocationbusinessunitname" > <option value=''>Select Company</option></select>
+              
+          </div>
+        </div>
+      </div>
+      
+        
+      
+      
+          
+    </div>
+    
+             
+   </div>
+    
+ 
+  <div class="row align-self-end mb-3">
+    <div class="col-sm-3 offset-sm-9">
+      <div class="input-group pageWorklocation_save_section" style="display:none;">
+        <button type="button" class="btn btn-primary form-control custom-input float-right rounded-pill border-0"
+          id="callcreateworklocation" name="callcreateworklocation">Save</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+<script>
+
+
+
+
+
+
+var worklocationdeletingdomain=[];  // need to predefine for get deleted items;
+function getworklocationrecorddata(valueof)
+{
+worklocationdeletingdomain=[];
+$('.createworklocation-title').html('<h6><strong>Update Worklocation</strong></h6>');
+$('#worklocationname').val(valueof.data[worklocation_id].name);
+$('#worklocationlogo').html("<img src='" + valueof.data[worklocation_id].url + "'style='width: 30px; height: 30px'>");
+var statusval=valueof.data[worklocation_id].status;
+if(statusval == 'true')
+    {
+    $('#isworklocationactive').prop('checked',  true);
+    }
+else
+if(statusval == 'false')
+    {
+    $('#isworklocationactive').prop('checked',  false);
+    }
+$('#worklocationprefix').val(valueof.data[worklocation_id].prefix);
+$('#worklocationbusinessunitname').val(valueof.data[worklocation_id].businessunitid);
+
+page_show('pageWorklocationmanagement', 'pageWorklocation');
+pageWorklocationactioncontrol();
+progressboxClose();
+}
+    
+    
+ 
+
+    
+  
+
+
+  $(function () {
+
+    var pageWorklocation_viewdetails = false;
+
+
+//    $('#worklocationforadd').tokenfield();
+
+    $(document).on('click', '.dropdown-menu a', function () {
+      $('#worklocationlogo').html($(this).html())
+    })
+
+
+//
+//  $(document).on('change', '#worklocationbusinessunitnamecheck', function () {
+//alert($(this).val())
+//})
+//    
+    
+  var worklocation_caninactive='No';
+$(document).on('click','#callcreateworklocation',function(e) {
+worklocation_caninactive='No';
+saveworklocationdetails(worklocation_caninactive);
+});
+$(document).on('click','.pageWorklocation_confirm',function(e) {
+worklocation_caninactive='Yes';
+saveworklocationdetails(worklocation_caninactive);
+confirmationboxClose();
+});
+    
+    
+    // Save button
+    function saveworklocationdetails(worklocation_caninactive)
+    {
+
+      var worklocationname = $('#worklocationname').val();
+
+      var isworklocationactive = $('#isworklocationactive').prop('checked');
+
+ var worklocationbusinessunitname = $('#worklocationbusinessunitname').val();
+
+ 
+
+        
+
+      var _worklocationparams = {
+        "action": "worklocation_maintain",
+        "param": {
+          "id": worklocation_id,
+          "name": worklocationname,
+          "status": isworklocationactive,
+          "businessunitid": worklocationbusinessunitname,
+          "createby": _getloginname,
+          "worklocation_caninactive":worklocation_caninactive,
+        }
+      };
+
+        
+
+     if( validateBeforeSubmit(worklocationname) == 'true'  && worklocationbusinessunitname!='')
+     {
+      progressboxOpen();
+      google.script.run.withFailureHandler(worklocation_inError).withSuccessHandler(worklocationconfirmation).executeworklocation(_worklocationparams) 
+      }
+      else
+      {
+      toastboxOpen("2008")
+      }
+    }
+
+    
+
+  });
+
+  // For acknowledgement
+
+  function worklocationconfirmation(result) {
+  if(isNaN(result.result['code']) == false)
+{
+    if (result.result['code'] == '3000') {
+//      $('#worklocationpage *').val('');
+        worklocationid='';
+        worklocation_actionfromwhere='afterupdate';
+          retrive_allworklocationdetails(result);
+      pageWorklocationactioncontrol();
+      page_show('pageWorklocation', 'pageWorklocationmanagement');
+      }
+    else
+      if(result.result['code'] == '2016')
+      {
+           progressboxClose();
+           confirmationboxOpen(2016,"pageWorklocation_confirm");
+      }
+      else
+      {
+          progressboxClose();
+         toastboxOpen(result.result['code']);
+      }
+      }
+    else {
+      toastboxOpen("2007");
+    }
+
+  }
+
+
+
+
+
+  //Function Dropdown to display the worklocation logo
+  function loadinworklocation(image) {
+  
+  
+  var imglibraryKey = Object.keys(image.data.imagelibrary[0])
+
+    if (image.result['code'] == '3000') {
+      for (var key of imglibraryKey) {
+        $('#worklocationlogodropdown').append('<a class="dropdown-item" href="#"> ' +
+          '<img src="' + image.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + image.data.imagelibrary[0][key].keyword + '</a>')
+      };
+    }
+    
+
+  }
+
+
+
+$(document).on('keypress','#worklocationname',function(e) {
+
+autocomplete(document.getElementById("worklocationname"), worklocationnamenameavailable);
+});
+
+
+   // For page action control
+  function pageWorklocationactioncontrol() {
+  
+    pageWorklocation_viewdetails = page_actioncontrol("pageWorklocation", "SAVE");
+    //Div disabled based on the condition 
+    if (pageWorklocation_viewdetails == false) { $(".pageWorklocation_fullview_section *").attr('disabled', 'disabled'); }
+    else { $(".pageWorklocation_fullview_section *").prop("disabled", false); }
+  }
+
+    
+ function loadbusinessunitnameinworklocation(details)
+ {
+
+ $('#worklocationbusinessunitname').empty();
+  var _addcompanynameinworklocation='<option value="">Select Businessunit</option>';
+ var totalcompanyId = details.businessunitid;
+        if (details.result['code'] == '3000') {
+            for (var id of totalcompanyId) {
+            if(details.data[id].status == 'true')
+            {
+                  _addcompanynameinworklocation += "<option  value='" + details.data[id].id + "'>" + details.data[id].name  + "</option>";
+               $('#worklocationbusinessunitname').html(_addcompanynameinworklocation);
+                  }
+                  
+              }    
+            }
+  }
+  
+ 
+ 
+ 
+ 
+
+</script>

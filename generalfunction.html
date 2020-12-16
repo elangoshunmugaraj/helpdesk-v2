@@ -1,8 +1,9 @@
 <script>
 var currentpage;
 function page_show(id1,id2){
-
+var _getitem = sessionStorage.getItem("loginuser");
 currentpage=id2;
+//alert(id1+"now page onlode" +id2)
 if(id1!='')
 {
 if ($('#'+id1+':visible').length!=0 ) {
@@ -19,6 +20,71 @@ if ($('#'+id1+':visible').length!=0 ) {
 function change_content(id1){
 $('#'+id1).show(); 
 
+}
+
+
+function extractNumbers(value)
+{
+value=value.replace( /^\D+/g, '');
+
+return value;
+}
+
+function validateDomain(value)
+{
+var result= 'false';
+var isavailabel= value.indexOf('.')
+if(isavailabel > 0)
+{var splitval=value.split('.');
+if(splitval.length >1){if(splitval[1]!=''){result= 'true';}else{result = 'false';}} else{result = 'false';}} else{ result = 'false';}
+return result;
+}
+
+ 
+function validateBeforeSubmitforURL(value){
+  var result = "false";
+ 
+ var isdefault= value.indexOf('userCodeAppPanel')
+ 
+ if( value!=null && value!='null' && value!=undefined && value!='undefined' && isdefault == -1)
+{
+if(value!='' && value!=' ' && value.trim()!='')
+{
+result ='true'
+}
+}
+
+  return result;
+}
+
+
+function findValueInArray(value,arr){
+  var result = "false";
+ 
+  for(var i=0; i<arr.length; i++){
+    var name = arr[i];
+    if(name == value){
+      result = 'true';
+      break;
+    }
+  }
+
+  return result;
+}
+
+
+
+function validateBeforeSubmit(value){
+  var result = "false";
+ 
+ if(value!=null && value!='null' && value!=undefined && value!='undefined')
+{
+if(value!='' && value!=' ' && value.trim()!='')
+{
+result ='true'
+}
+}
+  return result;
 }
 
 
@@ -40,6 +106,7 @@ var _actionavailabel=[];
 if (_getaction.indexOf(',') > -1) { _actionavailabel=_getaction.split(',') } else {_actionavailabel.push( _getaction)}
 for (var a=0; a<_actionavailabel.length; a++)
 {
+//alert('.'+page+'_'+(_actionavailabel[a]).toLowerCase()+'_section')
 $('.'+page+'_'+(_actionavailabel[a]).toLowerCase()+'_section').show();
 if(_actionavailabel[a] == action)
 {
@@ -75,8 +142,7 @@ return viewdetails;
 
 <script>
 
-
-
+var G_sys_parameter;
 var sysParameter;
 var msgLibrary;
 getSysParameter();
@@ -97,7 +163,7 @@ google.script.run
 //			.runAPI(_params);
 }
 function getSysParameterOk(data){
-
+G_sys_parameter=data;
    if (typeof(Storage) !== "undefined"  && data.result.code != 500) {
    
      sysParameter = data.data.sys_parameter[0];
@@ -128,28 +194,184 @@ function loadSysParameter(){
 }
 
 
-getalluser();
-function getalluser(){
+//getalluser();
+//function getalluser(){
+//
+//	var _aluserparams = {	"action" : "show_alluserdetails"};
+//
+//google.script.run
+//.withFailureHandler(getSysParameterError)
+//.withSuccessHandler(loadalluser).onload(_aluserparams)
+//}
+//
+//function loadalluser(data)
+//{
+//profile_allusers = data;
+////alert(JSON.stringify(data))
+//}
 
-	var _aluserparams = {	"action" : "show_alluserdetails"};
-
-google.script.run
-.withFailureHandler(getSysParameterError)
-.withSuccessHandler(loadalluser).onload(_aluserparams)
-}
-
-function loadalluser(data)
-{
-profile_allusers = data;
-//alert(JSON.stringify(data))
-}
-
-function Email_validate(value)
+function email_validate(value)
 {
 var getresult=(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value))
 return getresult;
 }
 
+
+
+  function updatetoList(param,pagename)
+{ 
+  pagename=pagename.toLowerCase();
+
+        var _lengthasid= $('#'+pagename+'list li').length
+
+    var _listbtn=pagename+"listbutton_"+_lengthasid;
+    var _listid=pagename+"listid_"+_lengthasid;
+    var _listtext=pagename+"listtext_"+_lengthasid;
+    var _updateid=pagename+"listupdateid_"+_lengthasid;
+    var _updateval="";
+   var _inputtext ='';
+     var param = {   "idlI": _listid,
+                      "idInputText": _listtext,
+                      "libutton": _listbtn,
+                      "lisearchdata" : param.listdata,
+                      "updateid":_updateid,
+                      "updateval":param.listid
+                   };
+                  
+ addinlistdata(param,pagename);
+    
+
+
+}
+
+
+
+
+function addtoList(pagename)
+{
+  pagename=pagename.toLowerCase();
+   var _searchvalue = $('#'+pagename+'listsearch').val();
+    $("#"+pagename+"listsearch").val("");
+    if(_searchvalue!='')
+    {
+
+         $('#'+pagename+'listadd').hide();
+        $('#'+pagename+'listsearch').addClass('rounded-pill');
+     $('#'+pagename+'listsearch').removeClass('rounded-pill-left');
+          
+        var _lengthasid= $('#'+pagename+'list li').length
+
+
+    var _listbtn=pagename+"listbutton_"+_lengthasid;
+    var _listid=pagename+"listid_"+_lengthasid;
+    var _listtext=pagename+"listtext_"+_lengthasid;
+    var _updateid=pagename+"listupdateid_"+_lengthasid;
+    var _updateval="";
+   var _inputtext ='';
+     var param = {   "idlI": _listid,
+                      "idInputText": _listtext,
+                      "libutton": _listbtn,
+                      "lisearchdata" : _searchvalue,
+                      "updateid":_updateid,
+                      "updateval":_updateval
+                   };
+                   
+   addinlistdata(param,pagename);
+    
+
+
+}
+}
+
+
+function addinlistdata(param,pagename)
+{
+
+var passfunction=pagename+"_deletelistitem"
+    var addlist = '<li class="input-group input-group-lg mb-2 rounded-pill removelist " id="' + param.idlI + '" name="' + param.idlI + '">' + 
+			'<input type="text" id="' + param.idInputText + '" class="form-control rounded-pill-left inputboxcolor textboxfontsize " aria-label="Search for company" aria-describedby="'+ param.libutton +'" value="' + param.lisearchdata + '" >' +
+			'<div class="input-group-append ">' +
+			'<span class="input-group-text input-group-btn rounded-pill-right '+passfunction+' inputboxcolor"  id="' + param.libutton  + '" style="curser:pointer" >' +
+			'<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+			'<rect width="23" height="23" rx="5" fill="#2D9CDB"/>' +
+			'<path d="M13.568 17H15.216L11.792 11.432L15.232 5.848H13.6L11.04 10.216L8.352 5.848H6.72L10.144 11.432L6.736 17H8.352L10.896 12.648L13.568 17Z" fill="white"/>' +
+			'</svg></span><input type="text" id="' + param.updateid + '"  class="form-control rounded-pill-left "  name="' + param.updateid + '" value="'+param.updateval+'"  hidden /></div></li>';  
+
+
+$('#'+pagename+'list').append(addlist);
+
+ 
+
+
+}
+
+
+// $(document).on('click', '.company_deletelistitem', function () {
+//
+//var getid=$(this).attr('id');
+//var pagename="Company";
+//var numbers=extractNumbers(getid);
+//var _getupdateidval = $("#"+pagename+"listupdateid_"+ numbers).val();
+//    $('#'+pagename+'listid_'+numbers).remove();
+//    if(_getupdateidval!="")
+//    {
+//  companydeletingdomain.push( 
+//        {
+//          "id": _getupdateidval
+//        }
+//      )
+//      }
+//            
+//	    });
+   
+
+
+
+
+function getdeleteitem(getid,pagename)
+{
+  pagename=pagename.toLowerCase();
+
+var temparray=[];
+var numbers=extractNumbers(getid);
+var _getupdateidval = $("#"+pagename+"listupdateid_"+ numbers).val();
+
+    $('#'+pagename+'listid_'+numbers).remove();
+    if(_getupdateidval!="")
+    {
+  temparray.push( 
+        {
+          "id": _getupdateidval
+        }
+      )
+      }
+      
+      return temparray;
+ }
+//$('#companylist').on('click', '.delete_createcompanylist',function(){
+//    $(document).on('click', '.dropdown-menu a', function () {
+//
+//var getid=$(this).attr('id');
+//var numbers=extractNumbers(getid);
+//
+//    
+//        var _getupdateidval = $("#companylistupdateid_"+ numbers).val();
+//
+//    $('#companylistid_'+numbers).remove();
+//
+//    if(_getupdateidval!="")
+//    {
+//deleteddomainlist.push(numbers);
+//  _companydeletingdomain.push( 
+//        {
+//          "id": _getupdateidval
+//        }
+//      )
+//      }
+//   
+//   
+//
+//});
 
 </script>
 

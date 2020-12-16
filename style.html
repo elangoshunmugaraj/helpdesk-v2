@@ -224,7 +224,31 @@ body {
     background-color: #2E8B57;
     }
     
-    
+    table td:first-child {
+    border-left:  solid;
+        border-top-left-radius: 25px !important;
+                border-bottom-left-radius: 25px !important;
+  border-color: #eff1f3 !important;
+}
+
+table td:last-child {
+    border-right:  solid;
+        border-top-right-radius: 25px !important;
+                border-bottom-right-radius: 25px !important;
+                border-color: #eff1f3 !important;
+}
+  .tablerowpadding {
+    border-collapse: separate;
+    border-spacing:0 20px;
+}
+
+
+table th {
+    border: none;
+        border-bottom-style: hidden;
+color: #858585;
+}
+
 /* user management style sheet */
 
 /* Enabled */
@@ -323,31 +347,59 @@ background-color:transparent;
 }
 
 
-    table td:first-child {
-    border-left:  solid;
-        border-top-left-radius: 25px !important;
-                border-bottom-left-radius: 25px !important;
-  border-color: #eff1f3 !important;
+.hdselect {
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  margin-bottom: 1em;
 }
 
-table td:last-child {
-    border-right:  solid;
-        border-top-right-radius: 25px !important;
-                border-bottom-right-radius: 25px !important;
-                border-color: #eff1f3 !important;
+.hdselect:after {
+  content: "▼";
+  padding: 12px 8px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
 }
-  .tablerowpadding {
-    border-collapse: separate;
-    border-spacing:0 20px;
+
+.hdselect__field {
+  height: 40px;
+  width: 100%;
+  padding: 5px 15px;
+  color: #616263;
+  background-color: #ececec;
+  border: 1px solid #e3e3e3;
+  outline: none;
+  font-size: 16px;
+  -webkit-appearance: none;
+  /* for webkit browsers */
+  -moz-appearance: none;
+  /* for firefox */
+  appearance: none;
+  /* for modern browsers */
 }
 
 
-table th {
-    border: none;
-        border-bottom-style: hidden;
-color: #858585;
+/* remove default caret for ie */
+
+.hdselect__field::-ms-expand {
+  display: none;
 }
 
+.hdselect__field:focus:invalid {
+  border-color: #FD6347;
+}
+
+.hdselect__field:required:valid {
+  border-color: #006400;
+}
 
 </style>
 
@@ -356,5 +408,84 @@ color: #858585;
   0%   {background-color:#f8d7da; }
   50% {background-color:white; }
   100%  {background-color:#f8d7da; }
+}
+</style>
+
+
+
+<style>
+
+/** data management ****/
+   .tokenfield {
+          height: auto;
+          min-height: 34px;
+          padding-bottom: 0;
+          border-radius: 100px !important;
+      }
+
+      .tokenfield .token {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          -webkit-border-radius: 50px !important;
+          -moz-border-radius: 50px !important;
+          border-radius: 50px !important;
+          display: inline-block;
+          border: 1px solid #2D9CDB;
+          color: #ffffff !important;
+          background-color:#2D9CDB;
+          white-space: nowrap;
+          margin: -1px 5px 5px 0;
+          height: 22px;
+          vertical-align: top;
+          cursor: default;
+      }
+
+    /** <!-- .close {
+          font-weight: 700 !important;
+          color: #2D9CDB !important;
+          text-shadow: 0 1px 0 #fff !important;
+          border: 1px solid !important;
+          border-radius: 100px !important;
+          background-color: #fff !important;
+          padding-left: .2em !important;
+          padding-left: 4px !important;
+          line-height: 1.2em !important;
+          opacity: 1 !important;
+      }-->**/
+      
+      
+      .rounded-pill-left {
+    border-radius: 50rem 0 0 50rem !important;
+}
+
+.rounded-pill-right {
+    border-radius: 0 50rem 50rem 0 !important;
+}
+
+.inputboxcolor{
+ background: #F8F8F8;
+ border-right: 1px solid #F0F0F0;
+ border-top: 1px solid #F0F0F0;
+ border-bottom: 1px solid #F0F0F0;
+ border-left: none;
+ color: #858585;
+}
+
+.textboxfontsize
+{
+font-size: 5px;
+}
+
+
+
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #F8F8F8 !important;
+}
+
+.nodownarrow
+{
+-webkit-appearance: none;
 }
 </style>

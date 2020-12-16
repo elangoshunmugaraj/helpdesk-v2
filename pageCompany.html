@@ -1,0 +1,350 @@
+
+<div class="container-fluid mt-5 pageCompany_fullview_section" id="companypage" name="companypage">
+  <div class="row">
+    <div class="createcompany-title col-12 min-vh-50">
+      <h6><strong>Create Company</strong></h6>
+    </div>
+    <br>
+  </div>
+  
+  
+  <div class="card mb-3">
+    <div class="card-body">
+    
+    
+    <div class="row mb-3">
+    <div class="col-md-10">
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-6">
+       </div>
+       <div class="col-md-2">
+          <label>Active</label>
+          <div class="custom-control custom-switch custom-switch-lg   " id="iscompanyactive_switch">
+            <input type="checkbox" class="custom-control-input active changedownload" id="iscompanyactive"
+              name="iscompanyactive" checked>
+            <label class="custom-control-label" for="iscompanyactive"></label>
+            </div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+    
+    
+      <div class="row">
+        <div class="col-sm-6 pb-2">
+          <div class="form-group">
+            <label for="companyname">Company Name</label>
+            <input type="text" class="form-control rounded-pill inputboxcolor" id="companyname" placeholder="eg: Herfy"
+              name="companyname" autocomplete="off">
+          </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="companylogo">Company Logo</label>
+            <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="companylogo"   name="companylogo" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="form-group dropdown-menu dropdown-menu-left" id="logodropdown"
+              aria-labelledby="dropdownMenuButton">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+    
+     <div class="card mb-3">
+    <div class="card-body">
+         <div class="row" name="addcompanyrow">
+            <div class="col-md-12" name="addcompanycolumn">
+                          <label for="companylogo">Company Domain</label>
+            <div class="input-group input-group-lg mb-2">
+					<input type="text" id="companylistsearch" name="companylistsearch" class="form-control rounded-pill inputboxcolor textboxfontsize" placeholder="Add domain name..." aria-label="add domain..." aria-describedby="companylistadd">
+					<div class="input-group-append ">
+						<span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" id="companylistadd"  name="companylistadd" style="display:none; curser:pointer" onclick="addtoList('Company')">
+							<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+							<path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+					</div>
+				</div>
+                <div id="companylistdiv"  name="companylistdiv">
+                <ul id="companylist" name="companylist" class="px-0 py-0 textboxfontsize">
+                 </ul>	
+                 </div>
+                 
+                
+            </div>
+          </div>
+      
+    </div>
+  </div>  
+  <div class="row align-self-end mb-3">
+    <div class="col-sm-3 offset-sm-9">
+      <div class="input-group pageCompany_save_section" style="display:none;">
+        <button type="button" class="btn btn-primary form-control custom-input float-right rounded-pill border-0"
+          id="callcreatecompany" name="callcreatecompany">Save</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+<script>
+
+var companydeletingdomain=[];  // need to predefine for get deleted items;
+var pagename =  'Company';
+function getcompanyrecorddata(valueof)
+{
+companydeletingdomain=[];
+$('.removelist').remove(); // remove existing list
+$('.createcompany-title').html('<h6><strong>Update Company</strong></h6>');
+$('#companyname').val(valueof.data[company_id].name);
+$('#companylogo').html("<img src='" + valueof.data[company_id].url + "'style='width: 30px; height: 30px'>");
+var statusval=valueof.data[company_id].status;
+if(statusval == 'true')
+    {
+    $('#iscompanyactive').prop('checked',  true);
+    }
+else
+if(statusval == 'false')
+    {
+    $('#iscompanyactive').prop('checked',  false);
+    }
+var domainlist=valueof.data[company_id].domain;
+for (var d=0;d<domainlist.length; d++)
+{
+updatetoList(domainlist[d],pagename);
+}
+page_show('pageCompanymanagement', 'pageCompany');
+pageCompanyactioncontrol();
+progressboxClose();
+
+
+}
+    
+    
+    
+  
+
+
+  $(function () {
+
+    var pageCompany_viewdetails = false;
+
+    companyLogourl();
+
+//    $('#companyforadd').tokenfield();
+
+    $(document).on('click', '.dropdown-menu a', function () {
+      $('#companylogo').html($(this).html())
+    })
+
+
+
+  var company_caninactive='No';
+$(document).on('click','#callcreatecompany',function(e) {
+company_caninactive='No';
+savecompanydetails(company_caninactive);
+});
+$(document).on('click','.pageCompany_confirm',function(e) {
+company_caninactive='Yes';
+savecompanydetails(company_caninactive);
+confirmationboxClose();
+});
+    
+    
+    // Save button
+    function savecompanydetails(company_caninactive)
+    {
+
+      var companyname = $('#companyname').val();
+      var companylogo = $('#companylogo img').prop('src');
+
+      var iscompanyactive = $('#iscompanyactive').prop('checked');
+
+
+        var _getlnlength= $('#companylist li').length
+var deletelength=companydeletingdomain.length;
+var fulllength=parseInt(_getlnlength)+parseInt(deletelength);
+var domainvalues=[];
+for (var l = 0; l < fulllength; l++) {
+ 
+ 
+    var _getlndata=$("#companylisttext_"+ l).val();
+    var _getupdateidval = $("#companylistupdateid_"+ l).val();
+
+
+        var  isdomainfullyvalidate='true';
+        if(_getlndata!='' && _getlndata!=undefined && _getlndata!='undefined')
+        {
+        if (validateBeforeSubmit(_getlndata) ==  'true')
+        {
+        if(validateDomain(_getlndata) == 'true')
+        {
+        domainvalues.push( {
+        "id":_getupdateidval,
+          "domainlink":_getlndata,
+          "domainstatus":"true"
+          })
+          }
+          else
+          {
+          isdomainfullyvalidate='false';
+          toastboxOpen("2020")
+          return 0;
+          }
+          }
+          }
+          
+}
+
+      var _companyparams = {
+        "action": "company_maintain",
+        "param": {
+          "id": company_id,
+          "name": companyname,
+          "logo": companylogo,
+          "domain": domainvalues,
+          "status": iscompanyactive,
+          "createby": _getloginname,
+          "caninactive":company_caninactive,
+          "Deletingdomain":companydeletingdomain
+        }
+      };
+
+     if( validateBeforeSubmit(companyname) == 'true' && validateBeforeSubmitforURL(companylogo) == 'true' && domainvalues.length > 0 )
+     {
+      progressboxOpen();
+      google.script.run.withFailureHandler(company_inError).withSuccessHandler(Companyconfirmation).executecompany(_companyparams) 
+      }
+      else
+      {
+      toastboxOpen("2008")
+      }
+    }
+
+    
+
+  });
+
+  // For acknowledgement
+
+  function Companyconfirmation(result) {
+  
+  if(isNaN(result.result['code']) == false)
+{
+    if (result.result['code'] == '3000') {
+      $('#companypage *').val('');
+        companyid='';
+        company_actionfromwhere='afterupdate';
+          retrive_allcompanydetails(result);
+      pageCompanyactioncontrol();
+      page_show('pageCompany', 'pageCompanymanagement');
+    }
+    else
+      if(result.result['code'] == '2016')
+      {
+           progressboxClose();
+           confirmationboxOpen(2016,"pageCompany_confirm");
+      }
+      else
+      {
+          progressboxClose();
+         toastboxOpen(result.result['code']);
+      }
+      }
+    else {
+      toastboxOpen("2007");
+    }
+
+  }
+
+  $(document).on('click', '.delete', function (e) {
+    $(this).parent().remove();
+    
+    
+  });
+
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#companylistsearch', function (e) {
+    var isdomainentered = $('#companylistsearch').val();
+    
+    if(isdomainentered!='')
+    {
+     $('#companylistadd').show();
+          $('#companylistsearch').removeClass('rounded-pill');
+     $('#companylistsearch').addClass('rounded-pill-left');
+
+     
+    }else
+    {
+         $('#companylistadd').hide();
+        $('#companylistsearch').addClass('rounded-pill');
+     $('#companylistsearch').removeClass('rounded-pill-left');
+    }
+    
+    
+  });
+
+  
+      
+// Load company url
+
+  function companyLogourl() {
+    var _params = { "action": "showimagelibrary_logo" };
+    google.script.run.withFailureHandler(company_inError).withSuccessHandler(imglibGetUrl).executecompany(_params);
+  }
+
+  //Function Dropdown to display the company logo
+  function imglibGetUrl(image) {
+    var imglibraryKey = Object.keys(image.data.imagelibrary[0])
+
+    if (image.result['code'] == '3000') {
+      for (var key of imglibraryKey) {
+        $('#logodropdown').append('<a class="dropdown-item" href="#"> ' +
+          '<img src="' + image.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + image.data.imagelibrary[0][key].keyword + '</a>')
+      };
+    }
+    
+    loadimageinbusinessunit(image);
+    loadimageinmodule(image);
+
+  }
+
+// For page action control
+  function pageCompanyactioncontrol() {
+  
+    pageCompany_viewdetails = page_actioncontrol("pageCompany", "SAVE");
+    //Div disabled based on the condition 
+    if (pageCompany_viewdetails == false) { $(".pageCompany_fullview_section *").attr('disabled', 'disabled'); }
+    else { $(".pageCompany_fullview_section *").prop("disabled", false); }
+  }
+
+
+//Get the list item slected for delete
+
+ $(document).on('click', '.company_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+companydeletingdomain =  getdeleteitem(getid,pagename)
+	    });
+
+
+
+$(document).on('keypress','#companyname',function(e) {
+
+autocomplete(document.getElementById("companyname"), companynameavailable);
+});
+
+
+
+</script>
+
+

@@ -1,0 +1,338 @@
+
+<div class="container-fluid mt-5 pageBusinessunit_fullview_section" id="businessunitpage" name="businessunitpage">
+  <div class="row">
+    <div class="createbusinessunit-title col-12 min-vh-50">
+      <h6><strong>Create businessunit</strong></h6>
+    </div>
+    <br>
+  </div>
+  
+  
+  <div class="card mb-3">
+    <div class="card-body">
+    
+    
+    <div class="row mb-3">
+    <div class="col-md-10">
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-6">
+       </div>
+       <div class="col-md-2">
+          <label>Active</label>
+          <div class="custom-control custom-switch custom-switch-lg   " id="isbusinessunitactive_switch">
+            <input type="checkbox" class="custom-control-input active changedownload" id="isbusinessunitactive"
+              name="isbusinessunitactive" checked>
+            <label class="custom-control-label" for="isbusinessunitactive"></label>
+            </div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+   
+      <div class="row">
+        <div class="col-sm-6 pb-2">
+          <div class="form-group">
+            <label for="businessunitname">Businessunit Name</label>
+            <input type="text" class="form-control rounded-pill inputboxcolor" id="businessunitname" placeholder="eg: Doka"
+              name="businessunitname" autocomplete="off">
+          </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="businessunitlogo">Businessunit Logo</label>
+            <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="businessunitlogo"   name="businessunitlogo" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="form-group dropdown-menu dropdown-menu-left" id="businessunitlogodropdown"
+              aria-labelledby="dropdownMenuButton">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+        <div class="row">
+        <div class="col-sm-3 pb-2">
+          <div class="form-group">
+            <label for="businessunitprefix">Businessunit Prefix</label>
+            <input type="text" class="form-control rounded-pill inputboxcolor "   maxlength="2" id="businessunitprefix" placeholder="eg: DO"
+              name="businessunitprefix" autocomplete="off">
+          </div>
+        </div>
+        
+           <div class="col-sm-3 pb-2">
+           </div>
+         <div class="col-sm-6 pb-2">
+          <div class="form-group">
+            <label for="businessunitcompanyname">Company Name</label>
+            <select class="form-control rounded-pill inputboxcolor " id="businessunitcompanyname" 
+              name="businessunitcompanyname" > <option value=''>Select Company</option></select>
+              
+            
+          </div>
+        </div>
+        </div>
+      
+      
+          
+    </div>
+    
+             
+   </div>
+    
+    <!-- <div class="card mb-3">
+    <div class="card-body">
+         <div class="row" name="addbusinessunitrow">
+            <div class="col-md-12" name="addbusinessunitcolumn">
+                          <label for="businessunitlogo">Businessunit Domain</label>
+            <div class="input-group input-group-lg mb-2">
+					<input type="text" id="businessunitlistsearch" name="businessunitlistsearch" class="form-control rounded-pill inputboxcolor textboxfontsize" placeholder="Add domain name..." aria-label="add domain..." aria-describedby="businessunitlistadd">
+					<div class="input-group-append ">
+						<span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" id="businessunitlistadd"  name="businessunitlistadd" style="display:none; curser:pointer" onclick="addtoList('Businessunit')">
+							<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+							<path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+					</div>
+				</div>
+                <div id="businessunitlistdiv"  name="businessunitlistdiv">
+                <ul id="businessunitlist" name="businessunitlist" class="px-0 py-0 textboxfontsize">
+                 </ul>	
+                 </div>
+                 
+                
+            </div>
+          </div>
+      
+    </div>
+  </div>  
+  -->
+  <div class="row align-self-end mb-3">
+    <div class="col-sm-3 offset-sm-9">
+      <div class="input-group pageBusinessunit_save_section" style="display:none;">
+        <button type="button" class="btn btn-primary form-control custom-input float-right rounded-pill border-0"
+          id="callcreatebusinessunit" name="callcreatebusinessunit">Save</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+<script>
+
+var businessunitdeletingdomain=[];  // need to predefine for get deleted items;
+function getbusinessunitrecorddata(valueof)
+{
+businessunitdeletingdomain=[];
+$('.createbusinessunit-title').html('<h6><strong>Update Businessunit</strong></h6>');
+$('#businessunitname').val(valueof.data[businessunit_id].name);
+$('#businessunitlogo').html("<img src='" + valueof.data[businessunit_id].url + "'style='width: 30px; height: 30px'>");
+var statusval=valueof.data[businessunit_id].status;
+if(statusval == 'true')
+    {
+    $('#isbusinessunitactive').prop('checked',  true);
+    }
+else
+if(statusval == 'false')
+    {
+    $('#isbusinessunitactive').prop('checked',  false);
+    }
+$('#businessunitprefix').val(valueof.data[businessunit_id].prefix);
+$('#businessunitcompanyname').val(valueof.data[businessunit_id].companyid);
+
+page_show('pageBusinessunitmanagement', 'pageBusinessunit');
+pageBusinessunitactioncontrol();
+progressboxClose();
+}
+    
+    
+ 
+
+    
+  
+
+
+  $(function () {
+
+    var pageBusinessunit_viewdetails = false;
+
+
+//    $('#businessunitforadd').tokenfield();
+
+    $(document).on('click', '.dropdown-menu a', function () {
+      $('#businessunitlogo').html($(this).html())
+    })
+
+
+//
+//  $(document).on('change', '#businessunitcompanynamecheck', function () {
+//alert($(this).val())
+//})
+//    
+    
+  var businessunit_caninactive='No';
+$(document).on('click','#callcreatebusinessunit',function(e) {
+businessunit_caninactive='No';
+savebusinessunitdetails(businessunit_caninactive);
+});
+$(document).on('click','.pageBusinessunit_confirm',function(e) {
+businessunit_caninactive='Yes';
+savebusinessunitdetails(businessunit_caninactive);
+confirmationboxClose();
+});
+    
+    
+    // Save button
+    function savebusinessunitdetails(businessunit_caninactive)
+    {
+
+      var businessunitname = $('#businessunitname').val();
+      var businessunitlogo = $('#businessunitlogo img').prop('src');
+
+      var isbusinessunitactive = $('#isbusinessunitactive').prop('checked');
+
+      var businessunitprefix = $('#businessunitprefix').val();
+ var businessunitcompanyname = $('#businessunitcompanyname').val();
+//      var businessunitcompanyname=$("#businessunitcompanyname").find('option:selected').text();
+
+ 
+
+        
+
+      var _businessunitparams = {
+        "action": "businessunit_maintain",
+        "param": {
+          "id": businessunit_id,
+          "name": businessunitname,
+          "logo": businessunitlogo,
+          "status": isbusinessunitactive,
+          "prefix": businessunitprefix,
+          "companyname": businessunitcompanyname,
+          "createby": _getloginname,
+          "caninactive":businessunit_caninactive,
+          "Deletingdomain":businessunitdeletingdomain
+        }
+      };
+
+        
+
+     if( validateBeforeSubmit(businessunitname) == 'true' && validateBeforeSubmitforURL(businessunitlogo) == 'true' && businessunitprefix!='' && businessunitcompanyname!='')
+     {
+      progressboxOpen();
+      google.script.run.withFailureHandler(businessunit_inError).withSuccessHandler(businessunitconfirmation).executebusinessunit(_businessunitparams) 
+      }
+      else
+      {
+      toastboxOpen("2008")
+      }
+    }
+
+    
+
+  });
+
+  // For acknowledgement
+
+  function businessunitconfirmation(result) {
+  
+  if(isNaN(result.result['code']) == false)
+{
+    if (result.result['code'] == '3000') {
+//      $('#businessunitpage *').val('');
+        businessunitid='';
+        businessunit_actionfromwhere='afterupdate';
+          retrive_allbusinessunitdetails(result);
+      pageBusinessunitactioncontrol();
+      page_show('pageBusinessunit', 'pageBusinessunitmanagement');
+      }
+    else
+      if(result.result['code'] == '2016')
+      {
+           progressboxClose();
+           confirmationboxOpen(2016,"pageBusinessunit_confirm");
+      }
+      else
+      {
+          progressboxClose();
+         toastboxOpen(result.result['code']);
+      }
+      }
+    else {
+      toastboxOpen("2007");
+    }
+
+  }
+
+
+
+
+
+  //Function Dropdown to display the businessunit logo
+  function loadimageinbusinessunit(image) {
+  
+  
+  var imglibraryKey = Object.keys(image.data.imagelibrary[0])
+
+    if (image.result['code'] == '3000') {
+      for (var key of imglibraryKey) {
+        $('#businessunitlogodropdown').append('<a class="dropdown-item" href="#"> ' +
+          '<img src="' + image.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + image.data.imagelibrary[0][key].keyword + '</a>')
+      };
+    }
+    
+
+  }
+
+// For page action control
+  function pageBusinessunitactioncontrol() {
+  
+    pageBusinessunit_viewdetails = page_actioncontrol("pageBusinessunit", "SAVE");
+    //Div disabled based on the condition 
+    if (pageBusinessunit_viewdetails == false) { $(".pageBusinessunit_fullview_section *").attr('disabled', 'disabled'); }
+    else { $(".pageBusinessunit_fullview_section *").prop("disabled", false); }
+  }
+
+
+$(document).on('keypress','#businessunitname',function(e) {
+
+autocomplete(document.getElementById("businessunitname"), businessunitnamenameavailable);
+});
+
+$(document).on('keypress','#businessunitprefix',function(e) {
+
+autocomplete(document.getElementById("businessunitprefix"), businessunitprefixavailable);
+});
+
+
+
+    
+ function loadcompanynameinbusinessunit(companydetails)
+ {
+
+ 
+ $('#businessunitcompanyname').empty();
+  var _addcompanynameinbusinessunit='<option value="">Select Company</option>';
+ var totalcompanyId = companydetails.companyid;
+        if (companydetails.result['code'] == '3000') {
+            for (var id of totalcompanyId) {
+            if(companydetails.data[id].status == 'true')
+            {
+                  _addcompanynameinbusinessunit += "<option  value='" + companydetails.data[id].id + "'>" + companydetails.data[id].name  + "</option>";
+               $('#businessunitcompanyname').html(_addcompanynameinbusinessunit);
+                  }
+                  
+              }    
+            }
+  }
+  
+ 
+ 
+ 
+ 
+
+</script>
