@@ -123,11 +123,13 @@ try {
       result=hapi.showallimagelibrary_details(param); 
       Logger.log(result)
     break;
-   case 'create_imagelibrary': 
-      result=hapi.create_imagelibrary(param); 
+   case 'imagelibrary_maintain': 
+      result=hapi.imagelibrary_maintain(param); 
       Logger.log(result)
    break;
-    
+   case 'imagelibrary_getbyID': 
+      result=hapi.imagelibrary_getbyID(param); 
+   break;
     
     default: break;      
   }    
@@ -230,6 +232,16 @@ function executemodule(param)
     if(param.action == 'showallmodule_details')
     {
       result=hapi.showallmodule_details(param);
+    }
+    else
+    if(param.action == 'module_maintain')
+    {
+      result=hapi.module_maintain(param);
+    }
+     else
+    if(param.action == 'module_getbyID')
+    {
+      result=hapi.module_getbyID(param);
     }
     else
     if(param.action == 'showalluser_details')

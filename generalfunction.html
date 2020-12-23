@@ -227,13 +227,16 @@ return getresult;
     var _listbtn=pagename+"listbutton_"+_lengthasid;
     var _listid=pagename+"listid_"+_lengthasid;
     var _listtext=pagename+"listtext_"+_lengthasid;
+    var _listtextid=pagename+"listtextid_"+_lengthasid; // id
     var _updateid=pagename+"listupdateid_"+_lengthasid;
     var _updateval="";
    var _inputtext ='';
      var param = {   "idlI": _listid,
                       "idInputText": _listtext,
+                      "idInputID": _listtextid,
                       "libutton": _listbtn,
                       "lisearchdata" : param.listdata,
+                      "lisearchid" : param.listdataid,
                       "updateid":_updateid,
                       "updateval":param.listid
                    };
@@ -247,13 +250,51 @@ return getresult;
 
 
 
-function addtoList(pagename)
+function addtoList(pagename,dataarray,idarray)
 {
   pagename=pagename.toLowerCase();
    var _searchvalue = $('#'+pagename+'listsearch').val();
     $("#"+pagename+"listsearch").val("");
     if(_searchvalue!='')
     {
+     var _getidfromindex='';
+    if(dataarray.length >0 && dataarray!='' && idarray.length > 0  && idarray!='')
+    {
+    var getindex = dataarray.indexOf(_searchvalue); 
+    if(getindex > 0)
+    {
+     _getidfromindex=idarray[getindex];
+     }
+     else
+     {
+     return 'false';
+     }
+    }
+
+
+    
+    var getlistlength = $('#'+pagename+'list li').length
+    var availabletext=[];
+    for (var l = 0; l < getlistlength; l++) {
+    var gettext   = $("#"+pagename+"listtext_"+ l).val();
+        if(gettext!='' && gettext!=undefined && gettext!='undefined')
+        {
+        availabletext.push(gettext);
+        }
+    }
+    
+    if(availabletext.length > 0 && availabletext!='')
+    {
+        var isavailabel= findValueInArray(_searchvalue ,availabletext)
+        if(isavailabel == 'true')
+        {
+        return 'false';
+        }
+    }
+
+
+
+
 
          $('#'+pagename+'listadd').hide();
         $('#'+pagename+'listsearch').addClass('rounded-pill');
@@ -264,22 +305,22 @@ function addtoList(pagename)
 
     var _listbtn=pagename+"listbutton_"+_lengthasid;
     var _listid=pagename+"listid_"+_lengthasid;
-    var _listtext=pagename+"listtext_"+_lengthasid;
+    var _listtext=pagename+"listtext_"+_lengthasid;  // data
+    var _listtextid=pagename+"listtextid_"+_lengthasid; // id
     var _updateid=pagename+"listupdateid_"+_lengthasid;
     var _updateval="";
    var _inputtext ='';
      var param = {   "idlI": _listid,
                       "idInputText": _listtext,
+                      "idInputID": _listtextid,
                       "libutton": _listbtn,
                       "lisearchdata" : _searchvalue,
+                      "lisearchid" : _getidfromindex,
                       "updateid":_updateid,
                       "updateval":_updateval
                    };
                    
    addinlistdata(param,pagename);
-    
-
-
 }
 }
 
@@ -287,15 +328,33 @@ function addtoList(pagename)
 function addinlistdata(param,pagename)
 {
 
+
+
+
+
+var addclass="";
+if(param.lisearchid  != '' && param.lisearchid  != undefined && param.lisearchid  != null && param.lisearchid  != 'null')
+{
+
+addclass ='readonly';
+}
+
+
 var passfunction=pagename+"_deletelistitem"
     var addlist = '<li class="input-group input-group-lg mb-2 rounded-pill removelist " id="' + param.idlI + '" name="' + param.idlI + '">' + 
-			'<input type="text" id="' + param.idInputText + '" class="form-control rounded-pill-left inputboxcolor textboxfontsize " aria-label="Search for company" aria-describedby="'+ param.libutton +'" value="' + param.lisearchdata + '" >' +
+			'<input type="text" id="' + param.idInputText + '" class="form-control rounded-pill-left inputboxcolor textboxfontsize   " '+addclass+' aria-label="Search for company" aria-describedby="'+ param.libutton +'" value="' + param.lisearchdata + '" >' +
 			'<div class="input-group-append ">' +
 			'<span class="input-group-text input-group-btn rounded-pill-right '+passfunction+' inputboxcolor"  id="' + param.libutton  + '" style="curser:pointer" >' +
 			'<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">' +
 			'<rect width="23" height="23" rx="5" fill="#2D9CDB"/>' +
 			'<path d="M13.568 17H15.216L11.792 11.432L15.232 5.848H13.6L11.04 10.216L8.352 5.848H6.72L10.144 11.432L6.736 17H8.352L10.896 12.648L13.568 17Z" fill="white"/>' +
-			'</svg></span><input type="text" id="' + param.updateid + '"  class="form-control rounded-pill-left "  name="' + param.updateid + '" value="'+param.updateval+'"  hidden /></div></li>';  
+            '</svg></span><input type="text" id="' + param.updateid + '"  class="form-control rounded-pill-left "  name="' + param.updateid + '" value="'+param.updateval+'"  hidden  />'+
+			'<input type="text" id="' + param.idInputID + '"  class="form-control rounded-pill-left "  name="' + param.idInputID + '" value="'+param.lisearchid+'" hidden  / ></div></li>';  
+
+
+
+
+
 
 
 $('#'+pagename+'list').append(addlist);

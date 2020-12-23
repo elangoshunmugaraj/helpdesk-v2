@@ -256,10 +256,16 @@
         $('#companylogo').html("<img src=''> " );
         $('.createcompany-title').html('<h6><strong>Create Company</strong></h6>');
         $('#callcreatecompany').show();
+         $('#exportcompanyusertoexcel').hide();
+  $('#Showcompanyusers').hide();
+        $("#companyuserlist_toggle").hide();
+    $("#exportcompanyusertoexcel").hide();
         pageCompanyactioncontrol();
        $('.removelist').remove();
        _companydeletingdomain=[];
         page_show('pageCompanymanagement', 'pageCompany');
+        $('#Showcompanyusers').hide();
+
     });
 
 

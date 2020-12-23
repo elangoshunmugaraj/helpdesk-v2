@@ -422,6 +422,7 @@ buttons: [{
             addroleuser.rows.add(roleuserresults).draw();
             addroleuser.column(4).visible(false);
             addroleuser.column(5).visible(false);
+ $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
 
  
             if(roleuserresults.length >0)
@@ -457,7 +458,6 @@ if(clickBtn == false){
 
 
 
- $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
 
  $("#exportname").text('Role - User List');
       }
@@ -508,32 +508,4 @@ autocomplete(document.getElementById("rolename"), roleavailable);
 
 </script>
 
-<style>
-
-.alignsvgright {
-  text-align: left;            
-  margin-left: 0px;
-}
-
-.resizetablebackground {
-  margin-top: 0px;
-  padding-top:0px
-}
-
-.reducebuttonsize {
-   height:2px;
-   margin-bottom: 0px;
-  margin-top: 0px;
-  margin-left: 0px;
-padding-bottom:0px
-}
-
-
-
-.dt-buttons {
-   height:10px;
-}
-
-
-</style>
 

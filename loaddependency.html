@@ -1,0 +1,107 @@
+<script>
+
+//Load active Users
+
+loadactiveu();
+var activeusers=[];
+function loadactiveu()   ///// need to remove this after user screen
+{
+     google.script.run.withFailureHandler(module_inError)
+           .withSuccessHandler(Loadactiveusers)
+           .executemodule({ "action": "showalluser_details" });
+}
+
+var activeusersid=[];
+function Loadactiveusers(loaddetails) 
+{
+   activeusers=[];
+   activeusersid=[];
+   if(loaddetails.result['code'] == '3000')
+   {
+     var userid = (loaddetails.userid)
+                for (var id of userid) {
+    if(loaddetails.data[id].status == 'true')
+            {
+         activeusers.push(loaddetails.data[id].name);
+         activeusersid.push(id);
+         }
+        }
+   }
+   
+}
+
+
+
+
+var activebuid=[];
+function Loadactivebusinessunitfrombusinessunitpage(loaddetails) 
+{
+   activebu=[];
+   activebuid=[];
+     var length = (loaddetails.businessunitid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.businessunitid[x]].status == 'true')
+            {
+         activebu.push(loaddetails.data[loaddetails.businessunitid[x]].name);
+         activebuid.push(loaddetails.data[loaddetails.businessunitid[x]].id);
+         }
+        }
+}
+
+
+
+
+var activeworklocationid=[];
+function Loadactiveworklocationfromworklocationpage(loaddetails) 
+{
+   activeworklocation=[];
+      activeworklocationid=[];
+
+     var length = (loaddetails.worklocationid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.worklocationid[x]].status == 'true')
+            {
+         activeworklocation.push(loaddetails.data[loaddetails.worklocationid[x]].name);
+         activeworklocationid.push(loaddetails.data[loaddetails.worklocationid[x]].id);
+         }
+        }
+}
+
+var activecompanyid=[];
+function Loadactivecompanyfromcompanypage(loaddetails) 
+{
+     activecompany=[];
+      activecompanyid=[];
+     var length = (loaddetails.companyid).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data[loaddetails.companyid[x]].status == 'true')
+            {
+            activecompany.push(loaddetails.data[loaddetails.companyid[x]].name);
+            activecompanyid.push(loaddetails.data[loaddetails.companyid[x]].id);
+            }
+        }
+}
+
+
+var activemoduleid=[];
+var activemodule=[];
+function Loadmodulefrommodulemanagement(loaddetails) 
+{
+     activemodule=[];
+      activemoduleid=[];
+     var length = (loaddetails.data.modulelist).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data.modulelist[x].status == 'true')
+            {
+            activemodule.push(loaddetails.data.modulelist[x].name);
+            activemoduleid.push(loaddetails.data.modulelist[x].id);
+            }
+        }
+}
+
+
+
+
+
+
+</script>

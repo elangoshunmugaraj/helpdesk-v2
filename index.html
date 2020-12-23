@@ -142,8 +142,9 @@
        <div id="pageRole" name="pageRole" style="display:none;" class="page"><?!=getContent('pageRole'); ?></div> 
       <div id="pageModulemanagement" name="pageModulemanagement" style="display:none;" class="page"><?!=getContent('pageModulemanagement'); ?></div> 
        <div id="pageModule" name="pageModule" style="display:none;" class="page"><?!=getContent('pageModule'); ?></div> 
+              <div id="pageImagelibrary" name="pageImagelibrary" style="display:none;" class="page"><?!=getContent('pageImagelibrary'); ?></div> 
+       <div id="pageUsermanagement" name="pageUsermanagement" style="display:none;" class="page"><?!=getContent('pageUsermanagement'); ?></div> 
        <div id="pageServiceteammanagement" name="pageServiceteammanagement" style="display:none;" class="page"><?!=getContent('pageServiceteammanagement'); ?></div> 
-       <div id="pageImagelibrary" name="pageImagelibrary" style="display:none;" class="page"><?!=getContent('pageImagelibrary'); ?></div> 
 </main>
   <!-- page-content" -->
   </div>
@@ -161,14 +162,14 @@
      <?!=getContent('autocomplete'); ?>
      <?!=getContent('setsessiontime'); ?>
      <?!=getContent('confirmationbox'); ?>
+     <?!=getContent('loaddependency'); ?>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" />
 
 <!--   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://datatables.net/manual/plug-ins/search"></script>
@@ -186,6 +187,8 @@
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>  
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>  
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" />
 
 
 
@@ -260,6 +263,13 @@ pageBusinessunitmanagementactioncontrol();
  $(document).on('click', '.pageCompanymanagement', function (e) {
       page_show(currentpage, "pageCompanymanagement");
       pageCompanymanagementactioncontrol();
+    });
+
+
+
+ $(document).on('click', '.pageCompanymanagement', function (e) {
+   alert('is ok')
+      page_show(currentpage, "pageCompanymanagement");
     });
 
 });

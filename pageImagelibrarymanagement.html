@@ -46,15 +46,20 @@ var _imagelibrarydetails;
 $(document).ready(function () {   
   $('#pageImagelibrarymanagement_add').on('click', function() {
   imagelibraryid='';
-//  var pageImagelibrary_existingdiv = $(".pageImagelibrary_fullview_section").html();
-//  $(".pageImagelibrary_fullview_section").html(pageImagelibrary_existingdiv);
-    
-      $('#imagelibraryname').val('');
+  $('.removelist').remove(); // remove existing list
+    $('.createimagelibrary-title').html('<h6><strong>Upload image</strong></h6>');
+     $('#Imagelibraryname').val('');
+  $("#imagelibrarypicture").attr("src",'https://storage.googleapis.com/imagelib/imagelibrary/imagelibrarydefault.png');
   $('#exportimagelibraryusertoexcel').hide();
   $('#Showimagelibraryusers').hide();
  $('#callcreateimagelibrary').show();
         $("#imagelibraryuserlist_toggle").hide();
     $("#exportimagelibraryusertoexcel").hide();
+$('#Imagelibrarykeyword').tokenfield('setTokens', []);
+var radiovaluedefault='Image';
+
+    $('input:radio[name="imglibTypeOpt"]').filter('[value=' + radiovaluedefault + ']').attr('checked', true);
+
     
 //    var isexportvisible=$("#imagelibraryuserlist").is(":visible");
 //    if (isexportvisible == true) { 
@@ -113,22 +118,7 @@ function loadsystemimagelibrary(loaddetails)
             .withSuccessHandler(retrive_allimagelibrarydetails)
             .executeimagelibrary({ "action": "showallimagelibrary_details" });
     }
-//    var loaddetails;
-//    function loaduserdata(data)
-//    {
-//     loaddetails=data;
-//    }
-//    
-    // after add it will call
-//    function loadallimagelibrarysaffterupdate()
-//    {
-//    actionfromwhere = 'afterupdate';
-////     progressboxOpen();
-//            google.script.run.withFailureHandler(imagelibrary_inError)
-//            .withSuccessHandler(retrive_allimagelibrarydetails)
-//            .executeimagelibrary({ "action": "showallimagelibrary_details" });
-//    }
-//    var imagelibrarydetailsaddintable;
+
     var imagelibrarydetailselemID = "pageImagelibrarydetails";  
 
 //Load retived data
@@ -164,25 +154,6 @@ function loadsystemimagelibrary(loaddetails)
                 
                 
                 
-                
-//                        _imagelibrarydetails=loaddetails.data;
-                        
-                        //get all imagelibrary details
-//                var length = (loaddetails.imagelibraryid).length
-//                
-//                      for (var x = 0; x < length; x++) {   
-//                      results.push([loaddetails.data[loaddetails.imagelibraryid[x]].id,
-//                      loaddetails.data[loaddetails.imagelibraryid[x]].name,
-//                      loaddetails.data[loaddetails.imagelibraryid[x]].status
-//                      ])
-//                      imagelibraryavailable.push(loaddetails.data[loaddetails.imagelibraryid[x]].name);
-//                      };
-//                      
-                  //get all system imagelibrary 
-//                var sysimagelibrarylistlength = (loaddetails.systemimagelibrary).length
-//                    for (var x = 0; x < sysimagelibrarylistlength; x++) {   
-//                      systemimagelibrarylist.push(loaddetails.systemimagelibrary[x].imagelibraryid);
-//                      };
                 }
               };
 
@@ -279,7 +250,7 @@ function loadsystemimagelibrary(loaddetails)
             imagelibrarydetailsaddintable.rows.add(results).draw();
               $('#pageImagelibrarymanagement_search').on( 'keyup', function () {imagelibrarydetailsaddintable.search( this.value ).draw();});  
             // Call class for view the details.
-             $('#imagelibrarydetails tbody').on('click', 'tr td.pageImagelibrarymanagement_viewdetails_section', function () {
+             $('#pageImagelibrarydetails tbody').on('click', 'tr td.pageImagelibrarymanagement_viewdetails_section', function () {
              if(pageImagelibrarymanagement_viewdetails == true)
              {
                 var indx = imagelibrarydetailsaddintable.column(this).index()
@@ -289,16 +260,12 @@ function loadsystemimagelibrary(loaddetails)
                 var imagelibraryname = row.data()[1];
                 var status = row.data()[2];
                 var data = {
-                             "action": "get_imagelibrarydetails",
+                             "action": "imagelibrary_getbyID",
                     "param": {
-                        "status": status,
-                        "id": id,
-                        "imagelibraryname":imagelibraryname,
-                        "createby": _getloginname
+                        "id": id
                         }
                     };
                progressboxOpen()
-              IsProgress= true;
               
               
 //              countdown.stop();
@@ -308,24 +275,24 @@ function loadsystemimagelibrary(loaddetails)
             
             
             
-            function getimagelibraryrecorddata(valueof)
-            {
-            isprogress= false;
-               _imagelibrarydetails=valueof.data;
-
-             var getid=valueof.imagelibraryid[0]
-             var dataassigned = {
-                        "status": valueof.data[getid].status,
-                        "id": valueof.data[getid].id,
-                        "imagelibraryname":valueof.data[getid].name,
-                        "createby": _getloginname
-                    }
-                    
-                fulltheimagelibrarydata(dataassigned)
-                
-//                countdown.start();
-
-            }
+//            function getimagelibraryrecorddata(valueof)
+//            {
+//            isprogress= false;
+//               _imagelibrarydetails=valueof.data;
+//
+//             var getid=valueof.imagelibraryid[0]
+//             var dataassigned = {
+//                        "status": valueof.data[getid].status,
+//                        "id": valueof.data[getid].id,
+//                        "imagelibraryname":valueof.data[getid].name,
+//                        "createby": _getloginname
+//                    }
+//                    
+//                fulltheimagelibrarydata(dataassigned)
+//                
+////                countdown.start();
+//
+//            }
             
             
             
