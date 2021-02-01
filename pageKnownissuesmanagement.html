@@ -1,0 +1,334 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageKnownissuesmanagement_fullview_section' >
+    <div>
+        <h6><strong>Known Issues management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupknownissuesname2"></label>
+                    <div class="input-group ">  
+
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="Search" id="pageKnownissuesmanagement_search"  name="pageKnownissuesmanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageKnownissuesmanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageknownissues" 
+                                   id="pageKnownissuesmanagement_add"  name="pageKnownissuesmanagement_add" 
+                            ><i id="pageKnownissuesmanagement_create"  name="pageKnownissuesmanagement_create"></i> Create
+                            Known Issue</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="knownissuesdetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+//GLobal parameter:
+var _knownissuesdetails;
+</script>
+<script>
+// Action for next page
+$(document).ready(function () 
+  {   
+    $('#pageKnownissuesmanagement_add').on('click', function() 
+    {
+    
+    $('.removelist_knownissuescompany').remove(); // remove existing list
+          $('.removelist_knownissuesbu').remove(); // remove existing list
+          $('.removelist_knownissueswl').remove(); // remove existing list
+          $('.removelist_knownissuesmodule').remove(); // remove existing list
+          $('.removelist_knownissuesincident').remove(); // remove existing list
+          $('.removelist_knownissuesrole').remove(); // remove existing list
+          $('.removelist_knownissuesknowledgebase').remove(); // remove existing list
+          $('.removelist_knownissuessubcategory').remove(); // remove existing list
+          $('.removelist_knownissuescategory').remove(); // remove existing list
+
+       $('#knownissuespassword').attr('readonly', false);
+
+
+
+        knownissuesid='';
+          $("#knownissueslogo").attr("href",'');
+
+        $('#knownissuesname').val('');
+        $('#exportroleknownissuestoexcel').hide();
+        $('#Showroleknownissuess').hide();
+        $('#callcreaterole').show();
+        $("#roleknownissueslist_toggle").hide();
+        $("#exportroleknownissuestoexcel").hide();
+      
+      $('#knownissuesseveritylevel').val(1);
+      $('#knownissuesautoreply').val('');
+      //    var isexportvisible=$("#roleknownissueslist").is(":visible");
+      //    if (isexportvisible == true) { 
+      //   
+      //    $("#roleknownissueslist_toggle").toggle();
+      //    $("#exportroleknownissuestoexcel").toggle();
+      //   } 
+      
+       $('#exportknownissuesusertoexcel').hide();
+  $('#Showknownissuesusers').hide();
+        $("#knownissuesuserlist_toggle").hide();
+    $("#exportknownissuesusertoexcel").hide();
+      
+        pageKnownissuesactioncontrol();
+        page_show('pageKnownissuesmanagement','pageKnownissues');
+    });
+        
+  });
+  
+  
+  
+  $('#pageKnownissuesmanagement_search').on( 'keyup',   function () 
+  {
+  knownissuesdetailsaddintable.search( this.value ).draw();
+  });  
+</script>
+
+<script>
+var knownissuesnameavailable=[];
+var knownissuesprefixavailable=[];
+//Used for control the view eye to open or not
+    var pageKnownissuesmanagement_viewdetails=false;
+    function knownissues_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+
+//Load the role data
+    loadallknownissuess();
+    var knownissues_actionfromwhere='';
+    function loadallknownissuess()
+    {
+//     progressboxOpen();
+knownissues_actionfromwhere='onload'
+            google.script.run.withFailureHandler(knownissues_inError)
+            .withSuccessHandler(retrive_allknownissuesdetails)
+            .executeknownissues({ "action": "showallknownissues_details" });
+    }
+    
+
+    var knownissuesdetailsaddintable;
+    var knownissuesdetailselemID = "knownissuesdetails";  
+
+//Load retrieved data
+        function retrive_allknownissuesdetails(loaddetails) {
+//        knownissuesnameavailable=[];
+//        knownissuesprefixavailable=[];
+       
+         if(knownissues_actionfromwhere == 'afterupdate')
+        {
+                  toastboxOpen("3002");
+                  progressboxClose();
+
+        }
+        
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                
+                                        _knownissuesdetails=loaddetails.data;
+
+                                 var datalength = (loaddetails.data.knownissueslist).length
+                      for (var x = 0; x < datalength; x++) {  
+                      results.push([loaddetails.data.knownissueslist[x].id,
+                      loaddetails.data.knownissueslist[x].message,
+                       loaddetails.data.knownissueslist[x].securitylevel,
+                       loaddetails.data.knownissueslist[x].autoreplymessage,
+                       loaddetails.data.knownissueslist[x].incidentcreationdelay,
+                       loaddetails.data.knownissueslist[x].status
+                      ])
+//                      knownissuesnameavailable.push(loaddetails.data.knownissueslist[x].message);
+
+                      
+                      };
+                }
+              };
+                    
+          knownissuesdetailsaddintable = $('#knownissuesdetails').DataTable({
+                dom: 'rtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+//                searching: true,
+                rowId: 'id', 
+                data: results,
+                columns: [{
+                    title: " Id" 
+                }, 
+                {
+                    title: "Message"
+                },
+                {
+                    title: "Security level"
+                },
+                {
+                    title: "Auto reply message"
+                },
+                {
+                    title: "Incident delay",
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                    
+                        var recid = "knownissuesdetailsisdelay_" + full[0];
+
+                        var isdelay = full[4];
+                        
+                        if (isdelay == 'true' ) {
+                        
+
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                            
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+                        
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                    
+                        var recid = "knownissuesdetailsisActive_" + full[0];
+
+                        var isdown = full[5];
+                        
+                        if (isdown == 'true' ) {
+                        
+
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                            
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+                        
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageKnownissuesmanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "knownissuesdetailsisview_" + full[0];
+                             return '<i class="fas fa-eye" style="color: #79CEFF;"  ></i>'; // id="'+_recviewid+'" name="'+_recviewid+'"
+
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+knownissuesdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+knownissuesdetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+knownissuesdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+knownissuesdetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+                           
+            });
+            
+            
+            knownissuesdetailsaddintable.clear();
+            knownissuesdetailsaddintable.draw();
+            knownissuesdetailsaddintable.rows.add(results).draw();
+
+           
+            // Call class for view the details.
+             $('#knownissuesdetails tbody').on('click', 'tr td.pageKnownissuesmanagement_viewdetails_section', function () {
+             if(pageKnownissuesmanagement_viewdetails == true)
+             {
+                var indx = knownissuesdetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = knownissuesdetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var knownissuesname = row.data()[1];
+                var status = row.data()[2];
+//                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                             "action": "knownissues_getbyID",
+                    "param": {
+                        "id": id,
+                        }
+                    };
+                $(".preloader").show();
+               progressboxOpen()
+
+               google.script.run.withFailureHandler(knownissues_inError).withSuccessHandler(getknownissuesrecorddata).executeknownissues(data);
+
+                
+                
+                }
+            });
+            
+          
+            
+            
+            
+            
+            $('.dataTables_length').addClass('bs-select');
+                         progressboxClose();
+//              loadroleautocomplete(roleavailable);
+//            alert('end')
+        }
+
+      //Confirm the status update 
+   
+</script>
+
+<script>
+// Control the page action.
+function pageKnownissuesmanagementactioncontrol()
+{
+pageKnownissuesmanagement_viewdetails=page_actioncontrol("pageKnownissuesmanagement","VIEW");
+}
+</script>
+
+<style>
+.icon-eye {
+  color: #E5E5E5;
+}
+
+</style>
+
+

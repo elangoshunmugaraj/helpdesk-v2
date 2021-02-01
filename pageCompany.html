@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-sm-6 pb-2">
           <div class="form-group">
-            <label for="companyname">Company Name</label>
+            <label for="companyname" class="required">Company Name</label>
             <input type="text" class="form-control rounded-pill inputboxcolor" id="companyname" placeholder="eg: Herfy"
               name="companyname" autocomplete="off">
           </div>
@@ -45,7 +45,7 @@
         
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="companylogo">Company Logo</label>
+            <label for="companylogo" >Company Logo</label>
             <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="companylogo"   name="companylogo" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </a>
@@ -62,7 +62,7 @@
     <div class="card-body">
          <div class="row" name="addcompanyrow">
             <div class="col-md-12" name="addcompanycolumn">
-                          <label for="companylogo">Company Domain</label>
+                          <label for="companylogo" >Company Domain</label>
             <div class="input-group input-group-lg mb-2">
 					<input type="text" id="companylistsearch" name="companylistsearch" class="form-control rounded-pill inputboxcolor textboxfontsize" placeholder="Add domain name..." aria-label="add domain..." aria-describedby="companylistadd">
 					<div class="input-group-append ">
@@ -169,7 +169,7 @@ var pagename =  'Company';
 function getcompanyrecorddata(valueof)
 {
 companydeletingdomain=[];
-$('.removelist').remove(); // remove existing list
+$('.removelist_company').remove(); // remove existing list
 $('.createcompany-title').html('<h6><strong>Update Company</strong></h6>');
 $('#companyname').val(valueof.data[company_id].name);
 $('#companylogo').html("<img src='" + valueof.data[company_id].url + "'style='width: 30px; height: 30px'>");
@@ -291,7 +291,7 @@ for (var l = 0; l < fulllength; l++) {
         }
       };
 
-     if( validateBeforeSubmit(companyname) == 'true' && validateBeforeSubmitforURL(companylogo) == 'true' && domainvalues.length > 0 )
+     if( validateBeforeSubmit(companyname) == 'true' )
      {
       progressboxOpen();
       google.script.run.withFailureHandler(company_inError).withSuccessHandler(Companyconfirmation).executecompany(_companyparams) 
@@ -314,6 +314,7 @@ for (var l = 0; l < fulllength; l++) {
 {
     if (result.result['code'] == '3000') {
       $('#companypage *').val('');
+      companydeletingdomain=[];
         company_id='';
         company_actionfromwhere='afterupdate';
           retrive_allcompanydetails(result);
@@ -370,6 +371,7 @@ for (var l = 0; l < fulllength; l++) {
  $(document).on('click', '#companylistadd', function (e) {
  var dataarray=[];
  var idarray=[];
+ 
 addtoList('Company',dataarray,idarray);
 });
   
@@ -412,7 +414,9 @@ addtoList('Company',dataarray,idarray);
  $(document).on('click', '.company_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-companydeletingdomain =  getdeleteitem(getid,pagename)
+
+var deletefromlist =  getdeleteitem(getid,pagename)
+companydeletingdomain.push(deletefromlist)
 	    });
 
 

@@ -465,7 +465,11 @@ var moduleid='';
  
  function getmodulerecorddata(valueof)
 {
-$('.removelist').remove(); // remove existing list
+ $('.removelist_modulecompany').remove(); // remove existing list
+    $('.removelist_modulebu').remove(); // remove existing list
+    $('.removelist_modulewl').remove(); // remove existing list
+    $('.removelist_moduleowners').remove(); // remove existing list
+
 $('.createmodule-title').html('<h6><strong>Update Module</strong></h6>');
  moduleid=valueof.moduleid[0];
  $('#modulename').val(valueof.data[moduleid].name);
@@ -601,15 +605,22 @@ var companylogo = $('#modulelogo img').prop('src');
   if(isNaN(result.result['code']) == false)
 {
     if (result.result['code'] == '3000') {
-    modulecompany_delete='';
-    modulebu_delete='';
-    modulewl_delete='';
-    moduleuser_delete='';
-          $('.removelist').remove(); // remove existing list
+    modulecompany_delete=[];
+    modulebu_delete=[];
+    modulewl_delete=[];
+    moduleuser_delete=[];
+    
+    
+    $('.removelist_modulecompany').remove(); // remove existing list
+    $('.removelist_modulebu').remove(); // remove existing list
+    $('.removelist_modulewl').remove(); // remove existing list
+    $('.removelist_moduleowners').remove(); // remove existing list
+
+    
 //      $('#worklocationpage *').val('');
         moduleid='';
         module_actionfromwhere='afterupdate';
-         loadallmodules(result)
+         retrive_allmoduledetails(result)
       pageModuleactioncontrol();
           page_show('pageModule','pageModulemanagement')
       }
@@ -686,20 +697,23 @@ autocomplete(document.getElementById("modulecompanylistsearch"), activecompany);
 $(document).on('click', '.modulecompany_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-modulecompany_delete =  getdeleteitem(getid,'modulecompany')
+var deletefromlsit = getdeleteitem(getid,'modulecompany')
+modulecompany_delete.push(deletefromlsit)
 	    });
 
 //bu
 $(document).on('click', '.modulebu_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-modulebu_delete =  getdeleteitem(getid,'modulebu')
+var deletefromlist =  getdeleteitem(getid,'modulebu')
+modulebu_delete.push(deletefromlist) 
 	    });
 
 //wl
 $(document).on('click', '.modulewl_deletelistitem', function () {
 var getid=$(this).attr('id');
-modulewl_delete =  getdeleteitem(getid,'modulewl')
+var deletefromlist =  getdeleteitem(getid,'modulewl')
+modulewl_delete.push(deletefromlist) 
 	    });
 
 
@@ -707,91 +721,92 @@ modulewl_delete =  getdeleteitem(getid,'modulewl')
 $(document).on('click', '.moduleowners_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-moduleuser_delete =  getdeleteitem(getid,'moduleowners')
+var deletefromlsit =  getdeleteitem(getid,'moduleowners')
+moduleuser_delete.push(deletefromlsit) 
 	    });
 
 
 //Load active Users
 
-loadactiveu();
-var activeusers=[];
-function loadactiveu()   ///// need to remove this after user screen
-{
-     google.script.run.withFailureHandler(module_inError)
-           .withSuccessHandler(Loadactiveusers)
-           .executemodule({ "action": "showalluser_details" });
-}
+// loadactiveu();
+// var activeusers=[];
+// function loadactiveu()   ///// need to remove this after user screen
+// {
+//      google.script.run.withFailureHandler(module_inError)
+//            .withSuccessHandler(Loadactiveusers)
+//            .executemodule({ "action": "showalluser_details" });
+// }
 
-var activeusersid=[];
-function Loadactiveusers(loaddetails) 
-{
-   activeusers=[];
-   activeusersid=[];
-   if(loaddetails.result['code'] == '3000')
-   {
-     var userid = (loaddetails.userid)
-                for (var id of userid) {
-    if(loaddetails.data[id].status == 'true')
-            {
-         activeusers.push(loaddetails.data[id].name);
-         activeusersid.push(id);
-         }
-        }
-   }
-   
-}
-
-
-
-
-var activebuid=[];
-function Loadactivebusinessunitfrombusinessunitpage(loaddetails) 
-{
-   activebu=[];
-   activebuid=[];
-     var length = (loaddetails.businessunitid).length
-	for (var x = 0; x < length; x++) {
-    if(loaddetails.data[loaddetails.businessunitid[x]].status == 'true')
-            {
-         activebu.push(loaddetails.data[loaddetails.businessunitid[x]].name);
-         activebuid.push(loaddetails.data[loaddetails.businessunitid[x]].id);
-         }
-        }
-}
-
-
-
-
-var activeworklocationid=[];
-function Loadactiveworklocationfromworklocationpage(loaddetails) 
-{
-   activeworklocation=[];
-      activeworklocationid=[];
-
-     var length = (loaddetails.worklocationid).length
-	for (var x = 0; x < length; x++) {
-    if(loaddetails.data[loaddetails.worklocationid[x]].status == 'true')
-            {
-         activeworklocation.push(loaddetails.data[loaddetails.worklocationid[x]].name);
-         activeworklocationid.push(loaddetails.data[loaddetails.worklocationid[x]].id);
-         }
-        }
-}
-
-var activecompanyid=[];
-function Loadactivecompanyfromcompanypage(loaddetails) 
-{
-     activecompany=[];
-      activecompanyid=[];
-     var length = (loaddetails.companyid).length
-	for (var x = 0; x < length; x++) {
-            if(loaddetails.data[loaddetails.companyid[x]].status == 'true')
-            {
-            activecompany.push(loaddetails.data[loaddetails.companyid[x]].name);
-            activecompanyid.push(loaddetails.data[loaddetails.companyid[x]].id);
-            }
-        }
-}
+//var activeusersid=[];
+//function Loadactiveusersfromuserpage(loaddetails) 
+//{
+//   activeusers=[];
+//   activeusersid=[];
+//   if(loaddetails.result['code'] == '3000')
+//   {
+//              var datalength = (loaddetails.data.userlist).length
+//                      for (var x = 0; x < datalength; x++) {  
+//    if(loaddetails.data.userlist[x].status == 'true')
+//            {
+//         activeusers.push(loaddetails.data.userlist[x].name);
+//         activeusersid.push(loaddetails.data.userlist[x].id);
+//         }
+//        }
+//   }
+//   
+//}
+//
+//
+//
+//
+//var activebuid=[];
+//function Loadactivebusinessunitfrombusinessunitpage(loaddetails) 
+//{
+//   activebu=[];
+//   activebuid=[];
+//     var length = (loaddetails.businessunitid).length
+//	for (var x = 0; x < length; x++) {
+//    if(loaddetails.data[loaddetails.businessunitid[x]].status == 'true')
+//            {
+//         activebu.push(loaddetails.data[loaddetails.businessunitid[x]].name);
+//         activebuid.push(loaddetails.data[loaddetails.businessunitid[x]].id);
+//         }
+//        }
+//}
+//
+//
+//
+//
+//var activeworklocationid=[];
+//function Loadactiveworklocationfromworklocationpage(loaddetails) 
+//{
+//   activeworklocation=[];
+//      activeworklocationid=[];
+//
+//     var length = (loaddetails.worklocationid).length
+//	for (var x = 0; x < length; x++) {
+//    if(loaddetails.data[loaddetails.worklocationid[x]].status == 'true')
+//            {
+//         activeworklocation.push(loaddetails.data[loaddetails.worklocationid[x]].name);
+//         activeworklocationid.push(loaddetails.data[loaddetails.worklocationid[x]].id);
+//         }
+//        }
+//}
+//
+//var activecompanyid=[];
+//function Loadactivecompanyfromcompanypage(loaddetails) 
+//{
+//     activecompany=[];
+//      activecompanyid=[];
+//     var length = (loaddetails.companyid).length
+//	for (var x = 0; x < length; x++) {
+//            if(loaddetails.data[loaddetails.companyid[x]].status == 'true')
+//            {
+//            activecompany.push(loaddetails.data[loaddetails.companyid[x]].name);
+//            activecompanyid.push(loaddetails.data[loaddetails.companyid[x]].id);
+//            }
+//        }
+//}
 
 
 //Read all dependency

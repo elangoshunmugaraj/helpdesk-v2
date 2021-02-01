@@ -1,0 +1,714 @@
+
+<div class="container-fluid mt-5 pageIncidentmastercfv_fullview_section" id="incidentmastercfvpage" name="incidentmastercfvpage">
+  <div class="container">
+  <div class="createincidentmastercfv-title col-12 min-vh-50">
+    <h6><strong>Create New Field</strong></h6>
+  </div>
+  <div class="card">
+  <div class="card-body">
+  
+  
+     <div class="row mb-3">
+    
+    <div class="col-md-10">
+    
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-3"> 
+       </div>
+        <div class="col-md-3">
+        </div>
+       <div class="col-md-2">
+         <label for="isincidentmastercfvactive">Active</label>
+				<div class="custom-control custom-switch custom-switch-lg ">
+					<input type="checkbox" class="custom-control-input" id="isincidentmastercfvactive" name="isincidentmastercfvactive" >
+					<label class="custom-control-label" for="isincidentmastercfvactive"></label>
+				</div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+ 
+	<div class="row">
+		<div class="col-sm-10">
+			<div class="form-group required">
+				<label for="incidentmastercfvname">List value</label>
+				<input type="text" class="form-control rounded-pill  inputboxcolor" id="incidentmastercfvname" placeholder="" name="incidentmastercfvname" autocomplete="off">
+			</div>
+		</div>
+        
+        
+       
+      
+    <div class="col-sm-2">
+			<div class="form-group ">
+				<label for="incidentmastercfvsquence">Sequence</label>
+				<input type="number" class="form-control rounded-pill  inputboxcolor  numberonly" id="incidentmastercfvsquence" placeholder=""name="incidentmastercfvsquence" autocomplete="off">
+			</div>
+		</div>
+		
+	</div>
+
+
+
+
+  <div class="row">
+		
+      <div class="col-sm-12">
+			<div class="form-group ">
+				<label for="incidentmastercfvdesc">Description </label>
+				<textarea class="form-control rounded-pill tasize inputboxcolor" id="incidentmastercfvdesc" placeholder=""name="incidentmastercfvdesc" autocomplete="off"></textarea>
+			</div>
+		</div>
+        
+        
+  </div>    
+       
+ 
+
+
+
+  </div><!--< END class="card-body">  -->
+</div>
+
+<!--- Begin add for incidentmastercfv company ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addincidentmastercfvfieldrow">
+        <div class="col-md-12" name="addincidentmastercfvfieldcolumn">
+            <label for="incidentmastercfvfield" class="required"> Field </label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="incidentmastercfvfieldlistsearch" name="incidentmastercfvfieldlistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Field..." aria-label="Search Field..." aria-describedby="incidentmastercfvfieldlistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="incidentmastercfvfieldlistadd"  name="incidentmastercfvfieldlistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="incidentmastercfvfieldlistdiv"  name="incidentmastercfvfieldlistdiv">
+               <ul id="incidentmastercfvfieldlist" name="incidentmastercfvfieldlist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for incidentmastercfv company --------------->
+
+
+<!-- begin add save button here -->
+<div class="">
+  <div class="row mt-2">
+       <!-- Start export data  -->
+   <div class="col-md-3 "> 
+       <div class="input-group pageIncidentmastercfv_view_section" style="display:none;">
+          <button class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" style="display:none;" id="Showincidentmastercfvusers"  name="Showincidentmastercfvusers">              
+           Show Users  
+          </button>
+      </div>
+      </div>
+        <div class="col-md-6  my-1">
+      </div>
+       <!-- End export data  -->
+      
+        <div class="col-md-3">
+          <div class="input-group pageIncidentmastercfv_save_section " style="display:none;">
+            <button type="button" class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" 
+                    id="callcreateincidentmastercfv" 
+                    name="callcreateincidentmastercfv" >Save
+            </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- end add save button here ---->
+          
+ <!--   Export incidentmastercfvs -->
+  <div class=" "  >
+   <div class="row  "   >  
+    <div class="col-md-11">  
+               </div>
+        <div class="col-md-1 alignsvgright float-left">  
+              <div class=" pageIncidentmastercfv_export_section float-right  " style="display:none;" title="Export to Excel">
+                      <svg  type="button"   id="exportincidentmastercfvusertoexcel"  style="display:none;" name="exportincidentmastercfvusertoexcel" width="20" height="25" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.522386 1.74993L0.519531 26.2482C0.519421 27.2105 1.30666 27.9979 2.26891 27.998L19.2824 28C20.245 28.0001 21.0326 27.2127 21.0328 26.2501L21.0351 6.44696C21.0351 5.90967 20.8217 5.39434 20.4419 5.01439L16.0235 0.594931C15.6436 0.214981 15.1284 0.00148226 14.5911 0.00142736L2.2727 1.14804e-08C1.31012 -0.000109785 0.522496 0.787348 0.522386 1.74993Z" fill="url(#paint0_linear_incidentmastercfv)"/>
+                      <path d="M15.7675 11.2673H5.78808C5.17597 11.2673 4.67969 11.7642 4.67969 12.3763V22.8931C4.67969 23.5052 5.17597 24.0015 5.78808 24.0015H15.7675C16.3796 24.0015 16.8758 23.5052 16.8758 22.8931V12.3763C16.8758 11.7642 16.3796 11.2673 15.7675 11.2673ZM14.8288 15.0277H12.0013C11.7803 15.0277 11.6012 14.8486 11.6012 14.6276V13.3143C11.6012 13.0934 11.7803 12.9142 12.0013 12.9142H14.8288C15.0498 12.9142 15.2289 13.0934 15.2289 13.3143V14.6276C15.2289 14.8486 15.0498 15.0277 14.8288 15.0277ZM12.0013 16.6747H14.8288C15.0498 16.6747 15.2289 16.8538 15.2289 17.0748V18.1941C15.2289 18.4151 15.0498 18.5942 14.8288 18.5942H12.0013C11.7803 18.5942 11.6012 18.4151 11.6012 18.1941V17.0748C11.6012 16.8538 11.7804 16.6747 12.0013 16.6747ZM9.5542 18.5941H6.72667C6.50571 18.5941 6.32658 18.415 6.32658 18.194V17.0747C6.32658 16.8538 6.50571 16.6746 6.72667 16.6746H9.5542C9.77516 16.6746 9.9543 16.8538 9.9543 17.0747V18.194C9.9543 18.415 9.77516 18.5941 9.5542 18.5941ZM9.9543 13.3144V14.6277C9.9543 14.8487 9.77516 15.0278 9.5542 15.0278H6.72667C6.50571 15.0278 6.32658 14.8487 6.32658 14.6277V13.3144C6.32658 13.0934 6.50571 12.9143 6.72667 12.9143H9.5542C9.77516 12.9143 9.9543 13.0934 9.9543 13.3144ZM6.72667 20.2411H9.5542C9.77516 20.2411 9.9543 20.4202 9.9543 20.6412V21.9545C9.9543 22.1755 9.77516 22.3546 9.5542 22.3546H6.72667C6.50571 22.3546 6.32658 22.1755 6.32658 21.9545V20.6412C6.32663 20.4202 6.50576 20.2411 6.72667 20.2411ZM11.6012 21.9544V20.6411C11.6012 20.4202 11.7804 20.241 12.0013 20.241H14.8289C15.0498 20.241 15.229 20.4202 15.229 20.6411V21.9544C15.229 22.1754 15.0498 22.3545 14.8289 22.3545H12.0013C11.7804 22.3545 11.6012 22.1754 11.6012 21.9544Z" fill="#EBEFF0"/>
+                      <path d="M20.9735 5.95413C20.98 5.9823 20.9859 6.00963 20.9914 6.03604H15.6307C15.2511 6.03604 14.9434 5.72834 14.9434 5.34872V0.0327148C14.9852 0.040181 15.0293 0.0489098 15.0747 0.0589561C15.4743 0.147342 15.8386 0.352826 16.1281 0.642193L20.3912 4.9053C20.6794 5.19357 20.8818 5.55694 20.9735 5.95413Z" fill="url(#paint1_linear_incidentmastercfv)"/>
+                      <path d="M21.0347 24.5513V26.2487C21.0347 27.2112 20.2471 27.9988 19.2846 27.9988H2.27109C1.30878 27.9988 0.521484 27.2115 0.521484 26.2492V24.5513H21.0347Z" fill="url(#paint2_linear_incidentmastercfv)"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_incidentmastercfv" x1="5.4076" y1="10.9157" x2="18.7256" y2="24.2336" gradientUnits="userSpaceOnUse">
+                      <stop style="stop-color:#28A265"  />
+                      <stop offset="1" style="stop-color:#28A265"  />
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_incidentmastercfv" x1="15.6228" y1="3.22487" x2="18.0779" y2="5.68003" gradientUnits="userSpaceOnUse">
+                      <stop style="stop-color:#91D1B2"  />
+                      <stop offset="1"  style="stop-color:#28A265" />
+                      </linearGradient>
+                      <linearGradient id="paint2_linear_incidentmastercfv" x1="10.7781" y1="25.457" x2="10.7781" y2="28.1793" gradientUnits="userSpaceOnUse">
+                      <stop   style="stop-color:#108372"  stop-opacity="0"/>
+                      <stop offset="1"  style="stop-color:#108372" />
+                      </linearGradient>
+                      </defs>
+                      </svg>
+                      &nbsp;
+              </div>
+              
+        </div>
+      </div>
+      
+       <div class="row "   >  
+    <div class="col   ">  
+      
+        <div class="table-responsive-xl  grid-container  " id="incidentmastercfvuserlist_toggle" name="incidentmastercfvuserlist_toggle"    >
+            <table id="incidentmastercfvuserlist" name="incidentmastercfvuserlist" class=" bg-white summarytable   "  style="width:100%;  margin: 0;padding: 0">
+            </table>
+        </div>
+   </div>
+   </div>
+  </div>
+  
+  <!-- End export incidentmastercfvs -->
+ 
+  
+ </div> 
+</div>
+   
+
+<script>
+
+
+
+
+
+
+
+  
+
+function show_loaddatatype(loadlevel)
+{
+$( "#incidentmastercfvdatatype" ).html( loadlevel );
+}
+
+
+    
+
+
+
+    
+
+//***** Toggle the export part***********
+$("#Showincidentmastercfvusers").click(function(){
+  $("#incidentmastercfvuserlist_toggle").toggle();
+    $("#exportincidentmastercfvusertoexcel").toggle();
+});
+
+
+
+var incidentmastercfvfield_delete=[];  // need to predefine for get deleted items;
+
+
+
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#incidentmastercfvfieldlistsearch', function (e) {
+    var iscoentered = $('#incidentmastercfvfieldlistsearch').val();
+    //alert(iscoentered )
+    if(iscoentered!='')
+    {
+     $('#incidentmastercfvfieldlistadd').show();
+     $('#incidentmastercfvfieldlistsearch').removeClass('rounded-pill');
+     $('#incidentmastercfvfieldlistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#incidentmastercfvfieldlistadd').hide();
+     $('#incidentmastercfvfieldlistsearch').addClass('rounded-pill');
+     $('#incidentmastercfvfieldlistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+ $(document).on('click', '#incidentmastercfvfieldlistadd', function (e) {
+ var dataarray=activefield;
+ var idarray=activefieldid;
+var addresult = addtoList('incidentmastercfvfield',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<script>
+
+
+//Used for make viewdetail div disable
+var pageIncidentmastercfv_viewdetails = false;
+var incidentmastercfvid='';
+ 
+ $('#incidentmastercfvuserlist').hide();
+
+ 
+ 
+ function getincidentmastercfvrecorddata(valueof)
+{
+
+  $('.removelist_incidentmastercfvfield').remove(); // remove existing list
+$('.createincidentmastercfv-title').html('<h6><strong>Update Field</strong></h6>');
+ incidentmastercfvid=valueof.incidentmastercfvid[0];
+ $('#incidentmastercfvname').val(valueof.data[incidentmastercfvid].name);
+ $('#incidentmastercfvsquence').val(valueof.data[incidentmastercfvid].sequence);
+ $('#incidentmastercfvdesc').val(valueof.data[incidentmastercfvid].description);
+
+
+
+
+
+
+var statusval=valueof.data[incidentmastercfvid].status;
+if(statusval == 'true')
+    {
+    $('#isincidentmastercfvactive').prop('checked',  true);
+    }
+else
+if(statusval == 'false')
+    {
+    $('#isincidentmastercfvactive').prop('checked',  false);
+    }
+
+    
+var incidentmastercfvfield=valueof.data[incidentmastercfvid].field;
+//alert(JSON.stringify(incidentmastercfvfield))
+for (var d=0;d<incidentmastercfvfield.length; d++)
+{
+updatetoList(incidentmastercfvfield[d],'incidentmastercfvfield');
+}
+
+
+
+
+$('#Showincidentmastercfvusers').show();
+
+  pageincidentmastercfvexport(valueof);
+  page_show('pageIncidentmastercfvmanagement','pageIncidentmastercfv')
+pageIncidentmastercfvactioncontrol();
+progressboxClose();
+
+
+}
+       
+       
+       
+       
+        var incidentmastercfv_caninactive='No';
+$(document).on('click','#callcreateincidentmastercfv',function(e) {
+incidentmastercfv_caninactive='No';
+saveincidentmastercfvdetails(incidentmastercfv_caninactive);
+});
+$(document).on('click','.pageIncidentmastercfv_confirm',function(e) {
+incidentmastercfv_caninactive='Yes';
+saveincidentmastercfvdetails(incidentmastercfv_caninactive);
+confirmationboxClose();
+});
+    
+       
+       
+//Create new incidentmastercfv
+function saveincidentmastercfvdetails(incidentmastercfv_caninactive)
+{
+//read all dependant items
+var  incidentmastercfvfield=read_incidentmastercfvfield(); 
+
+var incidentmastercfvuseractiveresults=[];
+var  name=$('#incidentmastercfvname').val();
+var status = $('#isincidentmastercfvactive').prop('checked');
+
+var sequence = $('#incidentmastercfvsquence').val();
+var description = $('#incidentmastercfvdesc').val();
+
+
+		var _incidentmastercfvparams = {
+			"action"  : "incidentmastercfv_maintain",
+			"param"   : {"id":incidentmastercfvid
+                       ,"name" : name.trim()
+                       ,"description" : description
+                       ,"sequence" : sequence
+                       ,"status" : status
+                       ,"incident" : {"info": incidentmastercfvfield, "deleteinfo":incidentmastercfvfield_delete }
+                       ,"createby":_getloginname
+                       ,"caninactive":incidentmastercfv_caninactive
+                       }
+                       
+                       
+			};
+            
+            
+   if( validateBeforeSubmit(name) == 'true'  && incidentmastercfvfield.length > 0 )
+     {
+      progressboxOpen();
+      google.script.run.withFailureHandler(incidentmastercfv_inError).withSuccessHandler(incidentmastercfvconfirmation).executeincidentmastercfv(_incidentmastercfvparams) 
+      }
+      else
+      {
+      toastboxOpen("2008")
+      }
+            
+            
+}
+
+
+
+
+
+
+ function incidentmastercfvconfirmation(result) {
+  if(isNaN(result.result['code']) == false)
+{
+    if (result.result['code'] == '3000') {
+    incidentmastercfvfield_delete=[];
+   
+
+          $('.removelist_incidentmastercfvfield').remove(); // remove existing list
+        
+//      $('#worklocationpage *').val('');
+        incidentmastercfvid='';
+        incidentmastercfv_actionfromwhere='afterupdate';
+         retrive_allincidentmastercfvdetails(result)
+      pageIncidentmastercfvactioncontrol();
+          page_show('pageIncidentmastercfv','pageIncidentmastercfvmanagement')
+      }
+    else
+      if(result.result['code'] == '2016')
+      {
+           progressboxClose();
+           confirmationboxOpen(2016,"pageIncidentmastercfv_confirm");
+      }
+      else
+      {
+          progressboxClose();
+         toastboxOpen(result.result['code']);
+      }
+      }
+    else {
+      toastboxOpen("2007");
+    }
+
+  }
+
+
+// Show error message
+function incidentmastercfv_errormessage(err)
+{
+          progressboxClose();
+            toastboxOpen("3002");
+}
+</script>
+
+<script>
+// Control the page action.
+function pageIncidentmastercfvactioncontrol()
+{
+pageIncidentmastercfv_viewdetails=page_actioncontrol("pageIncidentmastercfv","SAVE");
+//Div disabled based on the condition 
+if(pageIncidentmastercfv_viewdetails == false){$(".pageIncidentmastercfv_fullview_section *").attr('disabled','disabled');}
+else{    $(".pageIncidentmastercfv_fullview_section *").prop("disabled", false);}
+}
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+
+
+$(document).on('keypress','#incidentmastercfvfieldlistsearch',function(e) {
+
+autocomplete(document.getElementById("incidentmastercfvfieldlistsearch"), activefield);
+});
+
+
+
+//company
+$(document).on('click', '.incidentmastercfvfield_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+
+var getdeletedata =  getdeleteitem(getid,'incidentmastercfvfield');
+
+incidentmastercfvfield_delete.push(getdeletedata)
+	    });
+
+
+//Read all dependency
+function read_incidentmastercfvfield()
+{
+  var incidentmastercfvfieldvalues=[];
+  var _mclength = $('#incidentmastercfvfieldlist li').length
+  var _mcdeletelength = incidentmastercfvfield_delete.length;
+  var _mcfulllength = parseInt(_mclength)+parseInt(_mcdeletelength);
+
+
+  for (var l = 0; l < _mcfulllength; l++) {
+  
+      var _mcdata = $("#incidentmastercfvfieldlisttextid_"+ l).val();
+      var _mcid   = $("#incidentmastercfvfieldlistupdateid_"+ l).val();
+      
+//      alert(_mcdata)
+//      alert(_mcid)
+
+      
+      if(_mcdata!='' && _mcdata!=undefined && _mcdata!='undefined')
+      {
+          incidentmastercfvfieldvalues.push( {
+            "id"         : _mcid,
+            "value"      : _mcdata
+            })
+  
+      }
+  }
+  
+  return incidentmastercfvfieldvalues;
+}
+
+
+$(document).on('keypress','#incidentmastercfvname',function(e) {
+autocomplete(document.getElementById("incidentmastercfvname"), incidentmastercfvnameavailable);
+});
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+var addincidentmastercfvuser;
+//$('#exportroleusertoexcel').hide();
+
+//Show the user details in this table 
+//$(document).on('click','#Showroleusers',function(e) {
+   var incidentmastercfvuseractiveresults=[];
+
+ function pageincidentmastercfvexport(valueof)
+ {
+incidentmastercfvid= valueof.incidentmastercfvid[0];
+            if(incidentmastercfvid!='' )  
+            {
+             var incidentmastercfvuserresults=[];
+             incidentmastercfvuseractiveresults=[];
+              if(valueof!= '')
+              {
+                 var selectedincidentmastercfvrole=valueof.data[incidentmastercfvid].user;//.roleuser[0]
+                      for (var x = 0; x < selectedincidentmastercfvrole.length; x++) {   
+                      incidentmastercfvuserresults.push([
+                      selectedincidentmastercfvrole[x].username,
+                      selectedincidentmastercfvrole[x].useremail,
+                      selectedincidentmastercfvrole[x].userlocked,
+                      selectedincidentmastercfvrole[x].userstatus,
+                      selectedincidentmastercfvrole[x].userlocked,
+                      selectedincidentmastercfvrole[x].userstatus,
+                      ])
+                      
+                     
+                      };
+                      
+              }
+              
+            var incidentmastercfvtableid="incidentmastercfvuserlist";
+            addincidentmastercfvuser = $('#incidentmastercfvuserlist').DataTable({
+            dom: 'Bfrtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+                dom: 'Bfrtip',
+
+buttons: [{
+            extend: 'excelHtml5',
+            className: "incidentmastercfvbuttonsTocall reducebuttonsize",
+             exportOptions: {
+             
+         columns: [0,1, 4, 5]
+
+//      format: {
+//         body: function ( data, row, column, node ) {
+//            switch (column) {
+//              case 2 :
+//                return rolevalsplit[2];
+//                break
+//              case 3 : 
+//                return rolevalsplit[3];
+//                break
+//              default :
+//                return data;
+//                break
+//             }
+//          }
+//        }    
+     },
+        }],
+
+
+               "bFilter": false,
+                rowId: 'id', 
+                data: incidentmastercfvuserresults,
+                columns: [{
+                    title: " Name" 
+                }, {
+                    title: "Email"
+                }, 
+                {
+                    title: "Locked",
+                    className: 'isLocked',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var islocked = full[2];
+                        
+                        
+                         if (islocked == 'true') {
+                        var isincidentmastercfvlocked="isincidentmastercfvlocked"+full[0];
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input  " id="' + isincidentmastercfvlocked + '"  name="' + isincidentmastercfvlocked + '"  checked>' +
+                                '<label class="custom-control-label" for="' + isincidentmastercfvlocked + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input" id="' + isincidentmastercfvlocked + '"  name="' + isincidentmastercfvlocked + '"  >' +
+                                '<label class="custom-control-label" for="' + isincidentmastercfvlocked + '" ></label>' +
+                                '</div>';
+                        }
+                    },
+                    targets: -1,
+                }, 
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var isactive = full[3];
+                        
+                            if (isactive == 'true') {
+                        var isincidentmastercfvactive="isincidentmastercfvactive"+full[0];
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input  " id="' + isincidentmastercfvactive + '"  name="' + isincidentmastercfvactive + '"  checked>' +
+                                '<label class="custom-control-label" for="' + isincidentmastercfvactive + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input" id="' + isincidentmastercfvactive + '"  name="' + isincidentmastercfvactive + '"  >' +
+                                '<label class="custom-control-label" for="' + isincidentmastercfvactive + '" ></label>' +
+                                '</div>';
+                        }
+                        
+                        
+                       
+                    },
+                    targets: -1,
+                }, 
+                {
+                    title: "Locked"
+                }, 
+                {
+                    title: "Active"
+                }, 
+                ],
+                "initComplete": function(settings, json) {
+                  $("#"+incidentmastercfvtableid + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercfvtableid + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+incidentmastercfvtableid + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercfvtableid + "_next").addClass("customDataTables_pageNext");
+                           }
+
+            });
+            
+            
+           
+                  addincidentmastercfvuser.clear();
+              addincidentmastercfvuser.draw();
+            addincidentmastercfvuser.rows.add(incidentmastercfvuserresults).draw();
+            addincidentmastercfvuser.column(4).visible(false);
+            addincidentmastercfvuser.column(5).visible(false);
+ $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
+
+            if(incidentmastercfvuserresults.length >0)
+            {
+                  $('#incidentmastercfvuserlist').show();
+                  $('#exportincidentmastercfvusertoexcel').show();
+                  $('#incidentmastercfvuserlist_toggle').show();
+                  $('#Showincidentmastercfvusers').show();
+                  $("#incidentmastercfvuserlist_toggle").toggle();
+                  $("#exportincidentmastercfvusertoexcel").toggle();
+            } 
+            else
+            {
+                  $('#incidentmastercfvuserlist_toggle').hide();
+                  $('#Showincidentmastercfvusers').hide();
+                  $('#exportincidentmastercfvusertoexcel').hide();
+            }
+              
+
+
+
+var incidentmastercfvclickBtn = false;
+
+$(document).on('click', '#exportincidentmastercfvusertoexcel', function(event) { 
+
+if(incidentmastercfvclickBtn == false){
+    $(".incidentmastercfvbuttonsTocall").click(); 
+    }
+        incidentmastercfvclickBtn = true;
+
+});
+
+
+
+
+
+ $("#exportname").text('Incidentmaster question - User List');
+      }
+      else
+      {
+  toastboxOpen("2008");
+}
+}
+
+</script>
+
+
+
+

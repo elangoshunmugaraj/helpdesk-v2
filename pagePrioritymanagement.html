@@ -1,7 +1,7 @@
 <!-- Container with margin-top 5 pixel -->
-<div class='container-fluid mt-5 pageModulemanagement_fullview_section' >
+<div class='container-fluid mt-5 pagePrioritymanagement_fullview_section' >
     <div>
-        <h6><strong>Module management </strong></h6>
+        <h6><strong>Priority management </strong></h6>
         <br>
         <form>
             <div class="row">
@@ -10,7 +10,7 @@
                     <div class="input-group ">  
 
                         <input class="form-control custom-input float-left  rounded-pill  searchbox"
-                            placeholder="Search" id="pageModulemanagement_search"  name="pageModulemanagement_search">
+                            placeholder="Search" id="pagePrioritymanagement_search"  name="pagePrioritymanagement_search">
                         <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
                             <i class="fa fa-search"></i>
                         </button>
@@ -19,12 +19,12 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-3">
-                    <div class="input-group pageModulemanagement_add_section"  style="display:none;"  >
+                    <div class="input-group pagePrioritymanagement_add_section"  style="display:none;"  >
                         <button type="button"
-                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageModule" 
-                                   id="pageModulemanagement_add"  name="pageModulemanagement_add" 
-                            ><i id="pageModulemanagement_create"  name="pageModulemanagement_create"></i> Create
-                            Module</button>
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpagepriority" 
+                                   id="pagePrioritymanagement_add"  name="pagePrioritymanagement_add" 
+                            ><i id="pagePrioritymanagement_create"  name="pagePrioritymanagement_create"></i> Create
+                            Priority</button>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="mt-3">
         <div class="table-responsive-xl">
-            <table id="moduledetails" class=" bg-white summarytable  " style="width:100%">
+            <table id="prioritydetails" class=" bg-white summarytable  " style="width:100%">
             </table>
         </div>
     </div>
@@ -40,97 +40,81 @@
 </div>
 <script>
 //GLobal parameter:
-var _moduledetails;
+var _prioritydetails;
 </script>
 <script>
 // Action for next page
 $(document).ready(function () 
   {   
-    $('#pageModulemanagement_add').on('click', function() 
+    $('#pagePrioritymanagement_add').on('click', function() 
     {
-    $('.removelist_modulecompany').remove(); // remove existing list
-    $('.removelist_modulebu').remove(); // remove existing list
-    $('.removelist_modulewl').remove(); // remove existing list
-    $('.removelist_moduleuser').remove(); // remove existing list
-   
-        moduleid='';
-          $("#modulelogo").attr("href",'');
-
-        $('#modulename').val('');
-        $('#moduleprefix').val('');
+    $('.removelist_prioritymodule').remove(); // remove existing list
+    $('.removelist_prioritycategory').remove(); // remove existing list
+        priorityid='';
+        $('#priorityname').val('');
         $('#exportroleusertoexcel').hide();
         $('#Showroleusers').hide();
         $('#callcreaterole').show();
         $("#roleuserlist_toggle").hide();
         $("#exportroleusertoexcel").hide();
+        
+        $("#priorityresponseslahrs").val($("#priorityresponseslahrs option:first").val());
+        $("#priorityresponsesladays").val($("#priorityresponsesladays option:first").val());
+        $("#priorityresolutionslahrs").val($("#priorityresolutionslahrs option:first").val());
+        $("#priorityresolutionsladays").val($("#priorityresolutionsladays option:first").val());
+
       
-      //    var isexportvisible=$("#roleuserlist").is(":visible");
-      //    if (isexportvisible == true) { 
-      //   
-      //    $("#roleuserlist_toggle").toggle();
-      //    $("#exportroleusertoexcel").toggle();
-      //   } 
+       $('#exportpriorityusertoexcel').hide();
+  $('#Showpriorityusers').hide();
+        $("#priorityuserlist_toggle").hide();
+    $("#exportpriorityusertoexcel").hide();
       
-       $('#exportmoduleusertoexcel').hide();
-  $('#Showmoduleusers').hide();
-        $("#moduleuserlist_toggle").hide();
-    $("#exportmoduleusertoexcel").hide();
-      
-        pageModuleactioncontrol();
-        page_show('pageModulemanagement','pageModule');
+        pagePriorityactioncontrol();
+        page_show('pagePrioritymanagement','pagePriority');
     });
         
   });
   
   
   
-  $('#pageModulemanagement_search').on( 'keyup',   function () 
+  $('#pagePrioritymanagement_search').on( 'keyup',   function () 
   {
-  moduledetailsaddintable.search( this.value ).draw();
+  prioritydetailsaddintable.search( this.value ).draw();
   });  
 </script>
 
 <script>
-var modulenameavailable=[];
-var moduleprefixavailable=[];
+var prioritynameavailable=[];
+var priorityprefixavailable=[];
 //Used for control the view eye to open or not
-    var pageModulemanagement_viewdetails=false;
-    function module_inError(err) {
+    var pagePrioritymanagement_viewdetails=false;
+    function priority_inError(err) {
       progressboxClose();
       toastboxOpen("2000");
     }
 
 
 //Load the role data
-    loadallmodules();
-    var module_actionfromwhere='';
-    function loadallmodules()
+    loadallprioritys();
+    var priority_actionfromwhere='';
+    function loadallprioritys()
     {
 //     progressboxOpen();
-module_actionfromwhere='onload'
-            google.script.run.withFailureHandler(module_inError)
-            .withSuccessHandler(retrive_allmoduledetails)
-            .executemodule({ "action": "showallmodule_details" });
+priority_actionfromwhere='onload'
+            google.script.run.withFailureHandler(priority_inError)
+            .withSuccessHandler(retrive_allprioritydetails)
+            .executepriority({ "action": "showallpriority_details" });
     }
     
-//    // after add it will call
-//    function loadallmodulesaffterupdate()
-//    {
-//    actionfromwhere = 'afterupdate';
-//     progressboxOpen();
-//            google.script.run.withFailureHandler(module_inError)
-//            .withSuccessHandler(retrive_allmoduledetails)
-//            .executemodule({ "action": "showallmodule_details" });
-//    }
-    var moduledetailsaddintable;
-    var moduledetailselemID = "moduledetails";  
+    var prioritydetailsaddintable;
+    var prioritydetailselemID = "prioritydetails";  
 
 //Load retrieved data
-        function retrive_allmoduledetails(loaddetails) {
-        modulenameavailable=[];
-        moduleprefixavailable=[];
+        function retrive_allprioritydetails(loaddetails) {
+        prioritynameavailable=[];
+        priorityprefixavailable=[];
        
-         if(module_actionfromwhere == 'afterupdate')
+         if(priority_actionfromwhere == 'afterupdate')
         {
                   toastboxOpen("3002");
                   progressboxClose();
@@ -144,28 +128,24 @@ module_actionfromwhere='onload'
                 if(loaddetails.result['code'] == '3000')
                 {
                 
-                                        _moduledetails=loaddetails.data;
+                                        _prioritydetails=loaddetails.data;
 
-                                 var datalength = (loaddetails.data.modulelist).length
+                                 var datalength = (loaddetails.data.prioritylist).length
                                  
                                  
                       for (var x = 0; x < datalength; x++) {  
                       
-                      results.push([loaddetails.data.modulelist[x].id,
-                      loaddetails.data.modulelist[x].name,
-                      loaddetails.data.modulelist[x].prefix,
-                      loaddetails.data.modulelist[x].url,
-                      loaddetails.data.modulelist[x].status
+                      results.push([loaddetails.data.prioritylist[x].id,
+                      loaddetails.data.prioritylist[x].name,
+                      loaddetails.data.prioritylist[x].status
                       ])
-                      modulenameavailable.push(loaddetails.data.modulelist[x].name);
-                      moduleprefixavailable.push(loaddetails.data.modulelist[x].prefix);
-
+prioritynameavailable.push(loaddetails.data.prioritylist[x].name);
                       
                       };
                 }
               };
                      
-          moduledetailsaddintable = $('#moduledetails').DataTable({
+          prioritydetailsaddintable = $('#prioritydetails').DataTable({
                 dom: 'rtip',
                 "ordering": true,  
                 "pageLength": 5,
@@ -181,30 +161,17 @@ module_actionfromwhere='onload'
                     title: "Name"
                 }, 
                 {
-                    title: "Prefix"
-                },
-                {
-                title: "Logo",
-                data: null,
-                "render": function (data, type, full, meta) {
-                    return '<img src="' + full[3] + '" style="width: 30px; height: 30px" >';
-                },
-                },
-                 
-                {
                     title: "Active",
                     className: 'isActive',
                     orderable: false,
                     data: null,
                     "render": function (data, type, full, meta) {
                     
-                        var recid = "moduledetailsisActive_" + full[0];
+                        var recid = "prioritydetailsisActive_" + full[0];
 
-                        var isdown = full[4];
+                        var isdown = full[2];
                         
                         if (isdown == 'true' ) {
-                        
-                        
                         
 
                             return '<div class="custom-control custom-switch">' +
@@ -226,49 +193,49 @@ module_actionfromwhere='onload'
                     title: "Details",
                     orderable: false,
                     data: null,
-                    className: 'pageModulemanagement_viewdetails_section',
+                    className: 'pagePrioritymanagement_viewdetails_section',
                      "render": function (data, type, full, meta) {
-                        var _recviewid = "moduledetailsisview_" + full[0];
+                        var _recviewid = "prioritydetailsisview_" + full[0];
                              return '<i class="fas fa-eye" style="color: #79CEFF;"  ></i>'; // id="'+_recviewid+'" name="'+_recviewid+'"
 
                     },
                     targets: -1,
                 },],
                 "initComplete": function(settings, json) {
-                  $("#"+moduledetailselemID + "_previous").addClass("customDataTables_pagePrev");
-                  $("#"+moduledetailselemID + "_next").addClass("customDataTables_pageNext");
+                  $("#"+prioritydetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+prioritydetailselemID + "_next").addClass("customDataTables_pageNext");
                          }, //initComplete
                 "drawCallback": function( settings ) {
-                  $("#"+moduledetailselemID + "_previous").addClass("customDataTables_pagePrev");
-                  $("#"+moduledetailselemID + "_next").addClass("customDataTables_pageNext");
+                  $("#"+prioritydetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+prioritydetailselemID + "_next").addClass("customDataTables_pageNext");
                            }
                            
             });
             
             
-            moduledetailsaddintable.clear();
-            moduledetailsaddintable.draw();
-            moduledetailsaddintable.rows.add(results).draw();
+            prioritydetailsaddintable.clear();
+            prioritydetailsaddintable.draw();
+            prioritydetailsaddintable.rows.add(results).draw();
 
             if (loaddetails.result['code'] == '3000') {
-        Loadmodulefrommodulemanagement(loaddetails);
+        Loadpriorityfromprioritymanagement(loaddetails);
         }
 
 
            
             // Call class for view the details.
-             $('#moduledetails tbody').on('click', 'tr td.pageModulemanagement_viewdetails_section', function () {
-             if(pageModulemanagement_viewdetails == true)
+             $('#prioritydetails tbody').on('click', 'tr td.pagePrioritymanagement_viewdetails_section', function () {
+             if(pagePrioritymanagement_viewdetails == true)
              {
-                var indx = moduledetailsaddintable.column(this).index()
+                var indx = prioritydetailsaddintable.column(this).index()
                 var tr = $(this).closest('tr');
-                var row = moduledetailsaddintable.row(tr);
+                var row = prioritydetailsaddintable.row(tr);
                 var id = row.data()[0];
-                var modulename = row.data()[1];
+                var priorityname = row.data()[1];
                 var status = row.data()[2];
 //                var   _getloginname= $("#idoriginalname").text();
                 var data = {
-                             "action": "module_getbyID",
+                             "action": "priority_getbyID",
                     "param": {
                         "id": id,
                         }
@@ -276,7 +243,7 @@ module_actionfromwhere='onload'
                 $(".preloader").show();
                progressboxOpen()
 
-               google.script.run.withFailureHandler(module_inError).withSuccessHandler(getmodulerecorddata).executemodule(data);
+               google.script.run.withFailureHandler(priority_inError).withSuccessHandler(getpriorityrecorddata).executepriority(data);
 
                 
                 
@@ -299,9 +266,9 @@ module_actionfromwhere='onload'
 
 <script>
 // Control the page action.
-function pageModulemanagementactioncontrol()
+function pagePrioritymanagementactioncontrol()
 {
-pageModulemanagement_viewdetails=page_actioncontrol("pageModulemanagement","VIEW");
+pagePrioritymanagement_viewdetails=page_actioncontrol("pagePrioritymanagement","VIEW");
 }
 </script>
 

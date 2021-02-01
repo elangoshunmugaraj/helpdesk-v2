@@ -249,6 +249,12 @@ function loadsystemrole(loaddetails)
                 roledetailsaddintable.clear();
               roledetailsaddintable.draw();
             roledetailsaddintable.rows.add(results).draw();
+
+            if (loaddetails.result['code'] == '3000') {
+        Loadactiverolefromrolepage(loaddetails);
+        }
+
+
               $('#pageRolemanagement_search').on( 'keyup', function () {roledetailsaddintable.search( this.value ).draw();});  
             // Call class for view the details.
              $('#roledetails tbody').on('click', 'tr td.pageRolemanagement_viewdetails_section', function () {
@@ -307,11 +313,7 @@ function loadsystemrole(loaddetails)
 
 
 
-//      //Confirm the status update 
-//        function updateconfirm() {
-//          progressboxClose();
-//          toastboxOpen("3002");
-//        }
+
 </script>
 
 <script>

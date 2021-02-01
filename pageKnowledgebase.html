@@ -1,0 +1,1807 @@
+
+<div class="container-fluid mt-5 pageKnowledgebase_fullview_section" id="knowledgebasepage" name="knowledgebasepage">
+  <div class="container">
+  <div class="createknowledgebase-title col-12 min-vh-50">
+    <h6><strong>Create Articles</strong></h6>
+  </div>
+  <div class="card">
+  <div class="card-body">
+  
+  
+     <div class="row mb-3">
+    
+    <div class="col-md-10">
+    
+    </div>
+       <div class="col-md-2  ">
+       <div class="row">
+       <div class="col-md-3"> 
+       </div>
+        <div class="col-md-3">
+        </div>
+       <div class="col-md-2">
+         <label for="isknowledgebaseactive">Active</label>
+				<div class="custom-control custom-switch custom-switch-lg ">
+					<input type="checkbox" class="custom-control-input" id="isknowledgebaseactive" name="isknowledgebaseactive" >
+					<label class="custom-control-label" for="isknowledgebaseactive"></label>
+				</div>
+          </div> 
+          <div class="col-md-4">
+          </div>
+          </div>
+        </div>
+    </div>
+  
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group required">
+				<label for="knowledgebasename">Title</label>
+				<textarea class="form-control rounded-pill tasize inputboxcolor" id="knowledgebasename" placeholder="" name="knowledgebasename" autocomplete="off"></textarea>
+			</div>
+		</div>
+        
+        <div class="col-sm-6">
+			<div class="form-group">
+				<label for="knowledgebaseautoreply">Helptext</label>
+				<textarea class="form-control rounded-pill tasize inputboxcolor" id="knowledgebaseautoreply" placeholder=""name="knowledgebaseautoreply" autocomplete="off"></textarea>
+			</div>
+		</div>
+    
+		 
+	</div>
+
+
+  <div class="row">
+		
+		<div class="col-sm-3">
+			 <div class="form-group">
+            <label for="knowledgebaseimage" >Image</label>
+            <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="knowledgebaseimage"   name="knowledgebaseimage" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="form-group dropdown-menu dropdown-menu-knowledgebase dropdown-menu-left" id="knowledgebaseimagelist"
+              aria-labelledby="dropdownMenuButton">
+            </div>
+          </div>
+		</div>
+       
+         <div class="col-md-9">
+         
+         <div class="form-group">
+							<label for="knowledgebasekeyword">Keyword</label>
+							<input type="text" class="form-control rounded-pill closetoken inputboxcolor" id="knowledgebasekeyword" placeholder="" name="knowledgebasekeyword" value="" autocomplete="off">
+						</div>
+          </div> 
+	</div>
+
+  
+  
+  
+
+
+  </div><!--< END class="card-body">  -->
+</div>
+
+<!--- Begin add for knowledgebase company ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebasecompanyrow">
+        <div class="col-md-12" name="addknowledgebasecompanycolumn">
+            <label for="knowledgebasecompany" class="required"> Article Company</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasecompanylistsearch" name="knowledgebasecompanylistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Company..." aria-label="Search company..." aria-describedby="knowledgebasecompanylistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasecompanylistadd"  name="knowledgebasecompanylistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasecompanylistdiv"  name="knowledgebasecompanylistdiv">
+               <ul id="knowledgebasecompanylist" name="knowledgebasecompanylist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase company --------------->
+
+<!--- Begin add for knowledgebase BU ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebaseburow">
+        <div class="col-md-12" name="addknowledgebasebucolumn">
+            <label for="knowledgebasebu">Article Business Unit</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasebulistsearch" name="knowledgebasebulistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Businessunit..." aria-label="add bu..." aria-describedby="knowledgebasebulistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasebulistadd"  name="knowledgebasebulistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasebulistdiv"  name="knowledgebasebulistdiv">
+               <ul id="knowledgebasebulist" name="knowledgebasebulist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase BU --------------->
+
+<!--- Begin add for knowledgebase WL ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebasewlrow">
+        <div class="col-md-12" name="addknowledgebasewlcolumn">
+            <label for="knowledgebasewl">Article WorkLocation</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasewllistsearch" name="knowledgebasewllistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Worklocation..." aria-label="add work location..." aria-describedby="knowledgebasewllistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasewllistadd"  name="knowledgebasewllistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasewllistdiv"  name="knowledgebasewllistdiv">
+               <ul id="knowledgebasewllist" name="knowledgebasewllist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase WL --------------->
+<!--- Begin add for knowledgebase module ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebasemodulerow">
+        <div class="col-md-12" name="addknowledgebasemodulecolumn">
+            <label for="knowledgebasemodule" class="required">Article Module</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasemodulelistsearch" name="knowledgebasemodulelistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search Module..." aria-label="add module..." aria-describedby="knowledgebasemodulelistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasemodulelistadd"  name="knowledgebasemodulelistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasemodulelistdiv"  name="knowledgebasemodulelistdiv">
+               <ul id="knowledgebasemodulelist" name="knowledgebasemodulelist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase WL --------------->
+
+
+<!--- Begin add for knowledgebase category ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebasecategoryrow">
+        <div class="col-md-12" name="addknowledgebasecategorycolumn">
+            <label for="knowledgebasecategory">Article Category</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasecategorylistsearch" name="knowledgebasecategorylistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search category..." aria-label="Search category..." aria-describedby="knowledgebasecategorylistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasecategorylistadd"  name="knowledgebasecategorylistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasecategorylistdiv"  name="knowledgebasecategorylistdiv">
+               <ul id="knowledgebasecategorylist" name="knowledgebasecategorylist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase category --------------->
+
+
+
+<!--- Begin add for knowledgebase sub-category ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebasesubcategoryrow">
+        <div class="col-md-12" name="addknowledgebasesubcategorycolumn">
+            <label for="knowledgebasesubcategory">Article Sub-Category</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebasesubcategorylistsearch" name="knowledgebasesubcategorylistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search sub-category..." aria-label="Search subcategory..." aria-describedby="knowledgebasesubcategorylistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebasesubcategorylistadd"  name="knowledgebasesubcategorylistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebasesubcategorylistdiv"  name="knowledgebasesubcategorylistdiv">
+               <ul id="knowledgebasesubcategorylist" name="knowledgebasesubcategorylist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase subcategory --------------->
+
+
+
+
+
+
+<!--- Begin add for knowledgebase incident ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebaseincidentrow">
+        <div class="col-md-12" name="addknowledgebaseincidentcolumn">
+            <label for="knowledgebaseincident">Article Incident</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebaseincidentlistsearch" name="knowledgebaseincidentlistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search incident..." aria-label="add incident..." aria-describedby="knowledgebaseincidentlistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebaseincidentlistadd"  name="knowledgebaseincidentlistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebaseincidentlistdiv"  name="knowledgebaseincidentlistdiv">
+               <ul id="knowledgebaseincidentlist" name="knowledgebaseincidentlist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+<!--- End add for knowledgebase incident --------------->
+
+
+
+<!--- Begin add for knowledgebase knowledgebase ------------->
+<!--<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebaseknowledgebaserow">
+        <div class="col-md-12" name="addknowledgebaseknowledgebasecolumn">
+            <label for="knowledgebaseknowledgebase">Article Knowledgebase</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebaseknowledgebaselistsearch" name="knowledgebaseknowledgebaselistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search knowledgebase..." aria-label="add knowledgebase..." aria-describedby="knowledgebaseknowledgebaselistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebaseknowledgebaselistadd"  name="knowledgebaseknowledgebaselistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebaseknowledgebaselistdiv"  name="knowledgebaseknowledgebaselistdiv">
+               <ul id="knowledgebaseknowledgebaselist" name="knowledgebaseknowledgebaselist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>-->
+<!--- End add for knowledgebase knowledgebase --------------->
+
+
+<!--- Begin add for knowledgebase role ------------->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row" name="addknowledgebaserolerow">
+        <div class="col-md-12" name="addknowledgebaserolecolumn">
+            <label for="knowledgebaserole" class="required">Article Role</label>
+            <div class="input-group input-group-lg mb-2">
+                  <input type="text" id="knowledgebaserolelistsearch" name="knowledgebaserolelistsearch" 
+                         class="form-control rounded-pill inputboxcolor textboxfontsize" 
+                          placeholder="Search role..." aria-label="Search role..." aria-describedby="knowledgebaserolelistadd">
+                   <div class="input-group-append ">
+                       <span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" 
+                             id="knowledgebaserolelistadd"  name="knowledgebaserolelistadd" style="display:none; curser:pointer" >
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="23" height="23" rx="5" fill="#2D9CDB"/>
+                              <path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
+							</svg>
+                        </span>
+                   </div>
+             </div>
+             <div id="knowledgebaserolelistdiv"  name="knowledgebaserolelistdiv">
+               <ul id="knowledgebaserolelist" name="knowledgebaserolelist" class="px-0 py-0 textboxfontsize"></ul>
+             </div>
+          </div>
+     </div>     
+  </div>
+</div>
+
+<!-- begin add save button here -->
+<div class="">
+  <div class="row mt-2">
+       <!-- Start export data  -->
+   <div class="col-md-3 "> 
+       <div class="input-group pageKnowledgebase_view_section" style="display:none;">
+          <button class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" style="display:none;" id="Showknowledgebaseusers"  name="Showknowledgebaseusers">              
+           Show Users  
+          </button>
+      </div>
+      </div>
+        <div class="col-md-6  my-1">
+      </div>
+       <!-- End export data  -->
+      
+        <div class="col-md-3">
+          <div class="input-group pageKnowledgebase_save_section " style="display:none;">
+            <button type="button" class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" 
+                    id="callcreateknowledgebase" 
+                    name="callcreateknowledgebase" >Save
+            </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- end add save button here ---->
+          
+ <!--   Export knowledgebases -->
+  <div class=" "  >
+   <div class="row  "   >  
+    <div class="col-md-11">  
+               </div>
+        <div class="col-md-1 alignsvgright float-left">  
+              <div class=" pageKnowledgebase_export_section float-right  " style="display:none;" title="Export to Excel">
+                      <svg  type="button"   id="exportknowledgebaseusertoexcel"  style="display:none;" name="exportknowledgebaseusertoexcel" width="20" height="25" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.522386 1.74993L0.519531 26.2482C0.519421 27.2105 1.30666 27.9979 2.26891 27.998L19.2824 28C20.245 28.0001 21.0326 27.2127 21.0328 26.2501L21.0351 6.44696C21.0351 5.90967 20.8217 5.39434 20.4419 5.01439L16.0235 0.594931C15.6436 0.214981 15.1284 0.00148226 14.5911 0.00142736L2.2727 1.14804e-08C1.31012 -0.000109785 0.522496 0.787348 0.522386 1.74993Z" fill="url(#paint0_linear_knowledgebase)"/>
+                      <path d="M15.7675 11.2673H5.78808C5.17597 11.2673 4.67969 11.7642 4.67969 12.3763V22.8931C4.67969 23.5052 5.17597 24.0015 5.78808 24.0015H15.7675C16.3796 24.0015 16.8758 23.5052 16.8758 22.8931V12.3763C16.8758 11.7642 16.3796 11.2673 15.7675 11.2673ZM14.8288 15.0277H12.0013C11.7803 15.0277 11.6012 14.8486 11.6012 14.6276V13.3143C11.6012 13.0934 11.7803 12.9142 12.0013 12.9142H14.8288C15.0498 12.9142 15.2289 13.0934 15.2289 13.3143V14.6276C15.2289 14.8486 15.0498 15.0277 14.8288 15.0277ZM12.0013 16.6747H14.8288C15.0498 16.6747 15.2289 16.8538 15.2289 17.0748V18.1941C15.2289 18.4151 15.0498 18.5942 14.8288 18.5942H12.0013C11.7803 18.5942 11.6012 18.4151 11.6012 18.1941V17.0748C11.6012 16.8538 11.7804 16.6747 12.0013 16.6747ZM9.5542 18.5941H6.72667C6.50571 18.5941 6.32658 18.415 6.32658 18.194V17.0747C6.32658 16.8538 6.50571 16.6746 6.72667 16.6746H9.5542C9.77516 16.6746 9.9543 16.8538 9.9543 17.0747V18.194C9.9543 18.415 9.77516 18.5941 9.5542 18.5941ZM9.9543 13.3144V14.6277C9.9543 14.8487 9.77516 15.0278 9.5542 15.0278H6.72667C6.50571 15.0278 6.32658 14.8487 6.32658 14.6277V13.3144C6.32658 13.0934 6.50571 12.9143 6.72667 12.9143H9.5542C9.77516 12.9143 9.9543 13.0934 9.9543 13.3144ZM6.72667 20.2411H9.5542C9.77516 20.2411 9.9543 20.4202 9.9543 20.6412V21.9545C9.9543 22.1755 9.77516 22.3546 9.5542 22.3546H6.72667C6.50571 22.3546 6.32658 22.1755 6.32658 21.9545V20.6412C6.32663 20.4202 6.50576 20.2411 6.72667 20.2411ZM11.6012 21.9544V20.6411C11.6012 20.4202 11.7804 20.241 12.0013 20.241H14.8289C15.0498 20.241 15.229 20.4202 15.229 20.6411V21.9544C15.229 22.1754 15.0498 22.3545 14.8289 22.3545H12.0013C11.7804 22.3545 11.6012 22.1754 11.6012 21.9544Z" fill="#EBEFF0"/>
+                      <path d="M20.9735 5.95413C20.98 5.9823 20.9859 6.00963 20.9914 6.03604H15.6307C15.2511 6.03604 14.9434 5.72834 14.9434 5.34872V0.0327148C14.9852 0.040181 15.0293 0.0489098 15.0747 0.0589561C15.4743 0.147342 15.8386 0.352826 16.1281 0.642193L20.3912 4.9053C20.6794 5.19357 20.8818 5.55694 20.9735 5.95413Z" fill="url(#paint1_linear_knowledgebase)"/>
+                      <path d="M21.0347 24.5513V26.2487C21.0347 27.2112 20.2471 27.9988 19.2846 27.9988H2.27109C1.30878 27.9988 0.521484 27.2115 0.521484 26.2492V24.5513H21.0347Z" fill="url(#paint2_linear_knowledgebase)"/>
+                      <defs>
+                      <linearGradient id="paint0_linear_knowledgebase" x1="5.4076" y1="10.9157" x2="18.7256" y2="24.2336" gradientUnits="userSpaceOnUse">
+                      <stop style="stop-color:#28A265"  />
+                      <stop offset="1" style="stop-color:#28A265"  />
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_knowledgebase" x1="15.6228" y1="3.22487" x2="18.0779" y2="5.68003" gradientUnits="userSpaceOnUse">
+                      <stop style="stop-color:#91D1B2"  />
+                      <stop offset="1"  style="stop-color:#28A265" />
+                      </linearGradient>
+                      <linearGradient id="paint2_linear_knowledgebase" x1="10.7781" y1="25.457" x2="10.7781" y2="28.1793" gradientUnits="userSpaceOnUse">
+                      <stop   style="stop-color:#108372"  stop-opacity="0"/>
+                      <stop offset="1"  style="stop-color:#108372" />
+                      </linearGradient>
+                      </defs>
+                      </svg>
+                      &nbsp;
+              </div>
+              
+        </div>
+      </div>
+      
+       <div class="row "   >  
+    <div class="col   ">  
+      
+        <div class="table-responsive-xl  grid-container  " id="knowledgebaseuserlist_toggle" name="knowledgebaseuserlist_toggle"    >
+            <table id="knowledgebaseuserlist" name="knowledgebaseuserlist" class=" bg-white summarytable   "  style="width:100%;  margin: 0;padding: 0">
+            </table>
+        </div>
+   </div>
+   </div>
+  </div>
+  
+  <!-- End export knowledgebases -->
+ 
+  
+ </div> 
+</div>
+ 
+
+<script>
+$(document).ready(function () 
+  {   
+    $('#knowledgebasekeyword').tokenfield();
+
+});
+
+ $(document).on('click', '.dropdown-menu-knowledgebase a', function () {
+      $('#knowledgebaseimage').html($(this).html())
+    })
+
+
+
+
+function show_imageonlyfromimagelibraryimage(loaddata)
+{
+$( "#knowledgebaseimagelist" ).html( loaddata );
+}
+
+// upload image here
+   $("#uploadknowledgebasepicture").change(function(){
+        knowledgebasereadURL(this);
+    });
+function knowledgebasereadURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#knowledgebasepicture').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+    
+    
+    $( ".uploadknowledgebaseimagenow" ).trigger( "click" );
+
+}
+
+
+
+ 
+    $(document).on('click','.uploadknowledgebaseimagenow',function() {
+if(this.parentNode!='')   
+{
+
+      progressboxOpen();
+            google.script.run.withFailureHandler(knowledgebase_inError).withSuccessHandler(knowledgebaseOfuploadfile).uploadknowledgebasefile(this.parentNode);
+    }
+    });
+    
+var _uploadedknowledgebasefilename;
+function knowledgebaseOfuploadfile(file)
+{
+_uploadedknowledgebasefilename=file;
+
+
+      progressboxClose();
+
+}
+
+
+//function show_loadworkinghous(loadworkinghours)
+//{
+//$('#knowledgebaseworkinghours').html(loadworkinghours);
+//}
+//
+//function show_loadpositions(loadposiiton)
+//{
+//$('#knowledgebaseposition').html(loadposiiton);
+//}
+
+ 
+    
+
+//***** Toggle the export part***********
+$("#Showknowledgebaseusers").click(function(){
+  $("#knowledgebaseuserlist_toggle").toggle();
+    $("#exportknowledgebaseusertoexcel").toggle();
+});
+
+
+
+var knowledgebasecompany_delete=[];  // need to predefine for get deleted items;
+
+
+
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasecompanylistsearch', function (e) {
+    var iscoentered = $('#knowledgebasecompanylistsearch').val();
+    //alert(iscoentered )
+    if(iscoentered!='')
+    {
+     $('#knowledgebasecompanylistadd').show();
+     $('#knowledgebasecompanylistsearch').removeClass('rounded-pill');
+     $('#knowledgebasecompanylistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasecompanylistadd').hide();
+     $('#knowledgebasecompanylistsearch').addClass('rounded-pill');
+     $('#knowledgebasecompanylistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+ $(document).on('click', '#knowledgebasecompanylistadd', function (e) {
+ var dataarray=activecompany;
+ var idarray=activecompanyid;
+var addresult = addtoList('knowledgebasecompany',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+
+var knowledgebasecategory_delete=[];  // need to predefine for get deleted items;
+
+
+
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasecategorylistsearch', function (e) {
+    var iscoentered = $('#knowledgebasecategorylistsearch').val();
+    //alert(iscoentered )
+    if(iscoentered!='')
+    {
+     $('#knowledgebasecategorylistadd').show();
+     $('#knowledgebasecategorylistsearch').removeClass('rounded-pill');
+     $('#knowledgebasecategorylistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasecategorylistadd').hide();
+     $('#knowledgebasecategorylistsearch').addClass('rounded-pill');
+     $('#knowledgebasecategorylistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+ $(document).on('click', '#knowledgebasecategorylistadd', function (e) {
+ var dataarray=activecategory;
+ var idarray=activecategoryid;
+var addresult = addtoList('knowledgebasecategory',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+var knowledgebasesubcategory_delete=[];  // need to predefine for get deleted items;
+
+
+
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasesubcategorylistsearch', function (e) {
+    var iscoentered = $('#knowledgebasesubcategorylistsearch').val();
+    //alert(iscoentered )
+    if(iscoentered!='')
+    {
+     $('#knowledgebasesubcategorylistadd').show();
+     $('#knowledgebasesubcategorylistsearch').removeClass('rounded-pill');
+     $('#knowledgebasesubcategorylistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasesubcategorylistadd').hide();
+     $('#knowledgebasesubcategorylistsearch').addClass('rounded-pill');
+     $('#knowledgebasesubcategorylistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+ $(document).on('click', '#knowledgebasesubcategorylistadd', function (e) {
+ var dataarray=activesubcategory;
+ var idarray=activesubcategoryid; 
+var addresult = addtoList('knowledgebasesubcategory',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+
+
+
+ $(document).on('click', '#knowledgebasebulistadd', function (e) {
+ var dataarray=activebu;
+ var idarray=activebuid;
+var addresult = addtoList('knowledgebasebu',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+ $(document).on('click', '#knowledgebasewllistadd', function (e) {
+ var dataarray=activeworklocation;
+ var idarray=activeworklocationid;
+var addresult = addtoList('knowledgebasewl',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+ $(document).on('click', '#knowledgebasemodulelistadd', function (e) {
+ var dataarray=activemodule;
+ var idarray=activemoduleid;
+var addresult = addtoList('knowledgebasemodule',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+ $(document).on('click', '#knowledgebaseincidentlistadd', function (e) {
+ var dataarray=activeincident;
+ var idarray=activeincidentid;
+ 
+
+var addresult = addtoList('knowledgebaseincident',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+ $(document).on('click', '#knowledgebaseknowledgebaselistadd', function (e) {
+ var dataarray=activeknowledgebase;
+ var idarray=activeknowledgebaseid;
+ 
+
+var addresult = addtoList('knowledgebaseknowledgebase',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+ $(document).on('click', '#knowledgebaserolelistadd', function (e) {
+ var dataarray=activerole;
+ var idarray=activeroleid;
+
+var addresult = addtoList('knowledgebaserole',dataarray,idarray);
+if(addresult == 'false')
+{
+toastboxOpen("2021");
+}
+
+});
+
+
+
+
+
+
+
+//business unit
+var knowledgebasebu_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasebulistsearch', function (e) {
+    var isbuentered = $('#knowledgebasebulistsearch').val();
+    
+    if(isbuentered!='')
+    {
+     $('#knowledgebasebulistadd').show();
+     $('#knowledgebasebulistsearch').removeClass('rounded-pill');
+     $('#knowledgebasebulistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasebulistadd').hide();
+     $('#knowledgebasebulistsearch').addClass('rounded-pill');
+     $('#knowledgebasebulistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+//worklocation
+var knowledgebasewl_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasewllistsearch', function (e) {
+    var iswlentered = $('#knowledgebasewllistsearch').val();
+    
+    if(iswlentered!='')
+    {
+     $('#knowledgebasewllistadd').show();
+     $('#knowledgebasewllistsearch').removeClass('rounded-pill');
+     $('#knowledgebasewllistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasewllistadd').hide();
+     $('#knowledgebasewllistsearch').addClass('rounded-pill');
+     $('#knowledgebasewllistsearch').removeClass('rounded-pill-left');
+    }
+  });
+  
+  
+  //worklocation
+var knowledgebasemodule_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebasemodulelistsearch', function (e) {
+    var iswlentered = $('#knowledgebasemodulelistsearch').val();
+    
+    if(iswlentered!='')
+    {
+     $('#knowledgebasemodulelistadd').show();
+     $('#knowledgebasemodulelistsearch').removeClass('rounded-pill');
+     $('#knowledgebasemodulelistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebasemodulelistadd').hide();
+     $('#knowledgebasemodulelistsearch').addClass('rounded-pill');
+     $('#knowledgebasemodulelistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+//knowledgebase incident
+var knowledgebaseincident_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebaseincidentlistsearch', function (e) {
+    var isincidententered = $('#knowledgebaseincidentlistsearch').val();
+    
+    if(isincidententered!='')
+    {
+     $('#knowledgebaseincidentlistadd').show();
+     $('#knowledgebaseincidentlistsearch').removeClass('rounded-pill');
+     $('#knowledgebaseincidentlistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebaseincidentlistadd').hide();
+     $('#knowledgebaseincidentlistsearch').addClass('rounded-pill');
+     $('#knowledgebaseincidentlistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+//knowledgebase knowledgebase
+var knowledgebaseknowledgebase_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebaseknowledgebaselistsearch', function (e) {
+    var isknowledgebaseentered = $('#knowledgebaseknowledgebaselistsearch').val();
+    
+    if(isknowledgebaseentered!='')
+    {
+     $('#knowledgebaseknowledgebaselistadd').show();
+     $('#knowledgebaseknowledgebaselistsearch').removeClass('rounded-pill');
+     $('#knowledgebaseknowledgebaselistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebaseknowledgebaselistadd').hide();
+     $('#knowledgebaseknowledgebaselistsearch').addClass('rounded-pill');
+     $('#knowledgebaseknowledgebaselistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+//knowledgebase role
+var knowledgebaserole_delete=[];  // need to predefine for get deleted items;
+
+// For show and hide the add button
+ $(document).on('blur keyup', '#knowledgebaserolelistsearch', function (e) {
+    var isownerentered = $('#knowledgebaserolelistsearch').val();
+    
+    if(isownerentered!='')
+    {
+     $('#knowledgebaserolelistadd').show();
+     $('#knowledgebaserolelistsearch').removeClass('rounded-pill');
+     $('#knowledgebaserolelistsearch').addClass('rounded-pill-left');
+    }else
+    {
+     $('#knowledgebaserolelistadd').hide();
+     $('#knowledgebaserolelistsearch').addClass('rounded-pill');
+     $('#knowledgebaserolelistsearch').removeClass('rounded-pill-left');
+    }
+  });
+
+
+
+
+
+</script>
+
+
+<script>
+
+
+//Used for make viewdetail div disable
+var pageKnowledgebase_viewdetails = false;
+var knowledgebaseid='';
+ 
+ $('#knowledgebaseuserlist').hide();
+
+ 
+ 
+ function getknowledgebaserecorddata(valueof)
+{
+  $('.removelist_knowledgebasecompany').remove(); // remove existing list
+          $('.removelist_knowledgebasebu').remove(); // remove existing list
+          $('.removelist_knowledgebasewl').remove(); // remove existing list
+          $('.removelist_knowledgebasemodule').remove(); // remove existing list
+          $('.removelist_knowledgebaseincident').remove(); // remove existing list
+         $('.removelist_knowledgebaseknowledgebase').remove(); // remove existing list
+          $('.removelist_knowledgebasecategory').remove(); // remove existing list
+          $('.removelist_knowledgebasesubcategory').remove(); // remove existing list
+          $('.removelist_knowledgebaserole').remove(); // remove existing list
+$('.createknowledgebase-title').html('<h6><strong>Update Article</strong></h6>');
+
+ knowledgebaseid=valueof.knowledgebaseid[0];
+ $('#knowledgebasename').val(valueof.data[knowledgebaseid].name);
+  $('#knowledgebaseautoreply').val(valueof.data[knowledgebaseid].helptext);
+  $('#knowledgebaseimage').html("<img src='" + valueof.data[knowledgebaseid].url + "'style='width: 30px; height: 30px'>");
+  $('#knowledgebasekeyword').tokenfield('setTokens', valueof.data[knowledgebaseid].keyword);
+
+var statusval=valueof.data[knowledgebaseid].status;
+alert(statusval)
+if(statusval == 'true')
+    {
+    $('#isknowledgebaseactive').prop('checked',  true);
+    }
+else
+if(statusval == 'false')
+    {
+    $('#isknowledgebaseactive').prop('checked',  false);
+    }
+
+
+    
+var knowledgebasecategory=valueof.data[knowledgebaseid].category;
+for (var d=0;d<knowledgebasecategory.length; d++)
+{
+updatetoList(knowledgebasecategory[d],'knowledgebasecategory');
+}
+
+
+var knowledgebasesubcategory=valueof.data[knowledgebaseid].subcategory;
+for (var d=0;d<knowledgebasesubcategory.length; d++)
+{
+updatetoList(knowledgebasesubcategory[d],'knowledgebasesubcategory');
+}
+
+
+var knowledgebasecompany=valueof.data[knowledgebaseid].company;
+
+for (var d=0;d<knowledgebasecompany.length; d++)
+{
+updatetoList(knowledgebasecompany[d],'knowledgebasecompany');
+}
+
+
+
+  var knowledgebasebusinessunit=valueof.data[knowledgebaseid].businessunit;
+
+for (var d=0;d<knowledgebasebusinessunit.length; d++)
+{
+updatetoList(knowledgebasebusinessunit[d],'knowledgebasebu');
+}
+
+
+
+var knowledgebasewl=valueof.data[knowledgebaseid].worklocation;
+for (var d=0;d<knowledgebasewl.length; d++)
+{
+updatetoList(knowledgebasewl[d],'knowledgebasewl');
+}
+
+//alert('6')
+
+var knowledgebasemodules=valueof.data[knowledgebaseid].module;
+for (var d=0;d<knowledgebasemodules.length; d++)
+{
+//alert(knowledgebaseowner[d])
+
+//alert(JSON.stringify(knowledgebaseowner[d]))
+updatetoList(knowledgebasemodules[d],'knowledgebasemodule');
+}
+
+//alert('4')
+
+
+var knowledgebaseincident=valueof.data[knowledgebaseid].incident;
+for (var d=0;d<knowledgebaseincident.length; d++)
+{
+updatetoList(knowledgebaseincident[d],'knowledgebaseincident');
+}
+
+
+var knowledgebaserole=valueof.data[knowledgebaseid].role;
+for (var d=0;d<knowledgebaserole.length; d++)
+{
+updatetoList(knowledgebaserole[d],'knowledgebaserole');
+}
+
+
+
+$('#Showknowledgebaseusers').show();
+
+  pageKnowledgebaseexport(valueof);
+  page_show('pageKnowledgebasemanagement','pageKnowledgebase')
+pageKnowledgebaseactioncontrol();
+progressboxClose();
+
+
+}
+       
+       
+       
+       
+        var knowledgebase_caninactive='No';
+$(document).on('click','#callcreateknowledgebase',function(e) {
+knowledgebase_caninactive='No';
+saveknowledgebasedetails(knowledgebase_caninactive);
+});
+$(document).on('click','.pageKnowledgebase_confirm',function(e) {
+knowledgebase_caninactive='Yes';
+saveknowledgebasedetails(knowledgebase_caninactive);
+confirmationboxClose();
+});
+    
+       
+       
+//Create new knowledgebase
+function saveknowledgebasedetails(knowledgebase_caninactive)
+{
+//read all dependant items
+var  knowledgebasecompany=read_knowledgebasecompany(); 
+var  knowledgebasecategory=read_knowledgebasecategory(); 
+var  knowledgebasesubcategory=read_knowledgebasesubcategory(); 
+
+var  knowledgebasebusinessunit=read_knowledgebasebusinessunit();  
+var  knowledgebaseworklocation=read_knowledgebaseworklocation();  
+var  knowledgebaserole=read_knowledgebaserole();  
+var  knowledgebasemodule=read_knowledgebasemodule();  
+var  knowledgebaseincident=read_knowledgebaseincident();  
+var  knownissueknowledgebase=read_knowledgebaseknowledgebase();  
+
+
+
+ 
+       
+var knowledgebaseuseractiveresults=[];
+var  knowledgebasename=$('#knowledgebasename').val();
+var isknowledgebaseactive = $('#isknowledgebaseactive').prop('checked');
+var helptext = $('#knowledgebaseautoreply').val();
+var autoreplymessage = $('#knowledgebaseautoreply').val();
+      var knowledgebaseimage = $('#knowledgebaseimage img').prop('src');
+var  knowledgebasekeyword=$('#knowledgebasekeyword').val();
+    var  keyword=$('#knowledgebasekeyword').tokenfield('getTokens');
+
+
+		var _knowledgebaseparams = {
+			"action"  : "knowledgebase_maintain",
+			"param"   : {"id":knowledgebaseid
+                       ,"name" : knowledgebasename.trim()
+                       ,"helptext" : helptext
+                       ,"logo" : knowledgebaseimage
+                       ,"keyword" : keyword
+                       ,"keywordtext" : knowledgebasekeyword
+                       ,"status" : isknowledgebaseactive
+                       ,"company" : {"info": knowledgebasecompany, "deleteinfo":knowledgebasecompany_delete }
+                       ,"businessunit" : {"info": knowledgebasebusinessunit, "deleteinfo":knowledgebasebu_delete } 
+                       ,"worklocation" :  {"info": knowledgebaseworklocation, "deleteinfo":knowledgebasewl_delete } 
+                       ,"module" :  {"info": knowledgebasemodule, "deleteinfo":knowledgebasemodule_delete }  
+                       ,"incident" :  {"info": knowledgebaseincident, "deleteinfo":knowledgebaseincident_delete } 
+                       ,"role" :  {"info": knowledgebaserole, "deleteinfo":knowledgebaserole_delete } 
+                       ,"category" :  {"info": knowledgebasecategory, "deleteinfo":knowledgebasecategory_delete } 
+                       ,"subcategory" :  {"info": knowledgebasesubcategory, "deleteinfo":knowledgebasesubcategory_delete }     
+                       ,"createby":_getloginname
+                       ,"caninactive":knowledgebase_caninactive
+                       }
+			};
+            
+
+   if( validateBeforeSubmit(knowledgebasename) == 'true' && knowledgebasecompany.length > 0  && knowledgebaserole.length > 0  && knowledgebasemodule.length > 0 )
+     {
+      progressboxOpen();
+      google.script.run.withFailureHandler(knowledgebase_inError).withSuccessHandler(knowledgebaseconfirmation).executeknowledgebase(_knowledgebaseparams) 
+      }
+      else
+      {
+      toastboxOpen("2008")
+      }
+            
+            
+}
+
+
+
+
+
+
+ function knowledgebaseconfirmation(result) {
+  if(isNaN(result.result['code']) == false)
+{
+    if (result.result['code'] == '3000') {
+    knowledgebasecompany_delete=[];
+    knowledgebasebu_delete=[];
+    knowledgebasewl_delete=[];
+        knowledgebasemodule_delete=[];
+    knowledgebaseincident_delete=[];
+        knowledgebaseknowledgebase_delete=[];
+        knowledgebasecategory_delete=[];
+                knowledgebasesubcategory_delete=[];
+    knowledgebaserole_delete=[];
+
+          $('.removelist_knowledgebasecompany').remove(); // remove existing list
+          $('.removelist_knowledgebasebu').remove(); // remove existing list
+          $('.removelist_knowledgebasewl').remove(); // remove existing list
+          $('.removelist_knowledgebasemodule').remove(); // remove existing list
+          $('.removelist_knowledgebaseincident').remove(); // remove existing list
+          $('.removelist_knowledgebaseknowledgebase').remove(); // remove existing list
+          $('.removelist_knowledgebasecategory').remove(); // remove existing list
+          $('.removelist_knowledgebasesubcategory').remove(); // remove existing list
+          $('.removelist_knowledgebaserole').remove(); // remove existing list
+//      $('#worklocationpage *').val('');
+        knowledgebaseid='';
+        knowledgebase_actionfromwhere='afterupdate';
+         retrive_allknowledgebasedetails(result)
+      pageKnowledgebaseactioncontrol();
+          page_show('pageKnowledgebase','pageKnowledgebasemanagement')
+      }
+    else
+      if(result.result['code'] == '2016')
+      {
+           progressboxClose();
+           confirmationboxOpen(2016,"pageKnowledgebase_confirm");
+      }
+      else
+      {
+          progressboxClose();
+         toastboxOpen(result.result['code']);
+      }
+      }
+    else {
+      toastboxOpen("2007");
+    }
+
+  }
+
+
+// Show error message
+function knowledgebase_errormessage(err)
+{
+          progressboxClose();
+            toastboxOpen("3002");
+}
+</script>
+
+<script>
+// Control the page action.
+function pageKnowledgebaseactioncontrol()
+{
+pageKnowledgebase_viewdetails=page_actioncontrol("pageKnowledgebase","SAVE");
+//Div disabled based on the condition 
+if(pageKnowledgebase_viewdetails == false){$(".pageKnowledgebase_fullview_section *").attr('disabled','disabled');}
+else{    $(".pageKnowledgebase_fullview_section *").prop("disabled", false);}
+}
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+
+
+$(document).on('keypress','#knowledgebasewllistsearch',function(e) {
+
+autocomplete(document.getElementById("knowledgebasewllistsearch"), activeworklocation);
+});
+
+$(document).on('keypress','#knowledgebasemodulelistsearch',function(e) {
+
+autocomplete(document.getElementById("knowledgebasemodulelistsearch"), activemodule);
+});
+
+$(document).on('keypress','#knowledgebasebulistsearch',function(e) {
+
+autocomplete(document.getElementById("knowledgebasebulistsearch"), activebu);
+});
+
+
+$(document).on('keypress','#knowledgebasecompanylistsearch',function(e) {
+
+autocomplete(document.getElementById("knowledgebasecompanylistsearch"), activecompany);
+});
+
+$(document).on('keypress','#knowledgebasecategorylistsearch',function(e) {
+
+autocomplete(document.getElementById("knowledgebasecategorylistsearch"), activecategory);
+});
+
+$(document).on('keypress','#knowledgebasesubcategorylistsearch',function(e) {
+autocomplete(document.getElementById("knowledgebasesubcategorylistsearch"), activesubcategory);
+});
+
+$(document).on('keypress','#knowledgebaserolelistsearch',function(e) {
+autocomplete(document.getElementById("knowledgebaserolelistsearch"), activerole);
+});
+
+
+$(document).on('keypress','#knowledgebaseincidentlistsearch',function(e) {
+Loadincidentfromincidentmanagement()
+autocomplete(document.getElementById("knowledgebaseincidentlistsearch"), activeincident);
+});
+
+
+
+$(document).on('keypress','#knowledgebaseknowledgebaselistsearch',function(e) {
+Loadknowledgebasefromknowledgebasemanagement()
+autocomplete(document.getElementById("knowledgebaseknowledgebaselistsearch"), activeknowledgebase);
+});
+//company
+$(document).on('click', '.knowledgebasecompany_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+
+var getdeletedata =  getdeleteitem(getid,'knowledgebasecompany');
+
+knowledgebasecompany_delete.push(getdeletedata)
+	    });
+
+//bu
+$(document).on('click', '.knowledgebasebu_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+
+var getdeletedata =  getdeleteitem(getid,'knowledgebasebu');
+knowledgebasebu_delete.push(getdeletedata) 
+	    });
+
+//wl
+$(document).on('click', '.knowledgebasewl_deletelistitem', function () {
+var getid=$(this).attr('id');
+var getdeletedata  =  getdeleteitem(getid,'knowledgebasewl')
+knowledgebasewl_delete.push(getdeletedata)
+	    });
+
+//wl
+$(document).on('click', '.knowledgebasemodule_deletelistitem', function () {
+var getid=$(this).attr('id');
+var getdeletedata= getdeleteitem(getid,'knowledgebasemodule');
+knowledgebasemodule_delete.push(getdeletedata)
+	    });
+
+//incident
+$(document).on('click', '.knowledgebaseincident_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+var getdeletedata = getdeleteitem(getid,'knowledgebaseincident');
+knowledgebaseincident_delete.push(getdeletedata);
+	    });
+
+//knowledgebase
+$(document).on('click', '.knowledgebaseknowledgebase_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+var getdeletedata = getdeleteitem(getid,'knowledgebaseknowledgebase');
+knowledgebaseknowledgebase_delete.push(getdeletedata);
+	    });
+
+
+
+$(document).on('click', '.knowledgebaserole_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+var getdeletedata = getdeleteitem(getid,'knowledgebaserole');
+knowledgebaserole_delete.push(getdeletedata)
+	    });
+
+
+$(document).on('click', '.knowledgebasecategory_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+var getdeletedata = getdeleteitem(getid,'knowledgebasecategory');
+knowledgebasecategory_delete.push(getdeletedata)
+	    });
+        
+        $(document).on('click', '.knowledgebasesubcategory_deletelistitem', function () {
+
+var getid=$(this).attr('id');
+var getdeletedata = getdeleteitem(getid,'knowledgebasesubcategory');
+knowledgebasesubcategory_delete.push(getdeletedata)
+	    });
+
+
+
+/*
+
+var activebuid=[];
+function Loadactivebusinessunitfrombusinessunitpage(loaddetails) 
+{
+   activebu=[];
+   activebuid=[];
+     var length = (loaddetails.businessunitid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.businessunitid[x]].status == 'true')
+            {
+         activebu.push(loaddetails.data[loaddetails.businessunitid[x]].name);
+         activebuid.push(loaddetails.data[loaddetails.businessunitid[x]].id);
+         }
+        }
+}
+
+
+
+
+var activeworklocationid=[];
+function Loadactiveworklocationfromworklocationpage(loaddetails) 
+{
+   activeworklocation=[];
+      activeworklocationid=[];
+
+     var length = (loaddetails.worklocationid).length
+	for (var x = 0; x < length; x++) {
+    if(loaddetails.data[loaddetails.worklocationid[x]].status == 'true')
+            {
+         activeworklocation.push(loaddetails.data[loaddetails.worklocationid[x]].name);
+         activeworklocationid.push(loaddetails.data[loaddetails.worklocationid[x]].id);
+         }
+        }
+}
+
+var activecompanyid=[];
+function Loadactivecompanyfromcompanypage(loaddetails) 
+{
+     activecompany=[];
+      activecompanyid=[];
+     var length = (loaddetails.companyid).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data[loaddetails.companyid[x]].status == 'true')
+            {
+            activecompany.push(loaddetails.data[loaddetails.companyid[x]].name);
+            activecompanyid.push(loaddetails.data[loaddetails.companyid[x]].id);
+            }
+        }
+}
+
+
+
+var activecategoryid=[];
+function Loadactivecategoryfromcategorypage(loaddetails) 
+{
+     activecategory=[];
+      activecategoryid=[];
+     var length = (loaddetails.categoryid).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data[loaddetails.categoryid[x]].status == 'true')
+            {
+            activecategory.push(loaddetails.data[loaddetails.categoryid[x]].name);
+            activecategoryid.push(loaddetails.data[loaddetails.categoryid[x]].id);
+            }
+        }
+}
+
+*/
+
+//Read all dependency
+function read_knowledgebasecategory()
+{
+  var knowledgebasecategoryvalues=[];
+  var _mclength = $('#knowledgebasecategorylist li').length
+  var _mcdeletelength = knowledgebasecategory_delete.length;
+  var _mcfulllength = parseInt(_mclength)+parseInt(_mcdeletelength);
+
+  for (var l = 0; l < _mcfulllength; l++) {
+  
+      var _mcdata = $("#knowledgebasecategorylisttextid_"+ l).val();
+      var _mcid   = $("#knowledgebasecategorylistupdateid_"+ l).val();
+      if(_mcdata!='' && _mcdata!=undefined && _mcdata!='undefined')
+      {
+          knowledgebasecategoryvalues.push( {
+            "id"         : _mcid,
+            "value"      : _mcdata
+            })
+  
+      }
+  }
+  return knowledgebasecategoryvalues;
+}
+
+
+
+//Read all dependency
+function read_knowledgebasesubcategory()
+{
+  var knowledgebasesubcategoryvalues=[];
+  var _mclength = $('#knowledgebasesubcategorylist li').length
+  var _mcdeletelength = knowledgebasesubcategory_delete.length;
+  var _mcfulllength = parseInt(_mclength)+parseInt(_mcdeletelength);
+
+  for (var l = 0; l < _mcfulllength; l++) {
+  
+      var _mcdata = $("#knowledgebasesubcategorylisttextid_"+ l).val();
+      var _mcid   = $("#knowledgebasesubcategorylistupdateid_"+ l).val();
+      if(_mcdata!='' && _mcdata!=undefined && _mcdata!='undefined')
+      {
+          knowledgebasesubcategoryvalues.push( {
+            "id"         : _mcid,
+            "value"      : _mcdata
+            })
+  
+      }
+  }
+  return knowledgebasesubcategoryvalues;
+}
+
+
+//Read all dependency
+function read_knowledgebasecompany()
+{
+  var knowledgebasecompanyvalues=[];
+  var _mclength = $('#knowledgebasecompanylist li').length
+  var _mcdeletelength = knowledgebasecompany_delete.length;
+  var _mcfulllength = parseInt(_mclength)+parseInt(_mcdeletelength);
+
+  for (var l = 0; l < _mcfulllength; l++) {
+  
+      var _mcdata = $("#knowledgebasecompanylisttextid_"+ l).val();
+      var _mcid   = $("#knowledgebasecompanylistupdateid_"+ l).val();
+      if(_mcdata!='' && _mcdata!=undefined && _mcdata!='undefined')
+      {
+          knowledgebasecompanyvalues.push( {
+            "id"         : _mcid,
+            "value"      : _mcdata
+            })
+  
+      }
+  }
+  
+  return knowledgebasecompanyvalues;
+}
+
+
+//load bu list
+function read_knowledgebasebusinessunit()
+{
+  var knowledgebasebuvalues=[];
+  var _mbulength = $('#knowledgebasebulist li').length
+  var _mbudeletelength = knowledgebasebu_delete.length;
+  var _mbufulllength = parseInt(_mbulength)+parseInt(_mbudeletelength);
+
+  for (var l = 0; l < _mbufulllength; l++) {
+  
+      var _mbudata = $("#knowledgebasebulisttextid_"+ l).val();
+      var _mbuid   = $("#knowledgebasebulistupdateid_"+ l).val();
+      if(_mbudata!='' && _mbudata!=undefined && _mbudata!='undefined')
+      {
+          knowledgebasebuvalues.push( {
+            "id"         : _mbuid,
+            "value"      : _mbudata
+            })
+      }
+  }
+  return knowledgebasebuvalues;
+}
+
+
+//load WL list
+function read_knowledgebaseworklocation()
+{
+  var knowledgebasewlvalues=[];
+  var _mwllength = $('#knowledgebasewllist li').length
+  var _mwldeletelength = knowledgebasewl_delete.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#knowledgebasewllisttextid_"+ l).val();
+      var _mwlid   = $("#knowledgebasewllistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          knowledgebasewlvalues.push( {
+            "id"         : _mwlid,
+            "value"      : _mwldata
+            })
+  
+      }
+  }
+  return knowledgebasewlvalues;
+}
+
+
+//load Module list
+function read_knowledgebasemodule()
+{
+  var knowledgebasemodulevalues=[];
+  var _mwllength = $('#knowledgebasemodulelist li').length
+  var _mwldeletelength = knowledgebasemodule_delete.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#knowledgebasemodulelisttextid_"+ l).val();
+      var _mwlid   = $("#knowledgebasemodulelistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          knowledgebasemodulevalues.push( {
+            "id"         : _mwlid,
+            "value"      : _mwldata
+            })
+  
+      }
+  }
+  return knowledgebasemodulevalues;
+}
+
+
+
+//load knowledgebase list
+function read_knowledgebaseincident()
+{
+  var knowledgebasewlvalues=[];
+  var _mwllength = $('#knowledgebaseincidentlist li').length
+  var _mwldeletelength = knowledgebaseincident_delete.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#knowledgebaseincidentlisttextid_"+ l).val();
+      var _mwlid   = $("#knowledgebaseincidentlistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          knowledgebasewlvalues.push( {
+            "id"         : _mwlid,
+            "value"      : _mwldata
+            })
+  
+      }
+  }
+  return knowledgebasewlvalues;
+}
+
+
+
+
+//load knowledgebase list
+function read_knowledgebaseknowledgebase()
+{
+  var knowledgebasewlvalues=[];
+  var _mwllength = $('#knowledgebaseknowledgebaselist li').length
+  var _mwldeletelength = knowledgebaseknowledgebase_delete.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#knowledgebaseknowledgebaselisttextid_"+ l).val();
+      var _mwlid   = $("#knowledgebaseknowledgebaselistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          knowledgebasewlvalues.push( {
+            "id"         : _mwlid,
+            "value"      : _mwldata
+            })
+  
+      }
+  }
+  return knowledgebasewlvalues;
+}
+
+
+//load knowledgebase list
+function read_knowledgebaserole()
+{
+  var knowledgebasewlvalues=[];
+  var _mwllength = $('#knowledgebaserolelist li').length
+  var _mwldeletelength = knowledgebaserole_delete.length;
+  var _mwlfulllength = parseInt(_mwllength)+parseInt(_mwldeletelength);
+
+  for (var l = 0; l < _mwlfulllength; l++) {
+  
+      var _mwldata = $("#knowledgebaserolelisttextid_"+ l).val();
+      var _mwlid   = $("#knowledgebaserolelistupdateid_"+ l).val();
+      if(_mwldata!='' && _mwldata!=undefined && _mwldata!='undefined')
+      {
+          knowledgebasewlvalues.push( {
+            "id"         : _mwlid,
+            "value"      : _mwldata
+            })
+  
+      }
+  }
+  return knowledgebasewlvalues;
+}
+
+
+$(document).on('keypress','#knowledgebasename',function(e) {
+
+autocomplete(document.getElementById("knowledgebasename"), knowledgebasenameavailable);
+});
+
+
+$(document).on('keypress','#knowledgebaseid',function(e) {
+
+autocomplete(document.getElementById("knowledgebaseid"), knowledgebaseprefixavailable);
+});
+
+
+
+</script>
+
+<style>
+
+.alignsvgright {
+  text-align: left;            
+  margin-left: 0px;
+}
+
+.resizetablebackground {
+  margin-top: 0px;
+  padding-top:0px
+}
+
+.reducebuttonsize {
+   height:2px;
+   margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+padding-bottom:0px
+}
+
+
+
+.dt-buttons {
+   height:10px;
+}
+
+
+</style>
+
+
+<script>
+var addknowledgebaseuser;
+//$('#exportroleusertoexcel').hide();
+
+//Show the user details in this table 
+//$(document).on('click','#Showroleusers',function(e) {
+   var knowledgebaseuseractiveresults=[];
+
+ function pageKnowledgebaseexport(valueof)
+ {
+knowledgebaseid= valueof.knowledgebaseid[0];
+            if(knowledgebaseid!='' )  
+            {
+             var knowledgebaseuserresults=[];
+             knowledgebaseuseractiveresults=[];
+              if(valueof!= '')
+              {
+                 var selectedknowledgebaserole=valueof.data[knowledgebaseid].user;//.roleuser[0]
+                      for (var x = 0; x < selectedknowledgebaserole.length; x++) {   
+                      knowledgebaseuserresults.push([
+                      selectedknowledgebaserole[x].username,
+                      selectedknowledgebaserole[x].useremail,
+                      selectedknowledgebaserole[x].userlocked,
+                      selectedknowledgebaserole[x].userstatus,
+                      selectedknowledgebaserole[x].userlocked,
+                      selectedknowledgebaserole[x].userstatus,
+                      ])
+                      
+                     
+                      };
+                      
+              }
+              
+            var knowledgebasetableid="knowledgebaseuserlist";
+            addknowledgebaseuser = $('#knowledgebaseuserlist').DataTable({
+            dom: 'Bfrtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+                dom: 'Bfrtip',
+
+buttons: [{
+            extend: 'excelHtml5',
+            className: "knowledgebasebuttonsTocall reducebuttonsize",
+             exportOptions: {
+             
+         columns: [0,1, 4, 5]
+
+//      format: {
+//         body: function ( data, row, column, node ) {
+//            switch (column) {
+//              case 2 :
+//                return rolevalsplit[2];
+//                break
+//              case 3 : 
+//                return rolevalsplit[3];
+//                break
+//              default :
+//                return data;
+//                break
+//             }
+//          }
+//        }    
+     },
+        }],
+
+
+               "bFilter": false,
+                rowId: 'id', 
+                data: knowledgebaseuserresults,
+                columns: [{
+                    title: " Name" 
+                }, {
+                    title: "Email"
+                }, 
+                {
+                    title: "Locked",
+                    className: 'isLocked',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var islocked = full[2];
+                        
+                        
+                         if (islocked == 'true') {
+                        var isknowledgebaselocked="isknowledgebaselocked"+full[0];
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input  " id="' + isknowledgebaselocked + '"  name="' + isknowledgebaselocked + '"  checked>' +
+                                '<label class="custom-control-label" for="' + isknowledgebaselocked + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input" id="' + isknowledgebaselocked + '"  name="' + isknowledgebaselocked + '"  >' +
+                                '<label class="custom-control-label" for="' + isknowledgebaselocked + '" ></label>' +
+                                '</div>';
+                        }
+                    },
+                    targets: -1,
+                }, 
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                        var isactive = full[3];
+                        
+                            if (isactive == 'true') {
+                        var isknowledgebaseactive="isknowledgebaseactive"+full[0];
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input  " id="' + isknowledgebaseactive + '"  name="' + isknowledgebaseactive + '"  checked>' +
+                                '<label class="custom-control-label" for="' + isknowledgebaseactive + '" ></label>' +
+                                '</div>';
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input" id="' + isknowledgebaseactive + '"  name="' + isknowledgebaseactive + '"  >' +
+                                '<label class="custom-control-label" for="' + isknowledgebaseactive + '" ></label>' +
+                                '</div>';
+                        }
+                        
+                        
+                       
+                    },
+                    targets: -1,
+                }, 
+                {
+                    title: "Locked"
+                }, 
+                {
+                    title: "Active"
+                }, 
+                ],
+                "initComplete": function(settings, json) {
+                  $("#"+knowledgebasetableid + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+knowledgebasetableid + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+knowledgebasetableid + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+knowledgebasetableid + "_next").addClass("customDataTables_pageNext");
+                           }
+
+            });
+            
+            
+           
+                  addknowledgebaseuser.clear();
+              addknowledgebaseuser.draw();
+            addknowledgebaseuser.rows.add(knowledgebaseuserresults).draw();
+            addknowledgebaseuser.column(4).visible(false);
+            addknowledgebaseuser.column(5).visible(false);
+ $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
+
+            if(knowledgebaseuserresults.length >0)
+            {
+                  $('#knowledgebaseuserlist').show();
+                  $('#exportknowledgebaseusertoexcel').show();
+                  $('#knowledgebaseuserlist_toggle').show();
+                  $('#Showknowledgebaseusers').show();
+                  $("#knowledgebaseuserlist_toggle").toggle();
+                  $("#exportknowledgebaseusertoexcel").toggle();
+            } 
+            else
+            {
+                  $('#knowledgebaseuserlist_toggle').hide();
+                  $('#Showknowledgebaseusers').hide();
+                  $('#exportknowledgebaseusertoexcel').hide();
+            }
+              
+
+
+
+var knowledgebaseclickBtn = false;
+
+$(document).on('click', '#exportknowledgebaseusertoexcel', function(event) { 
+
+if(knowledgebaseclickBtn == false){
+    $(".knowledgebasebuttonsTocall").click(); 
+    }
+        knowledgebaseclickBtn = true;
+
+});
+
+
+
+
+
+ $("#exportname").text('knowledgebase - User List');
+      }
+      else
+      {
+  toastboxOpen("2008");
+}
+}
+
+</script>
+
+
+

@@ -1,0 +1,21 @@
+{
+  "timeZone": "Africa/Nairobi",
+  "dependencies": {
+    "libraries": [{
+      "userSymbol": "cGoa",
+      "libraryId": "1v_l4xN3ICa0lAW315NQEzAHPSoNiFdWHsMEwj2qA5t9cgZ5VWci2Qxv2",
+      "version": "36",
+      "developmentMode": true
+    }, {
+      "userSymbol": "hapi",
+      "libraryId": "1M4-lllKdfDPanvZAfl11cywlit6mZ9QQ5GIqYtpwvJ5KctsqsaMBEz5U",
+      "version": "434",
+      "developmentMode": true
+    }]
+  },
+  "webapp": {
+    "access": "DOMAIN",
+    "executeAs": "USER_DEPLOYING"
+  },
+  "exceptionLogging": "STACKDRIVER"
+}

@@ -46,7 +46,10 @@ var _imagelibrarydetails;
 $(document).ready(function () {   
   $('#pageImagelibrarymanagement_add').on('click', function() {
   imagelibraryid='';
-  $('.removelist').remove(); // remove existing list
+ 
+ $('.removelist_imagelibrarycompany').remove(); // remove existing list
+$('.removelist_imagelibrarymodule').remove(); // remove existing list
+ 
     $('.createimagelibrary-title').html('<h6><strong>Upload image</strong></h6>');
      $('#Imagelibraryname').val('');
   $("#imagelibrarypicture").attr("src",'https://storage.googleapis.com/imagelib/imagelibrary/imagelibrarydefault.png');
@@ -248,6 +251,14 @@ function loadsystemimagelibrary(loaddetails)
                 imagelibrarydetailsaddintable.clear();
               imagelibrarydetailsaddintable.draw();
             imagelibrarydetailsaddintable.rows.add(results).draw();
+            
+            
+            
+            if (loaddetails.result['code'] == '3000') {
+        loadimageonlyfromimagelibrary(loaddetails);
+        }
+           
+            
               $('#pageImagelibrarymanagement_search').on( 'keyup', function () {imagelibrarydetailsaddintable.search( this.value ).draw();});  
             // Call class for view the details.
              $('#pageImagelibrarydetails tbody').on('click', 'tr td.pageImagelibrarymanagement_viewdetails_section', function () {
@@ -302,11 +313,6 @@ function loadsystemimagelibrary(loaddetails)
 
 
 
-//      //Confirm the status update 
-//        function updateconfirm() {
-//          progressboxClose();
-//          toastboxOpen("3002");
-//        }
 </script>
 
 <script>

@@ -264,7 +264,6 @@
         $('.createbusinessunit-title').html('<h6><strong>Create Businessunit</strong></h6>');
         $('#callcreatebusinessunit').show();
         pageBusinessunitactioncontrol();
-       $('.removelist').remove();
        _businessunitdeletingdomain=[];
         page_show('pageBusinessunitmanagement', 'pageBusinessunit');
     });
@@ -274,9 +273,7 @@
         pageBusinessunitmanagement_viewdetails = page_actioncontrol("pageBusinessunitmanagement", "VIEW");
     }
 
-    function updateconfirm() {
-        toastboxOpen("3002");
-    }
+    
 
   
 

@@ -48,7 +48,16 @@ $(document).ready(function ()
   {   
     $('#pageUsermanagement_add').on('click', function() 
     {
-    $('.removelist').remove(); // remove existing list
+    
+    $('.removelist_usercompany').remove(); // remove existing list
+          $('.removelist_userbu').remove(); // remove existing list
+          $('.removelist_userwl').remove(); // remove existing list
+          $('.removelist_usermodule').remove(); // remove existing list
+          $('.removelist_userowners').remove(); // remove existing list
+          $('.removelist_userrole').remove(); // remove existing list
+          $('.removelist_userteam').remove(); // remove existing list
+       $('#userpassword').attr('readonly', false);
+
         userid='';
           $("#userlogo").attr("href",'');
 
@@ -133,7 +142,6 @@ user_actionfromwhere='onload'
 
         }
         
-       
               var results=[];
               if(loaddetails!= null)
               {
@@ -148,13 +156,15 @@ user_actionfromwhere='onload'
                       for (var x = 0; x < datalength; x++) {  
                       
                       results.push([loaddetails.data.userlist[x].id,
+                      loaddetails.data.userlist[x].profileimage,
+                      loaddetails.data.userlist[x].userid,
                       loaddetails.data.userlist[x].name,
-                      loaddetails.data.userlist[x].prefix,
-                      loaddetails.data.userlist[x].url,
-                      loaddetails.data.userlist[x].status
+                      loaddetails.data.userlist[x].position,
+                      loaddetails.data.userlist[x].locked,
+                       loaddetails.data.userlist[x].status
                       ])
                       usernameavailable.push(loaddetails.data.userlist[x].name);
-                      userprefixavailable.push(loaddetails.data.userlist[x].prefix);
+                      userprefixavailable.push(loaddetails.data.userlist[x].userid);
 
                       
                       };
@@ -173,20 +183,49 @@ user_actionfromwhere='onload'
                 data: results,
                 columns: [{
                     title: " Id" 
-                }, {
-                    title: "Name"
                 }, 
                 {
-                    title: "Prefix"
+                    title: "Image",
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                            return '<img src="' + full[1]+ '" style="width: 30px; height: 30px">';
+                    },
+                    targets: -1,
                 },
                 {
-                title: "Logo",
+                    title: "Userid"
+                }, 
+                {
+                    title: "Name"
+                },
+                {
+                title: "Role"
+                },
+                {
+                title: "Locked",
+                className: 'isLocked', 
+                orderable: false,
                 data: null,
-                "render": function (data, type, full, meta) {
-                    return '<img src="' + full[3] + '" style="width: 30px; height: 30px" >';
+                "render": function ( data, type, full, meta ) {
+                
+                var recid = "userdetailsisLocked_"+full[0];
+                
+                var islocked = full[5];
+                if(islocked == 'true')
+                {
+                return '<div class="custom-control custom-switch"><input type="checkbox"  disabled class="custom-control-input active " id="'+recid+'"  name="'+recid+'"  checked><label class="custom-control-label" for="'+recid+'" ></label></div>';
+                }
+                else
+                {
+                return '<div class="custom-control custom-switch"><input type="checkbox" disabled class="custom-control-input" id="'+recid+'"  name="'+recid+'"  ><label class="custom-control-label" for="'+recid+'" ></label></div>';
+                
+                }
+                
                 },
-                },
-                 
+                targets: -1,
+                
+                }, 
                 {
                     title: "Active",
                     className: 'isActive',
@@ -196,11 +235,9 @@ user_actionfromwhere='onload'
                     
                         var recid = "userdetailsisActive_" + full[0];
 
-                        var isdown = full[4];
+                        var isdown = full[6];
                         
                         if (isdown == 'true' ) {
-                        
-                        
                         
 
                             return '<div class="custom-control custom-switch">' +
@@ -218,7 +255,18 @@ user_actionfromwhere='onload'
 
                     },
                     targets: -1,
-                }, {
+                },
+                { title: "Password" ,
+className: 'isPasswordunlock', 
+orderable: false,
+data: null,
+defaultContent: '<button type="button" class="btn rounded-pill border-0 resetbg" "><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.3954 12.2489C18.4181 12.2489 19.2466 13.1516 19.2466 14.2685V18.979C19.2466 20.093 18.4181 20.9986 17.3954 20.9986H10.6075C9.58474 20.9986 8.75625 20.0959 8.75625 18.979V14.2685C8.75625 13.1545 9.58474 12.2489 10.6075 12.2489H12.2502H15.7498H17.3954ZM13.9843 14.0057C13.0187 14.0057 12.233 14.7541 12.233 15.6797C12.233 16.2967 12.713 16.7709 13.2329 17.0594V19.2332H14.7328V17.0594C15.2556 16.768 15.7327 16.2967 15.7327 15.6797C15.7355 14.7541 14.9528 14.0057 13.9843 14.0057ZM13.9986 8.7525C12.353 8.7525 12.253 10.1351 12.2473 10.5036V12.2489H10.4875V10.6721C10.4875 10.6721 10.4875 6.99857 13.9929 6.99857C17.4982 6.99857 17.4982 10.6721 17.4982 10.6721V12.2489H15.7498V10.5036C15.7441 10.1436 15.6441 8.7525 13.9986 8.7525ZM13.9986 28C6.26793 28 0 21.7327 0 14.0029C0 6.27301 6.26793 0.00571314 13.9986 0.00571314C16.4897 0.00571314 18.8267 0.659865 20.855 1.80249L22.1577 0L24.4889 6.12732L18.3753 5.23036L19.818 3.23363C18.0867 2.29667 16.1069 1.75678 13.9986 1.75678C7.23355 1.75678 1.74839 7.24138 1.74839 14.0057C1.74839 20.77 7.23355 26.2518 13.9986 26.2518C20.7636 26.2518 26.2488 20.7672 26.2488 14.0057C26.2488 12.3546 25.9174 10.7807 25.326 9.34381L26.943 8.67823C27.62 10.3208 28 12.1175 28 14.0057C27.9971 21.7327 21.7292 28 13.9986 28Z" fill="white"/></svg></button>',
+targets: -1,
+
+
+
+},
+                {
                     title: "Details",
                     orderable: false,
                     data: null,
@@ -246,6 +294,10 @@ user_actionfromwhere='onload'
             userdetailsaddintable.draw();
             userdetailsaddintable.rows.add(results).draw();
 
+
+            if (loaddetails.result['code'] == '3000') {
+        Loadactiveusersfromuserpage(loaddetails);
+        }
            
             // Call class for view the details.
              $('#userdetails tbody').on('click', 'tr td.pageUsermanagement_viewdetails_section', function () {
@@ -286,11 +338,7 @@ user_actionfromwhere='onload'
         }
 
       //Confirm the status update 
-        function updateconfirm() {
-          progressboxClose();
-//          loadallusersaffterupdate();
-          toastboxOpen("3002");
-        }
+   
 </script>
 
 <script>

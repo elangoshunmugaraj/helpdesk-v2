@@ -267,7 +267,9 @@ autocomplete(document.getElementById("imagelibrarycompanylistsearch"), activecom
 $(document).on('click', '.imagelibrarycompany_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-imagelibrarycompany_delete =  getdeleteitem(getid,'imagelibrarycompany')
+
+var deletefromlist = getdeleteitem(getid,'imagelibrarycompany');
+imagelibrarycompany_delete.push(deletefromlist) 
 	    });
         
         
@@ -292,7 +294,6 @@ var imagelibrarymodule_delete=[];  // need to predefine for get deleted items;
      $('#imagelibrarymodulelistsearch').removeClass('rounded-pill-left');
     }
   });
-
 
 
  $(document).on('click', '#imagelibrarymodulelistadd', function (e) {
@@ -322,7 +323,9 @@ autocomplete(document.getElementById("imagelibrarymodulelistsearch"), activemodu
 $(document).on('click', '.imagelibrarymodule_deletelistitem', function () {
 
 var getid=$(this).attr('id');
-imagelibrarymodule_delete =  getdeleteitem(getid,'imagelibrarymodule')
+
+var deletefromlsit =  getdeleteitem(getid,'imagelibrarymodule');
+imagelibrarymodule_delete.push(deletefromlsit)
 	    });
         
         
@@ -394,7 +397,11 @@ var imagelibraryid='';
   
  function getimagelibraryrecorddata(valueof)
 {
-$('.removelist').remove(); // remove existing list
+$('.removelist_imagelibrarycompany').remove(); // remove existing list
+$('.removelist_imagelibrarymodule').remove(); // remove existing list
+
+
+
 $('.createimagelibrary-title').html('<h6><strong>Update Image</strong></h6>');
  imagelibraryid=valueof.imagelibraryid[0];
  $('#Imagelibraryname').val(valueof.data[imagelibraryid].filename);
@@ -572,9 +579,11 @@ var  Imagelibrarykeywordtext=$('#Imagelibrarykeyword').val();
   if(isNaN(result.result['code']) == false)
 {
     if (result.result['code'] == '3000') {
-                          imagelibrarycompany_delete = '';
-                       imagelibrarymodule_delete ='';
-          $('.removelist').remove(); // remove existing list
+                          imagelibrarycompany_delete =[]
+                       imagelibrarymodule_delete =[]
+       $('.removelist_imagelibrarycompany').remove(); // remove existing list
+$('.removelist_imagelibrarymodule').remove(); // remove existing list
+
 //      $('#worklocationpage *').val('');
         imagelibraryid='';
         imagelibrary_actionfromwhere='afterupdate';

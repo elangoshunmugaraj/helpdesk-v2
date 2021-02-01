@@ -1,8 +1,8 @@
 
-<div class="container-fluid mt-5 pageBusinessunit_fullview_section" id="businessunitpage" name="businessunitpage">
+<div class="container-fluid mt-5 pageSubcategory_fullview_section" id="subcategorypage" name="subcategorypage">
   <div class="row">
-    <div class="createbusinessunit-title col-12 min-vh-50">
-      <h6><strong>Create businessunit</strong></h6>
+    <div class="createsubcategory-title col-12 min-vh-50">
+      <h6><strong>Create Sub-Category</strong></h6>
     </div>
     <br>
   </div>
@@ -21,10 +21,10 @@
        </div>
        <div class="col-md-2">
           <label>Active</label>
-          <div class="custom-control custom-switch custom-switch-lg   " id="isbusinessunitactive_switch">
-            <input type="checkbox" class="custom-control-input active changedownload" id="isbusinessunitactive"
-              name="isbusinessunitactive" checked>
-            <label class="custom-control-label" for="isbusinessunitactive"></label>
+          <div class="custom-control custom-switch custom-switch-lg   " id="issubcategoryactive_switch">
+            <input type="checkbox" class="custom-control-input active changedownload" id="issubcategoryactive"
+              name="issubcategoryactive" checked>
+            <label class="custom-control-label" for="issubcategoryactive"></label>
             </div>
           </div> 
           <div class="col-md-4">
@@ -36,46 +36,23 @@
       <div class="row">
         <div class="col-sm-6 pb-2">
           <div class="form-group">
-            <label for="businessunitname" class="required">Businessunit Name</label>
-            <input type="text" class="form-control rounded-pill inputboxcolor" id="businessunitname" placeholder="eg: Doka"
-              name="businessunitname" autocomplete="off">
+            <label for="subcategoryname">Sub-Category Name</label>
+            <input type="text" class="form-control rounded-pill inputboxcolor" id="subcategoryname" placeholder="eg: Install SAP"
+              name="subcategoryname" autocomplete="off">
           </div>
         </div>
         
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="businessunitlogo" class="required">Businessunit Logo</label>
-            <a class="form-control rounded-pill dropdown-toggle inputboxcolor" href="" id="businessunitlogo"   name="businessunitlogo" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            </a>
-            <div class="form-group dropdown-menu dropdown-menu-left" id="businessunitlogodropdown"
-              aria-labelledby="dropdownMenuButton">
-            </div>
+            <label for="subcategorycategoryname">Category</label>
+            <select class="form-control rounded-pill inputboxcolor " id="subcategorycategoryname" 
+              name="subcategorycategoryname" > <option value=''>Select Category</option></select>
+              
           </div>
         </div>
       </div>
       
-        <div class="row">
-        <div class="col-sm-3 pb-2">
-          <div class="form-group">
-            <label for="businessunitprefix">Businessunit Prefix</label>
-            <input type="text" class="form-control rounded-pill inputboxcolor "   maxlength="2" id="businessunitprefix" placeholder="eg: DO"
-              name="businessunitprefix" autocomplete="off">
-          </div>
-        </div>
         
-           <div class="col-sm-3 pb-2">
-           </div>
-         <div class="col-sm-6 pb-2">
-          <div class="form-group">
-            <label for="businessunitcompanyname">Company Name</label>
-            <select class="form-control rounded-pill inputboxcolor " id="businessunitcompanyname" 
-              name="businessunitcompanyname" > <option value=''>Select Company</option></select>
-              
-            
-          </div>
-        </div>
-        </div>
       
       
           
@@ -84,62 +61,37 @@
              
    </div>
     
-    <!-- <div class="card mb-3">
-    <div class="card-body">
-         <div class="row" name="addbusinessunitrow">
-            <div class="col-md-12" name="addbusinessunitcolumn">
-                          <label for="businessunitlogo">Businessunit Domain</label>
-            <div class="input-group input-group-lg mb-2">
-					<input type="text" id="businessunitlistsearch" name="businessunitlistsearch" class="form-control rounded-pill inputboxcolor textboxfontsize" placeholder="Add domain name..." aria-label="add domain..." aria-describedby="businessunitlistadd">
-					<div class="input-group-append ">
-						<span class="input-group-text input-group-btn rounded-pill-right inputboxcolor" id="businessunitlistadd"  name="businessunitlistadd" style="display:none; curser:pointer" onclick="addtoList('Businessunit')">
-							<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect width="23" height="23" rx="5" fill="#2D9CDB"/>
-							<path d="M10.98 6.58V10.92H6.74V12.46H10.98V16.78H12.68V12.46H16.94V10.92H12.68V6.58H10.98Z" fill="white"/>
-							</svg>
-                        </span>
-					</div>
-				</div>
-                <div id="businessunitlistdiv"  name="businessunitlistdiv">
-                <ul id="businessunitlist" name="businessunitlist" class="px-0 py-0 textboxfontsize">
-                 </ul>	
-                 </div>
-                 
-                
-            </div>
-          </div>
-      
-    </div>
-  </div>  
-  -->
+ 
   <div class="row align-self-end mb-3">
+   <!-- Start export data  -->
    <div class="col-md-3 "> 
-       <div class="input-group pageBusinessunit_view_section" style="display:none;">
-          <button class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" style="display:none;" id="Showbusinessunitusers"  name="Showbusinessunitusers">              
+       <div class="input-group pageSubcategory_view_section" style="display:none;">
+          <button class="btn btn-primary  form-control custom-input float-right rounded-pill border-0" style="display:none;" id="Showsubcategoryusers"  name="Showsubcategoryusers">              
            Show Users  
           </button>
       </div>
       </div>
         <div class="col-md-6  my-1">
       </div>
+       <!-- End export data  -->
     <div class="col-sm-3">
-      <div class="input-group pageBusinessunit_save_section" style="display:none;">
+      <div class="input-group pageSubcategory_save_section" style="display:none;">
         <button type="button" class="btn btn-primary form-control custom-input float-right rounded-pill border-0"
-          id="callcreatebusinessunit" name="callcreatebusinessunit">Save</button>
+          id="callcreatesubcategory" name="callcreatesubcategory">Save</button>
       </div>
     </div>
   </div>
  
  
  
- <!--   Export users -->
+  <!--   Export users -->
   <div class=" "  >
    <div class="row  "   >  
     <div class="col-md-11">  
                </div>
         <div class="col-md-1 alignsvgright float-left">  
-              <div class=" pageBusinessunit_export_section float-right  " style="display:none;" title="Export to Excel">
-                      <svg  type="button"   id="exportbusinessunitusertoexcel"  style="display:none;" name="exportbusinessunitusertoexcel" width="20" height="25" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div class=" pageSubcategory_export_section float-right  " style="display:none;" title="Export to Excel">
+                      <svg  type="button"   id="exportsubcategoryusertoexcel"  style="display:none;" name="exportsubcategoryusertoexcel" width="20" height="25" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0.522386 1.74993L0.519531 26.2482C0.519421 27.2105 1.30666 27.9979 2.26891 27.998L19.2824 28C20.245 28.0001 21.0326 27.2127 21.0328 26.2501L21.0351 6.44696C21.0351 5.90967 20.8217 5.39434 20.4419 5.01439L16.0235 0.594931C15.6436 0.214981 15.1284 0.00148226 14.5911 0.00142736L2.2727 1.14804e-08C1.31012 -0.000109785 0.522496 0.787348 0.522386 1.74993Z" fill="url(#paint0_linear)"/>
                       <path d="M15.7675 11.2673H5.78808C5.17597 11.2673 4.67969 11.7642 4.67969 12.3763V22.8931C4.67969 23.5052 5.17597 24.0015 5.78808 24.0015H15.7675C16.3796 24.0015 16.8758 23.5052 16.8758 22.8931V12.3763C16.8758 11.7642 16.3796 11.2673 15.7675 11.2673ZM14.8288 15.0277H12.0013C11.7803 15.0277 11.6012 14.8486 11.6012 14.6276V13.3143C11.6012 13.0934 11.7803 12.9142 12.0013 12.9142H14.8288C15.0498 12.9142 15.2289 13.0934 15.2289 13.3143V14.6276C15.2289 14.8486 15.0498 15.0277 14.8288 15.0277ZM12.0013 16.6747H14.8288C15.0498 16.6747 15.2289 16.8538 15.2289 17.0748V18.1941C15.2289 18.4151 15.0498 18.5942 14.8288 18.5942H12.0013C11.7803 18.5942 11.6012 18.4151 11.6012 18.1941V17.0748C11.6012 16.8538 11.7804 16.6747 12.0013 16.6747ZM9.5542 18.5941H6.72667C6.50571 18.5941 6.32658 18.415 6.32658 18.194V17.0747C6.32658 16.8538 6.50571 16.6746 6.72667 16.6746H9.5542C9.77516 16.6746 9.9543 16.8538 9.9543 17.0747V18.194C9.9543 18.415 9.77516 18.5941 9.5542 18.5941ZM9.9543 13.3144V14.6277C9.9543 14.8487 9.77516 15.0278 9.5542 15.0278H6.72667C6.50571 15.0278 6.32658 14.8487 6.32658 14.6277V13.3144C6.32658 13.0934 6.50571 12.9143 6.72667 12.9143H9.5542C9.77516 12.9143 9.9543 13.0934 9.9543 13.3144ZM6.72667 20.2411H9.5542C9.77516 20.2411 9.9543 20.4202 9.9543 20.6412V21.9545C9.9543 22.1755 9.77516 22.3546 9.5542 22.3546H6.72667C6.50571 22.3546 6.32658 22.1755 6.32658 21.9545V20.6412C6.32663 20.4202 6.50576 20.2411 6.72667 20.2411ZM11.6012 21.9544V20.6411C11.6012 20.4202 11.7804 20.241 12.0013 20.241H14.8289C15.0498 20.241 15.229 20.4202 15.229 20.6411V21.9544C15.229 22.1754 15.0498 22.3545 14.8289 22.3545H12.0013C11.7804 22.3545 11.6012 22.1754 11.6012 21.9544Z" fill="#EBEFF0"/>
                       <path d="M20.9735 5.95413C20.98 5.9823 20.9859 6.00963 20.9914 6.03604H15.6307C15.2511 6.03604 14.9434 5.72834 14.9434 5.34872V0.0327148C14.9852 0.040181 15.0293 0.0489098 15.0747 0.0589561C15.4743 0.147342 15.8386 0.352826 16.1281 0.642193L20.3912 4.9053C20.6794 5.19357 20.8818 5.55694 20.9735 5.95413Z" fill="url(#paint1_linear)"/>
@@ -168,8 +120,8 @@
        <div class="row "   >  
     <div class="col   ">  
       
-        <div class="table-responsive-xl  grid-container  " id="businessunituserlist_toggle" name="businessunituserlist_toggle"    >
-            <table id="businessunituserlist" name="businessunituserlist" class=" bg-white summarytable   "  style="width:100%;  margin: 0;padding: 0">
+        <div class="table-responsive-xl  grid-container  " id="subcategoryuserlist_toggle" name="subcategoryuserlist_toggle"    >
+            <table id="subcategoryuserlist" name="subcategoryuserlist" class=" bg-white summarytable   "  style="width:100%;  margin: 0;padding: 0">
             </table>
         </div>
    </div>
@@ -177,43 +129,46 @@
   </div>
   
   <!-- End export users -->
- 
- 
 </div>
 
 <script>
 
 
-$("#Showbusinessunitusers").click(function(){
-  $("#businessunituserlist_toggle").toggle();
-    $("#exportbusinessunitusertoexcel").toggle();
+
+//***** Toggle the export part***********
+$("#Showsubcategoryusers").click(function(){
+  $("#subcategoryuserlist_toggle").toggle();
+    $("#exportsubcategoryusertoexcel").toggle();
 });
 
-var businessunitdeletingdomain=[];  // need to predefine for get deleted items;
-function getbusinessunitrecorddata(valueof)
+
+var subcategorydeletingdomain=[];  // need to predefine for get deleted items;
+function getsubcategoryrecorddata(valueof)
 {
-businessunitdeletingdomain=[];
-$('.createbusinessunit-title').html('<h6><strong>Update Businessunit</strong></h6>');
-$('#businessunitname').val(valueof.data[businessunit_id].name);
-$('#businessunitlogo').html("<img src='" + valueof.data[businessunit_id].url + "'style='width: 30px; height: 30px'>");
-var statusval=valueof.data[businessunit_id].status;
+
+subcategorydeletingdomain=[];
+$('.createsubcategory-title').html('<h6><strong>Update Sub-Category</strong></h6>');
+$('#subcategoryname').val(valueof.data[subcategory_id].name);
+//$('#subcategorylogo').html("<img src='" + valueof.data[subcategory_id].url + "'style='width: 30px; height: 30px'>");
+var statusval=valueof.data[subcategory_id].status;
 if(statusval == 'true')
     {
-    $('#isbusinessunitactive').prop('checked',  true);
+    $('#issubcategoryactive').prop('checked',  true);
     }
 else
 if(statusval == 'false')
     {
-    $('#isbusinessunitactive').prop('checked',  false);
+    $('#issubcategoryactive').prop('checked',  false);
     }
-$('#businessunitprefix').val(valueof.data[businessunit_id].prefix);
-$('#businessunitcompanyname').val(valueof.data[businessunit_id].companyid);
+//$('#subcategoryprefix').val(valueof.data[subcategory_id].prefix);
+$('#subcategorycategoryname').val(valueof.data[subcategory_id].categoryid);
 
-$('#Showbusinessunitusers').hide();
+$('#Showsubcategoryusers').show();
 
-  pageBusinessunitexport(valueof);
-page_show('pageBusinessunitmanagement', 'pageBusinessunit');
-pageBusinessunitactioncontrol();
+  pageSubcategoryexport(valueof);
+
+page_show('pageSubcategorymanagement', 'pageSubcategory');
+pageSubcategoryactioncontrol();
 progressboxClose();
 }
     
@@ -226,72 +181,66 @@ progressboxClose();
 
   $(function () {
 
-    var pageBusinessunit_viewdetails = false;
+    var pageSubcategory_viewdetails = false;
 
 
-//    $('#businessunitforadd').tokenfield();
+//    $('#categoryforadd').tokenfield();
 
     $(document).on('click', '.dropdown-menu a', function () {
-      $('#businessunitlogo').html($(this).html())
+      $('#subcategorylogo').html($(this).html())
     })
 
 
 //
-//  $(document).on('change', '#businessunitcompanynamecheck', function () {
+//  $(document).on('change', '#categorycategorynamecheck', function () {
 //alert($(this).val())
 //})
 //    
     
-  var businessunit_caninactive='No';
-$(document).on('click','#callcreatebusinessunit',function(e) {
-businessunit_caninactive='No';
-savebusinessunitdetails(businessunit_caninactive);
+  var subcategory_caninactive='No';
+$(document).on('click','#callcreatesubcategory',function(e) {
+subcategory_caninactive='No';
+savesubcategorydetails(subcategory_caninactive);
 });
-$(document).on('click','.pageBusinessunit_confirm',function(e) {
-businessunit_caninactive='Yes';
-savebusinessunitdetails(businessunit_caninactive);
+$(document).on('click','.pageSubcategory_confirm',function(e) {
+subcategory_caninactive='Yes';
+savesubcategorydetails(subcategory_caninactive);
 confirmationboxClose();
 });
     
     
     // Save button
-    function savebusinessunitdetails(businessunit_caninactive)
+    function savesubcategorydetails(subcategory_caninactive)
     {
 
-      var businessunitname = $('#businessunitname').val();
-      var businessunitlogo = $('#businessunitlogo img').prop('src');
+      var subcategoryname = $('#subcategoryname').val();
 
-      var isbusinessunitactive = $('#isbusinessunitactive').prop('checked');
+      var issubcategoryactive = $('#issubcategoryactive').prop('checked');
 
-      var businessunitprefix = $('#businessunitprefix').val();
- var businessunitcompanyname = $('#businessunitcompanyname').val();
-//      var businessunitcompanyname=$("#businessunitcompanyname").find('option:selected').text();
+ var subcategorycategoryname = $('#subcategorycategoryname').val();
 
  
 
         
 
-      var _businessunitparams = {
-        "action": "businessunit_maintain",
+      var _subcategoryparams = {
+        "action": "subcategory_maintain",
         "param": {
-          "id": businessunit_id,
-          "name": businessunitname,
-          "logo": businessunitlogo,
-          "status": isbusinessunitactive,
-          "prefix": businessunitprefix,
-          "companyname": businessunitcompanyname,
+          "id": subcategory_id,
+          "name": subcategoryname,
+          "status": issubcategoryactive,
+          "categoryid": subcategorycategoryname,
           "createby": _getloginname,
-          "caninactive":businessunit_caninactive,
-          "Deletingdomain":businessunitdeletingdomain
+          "subcategory_caninactive":subcategory_caninactive,
         }
       };
 
         
 
-     if( validateBeforeSubmit(businessunitname) == 'true' && validateBeforeSubmitforURL(businessunitlogo) == 'true' && businessunitprefix!='' && businessunitcompanyname!='')
+     if( validateBeforeSubmit(subcategoryname) == 'true'  && subcategorycategoryname!='')
      {
       progressboxOpen();
-      google.script.run.withFailureHandler(businessunit_inError).withSuccessHandler(businessunitconfirmation).executebusinessunit(_businessunitparams) 
+      google.script.run.withFailureHandler(subcategory_inError).withSuccessHandler(subcategoryconfirmation).executesubcategory(_subcategoryparams) 
       }
       else
       {
@@ -305,23 +254,22 @@ confirmationboxClose();
 
   // For acknowledgement
 
-  function businessunitconfirmation(result) {
-  
+  function subcategoryconfirmation(result) {
   if(isNaN(result.result['code']) == false)
 {
     if (result.result['code'] == '3000') {
-//      $('#businessunitpage *').val('');
-        businessunit_id='';
-        businessunit_actionfromwhere='afterupdate';
-          retrive_allbusinessunitdetails(result);
-      pageBusinessunitactioncontrol();
-      page_show('pageBusinessunit', 'pageBusinessunitmanagement');
+//      $('#subcategorypage *').val('');
+        subcategoryid='';
+        subcategory_actionfromwhere='afterupdate';
+          retrive_allsubcategorydetails(result);
+      pageSubcategoryactioncontrol();
+      page_show('pageSubcategory', 'pageSubcategorymanagement');
       }
     else
       if(result.result['code'] == '2016')
       {
            progressboxClose();
-           confirmationboxOpen(2016,"pageBusinessunit_confirm");
+           confirmationboxOpen(2016,"pageSubcategory_confirm");
       }
       else
       {
@@ -339,15 +287,15 @@ confirmationboxClose();
 
 
 
-  //Function Dropdown to display the businessunit logo
-  function loadimageinbusinessunit(image) {
+  //Function Dropdown to display the category logo
+  function loadinsubcategory(image) {
   
   
   var imglibraryKey = Object.keys(image.data.imagelibrary[0])
 
     if (image.result['code'] == '3000') {
       for (var key of imglibraryKey) {
-        $('#businessunitlogodropdown').append('<a class="dropdown-item" href="#"> ' +
+        $('#subcategorylogodropdown').append('<a class="dropdown-item" href="#"> ' +
           '<img src="' + image.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + image.data.imagelibrary[0][key].keyword + '</a>')
       };
     }
@@ -355,46 +303,27 @@ confirmationboxClose();
 
   }
 
-// For page action control
-  function pageBusinessunitactioncontrol() {
+
+
+$(document).on('keypress','#subcategoryname',function(e) {
+autocomplete(document.getElementById("subcategoryname"), activesubcategory);
+});
+
+
+   // For page action control
+  function pageSubcategoryactioncontrol() {
   
-    pageBusinessunit_viewdetails = page_actioncontrol("pageBusinessunit", "SAVE");
+    pageSubcategory_viewdetails = page_actioncontrol("pageSubcategory", "SAVE");
     //Div disabled based on the condition 
-    if (pageBusinessunit_viewdetails == false) { $(".pageBusinessunit_fullview_section *").attr('disabled', 'disabled'); }
-    else { $(".pageBusinessunit_fullview_section *").prop("disabled", false); }
+    if (pageSubcategory_viewdetails == false) { $(".pageSubcategory_fullview_section *").attr('disabled', 'disabled'); }
+    else { $(".pageSubcategory_fullview_section *").prop("disabled", false); }
   }
 
-
-$(document).on('keypress','#businessunitname',function(e) {
-
-autocomplete(document.getElementById("businessunitname"), businessunitnamenameavailable);
-});
-
-$(document).on('keypress','#businessunitprefix',function(e) {
-
-autocomplete(document.getElementById("businessunitprefix"), businessunitprefixavailable);
-});
-
-
-
     
- function loadcompanynameinbusinessunit(companydetails)
+ function show_loadcategoryinsubcategory(appendcategory)
  {
-
- 
- $('#businessunitcompanyname').empty();
-  var _addcompanynameinbusinessunit='<option value="">Select Company</option>';
- var totalcompanyId = companydetails.companyid;
-        if (companydetails.result['code'] == '3000') {
-            for (var id of totalcompanyId) {
-            if(companydetails.data[id].status == 'true')
-            {
-                  _addcompanynameinbusinessunit += "<option  value='" + companydetails.data[id].id + "'>" + companydetails.data[id].name  + "</option>";
-               $('#businessunitcompanyname').html(_addcompanynameinbusinessunit);
-                  }
-                  
-              }    
-            }
+ $('#subcategorycategoryname').empty();
+  $('#subcategorycategoryname').html(appendcategory);
   }
   
  
@@ -407,25 +336,25 @@ autocomplete(document.getElementById("businessunitprefix"), businessunitprefixav
 
 
 <script>
-var addbusinessunituser;
+var addsubcategoryuser;
 //$('#exportroleusertoexcel').hide();
 
 //Show the user details in this table 
 //$(document).on('click','#Showroleusers',function(e) {
-   var businessunituseractiveresults=[];
+   var subcategoryuseractiveresults=[];
 
- function pageBusinessunitexport(valueof)
+ function pageSubcategoryexport(valueof)
  {
-businessunit_id= valueof.businessunitid;
-            if(businessunit_id!='' )  
+subcategory_id= valueof.subcategoryid;
+            if(subcategory_id!='' )  
             {
-             var businessunituserresults=[];
-             businessunituseractiveresults=[];
+             var subcategoryuserresults=[];
+             subcategoryuseractiveresults=[];
               if(valueof!= '')
               {
-                 var selecteduserrole=valueof.data[businessunit_id].businessunituser;//.roleuser[0]
+                 var selecteduserrole=valueof.data[subcategory_id].subcategoryuser;//.roleuser[0]
                       for (var x = 0; x < selecteduserrole.length; x++) {   
-                      businessunituserresults.push([
+                      subcategoryuserresults.push([
                       selecteduserrole[x].username,
                       selecteduserrole[x].useremail,
                       selecteduserrole[x].userlocked,
@@ -439,8 +368,8 @@ businessunit_id= valueof.businessunitid;
                       
               }
               
-            var usertableid="businessunituserlist";
-            addbusinessunituser = $('#businessunituserlist').DataTable({
+            var usertableid="subcategoryuserlist";
+            addsubcategoryuser = $('#subcategoryuserlist').DataTable({
             dom: 'Bfrtip',
                 "ordering": true,  
                 "pageLength": 5,
@@ -451,18 +380,33 @@ businessunit_id= valueof.businessunitid;
 
 buttons: [{
             extend: 'excelHtml5',
-            className: "businessunitbuttonsTocall reducebuttonsize",
+            className: "subcategorybuttonsTocall reducebuttonsize",
              exportOptions: {
              
          columns: [0,1, 4, 5]
- 
+
+//      format: {
+//         body: function ( data, row, column, node ) {
+//            switch (column) {
+//              case 2 :
+//                return rolevalsplit[2];
+//                break
+//              case 3 : 
+//                return rolevalsplit[3];
+//                break
+//              default :
+//                return data;
+//                break
+//             }
+//          }
+//        }    
      },
         }],
 
 
                "bFilter": false,
                 rowId: 'id', 
-                data: businessunituserresults,
+                data: subcategoryuserresults,
                 columns: [{
                     title: " Name" 
                 }, {
@@ -538,49 +482,49 @@ buttons: [{
             
             
            
-                  addbusinessunituser.clear();
-              addbusinessunituser.draw();
-            addbusinessunituser.rows.add(businessunituserresults).draw();
-            addbusinessunituser.column(4).visible(false);
-            addbusinessunituser.column(5).visible(false);
- $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
+                  addsubcategoryuser.clear();
+              addsubcategoryuser.draw();
+            addsubcategoryuser.rows.add(subcategoryuserresults).draw();
+            addsubcategoryuser.column(4).visible(false);
+            addsubcategoryuser.column(5).visible(false);
 
  
-            if(businessunituserresults.length >0)
+            if(subcategoryuserresults.length >0)
             {
-                  $('#businessunituserlist').show();
-                  $('#exportbusinessunitusertoexcel').show();
-                  $('#businessunituserlist_toggle').show();
-                  $('#Showbusinessunitusers').show();
-                  $("#businessunituserlist_toggle").toggle();
-                  $("#exportbusinessunitusertoexcel").toggle();
+                  $('#subcategoryuserlist').show();
+                  $('#exportsubcategoryusertoexcel').show();
+                  $('#subcategoryuserlist_toggle').show();
+                  $('#Showsubcategoryusers').show();
+                  $("#subcategoryuserlist_toggle").toggle();
+                  $("#exportsubcategoryusertoexcel").toggle();
             } 
             else
             {
-                  $('#businessunituserlist_toggle').hide();
-                  $('#Showbusinessunitusers').hide();
-                  $('#exportbusinessunitusertoexcel').hide();
+                  $('#subcategoryuserlist_toggle').hide();
+                  $('#Showsubcategoryusers').hide();
+                  $('#exportsubcategoryusertoexcel').hide();
             }
               
 
 
 
-var businessunitclickBtn = false;
+var subcategoryclickBtn = false;
 
-$(document).on('click', '#exportbusinessunitusertoexcel', function(event) { 
+$(document).on('click', '#exportsubcategoryusertoexcel', function(event) { 
 
-if(businessunitclickBtn == false){
-    $(".businessunitbuttonsTocall").click(); 
+if(subcategoryclickBtn == false){
+    $(".subcategorybuttonsTocall").click(); 
     }
-        businessunitclickBtn = true;
+        subcategoryclickBtn = true;
 
 });
 
 
 
 
+ $('.buttons-excel')[0].style.visibility = false ? 'visible' : 'hidden'
 
- $("#exportname").text('Businessunit - User List');
+ $("#exportname").text('Sub-Category - User List');
       }
       else
       {

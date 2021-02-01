@@ -1,29 +1,129 @@
 <script>
 
-//Load active Users
 
-loadactiveu();
-var activeusers=[];
-function loadactiveu()   ///// need to remove this after user screen
+var loadworkinghours='';
+var loadpositions='';
+var loadseveritylevel='';
+var loadactionlistsgrouphere='';
+var loadhours='';
+var loaddays='';
+var relatedissueshere='';
+var loaddatatypehere='';
+function loadworkinghourshere(data)
 {
-     google.script.run.withFailureHandler(module_inError)
-           .withSuccessHandler(Loadactiveusers)
-           .executemodule({ "action": "showalluser_details" });
+
+for (var w = 0; w < (data.data.workinghours).length; w++) {
+loadworkinghours += '<option  class="rounded-pill editformdesign" value="' + data.data.workinghours[w].name + '">' + data.data.workinghours[w].name + '</option>';
+}
+show_loadworkinghous(loadworkinghours)
+
+for (var w = 0; w < (data.data.position).length; w++) {
+loadpositions += '<option  class="rounded-pill editformdesign" value="' + data.data.position[w].id + '">' + data.data.position[w].name + '</option>';
+}
+show_loadpositions(loadpositions)
+
+for (var w = 0; w < (data.data.severitylevel).length; w++) {
+loadseveritylevel += '<option  class="rounded-pill editformdesign" value="' + data.data.severitylevel[w].name + '">' + data.data.severitylevel[w].name + '</option>';
+}
+show_knownissuesseveritylevel(loadseveritylevel)
+
+for (var w = 0; w < (data.data.actionlistsgroup).length; w++) {
+loadactionlistsgrouphere += '<option  class="rounded-pill editformdesign" value="' + data.data.actionlistsgroup[w].id + '">' + data.data.actionlistsgroup[w].name + '</option>';
+}
+show_loadactionlistsgroup(loadactionlistsgrouphere)
+
+
+for (var w = 0; w < (data.data.hours).length; w++) {
+loadhours += '<option  class="rounded-pill editformdesign" value="' + data.data.hours[w].id + '">' + data.data.hours[w].hour + '</option>';
+}
+show_loadhours(loadhours)
+
+for (var w = 0; w < (data.data.days).length; w++) {
+loaddays += '<option  class="rounded-pill editformdesign" value="' + data.data.days[w].id + '">' + data.data.days[w].day + '</option>';
+}
+show_loaddays(loaddays)
+
+
+for (var w = 0; w < (data.data.requestsection).length; w++) {
+relatedissueshere += '<option  class="rounded-pill editformdesign" value="' + data.data.requestsection[w].id + '">' + data.data.requestsection[w].name + '</option>';
+}
+show_loadrelatedissuesto(relatedissueshere)
+
+
+for (var w = 0; w < (data.data.datatype).length; w++) {
+loaddatatypehere += '<option  class="rounded-pill editformdesign" value="' + data.data.datatype[w].name + '">' + data.data.datatype[w].name + '</option>';
+}
+show_loaddatatype(loaddatatypehere)
+
+
+
 }
 
+
+
+
+
+
+var Loadrootcausehere='';
+function Loadrootcausefromrootcausemanagement(data)
+{
+for (var w = 0; w < (data.data.rootcauselist).length; w++) {
+Loadrootcausehere += '<option  class="rounded-pill editformdesign" value="' + data.data.rootcauselist[w].id + '">' + data.data.rootcauselist[w].name + '</option>';
+}
+show_Loadrootcausefromrootcausemanagement(Loadrootcausehere)
+}
+
+
+
+var Loadpriorityhere='';
+function Loadpriorityfromprioritymanagement(data)
+{
+for (var w = 0; w < (data.data.prioritylist).length; w++) {
+Loadpriorityhere += '<option  class="rounded-pill editformdesign" value="' + data.data.prioritylist[w].id + '">' + data.data.prioritylist[w].name + '</option>';
+}
+show_Loadpriorityfromprioritymanagement(Loadpriorityhere)
+}
+
+
+
+
+var loadsimageonly='';
+ function loadimageonlyfromimagelibrary(data) {
+
+    var imglibraryKey = Object.keys(data.data.imagelibrary[0])
+      for (var key of imglibraryKey) {
+      
+      if(data.data.imagelibrary[0][key].imagetype == 'Image')
+      {
+        loadsimageonly +='<a class="dropdown-item" href="#"> ' +
+          '<img src="' + data.data.imagelibrary[0][key].url + ' " style="width: 30px; height: 30px"> ' + data.data.imagelibrary[0][key].filename + '</a>';
+     }
+     };
+    
+    show_imageonlyfromimagelibraryimage(loadsimageonly);
+show_loadimageonlyhere(loadsimageonly);
+  }
+
+
+
+//Load active Users
+
+var activeusers=[];
+
+
 var activeusersid=[];
-function Loadactiveusers(loaddetails) 
+function Loadactiveusersfromuserpage(loaddetails) 
 {
    activeusers=[];
    activeusersid=[];
    if(loaddetails.result['code'] == '3000')
    {
-     var userid = (loaddetails.userid)
-                for (var id of userid) {
-    if(loaddetails.data[id].status == 'true')
+              var datalength = (loaddetails.data.userlist).length
+                      for (var x = 0; x < datalength; x++) {  
+    if(loaddetails.data.userlist[x].status == 'true')
             {
-         activeusers.push(loaddetails.data[id].name);
-         activeusersid.push(id);
+         activeusers.push(loaddetails.data.userlist[x].name);
+         activeusersid.push(loaddetails.data.userlist[x].id);
          }
         }
    }
@@ -82,22 +182,205 @@ function Loadactivecompanyfromcompanypage(loaddetails)
         }
 }
 
+var activerole=[];
+var activeroleid=[];
+function Loadactiverolefromrolepage(loaddetails) 
+{
+     activerole=[];
+      activeroleid=[];
+     var length = (loaddetails.roleid).length
+	for (var x = 0; x < length; x++) {
+            if(loaddetails.data[loaddetails.roleid[x]].status == 'true')
+            {
+            activerole.push(loaddetails.data[loaddetails.roleid[x]].name);
+            activeroleid.push(loaddetails.data[loaddetails.roleid[x]].id);
+            }
+        }
+}
+
+
 
 var activemoduleid=[];
 var activemodule=[];
+var loadmodulehere;
 function Loadmodulefrommodulemanagement(loaddetails) 
 {
      activemodule=[];
       activemoduleid=[];
+      
      var length = (loaddetails.data.modulelist).length
 	for (var x = 0; x < length; x++) {
             if(loaddetails.data.modulelist[x].status == 'true')
             {
             activemodule.push(loaddetails.data.modulelist[x].name);
             activemoduleid.push(loaddetails.data.modulelist[x].id);
+            
+            loadmodulehere += '<option  class="rounded-pill editformdesign" value="' + loaddetails.data.modulelist[x].id + '">' + loaddetails.data.modulelist[x].name + '</option>';
             }
         }
+        
+        
+   show_loadmoduleincategory(loadmodulehere)
+
 }
+
+
+
+var activecategoryid=[];
+var activecategory=[];
+var loadcategoryhere;
+function Loadactivecategoryfromcategorypage(categorydetails) 
+{
+
+     activecategory=[];
+      activecategoryid=[];
+     var categoryId = (categorydetails.categoryid)
+     
+      for (var id of categoryId) {
+      
+                  if(categorydetails.data[id].status == 'true')
+            {
+            
+                        activecategory.push(categorydetails.data[id].name);
+            activecategoryid.push(categorydetails.data[id].id);
+            loadcategoryhere += '<option  class="rounded-pill editformdesign" value="' + categorydetails.data[id].id + '">' + categorydetails.data[id].name + '</option>';
+     }
+    }
+    
+    
+   show_loadcategoryinsubcategory(loadcategoryhere)
+
+}
+
+
+
+var activeincidentid=[];
+var activeincident=[];
+function Loadincidentfromincidentmanagement(loaddetails) 
+{
+     activeincident=[];
+      activeincidentid=[];
+//    activeincident.push("POS is not working","RAMCO is not working");
+//    activeincidentid.push('1','2');
+  var length = (loaddetails.data.incidentmasterlist).length
+ for (var x = 0; x < length; x++) {
+           if(loaddetails.data.incidentmasterlist[x].status == 'true')
+           {
+           activeincident.push(loaddetails.data.incidentmasterlist[x].name);
+           activeincidentid.push(loaddetails.data.incidentmasterlist[x].id);
+           }
+       }
+}
+
+
+
+
+var activequestionid=[];
+var activequestion=[];
+function Loadquestionfromquestionmanagement(loaddetails) 
+{
+     activequestion=[];
+      activequestionid=[];
+  var length = (loaddetails.data.incidentmastercqlist).length
+ for (var x = 0; x < length; x++) {
+           if(loaddetails.data.incidentmastercqlist[x].status == 'true')
+           {
+           activequestion.push(loaddetails.data.incidentmastercqlist[x].name);
+           activequestionid.push(loaddetails.data.incidentmastercqlist[x].id);
+           }
+       }
+}
+
+
+var activefieldid=[];
+var activefield=[];
+function Loadfieldfromfieldmanagement(loaddetails) 
+{
+     activefield=[];
+      activefieldid=[];
+  var length = (loaddetails.data.incidentmastercflist).length
+ for (var x = 0; x < length; x++) {
+           if(loaddetails.data.incidentmastercflist[x].status == 'true')
+           {
+           activefield.push(loaddetails.data.incidentmastercflist[x].name);
+           activefieldid.push(loaddetails.data.incidentmastercflist[x].id);
+           }
+       }
+}
+
+
+
+//Loadknowledgebasefromknowledgebasemanagement();
+var activeknowledgebaseid=[];
+var activeknowledgebase=[];
+var loadknowledgebasehere=[];
+function Loadknowledgebasefromknowledgebasemanagement(loaddetails) 
+{
+     activeknowledgebase=[];
+      activeknowledgebaseid=[];
+//    activeknowledgebase.push("knowledgebase 1 ","knowledgebase 2");
+//    activeknowledgebaseid.push('1','2');
+  var length = (loaddetails.data.knowledgebaselist).length
+ for (var x = 0; x < length; x++) {
+           if(loaddetails.data.knowledgebaselist[x].status == 'true')
+           {
+           activeknowledgebase.push(loaddetails.data.knowledgebaselist[x].name);
+           activeknowledgebaseid.push(loaddetails.data.knowledgebaselist[x].id);
+                 loadknowledgebasehere += '<option  class="rounded-pill editformdesign" value="' + loaddetails.data.knowledgebaselist[x].id + '">' + loaddetails.data.knowledgebaselist[x].name + '</option>';
+
+           }
+           
+       }
+       
+       show_Loadknowledgebasefromknowledgebasemanagement(loadknowledgebasehere)
+}
+
+var activesubcategoryid=[];
+var activesubcategory=[];
+var loadsubcategoryhere;
+function Loadactivesubcategoryfromsubcategorypage(subcategorydetails) 
+{
+
+     activesubcategory=[];
+      activesubcategoryid=[];
+     var subcategoryId = (subcategorydetails.subcategoryid)
+     
+      for (var id of subcategoryId) {
+      
+                  if(subcategorydetails.data[id].status == 'true')
+            {
+                        activesubcategory.push(subcategorydetails.data[id].name);
+            activesubcategoryid.push(subcategorydetails.data[id].id);
+            loadsubcategoryhere += '<option  class="rounded-pill editformdesign" value="' + subcategorydetails.data[id].id + '">' + subcategorydetails.data[id].name + '</option>';
+     }
+    }
+    
+    
+//   show_loadcategoryincategory(loadcategoryhere)
+
+}
+
+
+var activeteamid=[];
+var activeteam=[];
+var loadactiveteamhere;
+function Loadteamfromteammanagement(loaddetails) 
+{
+     activeteam=[];
+      activeteamid=[];
+  var length = (loaddetails.data.serviceteamlist).length
+ for (var x = 0; x < length; x++) {
+           if(loaddetails.data.serviceteamlist[x].status == 'true')
+           {
+           activeteam.push(loaddetails.data.serviceteamlist[x].name);
+           activeteamid.push(loaddetails.data.serviceteamlist[x].id);
+           
+        loadactiveteamhere += '<option  class="rounded-pill editformdesign" value="' + loaddetails.data.serviceteamlist[x].id + '">' + loaddetails.data.serviceteamlist[x].name + '</option>';
+           }
+       }
+}
+
+
 
 
 

@@ -1,0 +1,304 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageIncidentmastercfvmanagement_fullview_section' >
+    <div>
+        <h6><strong>Incident - Custom Field value management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupincidentmastercfvname2"></label>
+                    <div class="input-group ">  
+
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="Search" id="pageIncidentmastercfvmanagement_search"  name="pageIncidentmastercfvmanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageIncidentmastercfvmanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageincidentmastercfv" 
+                                   id="pageIncidentmastercfvmanagement_add"  name="pageIncidentmastercfvmanagement_add"   style="white-space: nowrap;"
+                            ><i id="pageIncidentmastercfvmanagement_create"  name="pageIncidentmastercfvmanagement_create" ></i> Create
+                            New Value</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="incidentmastercfvdetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+//GLobal parameter:
+var _incidentmastercfvdetails;
+</script>
+<script>
+// Action for next page
+$(document).ready(function () 
+  {   
+    $('#pageIncidentmastercfvmanagement_add').on('click', function() 
+    {
+    
+    $('.removelist_incidentmastercfvincident').remove(); // remove existing list
+        $('#incidentmastercfvhelptext').val('');
+
+       $('#incidentmastercfvpassword').attr('readonly', false);
+
+   $('input[name="isincidentmastercfvifcontinueoption1"]').attr('checked', false);
+$('input[name="isincidentmastercfvifcontinueoption2"]').attr('checked', false);
+
+        incidentmastercfvid='';
+          $("#incidentmastercfvimage").attr("href",'');
+
+        $('#incidentmastercfvname').val('');
+        $('#exportroleincidentmastercfvtoexcel').hide();
+        $('#Showroleincidentmastercfvs').hide();
+        $('#callcreaterole').show();
+        $("#roleincidentmastercfvlist_toggle").hide();
+        $("#exportroleincidentmastercfvtoexcel").hide();
+      
+      
+        $('#incidentmastercfvsquence').val('');
+        $('#incidentmastercfvdesc').val('');
+
+      
+          
+        
+      $('#incidentmastercfvseveritylevel').val(1);
+      $('#incidentmastercfvautoreply').val('');
+      //    var isexportvisible=$("#roleincidentmastercfvlist").is(":visible");
+      //    if (isexportvisible == true) { 
+      //   
+      //    $("#roleincidentmastercfvlist_toggle").toggle();
+      //    $("#exportroleincidentmastercfvtoexcel").toggle();
+      //   } 
+      
+       $('#exportincidentmastercfvusertoexcel').hide();
+  $('#Showincidentmastercfvusers').hide();
+        $("#incidentmastercfvuserlist_toggle").hide();
+    $("#exportincidentmastercfvusertoexcel").hide();
+      
+        pageIncidentmastercfvactioncontrol();
+        page_show('pageIncidentmastercfvmanagement','pageIncidentmastercfv');
+    });
+        
+  });
+  
+  
+  
+  $('#pageIncidentmastercfvmanagement_search').on( 'keyup',   function () 
+  {
+  incidentmastercfvdetailsaddintable.search( this.value ).draw();
+  });  
+</script>
+
+<script>
+var incidentmastercfvnameavailable=[];
+var incidentmastercfvprefixavailable=[];
+//Used for control the view eye to open or not
+    var pageincidentmastercfvvmanagement_viewdetails=false;
+    function incidentmastercfv_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+
+//Load the role data
+    loadallincidentmastercfvs();
+    var incidentmastercfv_actionfromwhere='';
+    function loadallincidentmastercfvs()
+    {
+//     progressboxOpen();
+incidentmastercfv_actionfromwhere='onload'
+            google.script.run.withFailureHandler(incidentmastercfv_inError)
+            .withSuccessHandler(retrive_allincidentmastercfvdetails)
+            .executeincidentmastercfv({ "action": "showallincidentmastercfv_details" });
+    }
+    
+
+    var incidentmastercfvdetailsaddintable;
+    var incidentmastercfvdetailselemID = "incidentmastercfvdetails";  
+
+//Load retrieved data
+        function retrive_allincidentmastercfvdetails(loaddetails) {
+        incidentmastercfvnameavailable=[];
+//        incidentmastercfvprefixavailable=[];
+       
+         if(incidentmastercfv_actionfromwhere == 'afterupdate')
+        {
+                  toastboxOpen("3002");
+                  progressboxClose();
+
+        }
+        
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                
+                                        _incidentmastercfvdetails=loaddetails.data;
+
+                                 var datalength = (loaddetails.data.incidentmastercfvlist).length
+                      for (var x = 0; x < datalength; x++) {  
+                      results.push([loaddetails.data.incidentmastercfvlist[x].id,
+                       loaddetails.data.incidentmastercfvlist[x].name,
+                       loaddetails.data.incidentmastercfvlist[x].description,
+                       loaddetails.data.incidentmastercfvlist[x].sequence,
+                       loaddetails.data.incidentmastercfvlist[x].status
+                      ])
+                      incidentmastercfvnameavailable.push(loaddetails.data.incidentmastercfvlist[x].name);
+
+                      
+                      };
+                }
+              };
+          incidentmastercfvdetailsaddintable = $('#incidentmastercfvdetails').DataTable({
+                dom: 'rtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+//                searching: true,
+                rowId: 'id', 
+                data: results,
+                columns: [{
+                    title: " Id" 
+                }, 
+                {
+                  title: "Name",
+                },
+                {
+                    title: "Description"
+                },
+                 {
+                    title: "Sequence"
+                },
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                    
+                        var recid = "incidentmastercfvdetailsisActive_" + full[0];
+
+                        var isdown = full[4];
+                        
+                        if (isdown == 'true' ) {
+                        
+
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                            
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+                        
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageIncidentmastercfvmanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "incidentmastercfvdetailsisview_" + full[0];
+                             return '<i class="fas fa-eye" style="color: #79CEFF;"  ></i>'; // id="'+_recviewid+'" name="'+_recviewid+'"
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+incidentmastercfvdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercfvdetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+incidentmastercfvdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercfvdetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+                           
+            });
+            
+            
+            incidentmastercfvdetailsaddintable.clear();
+            incidentmastercfvdetailsaddintable.draw();
+            incidentmastercfvdetailsaddintable.rows.add(results).draw();
+
+
+//            if (loaddetails.result['code'] == '3000') {
+//        Loadfieldfromfieldmanagement(loaddetails);
+//        }
+           
+            // Call class for view the details.
+             $('#incidentmastercfvdetails tbody').on('click', 'tr td.pageIncidentmastercfvmanagement_viewdetails_section', function () {
+            if(pageIncidentmastercfvmanagement_viewdetails == true)
+             {
+                var indx = incidentmastercfvdetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = incidentmastercfvdetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var incidentmastercfvname = row.data()[1];
+                var status = row.data()[2];
+//                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                             "action": "incidentmastercfv_getbyID",
+                    "param": {
+                        "id": id,
+                        }
+                    };
+                $(".preloader").show();
+               progressboxOpen()
+               google.script.run.withFailureHandler(incidentmastercfv_inError).withSuccessHandler(getincidentmastercfvrecorddata).executeincidentmastercfv(data);
+                
+                }
+            });
+            
+          
+            
+            
+            
+            
+            $('.dataTables_length').addClass('bs-select');
+                         progressboxClose();
+//              loadroleautocomplete(roleavailable);
+//            alert('end')
+        }
+
+      //Confirm the status update 
+   
+</script>
+
+<script>
+// Control the page action.
+function pageIncidentmastercfvmanagementactioncontrol()
+{
+pageIncidentmastercfvmanagement_viewdetails=page_actioncontrol("pageIncidentmastercfvmanagement","VIEW");
+}
+</script>
+
+<style>
+.icon-eye {
+  color: #E5E5E5;
+}
+
+</style>
+
+

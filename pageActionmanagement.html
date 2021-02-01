@@ -1,0 +1,391 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageActionmanagement_fullview_section' >
+    <div>
+        <h6><strong>Action management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupactionname2"></label>
+                    <div class="input-group ">  
+
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="Search" id="pageActionmanagement_search"  name="pageActionmanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageActionmanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageAction" 
+                                   id="pageActionmanagement_add"  name="pageActionmanagement_add" 
+                            ><i id="pageActionmanagement_create"  name="pageActionmanagement_create"></i> Create
+                            Action</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="actiondetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+//GLobal parameter:
+var _actiondetails;
+</script>
+<script>
+// Action for next page
+$(document).ready(function () 
+  {   
+    $('#pageActionmanagement_add').on('click', function() 
+    {
+    
+    $('.removelist_actioncompany').remove(); // remove existing list
+          $('.removelist_actionbu').remove(); // remove existing list
+          $('.removelist_actionwl').remove(); // remove existing list
+          $('.removelist_actionmodule').remove(); // remove existing list
+          $('.removelist_actionincident').remove(); // remove existing list
+          $('.removelist_actionrole').remove(); // remove existing list
+          $('.removelist_actionknowledgebase').remove(); // remove existing list
+          $('.removelist_actionsubcategory').remove(); // remove existing list
+          $('.removelist_actioncategory').remove(); // remove existing list
+
+       $('#actionpassword').attr('readonly', false);
+
+
+
+        actionid='';
+          $("#actionlogo").attr("href",'');
+
+        $('#actionname').val('');
+        $('#exportroleactiontoexcel').hide();
+        $('#Showroleactions').hide();
+        $('#callcreaterole').show();
+        $("#roleactionlist_toggle").hide();
+        $("#exportroleactiontoexcel").hide();
+      
+      $('#actionseveritylevel').val(1);
+      $('#actionautoreply').val('');
+      //    var isexportvisible=$("#roleactionlist").is(":visible");
+      //    if (isexportvisible == true) { 
+      //   
+      //    $("#roleactionlist_toggle").toggle();
+      //    $("#exportroleactiontoexcel").toggle();
+      //   } 
+      
+       $('#exportactionusertoexcel').hide();
+  $('#Showactionusers').hide();
+        $("#actionuserlist_toggle").hide();
+    $("#exportactionusertoexcel").hide();
+      
+        pageActionactioncontrol();
+        page_show('pageActionmanagement','pageAction');
+    });
+        
+  });
+  
+  
+  
+  $('#pageActionmanagement_search').on( 'keyup',   function () 
+  {
+  actiondetailsaddintable.search( this.value ).draw();
+  });  
+</script>
+
+<script>
+var actionnameavailable=[];
+var actionprefixavailable=[];
+//Used for control the view eye to open or not
+    var pageActionmanagement_viewdetails=false;
+    function action_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+
+//Load the role data
+    loadallactions();
+    var action_actionfromwhere='';
+    function loadallactions()
+    {
+//     progressboxOpen();
+action_actionfromwhere='onload'
+            google.script.run.withFailureHandler(action_inError)
+            .withSuccessHandler(retrive_allactiondetails)
+            .executeactionlists({ "action": "showallactionlists_details" });
+    }
+    
+
+    var actiondetailsaddintable;
+    var actiondetailselemID = "actiondetails";  
+
+//Load retrieved data
+        function retrive_allactiondetails(loaddetails) {
+//        actionnameavailable=[];
+//        actionprefixavailable=[];
+       
+         if(action_actionfromwhere == 'afterupdate')
+        {
+                  toastboxOpen("3002");
+                  progressboxClose();
+
+        }
+        
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                
+                                        _actiondetails=loaddetails.data;
+
+                                 var datalength = (loaddetails.data.actionlists).length
+                      for (var x = 0; x < datalength; x++) {  
+                      results.push([loaddetails.data.actionlists[x].id,
+                      loaddetails.data.actionlists[x].name,
+                       loaddetails.data.actionlists[x].requestermessage,
+                     loaddetails.data.actionlists[x].groupname,
+//                       loaddetails.data.actionlist[x].mailnotification,
+//                       loaddetails.data.actionlist[x].slacalculation,
+//                       loaddetails.data.actionlist[x].waitingforuserconfirm,
+                       loaddetails.data.actionlists[x].status
+                      ])
+//                      actionnameavailable.push(loaddetails.data.actionlist[x].message);
+
+                      
+                      };
+                }
+              };
+              
+          actiondetailsaddintable = $('#actiondetails').DataTable({
+                dom: 'rtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+//                searching: true,
+                rowId: 'id', 
+                data: results,
+                columns: [{
+                    title: " Id" 
+                }, 
+                {
+                    title: "Name"
+                },
+                {
+                    title: "Requester message"
+                },
+                {
+                    title: "Group status"
+                },
+//                {
+//                    title: "Email Notification",
+//                    orderable: false,
+//                    data: null,
+//                    "render": function (data, type, full, meta) {
+//                    
+//                        var recid = "actionemailnotification_" + full[0];
+//
+//                        var isdelay = full[3];
+//                        
+//                        if (isdelay == 'true' ) {
+//                        
+//
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                            
+//                        } else {
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                        }
+//                    },
+//                    targets: -1,
+//                },
+//                {
+//                    title: "SLA Calculation",
+//                    orderable: false,
+//                    data: null,
+//                    "render": function (data, type, full, meta) {
+//                    
+//                        var recid = "actionslacalculation_" + full[0];
+//
+//                        var isdelay = full[4];
+//                        
+//                        if (isdelay == 'true' ) {
+//                        
+//
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                            
+//                        } else {
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                        }
+//                        
+//
+//                    },
+//                    targets: -1,
+//                },
+//                {
+//                    title: "Waiting User Confirmation",
+//                    orderable: false,
+//                    data: null,
+//                    "render": function (data, type, full, meta) {
+//                    
+//                        var recid = "actionwaitingforuserconfirmation_" + full[0];
+//
+//                        var isdelay = full[5];
+//                        
+//                        if (isdelay == 'true' ) {
+//                        
+//
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                            
+//                        } else {
+//                            return '<div class="custom-control custom-switch">' +
+//                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+//                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+//                                '</div>';
+//                        }
+//                        
+//
+//                    },
+//                    targets: -1,
+//                },
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                    
+                        var recid = "actiondetailsisActive_" + full[0];
+
+                        var isdown = full[4];
+                        
+                        if (isdown == 'true' ) {
+                        
+
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                            
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+                        
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageActionmanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "actiondetailsisview_" + full[0];
+                             return '<i class="fas fa-eye" style="color: #79CEFF;"  ></i>'; // id="'+_recviewid+'" name="'+_recviewid+'"
+
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+actiondetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+actiondetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+actiondetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+actiondetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+                           
+            });
+            
+            
+            actiondetailsaddintable.clear();
+            actiondetailsaddintable.draw();
+            actiondetailsaddintable.rows.add(results).draw();
+
+            // Call class for view the details.
+             $('#actiondetails tbody').on('click', 'tr td.pageActionmanagement_viewdetails_section', function () {
+             if(pageActionmanagement_viewdetails == true)
+             {
+                var indx = actiondetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = actiondetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var actionname = row.data()[1];
+                var status = row.data()[2];
+//                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                             "action": "actionlists_getbyID",
+                    "param": {
+                        "id": id,
+                        }
+                    };
+                $(".preloader").show();
+               progressboxOpen()
+
+               google.script.run.withFailureHandler(action_inError).withSuccessHandler(getactionrecorddata).executeactionlists(data);
+
+                
+                
+                }
+            });
+            
+          
+            
+            
+            
+            
+            $('.dataTables_length').addClass('bs-select');
+                         progressboxClose();
+//              loadroleautocomplete(roleavailable);
+//            alert('end')
+        }
+
+      //Confirm the status update 
+   
+</script>
+
+<script>
+// Control the page action.
+function pageActionmanagementactioncontrol()
+{
+pageActionmanagement_viewdetails=page_actioncontrol("pageActionmanagement","VIEW");
+}
+</script>
+
+<style>
+.icon-eye {
+  color: #E5E5E5;
+}
+
+</style>
+
+

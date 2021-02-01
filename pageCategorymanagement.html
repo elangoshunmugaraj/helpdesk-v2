@@ -1,0 +1,261 @@
+
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageCategorymanagement_fullview_section'>
+    <div class="row">
+        <div class="categorymanagement-title col-12 min-vh-50">
+            <h6><strong>Category Management</strong></h6>
+        </div>
+        <br>
+    </div>
+    <div>
+        <!-- <h6><strong>category management </strong></h6> -->
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                    <div class="input-group">
+                        <input class="form-control custom-input float-left  rounded-pill searchbox" placeholder="search"
+                            id="categorydetails_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group categorymanagement_add_section">
+                        <button type="button"
+                            class="btn btn-primary form-control custom-input float-right rounded-pill border-0"
+                            id="pageCategorymanagement_add" name="pageCategorymanagement_add"><i
+                                id="pageCategorymanagement_create" name="pageCategorymanagement_create"></i> Create
+                            Category</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="h-50"></div>
+    </div>
+    <div class="h-50 d-inline-block"></div>
+
+    <!-- <div class="card card-body"> -->
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="categorydetails" class="bg-white summarytable" style="width:100%">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    var G_categorydetails='';
+    var category_id;
+    var categorydetailsaddintable;
+    var categorydetailsID = "categorydetails";
+    var pageCategorymanagement_viewdetails = false;
+    var categorynamenameavailable=[];
+    var categoryprefixavailable=[];
+    function category_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+    
+    
+     pagecategoryLoad();
+    var category_actionfromwhere='';
+   
+    
+
+    function pagecategoryLoad(passdata) {
+        category_actionfromwhere='onload';
+            category_actionfromwhere=passdata;
+        google.script.run.withFailureHandler(category_inError).withSuccessHandler(retrive_allcategorydetails).executecategory({ "action": "showallcategory_details" });
+    }
+    
+
+    $('#categorydetails_search').on('keyup', function () {
+        categorydetailsaddintable.search(this.value).draw();
+    });
+
+    function tabulate(pageInfo) {
+        var curr = pageInfo.page + 1;
+        var tot = pageInfo.pages;
+        $(".categorydetails_custom_paginate").html(curr + " of " + tot).insertAfter("a.paginage_button.previous");
+    }
+
+    // retrive_allcategorydetails();
+    function retrive_allcategorydetails(categorydetails) {
+    
+      G_categorydetails=categorydetails;
+        categorynamenameavailable=[];
+        if(category_actionfromwhere == 'afterupdate')
+        {
+                  toastboxOpen("3002");
+                  progressboxClose();
+
+        }
+        
+    
+        var results = [];
+        
+
+        var categoryId = categorydetails.categoryid
+
+        if (categorydetails.result['code'] == '3000') {
+            for (var id of categoryId) {
+            
+           
+                results.push([
+                    categorydetails.data[id].id,
+                    categorydetails.data[id].name,
+                   categorydetails.data[id].modulename,
+                    categorydetails.data[id].status,
+                ])
+                
+//                 categorynamenameavailable.push(categorydetails.data[id].name);
+
+            };
+        }
+
+        //Initialize datatable
+        categorydetailsaddintable = $('#categorydetails').DataTable({
+            "dom": 'rtip',
+            "ordering": false,
+            "pageLength": 5,
+            "bLengthChange": false, //disable the dropdown
+            "bRetrieve": true,
+            responsive: true,
+            destroy: true,
+            searching: true,
+            rowId: 'id',
+            data: results,
+            columnDefs: [
+                {
+                    className: "dt-center", targets: [0, 1, 2]
+                }
+            ],
+            columns: [{
+                title:" Id" //Adding sort icon
+            }, {
+                title: "Name"
+            }, 
+            {
+                title: "Businessunit"
+            },
+            {
+                title: "Active",
+                className: 'isActive',
+                orderable: false,
+                data: null,
+                "render": function (data, type, full, meta) {
+                    var recid = "isActive_" + full[0];
+
+                    var isdown = full[3];
+                    var isChecked;
+
+                    isdown == 'true' ? isChecked = 'checked' : " "
+
+                    return '<div class="custom-control custom-switch">' +
+                        '<input type="checkbox" disabled class="custom-control-input active changedownload" id="' + recid + '"  name="' + recid + '"' + isChecked + '><label class="custom-control-label" for="' + recid + '" ></label>' +
+                        '</div>'
+                },
+                targets: -1,
+            }, {
+                title: "Details",
+                className: 'pageCategorymanagement_viewdetails_section',
+                orderable: false,
+                data: null,
+                defaultContent: '<i class="fas fa-eye" style="color: #79CEFF; cursor: pointer"></i>',
+                targets: -1,
+            },],
+            "initComplete": function (settings, json) {
+                $("#categorydetails_previous").addClass("customDataTables_pagePrev");
+                $("#categorydetails_next").addClass("customDataTables_pageNext");
+            },
+            "drawCallback": function (settings) {
+                $("#categorydetails_previous").addClass("customDataTables_pagePrev");
+                $("#categorydetails_next").addClass("customDataTables_pageNext");
+            }, //initComplete
+        });
+
+        // Refresh the table with updated data
+        categorydetailsaddintable.clear();
+        categorydetailsaddintable.draw();
+        categorydetailsaddintable.rows.add(results).draw();
+
+        if (categorydetails.result['code'] == '3000') {
+        Loadactivecategoryfromcategorypage(categorydetails);
+        }
+        $('.dataTables_length').addClass('bs-select');
+
+        //On category Edit like pressing the eye icon to modify
+        $('#categorydetails tbody').on('click', 'tr td.pageCategorymanagement_viewdetails_section', function () {
+            //If the table is not hidden then display the results
+            if (pageCategorymanagement_viewdetails == true) {
+                var tr = $(this).closest('tr');
+                var row = categorydetailsaddintable.row(tr);
+                var isactive = "isActive_" + row.data()[0];
+
+                //get the value of the first row which is the id
+                category_id = row.data()[0];
+
+               
+                var data = {
+                             "action": "category_getbyID",
+                    "param": {
+                        "id": category_id
+                        }
+                    };
+
+              if(category_id!='')
+              {
+                    progressboxOpen();
+             google.script.run.withFailureHandler(category_inError).withSuccessHandler(getcategoryrecorddata).executecategory(data);
+               }
+
+
+    
+            }
+
+        });
+
+
+        //When the table draw an events
+        categorydetailsaddintable.on('draw', function () {
+            tabulate(categorydetailsaddintable.page.info());
+        });
+
+    }
+
+    //Create new category button
+    $('#pageCategorymanagement_add').on('click', function () {
+    $('#categoryname').val('');
+    $('#iscategoryactive').val('');
+    $('#categorymodulename').val('');
+    
+    
+    $('#exportcategoryusertoexcel').hide();
+  $('#Showcategoryusers').hide();
+        $("#categoryuserlist_toggle").hide();
+    $("#exportcategoryusertoexcel").hide();
+    
+        category_id = '';
+        $('.createcategory-title').html('<h6><strong>Create Category</strong></h6>');
+        $('#callcreatecategory').show();
+        pageCategoryactioncontrol();
+        page_show('pageCategorymanagement', 'pageCategory');
+    });
+
+
+    function pageCategorymanagementactioncontrol() {
+        pageCategorymanagement_viewdetails = page_actioncontrol("pageCategorymanagement", "VIEW");
+    }
+
+ 
+
+
+
+  
+
+</script>

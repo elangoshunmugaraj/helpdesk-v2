@@ -115,6 +115,9 @@
             </div>
           </li>
           
+          
+          
+          
          
     
 
@@ -144,7 +147,35 @@
        <div id="pageModule" name="pageModule" style="display:none;" class="page"><?!=getContent('pageModule'); ?></div> 
               <div id="pageImagelibrary" name="pageImagelibrary" style="display:none;" class="page"><?!=getContent('pageImagelibrary'); ?></div> 
        <div id="pageUsermanagement" name="pageUsermanagement" style="display:none;" class="page"><?!=getContent('pageUsermanagement'); ?></div> 
-       <div id="pageServiceteammanagement" name="pageServiceteammanagement" style="display:none;" class="page"><?!=getContent('pageServiceteammanagement'); ?></div> 
+         <div id="pageUser" name="pageUser" style="display:none;" class="page"><?!=getContent('pageUser'); ?></div> 
+         <div id="pageCategorymanagement" name="pageCategorymanagement" style="display:none;" class="page"><?!=getContent('pageCategorymanagement'); ?></div> 
+                  <div id="pageCategory" name="pageCategory" style="display:none;" class="page"><?!=getContent('pageCategory'); ?></div> 
+         <div id="pageSubcategorymanagement" name="pageSubcategorymanagement" style="display:none;" class="page"><?!=getContent('pageSubcategorymanagement'); ?></div> 
+         <div id="pageSubcategory" name="pageSubcategory" style="display:none;" class="page"><?!=getContent('pageSubcategory'); ?></div> 
+<div id="pageServiceteammanagement" name="pageServiceteammanagement" style="display:none;" class="page"><?!=getContent('pageServiceteammanagement'); ?></div> 
+<div id="pageServiceteam" name="pageServiceteam" style="display:none;" class="page"><?!=getContent('pageServiceteam'); ?></div> 
+<div id="pageKnownissuesmanagement" name="pageKnownissuesmanagement" style="display:none;" class="page"><?!=getContent('pageKnownissuesmanagement'); ?></div> 
+<div id="pageKnownissues" name="pageKnownissues" style="display:none;" class="page"><?!=getContent('pageKnownissues'); ?></div> 
+<div id="pageKnowledgebasemanagement" name="pageKnowledgebasemanagement" style="display:none;" class="page"><?!=getContent('pageKnowledgebasemanagement'); ?></div> 
+<div id="pageKnowledgebase" name="pageKnowledgebase" style="display:none;" class="page"><?!=getContent('pageKnowledgebase'); ?></div> 
+<div id="pageActionmanagement" name="pageActionmanagement" style="display:none;" class="page"><?!=getContent('pageActionmanagement'); ?></div> 
+<div id="pageAction" name="pageAction" style="display:none;" class="page"><?!=getContent('pageAction'); ?></div> 
+<div id="pageRootcausemanagement" name="pageRootcausemanagement" style="display:none;" class="page"><?!=getContent('pageRootcausemanagement'); ?></div> 
+<div id="pageRootcause" name="pageRootcause" style="display:none;" class="page"><?!=getContent('pageRootcause'); ?></div> 
+<div id="pagePrioritymanagement" name="pagePrioritymanagement" style="display:none;" class="page"><?!=getContent('pagePrioritymanagement'); ?></div> 
+<div id="pagePriority" name="pagePriority" style="display:none;" class="page"><?!=getContent('pagePriority'); ?></div> 
+<div id="pageIncidentmastermanagement" name="pageIncidentmastermanagement" style="display:none;" class="page"><?!=getContent('pageIncidentmastermanagement'); ?></div> 
+<div id="pageIncidentmaster" name="pageIncidentmaster" style="display:none;" class="page"><?!=getContent('pageIncidentmaster'); ?></div> 
+<div id="pageIncidentmastercqmanagement" name="pageIncidentmastercqmanagement" style="display:none;" class="page"><?!=getContent('pageIncidentmastercqmanagement'); ?></div> 
+<div id="pageIncidentmastercq" name="pageIncidentmastercq" style="display:none;" class="page"><?!=getContent('pageIncidentmastercq'); ?></div> 
+<div id="pageIncidentmastercfmanagement" name="pageIncidentmastercfmanagement" style="display:none;" class="page"><?!=getContent('pageIncidentmastercfmanagement'); ?></div> 
+<div id="pageIncidentmastercf" name="pageIncidentmastercf" style="display:none;" class="page"><?!=getContent('pageIncidentmastercf'); ?></div> 
+<div id="pageIncidentmastercfvmanagement" name="pageIncidentmastercfvmanagement" style="display:none;" class="page"><?!=getContent('pageIncidentmastercfvmanagement'); ?></div> 
+<div id="pageIncidentmastercfv" name="pageIncidentmastercfv" style="display:none;" class="page"><?!=getContent('pageIncidentmastercfv'); ?></div> 
+<div id="pageKnowledgebasehelpmanagement" name="pageKnowledgebasehelpmanagement" style="display:none;" class="page"><?!=getContent('pageKnowledgebasehelpmanagement'); ?></div> 
+<div id="pageKnowledgebasehelp" name="pageKnowledgebasehelp" style="display:none;" class="page"><?!=getContent('pageKnowledgebasehelp'); ?></div> 
+
+
 </main>
   <!-- page-content" -->
   </div>
@@ -241,9 +272,12 @@ pageModulemanagementactioncontrol();
 $(document).on('click','.pageServiceteammanagement',function(e)
 {
 page_show(currentpage,"pageServiceteammanagement");
-//pagepageServiceteammanagementmanagementactioncontrol();
+pageServiceteammanagementactioncontrol();
 
 });
+
+
+
 
 $(document).on('click','.pageWorklocationmanagement',function(e)
 {
@@ -265,11 +299,78 @@ pageBusinessunitmanagementactioncontrol();
       pageCompanymanagementactioncontrol();
     });
 
+ $(document).on('click', '.pageUsermanagement', function (e) {
+      page_show(currentpage, "pageUsermanagement");
+      pageUsermanagementactioncontrol();
+    });
+
+ $(document).on('click', '.pageCategorymanagement', function (e) {
+      page_show(currentpage, "pageCategorymanagement");
+      pageCategorymanagementactioncontrol();
+    });
+    
+     $(document).on('click', '.pageSubcategorymanagement', function (e) {
+      page_show(currentpage, "pageSubcategorymanagement");
+      pageSubcategorymanagementactioncontrol();
+    });
 
 
- $(document).on('click', '.pageCompanymanagement', function (e) {
-   alert('is ok')
-      page_show(currentpage, "pageCompanymanagement");
+ $(document).on('click', '.pageKnownissuesmanagement', function (e) {
+      page_show(currentpage, "pageKnownissuesmanagement");
+      pageKnownissuesmanagementactioncontrol();
+    });
+
+
+
+ $(document).on('click', '.pageKnowledgebasemanagement', function (e) {
+      page_show(currentpage, "pageKnowledgebasemanagement");
+      pageKnowledgebasemanagementactioncontrol();
+    });
+
+
+ $(document).on('click', '.pageActionmanagement', function (e) {
+      page_show(currentpage, "pageActionmanagement");
+      pageActionmanagementactioncontrol();
+    });
+
+
+$(document).on('click', '.pageRootcausemanagement', function (e) {
+      page_show(currentpage, "pageRootcausemanagement");
+      pageRootcausemanagementactioncontrol();
+    });
+
+$(document).on('click', '.pagePrioritymanagement', function (e) {
+      page_show(currentpage, "pagePrioritymanagement");
+      pagePrioritymanagementactioncontrol();
+    });
+
+$(document).on('click', '.pageIncidentmastermanagement', function (e) {
+      page_show(currentpage, "pageIncidentmastermanagement");
+      pageIncidentmastermanagementactioncontrol();
+    });
+
+$(document).on('click', '.pageIncidentmastercqmanagement', function (e) {
+      page_show(currentpage, "pageIncidentmastercqmanagement");
+      pageIncidentmastercqmanagementactioncontrol();
+    });
+
+
+
+$(document).on('click', '.pageIncidentmastercfmanagement', function (e) {
+      page_show(currentpage, "pageIncidentmastercfmanagement");
+      pageIncidentmastercfmanagementactioncontrol();
+    });
+
+
+$(document).on('click', '.pageIncidentmastercfvmanagement', function (e) {
+      page_show(currentpage, "pageIncidentmastercfvmanagement");
+      pageIncidentmastercfvmanagementactioncontrol();
+    });
+
+
+$(document).on('click', '.pageKnowledgebasehelpmanagement', function (e) {
+      page_show(currentpage, "pageKnowledgebasehelpmanagement");
+      pageKnowledgebasehelpmanagementactioncontrol();
     });
 
 });
@@ -299,15 +400,14 @@ loadeddata=data;
 for (var i = 0; i < (data.data[0].page).length; i++) {
 if(data.data[0].page[i].pagegrouping == 'In_direct')
 {
-_addmenulist += '<li class="sidebar-dropdown"> <a href="javascript:void(0)" class="'+data.data[0].page[i].navpagename+'" ><i class="'+data.data[0].page[i].pageicon+'"></i> <span> &nbsp;&nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
+_addmenulist += '<li class="sidebar-dropdown"> <a href="javascript:void(0)" class="'+data.data[0].page[i].navpagename+'" ><i  class="'+data.data[0].page[i].pageicon+'"></i> <span> &nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
 $('#In_direct').show();
 
 }else
 if(data.data[0].page[i].pagegrouping == 'In_setup')
 {
 
-_addadminmenulist += '<li><a href="javascript:void(0)"  class="'+data.data[0].page[i].navpagename+'"  >  <i class="'+data.data[0].page[i].pageicon+'"></i><span> &nbsp;&nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
-
+_addadminmenulist += '<li><a href="javascript:void(0)"  class="'+data.data[0].page[i].navpagename+'"  >  <i class="'+data.data[0].page[i].pageicon+'"></i><span> &nbsp;&nbsp;&nbsp;'+data.data[0].page[i].pagename+'</span></a></li>';
 $('#In_setup').show();
 $('.In_setup').show();
 
@@ -319,6 +419,7 @@ $('#'+data.data[0].page[i].navpagename+'_create').addClass(data.data[0].page[i].
 
 }
 $('#In_direct').append(_addmenulist);
+_addadminmenulist += '<li><a href="javascript:void(0)"  class=""  >  <i class=""></i><span> &nbsp;&nbsp;&nbsp;</span></a></li>';
 $('#In_setup').append(_addadminmenulist);
 
 //pagegrouping

@@ -1,0 +1,311 @@
+<!-- Container with margin-top 5 pixel -->
+<div class='container-fluid mt-5 pageIncidentmastercqmanagement_fullview_section' >
+    <div>
+        <h6><strong>Incident - Custom question management </strong></h6>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-md-5 mb-3 ">
+                    <label class="sr-only" for="inlineFormInputGroupincidentmastercqname2"></label>
+                    <div class="input-group ">  
+
+                        <input class="form-control custom-input float-left  rounded-pill  searchbox"
+                            placeholder="Search" id="pageIncidentmastercqmanagement_search"  name="pageIncidentmastercqmanagement_search">
+                        <button class="btn rounded-pill border-0 ml-n5 bg-transparent" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group pageIncidentmastercqmanagement_add_section"  style="display:none;"  >
+                        <button type="button"
+                            class="btn btn-primary  form-control custom-input float-right rounded-pill border-0 callpageIncidentmastercq" 
+                                   id="pageIncidentmastercqmanagement_add"  name="pageIncidentmastercqmanagement_add"   style="white-space: nowrap;"
+                            ><i id="pageIncidentmastercqmanagement_create"  name="pageIncidentmastercqmanagement_create" ></i> Create
+                            Question</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="table-responsive-xl">
+            <table id="incidentmastercqdetails" class=" bg-white summarytable  " style="width:100%">
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+//GLobal parameter:
+var _incidentmastercqdetails;
+</script>
+<script>
+// Action for next page
+$(document).ready(function () 
+  {   
+    $('#pageIncidentmastercqmanagement_add').on('click', function() 
+    {
+    
+    $('.removelist_incidentmastercqincident').remove(); // remove existing list
+        $('#incidentmastercqhelptext').val('');
+
+       $('#incidentmastercqpassword').attr('readonly', false);
+
+   $('input[name="isincidentmastercqifcontinueoption1"]').attr('checked', false);
+$('input[name="isincidentmastercqifcontinueoption2"]').attr('checked', false);
+
+        incidentmastercqid='';
+          $("#incidentmastercqimage").attr("href",'');
+
+        $('#incidentmastercqname').val('');
+        $('#exportroleincidentmastercqtoexcel').hide();
+        $('#Showroleincidentmastercqs').hide();
+        $('#callcreaterole').show();
+        $("#roleincidentmastercqlist_toggle").hide();
+        $("#exportroleincidentmastercqtoexcel").hide();
+      
+      
+              $('#incidentmastercqoption1message').val('');
+        $('#incidentmastercqoption2message').val('');
+        $('#incidentmastercqsquence').val('');
+        $('#isincidentmastercqemail').val('');
+        $('#incidentmastercqemailmessage').val('');
+
+      
+          
+        
+      $('#incidentmastercqseveritylevel').val(1);
+      $('#incidentmastercqautoreply').val('');
+      //    var isexportvisible=$("#roleincidentmastercqlist").is(":visible");
+      //    if (isexportvisible == true) { 
+      //   
+      //    $("#roleincidentmastercqlist_toggle").toggle();
+      //    $("#exportroleincidentmastercqtoexcel").toggle();
+      //   } 
+      
+       $('#exportincidentmastercqusertoexcel').hide();
+  $('#Showincidentmastercqusers').hide();
+        $("#incidentmastercquserlist_toggle").hide();
+    $("#exportincidentmastercqusertoexcel").hide();
+      
+        pageIncidentmastercqactioncontrol();
+        page_show('pageIncidentmastercqmanagement','pageIncidentmastercq');
+    });
+        
+  });
+  
+  
+  
+  $('#pageIncidentmastercqmanagement_search').on( 'keyup',   function () 
+  {
+  incidentmastercqdetailsaddintable.search( this.value ).draw();
+  });  
+</script>
+
+<script>
+var incidentmastercqnameavailable=[];
+var incidentmastercqprefixavailable=[];
+//Used for control the view eye to open or not
+    var pageIncidentmastercqmanagement_viewdetails=false;
+    function incidentmastercq_inError(err) {
+      progressboxClose();
+      toastboxOpen("2000");
+    }
+
+
+//Load the role data
+    loadallincidentmastercqs();
+    var incidentmastercq_actionfromwhere='';
+    function loadallincidentmastercqs()
+    {
+//     progressboxOpen();
+incidentmastercq_actionfromwhere='onload'
+            google.script.run.withFailureHandler(incidentmastercq_inError)
+            .withSuccessHandler(retrive_allincidentmastercqdetails)
+            .executeincidentmastercq({ "action": "showallincidentmastercq_details" });
+    }
+    
+
+    var incidentmastercqdetailsaddintable;
+    var incidentmastercqdetailselemID = "incidentmastercqdetails";  
+
+//Load retrieved data
+        function retrive_allincidentmastercqdetails(loaddetails) {
+        incidentmastercqnameavailable=[];
+//        incidentmastercqprefixavailable=[];
+       
+         if(incidentmastercq_actionfromwhere == 'afterupdate')
+        {
+                  toastboxOpen("3002");
+                  progressboxClose();
+
+        }
+        
+              var results=[];
+              if(loaddetails!= null)
+              {
+                if(loaddetails.result['code'] == '3000')
+                {
+                
+                                        _incidentmastercqdetails=loaddetails.data;
+
+                                 var datalength = (loaddetails.data.incidentmastercqlist).length
+                      for (var x = 0; x < datalength; x++) {  
+                      results.push([loaddetails.data.incidentmastercqlist[x].id,
+                      loaddetails.data.incidentmastercqlist[x].url,
+                       loaddetails.data.incidentmastercqlist[x].name,
+                       loaddetails.data.incidentmastercqlist[x].status
+                      ])
+                      incidentmastercqnameavailable.push(loaddetails.data.incidentmastercqlist[x].name);
+
+                      
+                      };
+                }
+              };
+                    
+          incidentmastercqdetailsaddintable = $('#incidentmastercqdetails').DataTable({
+                dom: 'rtip',
+                "ordering": true,  
+                "pageLength": 5,
+                "bLengthChange": false, //disable the dropdown
+                "bRetrieve": true,
+                destroy: true,
+//                searching: true,
+                rowId: 'id', 
+                data: results,
+                columns: [{
+                    title: " Id" 
+                }, 
+                {
+                  title: "Image",
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                            return '<img src="' + full[1]+ '" style="width: 30px; height: 30px">';
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "question"
+                },
+                {
+                    title: "Active",
+                    className: 'isActive',
+                    orderable: false,
+                    data: null,
+                    "render": function (data, type, full, meta) {
+                    
+                        var recid = "incidentmastercqdetailsisActive_" + full[0];
+
+                        var isdown = full[3];
+                        
+                        if (isdown == 'true' ) {
+                        
+
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox"  disabled class="custom-control-input  "  title="Active" id="' + recid + '"  name="' + recid + '"  checked>' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                            
+                        } else {
+                            return '<div class="custom-control custom-switch">' +
+                                '<input type="checkbox" disabled class="custom-control-input" id="' + recid + '" title="In active"   name="' + recid + '"  >' +
+                                '<label class="custom-control-label" for="' + recid + '" ></label>' +
+                                '</div>';
+                        }
+                        
+
+                    },
+                    targets: -1,
+                },
+                {
+                    title: "Details",
+                    orderable: false,
+                    data: null,
+                    className: 'pageIncidentmastercqmanagement_viewdetails_section',
+                     "render": function (data, type, full, meta) {
+                        var _recviewid = "incidentmastercqdetailsisview_" + full[0];
+                             return '<i class="fas fa-eye" style="color: #79CEFF;"  ></i>'; // id="'+_recviewid+'" name="'+_recviewid+'"
+                    },
+                    targets: -1,
+                },],
+                "initComplete": function(settings, json) {
+                  $("#"+incidentmastercqdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercqdetailselemID + "_next").addClass("customDataTables_pageNext");
+                         }, //initComplete
+                "drawCallback": function( settings ) {
+                  $("#"+incidentmastercqdetailselemID + "_previous").addClass("customDataTables_pagePrev");
+                  $("#"+incidentmastercqdetailselemID + "_next").addClass("customDataTables_pageNext");
+                           }
+                           
+            });
+            
+            
+            incidentmastercqdetailsaddintable.clear();
+            incidentmastercqdetailsaddintable.draw();
+            incidentmastercqdetailsaddintable.rows.add(results).draw();
+
+
+            if (loaddetails.result['code'] == '3000') {
+        Loadquestionfromquestionmanagement(loaddetails);
+        }
+           
+            // Call class for view the details.
+             $('#incidentmastercqdetails tbody').on('click', 'tr td.pageIncidentmastercqmanagement_viewdetails_section', function () {
+             if(pageIncidentmastercqmanagement_viewdetails == true)
+             {
+                var indx = incidentmastercqdetailsaddintable.column(this).index()
+                var tr = $(this).closest('tr');
+                var row = incidentmastercqdetailsaddintable.row(tr);
+                var id = row.data()[0];
+                var incidentmastercqname = row.data()[1];
+                var status = row.data()[2];
+//                var   _getloginname= $("#idoriginalname").text();
+                var data = {
+                             "action": "incidentmastercq_getbyID",
+                    "param": {
+                        "id": id,
+                        }
+                    };
+                $(".preloader").show();
+               progressboxOpen()
+
+               google.script.run.withFailureHandler(incidentmastercq_inError).withSuccessHandler(getincidentmastercqrecorddata).executeincidentmastercq(data);
+                
+                }
+            });
+            
+          
+            
+            
+            
+            
+            $('.dataTables_length').addClass('bs-select');
+                         progressboxClose();
+//              loadroleautocomplete(roleavailable);
+//            alert('end')
+        }
+
+      //Confirm the status update 
+   
+</script>
+
+<script>
+// Control the page action.
+function pageIncidentmastercqmanagementactioncontrol()
+{
+pageIncidentmastercqmanagement_viewdetails=page_actioncontrol("pageIncidentmastercqmanagement","VIEW");
+}
+</script>
+
+<style>
+.icon-eye {
+  color: #E5E5E5;
+}
+
+</style>
+
+
